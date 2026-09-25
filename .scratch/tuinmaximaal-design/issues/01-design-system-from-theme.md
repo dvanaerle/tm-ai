@@ -37,7 +37,7 @@
 - [x] Headings reflect the theme: h1 28 / h2 24 / h3 22 / h4 20 / h5 18 / h6 16 px, black weight on h1–h2 only
 - [x] Messages have no border; the primary button is `#809700` with a `#6D8005` bottom border; orange is documented for price, highlights, badges and active states only
 - [ ] No "quote request" CTA guidance remains; the purchase flow is configurator → cart
-- [ ] Only one active design document exists in the workspace; the old ones are merged, deleted or archived, and no links are broken
+- [x] Only one active design document exists in the workspace; the old ones are merged, deleted or archived, and no links are broken
 - [x] The skill triggers in Claude Code on a Tuinmaximaal prototype request
 - [x] Evaluation prompts 1, 2, 5 and 6 pass all pass criteria in Claude Code
 
@@ -47,6 +47,11 @@
 - The sync lives at `tools/design-sync/sync.mjs` (`npm run design:sync`), with the linter pinned at `@google/design.md@0.4.0`. The theme repo's `git status` was identical before and after every run.
 - Colour, spacing, radius and font-size tokens were checked 1:1 against the theme config: 42 colours, 257 spacing steps, 10 radii and 11 font sizes, with no mismatches.
 - The linter reports 0 errors and 8 warnings, all real contrast findings in the live theme: white on #809700 is 3.31:1, white on #FF8000 is 2.52:1, and brown on beige is 3.81:1. Linter 0.4.0 can't justify warnings in `omitted`: that key only accepts absent sections, and listing a present section adds a warning. The justification is therefore in DESIGN.md under Colors → Contrast.
-- Four old files remain to delete: `shared/brand/DESIGN.md`, `shared/brand/PRODUCT.md`, `shared/brand/.impeccable.md` and `skills/tuinmaximaal-design/design-context.md`. They are merged but the permission check blocked the deletion, so the user deletes them.
+- The four merged files `shared/brand/DESIGN.md`, `shared/brand/PRODUCT.md`, `shared/brand/.impeccable.md` and `skills/tuinmaximaal-design/design-context.md` are deleted (review follow-up).
+
+**2026-09-25, review follow-up.**
+- The sync also regenerates the prototype skeleton's component CSS from the theme CSS (flattened, with the theme's own selectors) and compiles it with the theme's Tailwind install, so a class the prototype config lacks fails the sync.
+- The heading table and font-size list in DESIGN.md are generated regions; every other value the prose quotes (hex colours, `tmx-*` colour pairs, `text-`, `rounded-` and spacing classes with a px value) is checked against the theme, and drift fails the sync.
+- `.gitignore` ignores `/tmp/`; the build job checks with `git check-ignore` that its output path is ignored before writing.
 - Eval results are recorded in `evals/tuinmaximaal-design.md`.
 - Styleguide coverage: every item in the StyleGuide sections, the cheatsheet and the dev rules was checked. The missing ones are now in DESIGN.md: full-width and forced-state buttons, filled, disabled and disabled-checked controls, the floating label, `field-group`, `field-reserved`, `aria-invalid:`, the notice message without an icon, line heights and container queries. Deliberate omissions and their reasons are listed under Known exceptions → Deliberately omitted.

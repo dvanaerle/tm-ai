@@ -685,7 +685,7 @@
 ---
 # Tuinmaximaal design system
 
-The front matter above is generated from the Valantic `base` theme (Hyvä + Tailwind) by `tools/design-sync/sync.mjs` in the tm-ai workspace. Never edit it by hand. When the theme changes, re-run the sync. The theme code is the source of truth; if this document disagrees with it, the code wins.
+The front matter above is generated from the Valantic `base` theme (Hyvä + Tailwind) by `tools/design-sync/sync.mjs` in the tm-ai workspace. Never edit it by hand, nor the regions between `design-sync` comments below. When the theme changes, re-run the sync: it also regenerates the prototype skeleton's component CSS, and it fails when a value quoted in this prose (a hex colour, a `tmx-*` colour, or a `text-`, `rounded-` or spacing class with a px value) no longer matches the theme. The theme code is the source of truth; if this document disagrees with it, the code wins.
 
 Token keys mirror the theme's Tailwind names: `tmx-primary-lighterGreen` is the class suffix in `bg-tmx-primary-lighterGreen`, `spacing.4` is `p-4`, `rounded.1` is `rounded-1`, `typography.text-3.5` is `text-3.5`. Build with those classes and nothing else: no arbitrary values (`p-[13px]`, `text-[#123456]`).
 
@@ -748,6 +748,7 @@ The linter's contrast warnings come from the live theme and are known:
 
 There is one family: **ArticulatCF** (`font-body`), self-hosted and licensed. Prototypes use the stack `ArticulatCF, system-ui, sans-serif` and never bundle the font files. Hierarchy comes from weight and size, never from a second typeface. The available weights are 400, 500, 600 (`font-semibold`), 700 (`font-bold`) and 900 (`font-black`).
 
+<!-- design-sync:headings -->
 | Level | Class | Size / line-height | Weight |
 |---|---|---|---|
 | h1 | `.heading-1` → `text-7` | 28px / 1.25 | 900 |
@@ -756,6 +757,7 @@ There is one family: **ArticulatCF** (`font-body`), self-hosted and licensed. Pr
 | h4 | `.heading-4` → `text-5` | 20px / 1.5 | 700 |
 | h5 | `.heading-5` → `text-4.5` | 18px / 1.5 | 700 |
 | h6 | `.heading-6` → `text-4` | 16px / 1.5 | 600 |
+<!-- /design-sync:headings -->
 
 The black weight is used on h1 and h2 only. `.heading-small` steps h1 down to `text-6` and h2 down to `text-5`; it has no effect on h3–h6. `.heading-highlight` works on every heading level. Element tags carry these styles, so use real `h1`–`h6` elements.
 
@@ -763,7 +765,7 @@ The black weight is used on h1 and h2 only. `.heading-small` steps h1 down to `t
 - **Small text:** `.paragraph-sm` 12px, `.paragraph-esm` 10px, `.paragraph-tiny` 10px bold uppercase (short labels only).
 - **Highlights:** `.heading-highlight` puts white text on an orange chip (`px-3 pt-2 pb-0.5`), rotated −2°. `.paragraph-highlight` is the same chip at weight 900 (`w-fit px-3 pt-1 pb-0.5`).
 - **UI text:** buttons 16px semibold (24px for `btn-size-lg`), field labels 14px medium grey, inputs 16px regular with a 22px line-height, messages 14px, product-tile names 15px semibold (16px from `lg`), clamped to 3 lines.
-- **Font sizes** are a fixed list, not a formula: `text-2.5` 10px, `text-3` 12px, `text-3.5` 14px, `text-3.75` 15px, `text-4` 16px, `text-4.5` 18px, `text-4.75` 19px (line-height 1), `text-5` 20px, `text-5.5` 22px, `text-6` 24px, `text-7` 28px. There is nothing larger. Big hero statements get their weight from black type and the orange highlight, not from sizes beyond 28px.
+- **Font sizes** are a fixed list, not a formula: <!-- design-sync:font-sizes -->`text-2.5` 10px, `text-3` 12px, `text-3.5` 14px, `text-3.75` 15px, `text-4` 16px, `text-4.5` 18px, `text-4.75` 19px (line-height 1), `text-5` 20px, `text-5.5` 22px, `text-6` 24px, `text-7` 28px<!-- /design-sync:font-sizes -->. There is nothing larger. Big hero statements get their weight from black type and the orange highlight, not from sizes beyond 28px.
 - `tracking-loose` (4px) is the only custom letter-spacing, for short uppercase labels. Tailwind's defaults (`tracking-tight` to `tracking-widest`) are also available.
 - **Line heights:** the size classes carry their own line-height (1.5; 1.25 for `text-6` and `text-7`; 1 for `text-4.75`). The custom `leading-5.5` (22px), `leading-7.5` (30px), `leading-11` (44px) and `leading-12` (48px) join Tailwind's defaults.
 - **Lists:** see Components → Lists; list items wrap their text in `.list-text`.

@@ -1,13 +1,15 @@
 #!/usr/bin/env node
 /**
- * Regenerates the tuinmaximaal-design skill's DESIGN.md front matter and the
- * prototype Tailwind config from the Valantic `base` theme, copies the theme logo,
- * then lints DESIGN.md.
+ * Regenerates the tuinmaximaal-design skill's DESIGN.md front matter, the generated
+ * regions of its prose, the prototype Tailwind config and the prototype skeleton's
+ * component CSS from the Valantic `base` theme, copies the theme logo, then checks
+ * the prose for drift and lints DESIGN.md.
  *
  * Usage: npm run design:sync -- [themePath] [--skill-dir <dir>]
  *
  * Read-only towards the theme repo: it requires the theme's Tailwind config and
- * reads component CSS. The prose below the front matter is kept as written.
+ * reads component CSS. Prose outside the `design-sync` regions is kept as written,
+ * but every value it quotes is checked against the theme.
  */
 import { createRequire } from 'node:module';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
@@ -259,9 +261,18 @@ add('heading-highlight', classesOf(typographyCss, '\\.heading-highlight'));
 add('paragraph-highlight', classesOf(typographyCss, '\\.paragraph-highlight'), { typography: '{typography.paragraph-highlight}' });
 add('price-box', classesOf(pricesCss, '\\.price-container', '\\.price'), { typography: '{typography.price}' });
 
-// Magento_Catalog/templates/product/list/item.phtml (tile) and cheatsheet (selected card)
-add('product-tile', ['border', 'border-productTile', 'rounded-2', 'bg-white', 'py-3', 'px-4', 'text-body']);
-add('product-tile-hover', ['border', 'border-productTile-hover']);
+// Magento_Catalog/templates/product/list/item.phtml styles the tile with utility classes in the markup,
+// so it has no component CSS to read; this is the one place that mirrors it.
+const productTile = {
+    '.product-tile': ['flex', 'flex-col', 'h-full', 'border', 'border-productTile', 'rounded-2', 'overflow-hidden', 'transition-colors', 'hover:border-productTile-hover', 'hover:shadow-1px'],
+    '.product-tile-info': ['bg-white', 'flex', 'flex-col', 'grow', 'py-3', 'px-4'],
+    '.product-tile-name': ['font-semibold', 'text-3.75', 'lg:text-base', 'line-clamp-3'],
+};
+const hoverOf = (classes) => classes.filter((name) => name.startsWith('hover:')).map((name) => name.slice('hover:'.length));
+
+add('product-tile', [...productTile['.product-tile'], ...productTile['.product-tile-info'], 'text-body']);
+add('product-tile-hover', ['border', ...hoverOf(productTile['.product-tile'])]);
+// Cheatsheet (selected card)
 add('selected-card', ['border', 'border-form-input-choice-active', 'bg-tmx-primary-lighterGreenSubtle']);
 
 add('page', ['bg-white', 'text-body'], { typography: '{typography.body-md}' });
@@ -316,10 +327,72 @@ const toYaml = (value, indent = '') => Object.entries(value).map(([key, item]) =
         : `${indent}${JSON.stringify(key)}: ${JSON.stringify(item)}`,
 ).join('\n');
 
+/** Replaces the content between `<!-- design-sync:name -->` and `<!-- /design-sync:name -->`. */
+const replaceRegion = (text, name, content, { inline = false, open = `<!-- design-sync:${name} -->`, close = `<!-- /design-sync:${name} -->` } = {}) => {
+    const start = text.indexOf(open);
+    const end = text.indexOf(close);
+    if (start < 0 || end < start) throw new Error(`Region ${open} … ${close} not found`);
+    const gap = inline ? '' : '\n';
+    return `${text.slice(0, start + open.length)}${gap}${content}${gap}${text.slice(end)}`;
+};
+
+const px = (value) => `${parseFloat(value) * 16}px`;
+
+const headingTable = [
+    '| Level | Class | Size / line-height | Weight |',
+    '|---|---|---|---|',
+    ...[1, 2, 3, 4, 5, 6].map((level) => {
+        const size = classesOf(typographyCss, `\\.heading-${level}`).find((name) => theme.fontSize[name.slice('text-'.length)]);
+        const { fontSize, lineHeight, fontWeight } = typography[`h${level}`];
+        return `| h${level} | \`.heading-${level}\` → \`${size}\` | ${px(fontSize)} / ${lineHeight} | ${fontWeight} |`;
+    }),
+].join('\n');
+
+const fontSizeList = Object.keys(theme.fontSize)
+    .filter((key) => key !== 'base')
+    .sort((a, b) => parseFloat(a) - parseFloat(b))
+    .map((key) => {
+        const [fontSize, lineHeight] = [].concat(theme.fontSize[key]);
+        return `\`text-${key}\` ${px(fontSize)}${lineHeight === '1' ? ' (line-height 1)' : ''}`;
+    })
+    .join(', ');
+
 const designPath = join(skillDir, 'DESIGN.md');
-const body = readFileSync(designPath, 'utf8').replace(/\r\n/g, '\n').replace(/^---\n[\s\S]*?\n---\n/, '');
+let body = readFileSync(designPath, 'utf8').replace(/\r\n/g, '\n').replace(/^---\n[\s\S]*?\n---\n/, '');
+body = replaceRegion(body, 'headings', headingTable);
+body = replaceRegion(body, 'font-sizes', fontSizeList, { inline: true });
 const designMd = `---\n${toYaml(frontMatter)}\n---\n${body}`;
 writeFileSync(designPath, designMd);
+
+// --- Prose drift -----------------------------------------------------------------
+
+/** Values the prose quotes by hand, checked against the theme so a theme change can't leave stale guidance behind. */
+const drift = [];
+const hexes = new Set([...Object.values(colors).map(normalizeHex), '#FFFFFF']);
+const pixelsOf = (name) => {
+    let match;
+    if ((match = name.match(/^text-(.+)$/)) && theme.fontSize[match[1]]) return px([].concat(theme.fontSize[match[1]])[0]);
+    if ((match = name.match(/^rounded-(.+)$/)) && theme.borderRadius[match[1]]) return px(theme.borderRadius[match[1]]);
+    if ((match = name.match(/^-?(?:p[xytrbl]?|m[xytrbl]?|gap(?:-[xy])?|size|[wh])-(.+)$/)) && theme.spacing[match[1]]) return px(theme.spacing[match[1]]);
+    return null;
+};
+
+const bodyOffset = designMd.length - body.length;
+const bodyStartLine = designMd.slice(0, bodyOffset).split('\n').length;
+for (const [line, number] of body.split('\n').map((text, index) => [text, bodyStartLine + index])) {
+    // `text-[#123456]` illustrates a forbidden arbitrary value, not a colour
+    for (const [hex] of line.matchAll(/(?<!\[)(?:#[0-9A-Fa-f]{6}|#[0-9A-Fa-f]{3})\b/g)) {
+        if (!hexes.has(normalizeHex(hex))) drift.push(`line ${number}: ${hex} is not a theme colour`);
+    }
+    for (const [, name, hex] of line.matchAll(/`(tmx-[\w-]+)`\s*(#[0-9A-Fa-f]{3,6})\b/g)) {
+        if (colors[name] && normalizeHex(colors[name]) !== normalizeHex(hex)) drift.push(`line ${number}: ${name} is ${colors[name]} in the theme, not ${hex}`);
+    }
+    for (const [, name, value] of line.matchAll(/`([\w.-]+)`\s*(?:\(|=\s*)?(\d+(?:\.\d+)?px)/g)) {
+        const actual = pixelsOf(name);
+        if (actual && actual !== value) drift.push(`line ${number}: ${name} is ${actual} in the theme, not ${value}`);
+    }
+}
+for (const message of drift) console.log(`error   DESIGN.md prose: ${message}`);
 
 // --- Prototype Tailwind config ---------------------------------------------------
 
@@ -367,11 +440,147 @@ writeFileSync(tailwindPath, [
 // Prototypes inline this file, so they stay self-contained on every surface.
 writeFileSync(join(skillDir, 'assets/logo.svg'), readFileSync(join(themePath, 'web/images/logo.svg'), 'utf8').replace(/\r\n/g, '\n'));
 
+// --- Prototype skeleton CSS ------------------------------------------------------
+
+/** Parses nested CSS into `{ selector, body }` rules and statement strings, respecting quotes and parentheses. */
+const parseCss = (source) => {
+    const text = source.replace(/\/\*[\s\S]*?\*\//g, '');
+    let index = 0;
+    const parse = () => {
+        const nodes = [];
+        let buffer = '';
+        let quote = null;
+        let parens = 0;
+        const flush = () => {
+            const statement = buffer.trim().replace(/\s+/g, ' ');
+            buffer = '';
+            return statement;
+        };
+        while (index < text.length) {
+            const char = text[index++];
+            if (quote) {
+                if (char === quote) quote = null;
+            } else if (char === '"' || char === "'") {
+                quote = char;
+            } else if (char === '(') {
+                parens++;
+            } else if (char === ')') {
+                parens--;
+            } else if (parens === 0 && char === ';') {
+                const statement = flush();
+                if (statement) nodes.push(statement);
+                continue;
+            } else if (parens === 0 && char === '{') {
+                const selector = flush();
+                nodes.push({ selector, body: parse() });
+                continue;
+            } else if (parens === 0 && char === '}') {
+                break;
+            }
+            buffer += char;
+        }
+        const statement = flush();
+        if (statement) nodes.push(statement);
+        return nodes;
+    };
+    return parse();
+};
+
+/** Splits a selector list on its top-level commas, so `:is(a, b)` stays whole. */
+const splitSelectors = (selector) => {
+    const parts = [''];
+    let depth = 0;
+    for (const char of selector) {
+        if (char === '(') depth++;
+        if (char === ')') depth--;
+        if (char === ',' && depth === 0) parts.push('');
+        else parts[parts.length - 1] += char;
+    }
+    return parts.map((part) => part.trim());
+};
+
+const nest = (parents, selector) => splitSelectors(selector).flatMap((child) => (parents.length === 0
+    ? [child]
+    : parents.map((parent) => (child.includes('&') ? child.replaceAll('&', parent) : `${parent} ${child}`))));
+
+const indent = (lines) => lines.map((line) => `    ${line}`);
+
+/** Flattens nested rules into one line per rule, for the Tailwind CDN, which doesn't process nesting. */
+const flattenCss = (nodes, parents = []) => nodes.flatMap((node) => {
+    if (typeof node === 'string') return [];
+    if (node.selector.startsWith('@')) {
+        const inner = flattenCss(node.body, parents);
+        return inner.length > 0 ? [`${node.selector} {`, ...indent(inner), '}'] : [];
+    }
+    const selectors = nest(parents, node.selector);
+    const statements = node.body.filter((item) => typeof item === 'string');
+    const own = statements.length > 0 ? [`${selectors.join(', ')} { ${statements.join('; ')}; }`] : [];
+    return [...own, ...flattenCss(node.body, selectors)];
+});
+
+/** The theme file's top-level rules that `keep` accepts, flattened. `@font-face` and `@import` never apply to prototypes. */
+const themeRules = (file, keep = () => true) => [
+    `/* ${file} */`,
+    ...flattenCss(parseCss(css(file)).filter((node) => typeof node !== 'string' && !node.selector.startsWith('@font-face') && keep(node.selector))),
+];
+
+const prototypeCss = [
+    ...themeRules('typography.css', (selector) => selector.startsWith('@layer')),
+    ...themeRules('button.css'),
+    ...themeRules('forms.css', (selector) => selector !== '.webforms'),
+    ...themeRules('messages.css', (selector) => selector === '.message'),
+    ...themeRules('product-prices.css'),
+    '/* Magento_Catalog/templates/product/list/item.phtml */',
+    '@layer components {',
+    ...indent(Object.entries(productTile).map(([selector, classes]) => `${selector} { @apply ${classes.join(' ')}; }`)),
+    '}',
+    '/* Prototype additions: a visible focus ring (the theme only swaps the fill), and a highlight that rotates on an inline phrase. */',
+    '@layer components {',
+    ...indent([
+        '.btn { @apply focus-visible:ring-4 focus-visible:ring-form-input/50; }',
+        '.heading-highlight { @apply inline-block; }',
+    ]),
+    '}',
+].join('\n');
+
+const skeletonPath = join(skillDir, 'assets/prototype-skeleton.html');
+const skeleton = readFileSync(skeletonPath, 'utf8').replace(/\r\n/g, '\n');
+writeFileSync(skeletonPath, replaceRegion(skeleton, 'css', prototypeCss, { open: '/* design-sync:begin */', close: '/* design-sync:end */' }));
+
+/**
+ * Compiles the skeleton CSS with the prototype config, using the theme's own Tailwind install:
+ * one class the config lacks would stop the Tailwind CDN from building the whole style block.
+ */
+const compilePrototypeCss = async () => {
+    const requireFromTheme = createRequire(configPath);
+    let tailwind;
+    let postcss;
+    let plugins;
+    try {
+        tailwind = requireFromTheme('tailwindcss');
+        postcss = requireFromTheme('postcss');
+        plugins = ['@tailwindcss/forms', '@tailwindcss/typography', '@tailwindcss/container-queries'].map((name) => requireFromTheme(name));
+    } catch {
+        console.log('warning prototype CSS not compiled: run npm install in the theme\'s web/tailwind folder');
+        return true;
+    }
+    try {
+        // The CSS doubles as content: Tailwind only expands `@layer` rules whose class it finds in use
+        const config = { content: [{ raw: prototypeCss }], theme: { extend: prototypeTheme }, plugins };
+        await postcss([tailwind(config)]).process(`@tailwind base;\n@tailwind components;\n@tailwind utilities;\n${prototypeCss}`, { from: undefined });
+        return true;
+    } catch (error) {
+        console.log(`error   prototype CSS: ${error.reason ?? error.message}`);
+        return false;
+    }
+};
+const prototypeCssCompiles = await compilePrototypeCss();
+
 // --- Lint ------------------------------------------------------------------------
 
 const { findings, summary } = lint(designMd);
 for (const { severity, path, message } of findings.filter((finding) => finding.severity !== 'info')) {
     console.log(`${severity.padEnd(7)} ${path ?? ''} ${message}`);
 }
-console.log(`DESIGN.md lint: ${summary.errors} errors, ${summary.warnings} warnings`);
-process.exitCode = summary.errors > 0 ? 1 : 0;
+console.log(`DESIGN.md lint: ${summary.errors} errors, ${summary.warnings} warnings; prose drift: ${drift.length}; prototype CSS: ${prototypeCssCompiles ? 'ok' : 'fails'}`);
+process.exitCode = summary.errors > 0 || drift.length > 0 || !prototypeCssCompiles ? 1 : 0;

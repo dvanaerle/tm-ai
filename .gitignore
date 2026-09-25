@@ -1,0 +1,8 @@
+# Disposable local working files
+/tmp/
+
+# Dependencies
+node_modules/
+
+# Browser automation artifacts
+.playwright-mcp/
