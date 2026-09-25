@@ -1,0 +1,12 @@
+{
+  "name": "tm-ai",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "design:sync": "node tools/design-sync/sync.mjs",
+    "design:install": "node tools/design-sync/install.mjs"
+  },
+  "devDependencies": {
+    "@google/design.md": "0.4.0"
+  }
+}

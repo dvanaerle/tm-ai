@@ -1,0 +1,74 @@
+# Build: a throwaway prototype with variants
+
+A prototype is throwaway code that answers one design question. It holds several structurally different variants in one file, inside a Tuinmaximaal page shell, with a floating switcher. The user flips between them, picks one or combines parts, and the file is thrown away. It never goes into the theme repo.
+
+## 1. Shape
+
+Pin down five things, from the request where possible:
+
+- **Question:** what the variants should settle, e.g. "where does the configurator CTA work best on the veranda PDP?"
+- **Page goal:** what the visitor should do or understand.
+- **Audience:** who arrives, from where, at which decision moment (see DESIGN.md → Overview).
+- **Primary action:** the configurator for verandas and structures, the cart for every other product. Never a quote request.
+- **N:** the number of variants. The default is 3 and the maximum is 5; beyond 5 they stop being different and turn into noise. If the user asks for more, build 5 and say why.
+
+Ask only for what is missing and can't be assumed. Otherwise assume, and write the whole shape as one line at the top of the file, replacing `PLAN_LINE` in the skeleton:
+
+> `<!-- PLAN: Question: where does the configurator CTA work best? Goal: start configuring. Audience: returning visitors comparing sizes. Primary action: configurator. N: 3. -->`
+
+## 2. Pick the format
+
+- **HTML** by default: one self-contained file that opens anywhere.
+- **React** when the UI has real state worth judging: configurator steps, filters, a size picker that updates the price. Write it inside the same HTML skeleton, with React and ReactDOM loaded from a CDN (`https://unpkg.com/react@18/umd/react.production.min.js`, `https://unpkg.com/react-dom@18/umd/react-dom.production.min.js`) and JSX through `@babel/standalone` in a `<script type="text/babel">`. Don't use a bare React artifact: it can't load the theme's Tailwind config, so the `tmx-*` classes wouldn't exist. State lives in memory; nothing is saved and no real request or mutation is made.
+
+## 3. Draft structurally different variants
+
+Every variant answers the same question with a different structure. Vary at least one of these axes per variant, and preferably more than one:
+
+- **Layout:** stacked single column, a two-column split, a sidebar, a sticky summary bar, a stepped flow.
+- **Hierarchy:** what the eye meets first: the price, the proof (specs, reviews, guarantee), the product image, or the choice to make.
+- **Primary affordance:** where and how the one primary action appears: inline after the proof, sticky on scroll, at the top next to the price, as the first step of a guided flow.
+
+Colour, copy or icon swaps never count as a variant: all variants use the same design system. After drafting, compare them pairwise. If two share the same layout, the same hierarchy and the same primary affordance, redo one with an explicit exclusion ("not a two-column split"). Each variant may drop the others' layout entirely; only the shell is shared.
+
+Give each variant a short name (e.g. "Sidebar layout") and one trade-off line that says what it tests and what it gives up:
+
+> "Tests whether proof before price lifts configurator starts, at the cost of a lower price position."
+
+Every variant still meets the brand essentials in SKILL.md: one primary button per view, the configurator or cart path visible, orange only on price, highlights, badges and active states.
+
+## 4. Wire it together
+
+Start from [../assets/prototype-skeleton.html](../assets/prototype-skeleton.html):
+
+1. Replace `TAILWIND_CONFIG` with the full contents of [../assets/tailwind.config.js](../assets/tailwind.config.js). Keep the skeleton's font stack and component styles. Every class used in an `@apply` must exist in the config; one unknown class stops the Tailwind CDN from building the whole style block.
+2. Replace `PLAN_LINE` with the shape line from step 1, and `LOGO_SVG` with the full contents of [../assets/logo.svg](../assets/logo.svg) (the theme's own logo), adding `class="h-11 w-auto lg:h-15" aria-hidden="true"` to its `<svg>` tag. Inline it; never link to the file, so the prototype stays self-contained.
+3. Fill the `prototype-variants` registry with one entry per variant: `key` (A, B, C…), `name` and `tradeoff`. The switcher reads it.
+4. Put each variant in the `<main>` as `<section data-variant="KEY">`. Don't put display classes on the section itself; wrap the variant's layout in a child element. In React, render the sections from the root; the switcher also hides sections that are rendered later.
+5. Keep the page shell (header with logo, menu, USP bar, mobile search, breadcrumbs, footer) so every variant is judged in context. It follows the live site; its labels are the site's own. Fill the breadcrumb for the page; change the shell only when the question is about the shell itself. Product and category pages sit on beige: wrap the variant in `bg-container-beige` when the page type calls for it.
+6. Keep the switcher as is. It shows ← / "B (Sidebar layout)" plus the trade-off / →, cycles with the arrow keys except while an input, select, textarea or contenteditable is focused, and keeps the variant in `?variant=` so a link is shareable and survives a reload. It is prototype chrome: black and pill-shaped, so it reads as separate from the design.
+
+Use only `tmx-*` and the theme's semantic classes, on the scales in DESIGN.md. No arbitrary values (`p-[13px]`, `text-[#123456]`), no inline styles, no new colours. If a value you need doesn't exist, use the nearest token and list the gap in the hand-over. Use inline SVG icons in `currentColor`.
+
+## 5. Copy and assets
+
+Follow the delegation rules in SKILL.md. Every text without an approved source is a visible placeholder, e.g. `[PLACEHOLDER: USP about delivery]`. Real prices, dimensions and specs come from the request; otherwise they are placeholders too. Test the longest German or French string the layout will meet: put it in at least one variant.
+
+## 6. Check before delivering
+
+- The file has N variants (3 by default, at most 5), each with a name and a trade-off line in the registry.
+- The variants differ in layout, hierarchy or primary affordance, not in colour or copy.
+- Every variant sits inside the page shell, and the switcher works with buttons and arrow keys and updates `?variant=`.
+- Every class comes from the theme config; there are no arbitrary values.
+- The primary action is the #809700 button; orange appears only on price, highlight, badge or active elements.
+- Text pairs meet AA contrast, apart from the theme's documented exceptions in DESIGN.md.
+- Each variant meets the craft floor in [audit.md](audit.md) → Craft floor: one level of surface, headings that stand without a label above them, emphasis from weight, size and the orange highlight.
+- Each variant works at 375px, `md` and `xl`, and holds with the long DE/FR string.
+- All copy is delegated or visibly marked as a placeholder.
+
+## 7. Deliver and hand over
+
+- **claude.ai or Desktop:** deliver the file as an HTML artifact.
+- **Claude Code:** write it to `tmp/prototypes/<name>.html` in the workspace (ignored by Git) and give the path. Open it through a local server if `file://` blocks the CDN.
+
+In the hand-over, list each variant as `key (name): trade-off`, explain that `?variant=B` opens a variant directly, and name any missing tokens or placeholder facts. Invite mix-and-match feedback: "I want the header from B with the sidebar from C" is usually the design the user actually wants, and the next round combines it.
