@@ -17,5 +17,6 @@ Our changes:
 - Thresholds adjusted to DESIGN.md: the 28px type ceiling, 100–300ms motion, the theme's breakpoints, 16:9 product media.
 - The 0–4 dimension scores are replaced by findings ranked P0–P3, each with the rule it breaks and a fix in theme classes.
 - Added the Tuinmaximaal design-system checks, long DE/FR strings in the harden step, and a CRO lens (CTA visibility, trust signals, friction).
+- Added craft-floor items of our own: the border rule, one big moment per page, the logo-swap test, 16:9 for product media only, and generic card grids under Structure.
 
 The build job in [references/build.md](references/build.md) is adapted from the UI branch of the `prototype` skill and contains no Impeccable content.

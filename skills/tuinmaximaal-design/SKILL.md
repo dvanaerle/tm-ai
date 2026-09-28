@@ -13,10 +13,11 @@ The brand essentials, which every output honours:
 - The primary button is #809700 with a 4px #6D8005 bottom border. Orange (#FF8000) marks prices, highlights, badges and active states, rotated −2° where the theme rotates it.
 - Veranda and structure pages lead to the configurator; other products go straight to the cart. "Offerte" is a checkout payment method, so the flow ends in the cart.
 - Body text is green (#003017) in ArticulatCF; the surfaces are light and warm.
+- Whitespace groups content first, then a change of surface, and a border only where DESIGN.md → Elevation & Depth gives one. Every page has one big moment for its register.
 
 ## Pick the job
 
-- **Build:** the user wants something made: a page, section, component or prototype. Read [references/build.md](references/build.md) and follow it. The result is one throwaway file with 3 structurally different variants (or the number asked for, at most 5) inside a Tuinmaximaal page shell, with a switcher.
+- **Build:** the user wants something made: a page, section, component or prototype. Read [references/build.md](references/build.md) and follow it. The result is one throwaway file with 3 structurally different variants (or the number asked for, at most 5) below a green logo bar that stands in for the page shell, with a switcher.
 - **Audit:** the user hands over an existing page, screenshot, URL or snippet to review. Read [references/audit.md](references/audit.md) and follow it. The result is a report with findings ranked by impact, each with the rule it breaks and a fix, plus a CRO assessment.
 
 If a request asks for both ("review this block and suggest better versions"), audit first, then build variants that fix the top findings.

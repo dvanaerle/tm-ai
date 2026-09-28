@@ -1,0 +1,73 @@
+<!-- Full page shell (header with the hanging logo tab, menu, USP bar, mobile search, breadcrumbs, footer), after the live site.
+     Use it only when the prototype's question is about the header, menu or footer: replace the skeleton's page-frame <header>
+     with the part above <main>, and put the footer after </main>. Its labels are the site's own; fill BREADCRUMB for the page. -->
+<header class="bg-header text-white">
+    <div class="container relative flex items-center gap-6 h-15 lg:h-19">
+        <button type="button" class="lg:hidden flex items-center gap-2 text-3 font-bold uppercase" aria-label="Menu">
+            <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <span aria-hidden="true">Menu</span>
+        </button>
+        <a href="#" class="absolute inset-x-0 z-10 mx-auto w-fit lg:relative lg:mx-0 lg:self-start lg:bg-header-logo lg:border-2 lg:border-t-0 lg:border-logo lg:rounded-b lg:px-6 lg:pt-4 lg:pb-6 lg:-mb-6.5" aria-label="Tuinmaximaal, naar de startpagina">
+            LOGO_SVG
+        </a>
+        <div class="hidden lg:flex grow items-center justify-between gap-2 bg-header-search rounded-1 px-3.5 py-2.5 text-3.5">
+            <span>Waar bent u naar op zoek?</span>
+            <svg class="size-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+        </div>
+        <ul class="hidden lg:flex items-center gap-6 text-3.5 font-semibold">
+            <li><a href="#">Showrooms</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Inloggen</a></li>
+        </ul>
+        <a href="#" class="relative ml-auto lg:ml-0 shrink-0" aria-label="Winkelwagen">
+            <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11h10.2L20 7H6.2"/><circle cx="9" cy="19.5" r="1.5"/><circle cx="17" cy="19.5" r="1.5"/></svg>
+            <span class="absolute -top-1.5 -right-1.5 flex items-center justify-center size-4 rounded-full bg-header-cartCount text-2.5 font-bold">1</span>
+        </a>
+    </div>
+</header>
+<nav class="hidden lg:block bg-menu text-menu" aria-label="Hoofdmenu">
+    <ul class="container flex justify-end gap-2 py-1.5 font-semibold">
+        <li><a href="#" class="block px-3 py-2">Terrasoverkapping</a></li>
+        <li><a href="#" class="block px-3 py-2">Schuifwand</a></li>
+        <li><a href="#" class="block px-3 py-2">Carport</a></li>
+        <li><a href="#" class="block px-3 py-2">Veranda</a></li>
+        <li><a href="#" class="block px-3 py-2">Zonwering</a></li>
+        <li><a href="#" class="block px-3 py-2">Serre</a></li>
+        <li><a href="#" class="block px-3 py-2">Verlichting</a></li>
+    </ul>
+</nav>
+<div class="bg-usps-mobile lg:bg-usps">
+    <ul class="container flex justify-center lg:justify-between gap-6 py-3 text-3.5">
+        <li class="flex items-center gap-2"><svg class="size-5 shrink-0 text-tmx-primary-lighterGreen" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m7.5 12.5 3 3 6-6.5" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Laagste prijs</strong> garantie</span></li>
+        <li class="hidden lg:flex items-center gap-2"><svg class="size-5 shrink-0 text-tmx-primary-lighterGreen" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m7.5 12.5 3 3 6-6.5" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Hoge</strong> service</span></li>
+        <li class="hidden lg:flex items-center gap-2"><svg class="size-5 shrink-0 text-tmx-primary-lighterGreen" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m7.5 12.5 3 3 6-6.5" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>10 jaar</strong> garantie</span></li>
+        <li class="hidden lg:flex items-center gap-2"><span>[PLACEHOLDER: reviewscore]</span></li>
+    </ul>
+</div>
+<div class="lg:hidden bg-header-mobileSearch pb-3">
+    <div class="container">
+        <div class="flex items-center justify-between gap-2 bg-white rounded-1 px-3.5 py-2.5 text-form-input-placeholder">
+            <span>Waar bent u naar op zoek?</span>
+            <svg class="size-5 shrink-0 text-body" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+        </div>
+    </div>
+</div>
+<nav class="bg-breadcrumbs text-breadcrumbs" aria-label="Kruimelpad">
+    <ol class="container flex flex-wrap items-center gap-2 pt-5 pb-2 text-3.5">
+        <li><a href="#">Home</a></li>
+        <li aria-hidden="true"><svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></li>
+        <li class="font-semibold">BREADCRUMB</li>
+    </ol>
+</nav>
+
+<main>…</main>
+<footer class="bg-footer text-white">
+    <div class="container grid gap-8 py-10 md:grid-cols-3">
+        <div class="flex flex-col gap-2 text-3.5"><h2 class="text-4 font-bold">[PLACEHOLDER: klantenservice]</h2><a href="#">[PLACEHOLDER: link]</a><a href="#">[PLACEHOLDER: link]</a></div>
+        <div class="flex flex-col gap-2 text-3.5"><h2 class="text-4 font-bold">[PLACEHOLDER: assortiment]</h2><a href="#">[PLACEHOLDER: link]</a><a href="#">[PLACEHOLDER: link]</a></div>
+        <div class="flex flex-col gap-2 text-3.5"><h2 class="text-4 font-bold">[PLACEHOLDER: over ons]</h2><a href="#">[PLACEHOLDER: link]</a><a href="#">[PLACEHOLDER: link]</a></div>
+    </div>
+    <div class="border-t border-tmx-primary-darkGreen">
+        <p class="container pt-4 pb-28 paragraph-sm">[PLACEHOLDER: copyright en betaalmethoden]</p>
+    </div>
+</footer>

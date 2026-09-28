@@ -701,9 +701,14 @@ Tuinmaximaal sells garden and outdoor products across the Netherlands, Belgium, 
 
 **Visual tone: Hornbach.** Bold, direct and project-driven. Heavy headings, confident about specs and dimensions, treating a big outdoor build as a manageable project. Practical, never precious.
 
+**Source of principles: Apple's Human Interface Guidelines.** The visual principles below are translated from Apple's HIG. Apple is a source of principles only; IKEA and Hornbach stay the visual references, and the look stays theirs.
+
 The result is large, mainstream, dependable retail: a light, warm canvas (white, beige and sand), deep green for structure and text, a lime-green primary action, and rare orange accents set at a −2° tilt. It is not a soft garden centre, not a luxury outdoor brand, and not a discount basement.
 
-**Register.** This is a product surface: in the catalogue, on product pages and in the cart, the design serves the shopping task. The homepage, category landings and campaign pages may be a little more brand-forward: a bolder highlight, larger imagery. The tokens and rules stay the same.
+**Register.** There are two, with the same tokens and rules:
+
+- **Product surfaces** (catalogue, product pages, cart): the design serves the shopping task.
+- **Brand-forward pages** (homepage, category landings, campaigns): the design also carries the brand, with more of the expression options below.
 
 ### Design principles
 
@@ -712,6 +717,33 @@ The result is large, mainstream, dependable retail: a light, warm canvas (white,
 3. **Modularity as a UI pattern.** The product is modular, so the interface is too: configuration steps, option sets and package tiers feel structured and logical, never overwhelming.
 4. **Value clarity, not cheapness.** The price is visible, what's included is evident, and there are no hidden traps. Promotions stay on-brand, never loud sale-banner styling.
 5. **Multi-country neutrality.** Every layout survives long German and French strings. Avoid idioms and layouts that depend on short text.
+
+### Visual principles
+
+The design principles decide what a view must do; these decide how it looks. Each ends in a flag line the audit checks.
+
+1. **Clarity.** One message per view, readable at a glance: the heading states the point, and the rest of the view proves it. Flag: a view carrying several competing messages, or a heading that only makes sense after its body text.
+2. **Deference.** The product photo and the specs lead; the chrome (borders, boxes, panels, decoration) steps back and leaves the space to them. Flag: chrome that draws the eye before the product or the content it holds.
+3. **Depth.** Layers come from tone: white, beige and sand, one step apart, as Elevation & Depth sets out. Glass, blur and translucency never carry depth. Flag: depth from shadows, blur or translucency, or surfaces stacked more than one level deep.
+4. **Hierarchy.** One obvious first thing per view, then an obvious second. Flag: two or more elements of equal weight competing for the first look.
+
+### Expression
+
+The house style is fixed; expression comes from how the existing tokens are composed. Product surfaces use it sparingly, brand-forward pages generously.
+
+- **Full-width lifestyle photography.** A veranda in use, a finished garden, a project in progress: across the full width or bleeding past the container, with more image and less text than a spec sheet.
+- **Editorial and asymmetric layouts.** Uneven splits (`col-span-2` beside `col-span-1`), text set beside a large photo instead of under it, an image that crosses a change of surface. The structure follows the content rather than a grid of equal cards.
+- **A bolder −2° heading highlight.** A short phrase of the page's main heading on the orange chip, carrying the page's voice, still within the orange rules: one highlight per section, on large, heavy text.
+- **Contrast in scale and density.** One large, calm moment against tighter blocks of proof, so the page has a focal point instead of evenly weighted sections.
+
+The 28px cap stays: scale comes from black weight, the highlight and the ratio of image to text.
+
+**The big moment.** Every page has exactly one, and everything around it stays calm:
+
+- **Product surfaces:** the product photo plus the price box. The shopping task comes first, so there is no hero above them.
+- **Brand-forward pages:** a full-width image with an orange heading highlight, or a large project photo.
+
+**Logo-swap test.** Put another retailer's logo on the design. If it would still work unchanged, it isn't Tuinmaximaal yet: add a brand moment, such as a highlight, a project photo, a warm surface or specific proof.
 
 ## Colors
 
@@ -777,12 +809,19 @@ The black weight is used on h1 and h2 only. `.heading-small` steps h1 down to `t
 - **Spacing:** a generated 4px scale. Token `N` equals N × 4px (`p-4` = 16px) and every step has a `.5` half-step that adds 2px (`py-2.5` = 10px). It runs from 0 to 500px, plus `1/4`, `1/2`, `3/4`, `full` and `full-x2` percentages.
 - **Rhythm:** use 8–24px (`gap-2` to `gap-6`) inside components and 32–48px (`gap-8` to `gap-12`) between sections. Use more space above a heading than below it. Prefer `gap` on flex and grid parents over margins on children. Vary section spacing; uniform padding everywhere reads as a template.
 - **Container queries:** `@tailwindcss/container-queries` is enabled. Blocks that editors can place at any width respond to their container (`@container`, then `@md:`, `@lg:` and so on); page layout uses the viewport breakpoints.
-- **Product media:** 16:9 (`aspect-video`). Category tiles use 450 × 253, the product page 1536 × 864.
+- **Product media:** 16:9 (`aspect-video`), for product media only: the gallery, packshots and tile images. Category tiles use 450 × 253, the product page 1536 × 864.
+- **Editorial imagery:** lifestyle and project photos take any ratio the config has (`aspect-square`, `aspect-video`, or a spacing-scale height with `object-cover`), run as full-width bands outside the container, or bleed past it.
 - **Page grid:** `.columns` is a single-column grid with `gap-x-8 gap-y-4` inside the container. Product and category pages sit on beige.
 
 ## Elevation & Depth
 
-Depth comes from tonal layers and borders, not shadows: white content on beige or sand surfaces, separated by 1px light-grey borders.
+Depth comes from space and tone. Separate content in this order:
+
+1. **Whitespace** groups related content. Reach for it first.
+2. **A change of surface** separates groups: white on beige or sand, or a beige or sand band on a white page.
+3. **A 1px border** only where it does work: on the theme components that own one (inputs, checkboxes, radios, the product tile, the secondary button, the selected card), or a light-grey (#E3E3E3) one where two white surfaces meet and space can't separate them.
+
+A white container on a white page stands on its whitespace alone, without a border. The product tile keeps its border in every context, white pages included: packshots are photographed on white, and without the border the tile runs into the page.
 
 - `shadow-1px` (inset 0 0 0 1px green) is a crisp selected or hover outline without layout shift. The product tile uses it together with the green hover border.
 - `shadow-arrow` (0 4px 12px rgb(0 0 0 / 0.16)) is for floating elements only: slider arrows, dropdowns and overlays.
@@ -834,7 +873,7 @@ The base `.btn` is `flex items-center justify-center gap-2`, 16px semibold, `rou
 
 ### Product tile
 
-The product tile is a 1px light-grey border with `rounded-2` and `overflow-hidden`. On hover it gets a green border plus `shadow-1px`, with colour and shadow transitions. It has a 16:9 image and a **white info area** (`py-3 px-4`) holding the name (15/16px semibold, clamped to 3 lines), up to three dash-prefixed USPs in 14px, and the price. The price sits in the **orange price box**: white weight-900 text on #FF8000, `py-1 px-2`, rotated −2°. The old price is struck through, 16px medium, with no box and no rotation. In related-product sliders the tile gets a full-width primary button.
+The product tile is a 1px light-grey border with `rounded-2` and `overflow-hidden`. On hover it gets a green border plus `shadow-1px`, with colour and shadow transitions. It has a 16:9 image and a **white info area** (`py-3 px-4`) holding the name (15/16px semibold, clamped to 3 lines), up to three dash-prefixed USPs in 14px, and the price. The price sits in the **orange price box**: white weight-900 text on #FF8000, `py-1 px-2`, rotated −2°. The old price is struck through, 16px medium, with no box and no rotation. In related-product sliders the tile gets a full-width primary button. The tile keeps its border on every background (Elevation & Depth).
 
 ### Heading and paragraph highlight
 
@@ -853,6 +892,8 @@ See Typography. The orange chip with white text, rotated −2°, is used for at 
 - **Footer:** green with dark-green dividers.
 - **Checkout:** out of scope; see Known exceptions.
 
+Prototypes replace this shell with a single green bar holding the logo, unless the question is about the shell itself; see the build reference.
+
 ## Motion
 
 Motion confirms a state change (hover, focus, open/close, selection); it never performs.
@@ -870,7 +911,8 @@ Motion confirms a state change (hover, focus, open/close, selection); it never p
 - Keep the primary button #809700 with its 4px #6D8005 bottom border. Keep secondary and tertiary actions visibly quieter.
 - Use orange only for the price box, heading and paragraph highlights, badges and active states, always with the −2° tilt where the theme uses it.
 - Lead with proof at decision points: USP check lists, specs, reviews, guarantee and delivery terms.
-- Keep surfaces light and warm: white content on beige or sand, and green for structure and text.
+- Keep surfaces light and warm, with green for structure and text. Separate content with whitespace first, then a change of surface, and a border only where Elevation & Depth gives one.
+- Give every page one big moment for its register, and compose around it with the expression options (Overview → Expression): full-width lifestyle photography, editorial and asymmetric layouts, a bolder heading highlight, contrast in scale and density.
 - Test with long German and French strings, and at 375px, `md` and `xl`.
 
 **Don't**
@@ -880,6 +922,7 @@ Motion confirms a state change (hover, focus, open/close, selection); it never p
 - Don't put coloured side stripes (`border-l-4` and similar) on cards, alerts or messages.
 - Don't use gradient text, decorative gradients, glassmorphism, neon accents or a dark theme.
 - Don't nest cards inside cards, and don't build endless identical card grids.
+- Don't border a white container on a white page.
 - Don't use arbitrary values, new colours, other fonts or type sizes above 28px.
 - Don't rotate anything other than the highlights and price boxes.
 - Don't centre everything, and don't apply the same padding to every section.

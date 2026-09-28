@@ -1,6 +1,6 @@
 # Build: a throwaway prototype with variants
 
-A prototype is throwaway code that answers one design question. It holds several structurally different variants in one file, inside a Tuinmaximaal page shell, with a floating switcher. The user flips between them, picks one or combines parts, and the file is thrown away. It never goes into the theme repo.
+A prototype is throwaway code that answers one design question. It holds several structurally different variants in one file, below a light page frame, with a floating switcher. The user flips between them, picks one or combines parts, and the file is thrown away. It never goes into the theme repo.
 
 ## 1. Shape
 
@@ -28,14 +28,19 @@ Every variant answers the same question with a different structure. Vary at leas
 - **Layout:** stacked single column, a two-column split, a sidebar, a sticky summary bar, a stepped flow.
 - **Hierarchy:** what the eye meets first: the price, the proof (specs, reviews, guarantee), the product image, or the choice to make.
 - **Primary affordance:** where and how the one primary action appears: inline after the proof, sticky on scroll, at the top next to the price, as the first step of a guided flow.
+- **Composition and expression:** how the view carries the brand, with the options in DESIGN.md → Expression: image-led (a full-width lifestyle or project photo carries the view), editorial and asymmetric (uneven splits, text beside a large photo), calm (one big moment with generous space) or dense (proof packed tight).
 
-Colour, copy or icon swaps never count as a variant: all variants use the same design system. After drafting, compare them pairwise. If two share the same layout, the same hierarchy and the same primary affordance, redo one with an explicit exclusion ("not a two-column split"). Each variant may drop the others' layout entirely; only the shell is shared.
+At least one variant per set is **bold**: it takes a deliberate position with the expression options, further than feels safe, and its trade-off line starts with "Bold:". The set then spans the safe answer and the brave one, so the comparison shows what expression costs and earns. Boldness stays inside the page's register: on product surfaces the product photo and price box remain the big moment, and the bold variant composes around them (a gallery that fills the view, an editorial split, a dense proof band on a warm surface); the full-width lifestyle hero belongs to brand-forward pages.
+
+Colour, copy or icon swaps never count as a variant: all variants use the same design system. After drafting, compare them pairwise. If two share the same layout, hierarchy, primary affordance and composition, redo one with an explicit exclusion ("not a two-column split"). Each variant may drop the others' layout entirely; only the page frame is shared.
 
 Give each variant a short name (e.g. "Sidebar layout") and one trade-off line that says what it tests and what it gives up:
 
 > "Tests whether proof before price lifts configurator starts, at the cost of a lower price position."
+>
+> "Bold: tests whether a full-width project photo under a highlighted heading makes the landing page sell the finished garden, at the cost of the first product tile moving below the fold."
 
-Every variant still meets the brand essentials in SKILL.md: one primary button per view, the configurator or cart path visible, orange only on price, highlights, badges and active states.
+Every variant still meets the brand essentials in SKILL.md: one primary button per view, the configurator or cart path visible, orange only on price, highlights, badges and active states, and one big moment for the page's register (DESIGN.md → Expression).
 
 ## 4. Wire it together
 
@@ -45,7 +50,7 @@ Start from [../assets/prototype-skeleton.html](../assets/prototype-skeleton.html
 2. Replace `PLAN_LINE` with the shape line from step 1, and `LOGO_SVG` with the full contents of [../assets/logo.svg](../assets/logo.svg) (the theme's own logo), adding `class="h-11 w-auto lg:h-15" aria-hidden="true"` to its `<svg>` tag. Inline it; never link to the file, so the prototype stays self-contained.
 3. Fill the `prototype-variants` registry with one entry per variant: `key` (A, B, C…), `name` and `tradeoff`. The switcher reads it.
 4. Put each variant in the `<main>` as `<section data-variant="KEY">`. Don't put display classes on the section itself; wrap the variant's layout in a child element. In React, render the sections from the root; the switcher also hides sections that are rendered later.
-5. Keep the page shell (header with logo, menu, USP bar, mobile search, breadcrumbs, footer) so every variant is judged in context. It follows the live site; its labels are the site's own. Fill the breadcrumb for the page; change the shell only when the question is about the shell itself. Product and category pages sit on beige: wrap the variant in `bg-container-beige` when the page type calls for it.
+5. Keep the page frame as it is: one green bar at production's header height with the logo inside, and nothing else. It keeps the first viewport honest (content starts where it does on the live site) without inviting reviewers to compare a hand-built shell with production, so they judge the variants. The variant sits below it on white; product and category pages sit on beige, so give `<body>` the class `bg-container-beige` there. Only when the question is about the header, menu or footer, swap the frame for the full shell in [../assets/page-shell.html](../assets/page-shell.html): its header part replaces the frame, its footer goes after `</main>`, and you fill its breadcrumb.
 6. Keep the switcher as is. It shows ← / "B (Sidebar layout)" plus the trade-off / →, cycles with the arrow keys except while an input, select, textarea or contenteditable is focused, and keeps the variant in `?variant=` so a link is shareable and survives a reload. It is prototype chrome: black and pill-shaped, so it reads as separate from the design.
 
 Use only `tmx-*` and the theme's semantic classes, on the scales in DESIGN.md. No arbitrary values (`p-[13px]`, `text-[#123456]`), no inline styles, no new colours. If a value you need doesn't exist, use the nearest token and list the gap in the hand-over. Use inline SVG icons in `currentColor`.
@@ -57,8 +62,13 @@ Follow the delegation rules in SKILL.md. Every text without an approved source i
 ## 6. Check before delivering
 
 - The file has N variants (3 by default, at most 5), each with a name and a trade-off line in the registry.
-- The variants differ in layout, hierarchy or primary affordance, not in colour or copy.
-- Every variant sits inside the page shell, and the switcher works with buttons and arrow keys and updates `?variant=`.
+- The variants differ in layout, hierarchy, primary affordance or composition, not in colour or copy.
+- Every variant sits below the green logo bar (the full shell only for a question about the header, menu or footer), and the switcher works with buttons and arrow keys and updates `?variant=`.
+- At least one variant is bold, and its trade-off line starts with "Bold:".
+- **Borders:** whitespace and surface changes do the separating. Borders appear only on theme components that own one (inputs, checkboxes, radios, product tile, secondary button, selected card) or where two white surfaces meet and space can't separate them; a white container on a white page has none.
+- **Big moment:** each variant has exactly one, matching the register: the product photo plus the price box on product surfaces, a full-width image with an orange heading highlight or a large project photo on brand-forward pages.
+- **Images:** 16:9 on product media only; editorial images use the ratio and width the composition asks for.
+- **Logo-swap test:** with another retailer's logo, no variant would still work unchanged. Where one would, add a brand moment: a highlight, a project photo, a warm surface, specific proof.
 - Every class comes from the theme config; there are no arbitrary values.
 - The primary action is the #809700 button; orange appears only on price, highlight, badge or active elements.
 - Text pairs meet AA contrast, apart from the theme's documented exceptions in DESIGN.md.
