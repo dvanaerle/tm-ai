@@ -9,7 +9,7 @@ description: Tuinmaximaal UI and UX in the house design system. Use for any Tuin
 
 The brand essentials, which every output honours:
 
-- Build only with the theme's `tmx-*` and semantic classes, on the scales in DESIGN.md. Every value is a token.
+- Build only with the theme's `tmx-*` and semantic classes, on the theme's scales as DESIGN.md describes them; no arbitrary values.
 - The primary button is #809700 with a 4px #6D8005 bottom border. Orange (#FF8000) marks prices, highlights, badges and active states, rotated −2° where the theme rotates it.
 - Veranda and structure pages lead to the configurator; other products go straight to the cart. "Offerte" is a checkout payment method, so the flow ends in the cart.
 - Body text is green (#003017) in ArticulatCF; the surfaces are light and warm.

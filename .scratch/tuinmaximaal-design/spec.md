@@ -151,6 +151,7 @@ Second iteration: craft and expression.
   - **Generated Tailwind config.** Mirrors the theme's `tmx` namespace and scales so prototypes use the real class names.
   - **Licence notice.** Apache-2.0 attribution for the adapted Impeccable content, listing what we changed.
 - **Token naming.** Colour keys mirror the Tailwind names (e.g. `tmx-primary-lighterGreen`). Semantic meaning comes from `components` entries that reference those colours, such as button-primary, its hover state, price, heading-highlight and message states. The linter's missing-primary warning is resolved with a `primary` alias or a justified `omitted` entry.
+- **The cut rule** (issue 08, overriding issue 01's 1:1 rule). The design document describes the patterns prototypes build, not a full copy of the theme. A token or prose note stays if it serves a core role (body text, the surfaces white, beige, sand and green, the action colour, the orange accent, status, neutrals for borders and labels) or a pattern the skill describes (buttons, forms, messages, product tile, price box, the content patterns, lists, highlights). Single-use widget styling, module skins and chrome details go, with the colours only they carry. The front matter lists only the spacing rhythm steps, the corners the theme uses and the named typography roles; the theme's `tailwind.config.js` stays leading for the full scales, and class names stay the theme's own. The sync applies the rule, so a rerun can't bring removed entries back.
 - **Source of truth.** The Valantic `base` theme (Hyvä + Tailwind) in the webshop repo: its Tailwind config, spacing generator, and the typography, button, form and message component CSS. The corrected facts the skill must reflect:
   - heading scale h1 28 / h2 24 / h3 22 / h4 20 / h5 18 / h6 16 px, black weight on h1–h2 only
   - a fixed font-size list
@@ -235,7 +236,7 @@ Second iteration: craft and expression.
   Build prompts also need 3 genuinely different variants, each with a trade-off line. Audit prompts also need ranked findings with rules and fixes, plus a CRO assessment (CTA visibility, trust signals, friction). Prompt 8 must flag every planted violation.
 - **Seam 2: sync script.** Pointed at the theme repo, it must produce:
   - a design document that passes the DESIGN.md linter with zero errors
-  - colour, spacing, radius and font-size tokens that match the theme's Tailwind config 1:1
+  - colour, spacing, radius and font-size tokens whose values match the theme's Tailwind config, for the entries the cut rule keeps
   - a Tailwind config with the same `tmx` names
 
   It must leave the theme repo unmodified.

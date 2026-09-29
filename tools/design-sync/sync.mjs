@@ -64,11 +64,12 @@ const colorRef = (map, path) => {
 };
 
 const rem = (value) => `${value}rem`;
-const spacingRem = (key) => {
+const spacingValue = (key) => {
     const value = theme.spacing[key];
     if (!value) throw new Error(`Spacing "${key}" not found in the theme config`);
-    return parseFloat(value);
+    return value;
 };
+const spacingRem = (key) => parseFloat(spacingValue(key));
 
 // --- Component CSS -------------------------------------------------------------
 
@@ -208,17 +209,30 @@ const typography = {
     'paragraph-tiny': typographyOf(classesOf(typographyCss, '\\.paragraph-tiny')),
     'paragraph-highlight': typographyOf(['text-base', ...classesOf(typographyCss, '\\.paragraph-highlight')]),
     'button-label': typographyOf(classesOf(buttonCss, '\\.btn')),
-    'button-label-lg': typographyOf([...classesOf(buttonCss, '\\.btn'), ...classesOf(buttonCss, '\\.btn-size-lg')]),
     'form-label': typographyOf(classesOf(formsCss, '\\.field', '& > label, & > \\.label')),
     'form-input': typographyOf(classesOf(formsCss, '^\\.form-textarea')),
     message: typographyOf(classesOf(messagesCss, '\\.message')),
     price: typographyOf(['text-base', ...classesOf(pricesCss, '\\.price-container', '\\.price')]),
-    ...Object.fromEntries(Object.keys(theme.fontSize).filter((key) => key !== 'base').map((key) => [`text-${key}`, typographyOf([`text-${key}`])])),
+    // The two sizes no role covers: the product-tile name and "vanaf" in the image-tile price chip
+    ...Object.fromEntries(['3.75', '4.75'].map((key) => {
+        if (!theme.fontSize[key]) throw new Error(`Font size "${key}" not found in the theme config`);
+        return [`text-${key}`, typographyOf([`text-${key}`])];
+    })),
 };
 
-const rounded = Object.fromEntries(Object.entries(theme.borderRadius).map(([key, value]) => [key, value.replace(/^(\d+)\.0rem$/, '$1rem')]));
+// Scale keys are Maps: an object would list integer keys first (`1`, `2`, `12`, then `1.5`).
+// Only the corners the theme uses, plus Tailwind's own `full`; the theme's tailwind.config.js stays the full scale.
+const rounded = new Map([
+    ...['1', '1.5', '2'].map((key) => {
+        const value = theme.borderRadius[key];
+        if (!value) throw new Error(`Corner "${key}" not found in the theme config`);
+        return [key, value.replace(/^(\d+)\.0rem$/, '$1rem')];
+    }),
+    ['full', '9999px'],
+]);
 
-const spacing = Object.fromEntries(Object.entries(theme.spacing).map(([key, value]) => [key, value]));
+// Only the rhythm steps the prose recommends; the prose states the rule for the rest of the generated scale.
+const spacing = new Map(['1', '1.5', '2', '3', '4', '6', '8', '12'].map((key) => [key, spacingValue(key)]));
 
 // --- Components ------------------------------------------------------------------
 
@@ -279,33 +293,20 @@ add('page', ['bg-white', 'text-body'], { typography: '{typography.body-md}' });
 add('link', ['text-link']);
 add('link-hover', ['text-link-hover']);
 add('link-hover-secondary', ['text-link-secondHover']);
-add('header', ['bg-header', 'text-white']);
-add('header-search', ['bg-header-search']);
-add('header-service-link', ['text-header-serviceLink']);
-add('header-cart-count-badge', ['bg-header-cartCount']);
-add('header-login-logged-out', ['bg-header-login-loggedOut']);
-add('header-login-logged-in', ['bg-header-login-loggedIn']);
-add('logo', ['border', 'border-logo']);
-add('menu', ['bg-menu', 'text-menu']);
-add('menu-mobile', ['bg-menu-mobile', 'border', 'border-menuMobile']);
-add('menu-item-active', ['bg-menu-activeMenuItem']);
-add('usps', ['bg-usps', 'border', 'border-usps']);
-add('usps-mobile', ['bg-usps-mobile']);
-add('breadcrumbs', ['bg-breadcrumbs', 'text-breadcrumbs']);
-add('category', ['bg-category']);
-add('content-block', ['border', 'border-contentBlock']);
-add('footer', ['bg-footer', 'text-white']);
-add('show-more', ['text-showMore']);
-add('slider-dot', ['bg-sliderDots']);
-add('slider-dot-active', ['bg-sliderDots-active']);
-add('pager', ['bg-pager']);
-add('search-suggestion-hover', ['bg-mirasvitSearch-suggestionsHover']);
-add('read-only-value', ['bg-tmx-neutral-lightestGrey', 'text-body']);
-// Used at 10% opacity (bg-tmx-primary-blue bg-opacity-10, bg-tmx-primary-mediumGreen/10) behind green text
-add('pdp-info-note', ['bg-tmx-primary-blue']);
-add('blog-category-tag', ['bg-tmx-primary-mediumGreen']);
-add('gallery-zoom-icon', ['text-tmx-neutral-darkGrey']);
-add('palette-yellow', ['bg-tmx-primary-yellow']);
+// Blog tile (DESIGN.md → Content patterns)
+add('pill', ['bg-tmx-neutral-lightestGrey', 'text-body']);
+// The box decision's surface box and its stronger step (DESIGN.md → Elevation & Depth)
+add('surface-box', ['bg-tmx-secondary-beige', 'text-body', 'rounded-2']);
+add('surface-box-strong', ['bg-tmx-secondary-sand', 'text-body', 'rounded-2']);
+// Used at 60% opacity in a gradient behind the image tile's white text (DESIGN.md → Content patterns)
+add('image-tile-scrim', ['bg-tmx-primary-black']);
+
+// The cut rule (issue 08): single-use widget styling, module skins and the shell stay out of the document, and so do
+// the colours only they carry. The theme's tailwind.config.js stays the full definition.
+const droppedColors = ['blue', 'yellow', 'red', 'brown', 'darkGreen', 'mediumGreen'].map((name) => `tmx-primary-${name}`)
+    .concat('tmx-secondary-bone', 'tmx-neutral-darkGrey', 'tmx-neutral-mediumGrey');
+for (const name of droppedColors) if (!colors[name]) throw new Error(`Dropped colour "${name}" not found in the theme config`);
+const documentColors = Object.fromEntries(Object.entries(colors).filter(([name]) => !droppedColors.includes(name)));
 
 // --- DESIGN.md -------------------------------------------------------------------
 
@@ -313,7 +314,7 @@ const frontMatter = {
     version: 'alpha',
     name: 'Tuinmaximaal',
     description: 'Generated from the Valantic base theme by tools/design-sync/sync.mjs. Do not edit the front matter by hand.',
-    colors: { primary: colors['tmx-primary-lighterGreen'], ...colors },
+    colors: { primary: colors['tmx-primary-lighterGreen'], ...documentColors },
     typography,
     rounded,
     spacing,
@@ -321,7 +322,7 @@ const frontMatter = {
 };
 
 // JSON scalars are valid YAML, so keys and values are emitted JSON-quoted.
-const toYaml = (value, indent = '') => Object.entries(value).map(([key, item]) =>
+const toYaml = (value, indent = '') => (value instanceof Map ? [...value] : Object.entries(value)).map(([key, item]) =>
     typeof item === 'object'
         ? `${indent}${JSON.stringify(key)}:\n${toYaml(item, `${indent}  `)}`
         : `${indent}${JSON.stringify(key)}: ${JSON.stringify(item)}`,

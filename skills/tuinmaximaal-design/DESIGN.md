@@ -4,28 +4,19 @@
 "description": "Generated from the Valantic base theme by tools/design-sync/sync.mjs. Do not edit the front matter by hand."
 "colors":
   "primary": "#809700"
-  "tmx-primary-darkGreen": "#001A13"
   "tmx-primary-green": "#003017"
-  "tmx-primary-mediumGreen": "#002E21"
   "tmx-primary-orange": "#FF8000"
   "tmx-primary-lighterGreen": "#809700"
   "tmx-primary-lighterGreenSubtle": "#F8FCE6"
   "tmx-primary-lighterGreenSecond": "#8BA407"
   "tmx-primary-lightGreen": "#6D8005"
-  "tmx-primary-blue": "#80A5E4"
-  "tmx-primary-yellow": "#FFCB00"
-  "tmx-primary-red": "#FF4D4D"
   "tmx-primary-black": "#11171F"
-  "tmx-primary-brown": "#8A7B6C"
   "tmx-secondary-sand": "#F5E6D7"
   "tmx-secondary-beige": "#FFF5ED"
-  "tmx-secondary-bone": "#E0D2C5"
   "tmx-neutral-grey": "#636363"
-  "tmx-neutral-mediumGrey": "#878787"
   "tmx-neutral-lightGrey": "#E3E3E3"
   "tmx-neutral-lightestGrey": "#f9fafb"
   "tmx-neutral-white": "#FFFFFF"
-  "tmx-neutral-darkGrey": "#151A1F"
   "tmx-status-info-subtle": "#f0f9ff"
   "tmx-status-info": "#0284c7"
   "tmx-status-info-text": "#0369a1"
@@ -105,11 +96,6 @@
     "fontSize": "1rem"
     "lineHeight": "1.5"
     "fontWeight": 600
-  "button-label-lg":
-    "fontFamily": "ArticulatCF"
-    "fontSize": "1.5rem"
-    "lineHeight": "1.25"
-    "fontWeight": 600
   "form-label":
     "fontFamily": "ArticulatCF"
     "fontSize": "0.875rem"
@@ -130,319 +116,28 @@
     "fontSize": "1rem"
     "lineHeight": "1.5"
     "fontWeight": 900
-  "text-3":
-    "fontFamily": "ArticulatCF"
-    "fontSize": "0.75rem"
-    "lineHeight": "1.5"
-  "text-4":
-    "fontFamily": "ArticulatCF"
-    "fontSize": "1rem"
-    "lineHeight": "1.5"
-  "text-5":
-    "fontFamily": "ArticulatCF"
-    "fontSize": "1.25rem"
-    "lineHeight": "1.5"
-  "text-6":
-    "fontFamily": "ArticulatCF"
-    "fontSize": "1.5rem"
-    "lineHeight": "1.25"
-  "text-7":
-    "fontFamily": "ArticulatCF"
-    "fontSize": "1.75rem"
-    "lineHeight": "1.25"
-  "text-2.5":
-    "fontFamily": "ArticulatCF"
-    "fontSize": "0.625rem"
-    "lineHeight": "1.5"
-  "text-3.5":
-    "fontFamily": "ArticulatCF"
-    "fontSize": "0.875rem"
-    "lineHeight": "1.5"
   "text-3.75":
     "fontFamily": "ArticulatCF"
     "fontSize": "0.9375rem"
-    "lineHeight": "1.5"
-  "text-4.5":
-    "fontFamily": "ArticulatCF"
-    "fontSize": "1.125rem"
     "lineHeight": "1.5"
   "text-4.75":
     "fontFamily": "ArticulatCF"
     "fontSize": "1.1875rem"
     "lineHeight": "1"
-  "text-5.5":
-    "fontFamily": "ArticulatCF"
-    "fontSize": "1.375rem"
-    "lineHeight": "1.5"
 "rounded":
   "1": "0.25rem"
-  "2": "0.5rem"
-  "3": "0.75rem"
-  "4": "1rem"
-  "5": "1.25rem"
-  "6": "1.5rem"
-  "0.5": "0.125rem"
   "1.5": "0.375rem"
-  "2.5": "0.625rem"
-  "3.5": "0.875rem"
+  "2": "0.5rem"
+  "full": "9999px"
 "spacing":
-  "0": "0rem"
   "1": "0.25rem"
+  "1.5": "0.375rem"
   "2": "0.5rem"
   "3": "0.75rem"
   "4": "1rem"
-  "5": "1.25rem"
   "6": "1.5rem"
-  "7": "1.75rem"
   "8": "2rem"
-  "9": "2.25rem"
-  "10": "2.5rem"
-  "11": "2.75rem"
   "12": "3rem"
-  "13": "3.25rem"
-  "14": "3.5rem"
-  "15": "3.75rem"
-  "16": "4rem"
-  "17": "4.25rem"
-  "18": "4.5rem"
-  "19": "4.75rem"
-  "20": "5rem"
-  "21": "5.25rem"
-  "22": "5.5rem"
-  "23": "5.75rem"
-  "24": "6rem"
-  "25": "6.25rem"
-  "26": "6.5rem"
-  "27": "6.75rem"
-  "28": "7rem"
-  "29": "7.25rem"
-  "30": "7.5rem"
-  "31": "7.75rem"
-  "32": "8rem"
-  "33": "8.25rem"
-  "34": "8.5rem"
-  "35": "8.75rem"
-  "36": "9rem"
-  "37": "9.25rem"
-  "38": "9.5rem"
-  "39": "9.75rem"
-  "40": "10rem"
-  "41": "10.25rem"
-  "42": "10.5rem"
-  "43": "10.75rem"
-  "44": "11rem"
-  "45": "11.25rem"
-  "46": "11.5rem"
-  "47": "11.75rem"
-  "48": "12rem"
-  "49": "12.25rem"
-  "50": "12.5rem"
-  "51": "12.75rem"
-  "52": "13rem"
-  "53": "13.25rem"
-  "54": "13.5rem"
-  "55": "13.75rem"
-  "56": "14rem"
-  "57": "14.25rem"
-  "58": "14.5rem"
-  "59": "14.75rem"
-  "60": "15rem"
-  "61": "15.25rem"
-  "62": "15.5rem"
-  "63": "15.75rem"
-  "64": "16rem"
-  "65": "16.25rem"
-  "66": "16.5rem"
-  "67": "16.75rem"
-  "68": "17rem"
-  "69": "17.25rem"
-  "70": "17.5rem"
-  "71": "17.75rem"
-  "72": "18rem"
-  "73": "18.25rem"
-  "74": "18.5rem"
-  "75": "18.75rem"
-  "76": "19rem"
-  "77": "19.25rem"
-  "78": "19.5rem"
-  "79": "19.75rem"
-  "80": "20rem"
-  "81": "20.25rem"
-  "82": "20.5rem"
-  "83": "20.75rem"
-  "84": "21rem"
-  "85": "21.25rem"
-  "86": "21.5rem"
-  "87": "21.75rem"
-  "88": "22rem"
-  "89": "22.25rem"
-  "90": "22.5rem"
-  "91": "22.75rem"
-  "92": "23rem"
-  "93": "23.25rem"
-  "94": "23.5rem"
-  "95": "23.75rem"
-  "96": "24rem"
-  "97": "24.25rem"
-  "98": "24.5rem"
-  "99": "24.75rem"
-  "100": "25rem"
-  "101": "25.25rem"
-  "102": "25.5rem"
-  "103": "25.75rem"
-  "104": "26rem"
-  "105": "26.25rem"
-  "106": "26.5rem"
-  "107": "26.75rem"
-  "108": "27rem"
-  "109": "27.25rem"
-  "110": "27.5rem"
-  "111": "27.75rem"
-  "112": "28rem"
-  "113": "28.25rem"
-  "114": "28.5rem"
-  "115": "28.75rem"
-  "116": "29rem"
-  "117": "29.25rem"
-  "118": "29.5rem"
-  "119": "29.75rem"
-  "120": "30rem"
-  "121": "30.25rem"
-  "122": "30.5rem"
-  "123": "30.75rem"
-  "124": "31rem"
-  "125": "31.25rem"
-  "0.5": "0.125rem"
-  "1.5": "0.375rem"
-  "2.5": "0.625rem"
-  "3.5": "0.875rem"
-  "4.5": "1.125rem"
-  "5.5": "1.375rem"
-  "6.5": "1.625rem"
-  "7.5": "1.875rem"
-  "8.5": "2.125rem"
-  "9.5": "2.375rem"
-  "10.5": "2.625rem"
-  "11.5": "2.875rem"
-  "12.5": "3.125rem"
-  "13.5": "3.375rem"
-  "14.5": "3.625rem"
-  "15.5": "3.875rem"
-  "16.5": "4.125rem"
-  "17.5": "4.375rem"
-  "18.5": "4.625rem"
-  "19.5": "4.875rem"
-  "20.5": "5.125rem"
-  "21.5": "5.375rem"
-  "22.5": "5.625rem"
-  "23.5": "5.875rem"
-  "24.5": "6.125rem"
-  "25.5": "6.375rem"
-  "26.5": "6.625rem"
-  "27.5": "6.875rem"
-  "28.5": "7.125rem"
-  "29.5": "7.375rem"
-  "30.5": "7.625rem"
-  "31.5": "7.875rem"
-  "32.5": "8.125rem"
-  "33.5": "8.375rem"
-  "34.5": "8.625rem"
-  "35.5": "8.875rem"
-  "36.5": "9.125rem"
-  "37.5": "9.375rem"
-  "38.5": "9.625rem"
-  "39.5": "9.875rem"
-  "40.5": "10.125rem"
-  "41.5": "10.375rem"
-  "42.5": "10.625rem"
-  "43.5": "10.875rem"
-  "44.5": "11.125rem"
-  "45.5": "11.375rem"
-  "46.5": "11.625rem"
-  "47.5": "11.875rem"
-  "48.5": "12.125rem"
-  "49.5": "12.375rem"
-  "50.5": "12.625rem"
-  "51.5": "12.875rem"
-  "52.5": "13.125rem"
-  "53.5": "13.375rem"
-  "54.5": "13.625rem"
-  "55.5": "13.875rem"
-  "56.5": "14.125rem"
-  "57.5": "14.375rem"
-  "58.5": "14.625rem"
-  "59.5": "14.875rem"
-  "60.5": "15.125rem"
-  "61.5": "15.375rem"
-  "62.5": "15.625rem"
-  "63.5": "15.875rem"
-  "64.5": "16.125rem"
-  "65.5": "16.375rem"
-  "66.5": "16.625rem"
-  "67.5": "16.875rem"
-  "68.5": "17.125rem"
-  "69.5": "17.375rem"
-  "70.5": "17.625rem"
-  "71.5": "17.875rem"
-  "72.5": "18.125rem"
-  "73.5": "18.375rem"
-  "74.5": "18.625rem"
-  "75.5": "18.875rem"
-  "76.5": "19.125rem"
-  "77.5": "19.375rem"
-  "78.5": "19.625rem"
-  "79.5": "19.875rem"
-  "80.5": "20.125rem"
-  "81.5": "20.375rem"
-  "82.5": "20.625rem"
-  "83.5": "20.875rem"
-  "84.5": "21.125rem"
-  "85.5": "21.375rem"
-  "86.5": "21.625rem"
-  "87.5": "21.875rem"
-  "88.5": "22.125rem"
-  "89.5": "22.375rem"
-  "90.5": "22.625rem"
-  "91.5": "22.875rem"
-  "92.5": "23.125rem"
-  "93.5": "23.375rem"
-  "94.5": "23.625rem"
-  "95.5": "23.875rem"
-  "96.5": "24.125rem"
-  "97.5": "24.375rem"
-  "98.5": "24.625rem"
-  "99.5": "24.875rem"
-  "100.5": "25.125rem"
-  "101.5": "25.375rem"
-  "102.5": "25.625rem"
-  "103.5": "25.875rem"
-  "104.5": "26.125rem"
-  "105.5": "26.375rem"
-  "106.5": "26.625rem"
-  "107.5": "26.875rem"
-  "108.5": "27.125rem"
-  "109.5": "27.375rem"
-  "110.5": "27.625rem"
-  "111.5": "27.875rem"
-  "112.5": "28.125rem"
-  "113.5": "28.375rem"
-  "114.5": "28.625rem"
-  "115.5": "28.875rem"
-  "116.5": "29.125rem"
-  "117.5": "29.375rem"
-  "118.5": "29.625rem"
-  "119.5": "29.875rem"
-  "120.5": "30.125rem"
-  "121.5": "30.375rem"
-  "122.5": "30.625rem"
-  "123.5": "30.875rem"
-  "124.5": "31.125rem"
-  "125.5": "31.375rem"
-  "1/4": "25%"
-  "1/2": "50%"
-  "3/4": "75%"
-  "full": "100%"
-  "full-x2": "200%"
 "components":
   "button-primary":
     "rounded": "{rounded.1}"
@@ -617,77 +312,25 @@
     "textColor": "{colors.tmx-primary-lighterGreen}"
   "link-hover-secondary":
     "textColor": "{colors.tmx-primary-lighterGreenSecond}"
-  "header":
-    "backgroundColor": "{colors.tmx-primary-green}"
-    "textColor": "{colors.tmx-neutral-white}"
-  "header-search":
-    "backgroundColor": "{colors.tmx-primary-darkGreen}"
-  "header-service-link":
-    "textColor": "{colors.tmx-primary-lightGreen}"
-  "header-cart-count-badge":
-    "backgroundColor": "{colors.tmx-primary-orange}"
-  "header-login-logged-out":
-    "backgroundColor": "{colors.tmx-primary-red}"
-  "header-login-logged-in":
-    "backgroundColor": "{colors.tmx-primary-lightGreen}"
-  "logo-border":
-    "size": "1px"
-    "backgroundColor": "{colors.tmx-primary-darkGreen}"
-  "menu":
-    "backgroundColor": "{colors.tmx-secondary-sand}"
-    "textColor": "{colors.tmx-primary-green}"
-  "menu-mobile":
-    "backgroundColor": "{colors.tmx-secondary-beige}"
-  "menu-mobile-border":
-    "size": "1px"
-    "backgroundColor": "{colors.tmx-secondary-bone}"
-  "menu-item-active":
-    "backgroundColor": "{colors.tmx-primary-orange}"
-  "usps":
-    "backgroundColor": "{colors.tmx-secondary-beige}"
-  "usps-border":
-    "size": "1px"
-    "backgroundColor": "{colors.tmx-secondary-sand}"
-  "usps-mobile":
-    "backgroundColor": "{colors.tmx-secondary-sand}"
-  "breadcrumbs":
-    "backgroundColor": "{colors.tmx-secondary-beige}"
-    "textColor": "{colors.tmx-primary-brown}"
-  "category":
-    "backgroundColor": "{colors.tmx-secondary-beige}"
-  "content-block-border":
-    "size": "1px"
-    "backgroundColor": "{colors.tmx-secondary-sand}"
-  "footer":
-    "backgroundColor": "{colors.tmx-primary-green}"
-    "textColor": "{colors.tmx-neutral-white}"
-  "show-more":
-    "textColor": "{colors.tmx-primary-black}"
-  "slider-dot":
-    "backgroundColor": "{colors.tmx-neutral-lightGrey}"
-  "slider-dot-active":
-    "backgroundColor": "{colors.tmx-neutral-mediumGrey}"
-  "pager":
-    "backgroundColor": "{colors.tmx-primary-lighterGreen}"
-  "search-suggestion-hover":
-    "backgroundColor": "{colors.tmx-primary-lighterGreenSecond}"
-  "read-only-value":
+  "pill":
     "backgroundColor": "{colors.tmx-neutral-lightestGrey}"
     "textColor": "{colors.tmx-primary-green}"
-  "pdp-info-note":
-    "backgroundColor": "{colors.tmx-primary-blue}"
-  "blog-category-tag":
-    "backgroundColor": "{colors.tmx-primary-mediumGreen}"
-  "gallery-zoom-icon":
-    "textColor": "{colors.tmx-neutral-darkGrey}"
-  "palette-yellow":
-    "backgroundColor": "{colors.tmx-primary-yellow}"
+  "surface-box":
+    "backgroundColor": "{colors.tmx-secondary-beige}"
+    "textColor": "{colors.tmx-primary-green}"
+    "rounded": "{rounded.2}"
+  "surface-box-strong":
+    "backgroundColor": "{colors.tmx-secondary-sand}"
+    "textColor": "{colors.tmx-primary-green}"
+    "rounded": "{rounded.2}"
+  "image-tile-scrim":
+    "backgroundColor": "{colors.tmx-primary-black}"
 ---
 # Tuinmaximaal design system
 
 The front matter above is generated from the Valantic `base` theme (Hyvä + Tailwind) by `tools/design-sync/sync.mjs` in the tm-ai workspace. Never edit it by hand, nor the regions between `design-sync` comments below. When the theme changes, re-run the sync: it also regenerates the prototype skeleton's component CSS, and it fails when a value quoted in this prose (a hex colour, a `tmx-*` colour, or a `text-`, `rounded-` or spacing class with a px value) no longer matches the theme. The theme code is the source of truth; if this document disagrees with it, the code wins.
 
-Token keys mirror the theme's Tailwind names: `tmx-primary-lighterGreen` is the class suffix in `bg-tmx-primary-lighterGreen`, `spacing.4` is `p-4`, `rounded.1` is `rounded-1`, `typography.text-3.5` is `text-3.5`. Build with those classes and nothing else: no arbitrary values (`p-[13px]`, `text-[#123456]`).
+Token keys mirror the theme's Tailwind names: `tmx-primary-lighterGreen` is the class suffix in `bg-tmx-primary-lighterGreen`, `spacing.4` is `p-4`, `rounded.1` is `rounded-1`, `typography.text-3.75` is `text-3.75`. Build with those classes and nothing else: no arbitrary values (`p-[13px]`, `text-[#123456]`).
 
 ## Overview
 
@@ -749,21 +392,20 @@ The 28px cap stays: scale comes from black weight, the highlight and the ratio o
 
 The palette comes from the theme's `tmx` namespace. `primary` is an alias for `tmx-primary-lighterGreen`, the action colour.
 
-- **Green (`tmx-primary-green` #003017)** is the structural anchor: body text (`text-body`), the header, the footer, links, secondary buttons and the product-tile hover border. Body text is green, never black or grey.
-- **Dark green (`tmx-primary-darkGreen` #001A13)** is used for the header search field and footer dividers. **Medium green** (#002E21) is used only at 10% as a tag tint.
-- **Lighter green (`tmx-primary-lighterGreen` #809700)** is the action colour: the primary button, checked checkboxes and radios, selected cards, the pager, link hover and the USP check marks. **Light green (`tmx-primary-lightGreen` #6D8005)** is its shadow: the primary button's 4px bottom border and hover fill, header service links and the logged-in indicator.
-- **Lighter green second (#8BA407)** is used for search-suggestion hover and the secondary link hover. The PDP configurator button also uses it, which is a known theme bug: the primary button is always #809700.
-- **Orange (`tmx-primary-orange` #FF8000)** is an accent only: the price box, heading and paragraph highlights, badges (cart count) and active states (active menu item). Orange never fills a button, never colours an action, and is never used as small text on white.
-- **Warm surfaces.** Beige (`tmx-secondary-beige` #FFF5ED) is used for the intro section of every page (`bg-container-beige`), content boxes, breadcrumbs and the desktop USP bar. Sand (`tmx-secondary-sand` #F5E6D7) is used for the desktop menu, the mobile USP bar, content-block borders in the theme, and stronger content bands. White, beige and sand are the only page surfaces (Elevation & Depth → Surfaces). Bone (#E0D2C5) is not a surface: it is used only for the shell's mobile-menu dividers.
-- **Neutrals.** Grey (#636363) is used for field labels, placeholders and hover/focus borders. Light grey (#E3E3E3) is used for resting borders on inputs, tiles and filters. Lightest grey (#F9FAFB) is used for read-only value blocks. Medium grey (#878787) is used for the active slider dot.
+- **Green (`tmx-primary-green` #003017)** is the structural anchor: body text (`text-body`), the shell bar, links, secondary buttons and the product-tile hover border. Body text is green, never black or grey.
+- **Lighter green (`tmx-primary-lighterGreen` #809700)** is the action colour: the primary button, checked checkboxes and radios, selected cards, link hover and the USP check marks. **Light green (`tmx-primary-lightGreen` #6D8005)** is its shadow: the primary button's 4px bottom border and hover fill.
+- **Lighter green second (#8BA407)** is used only for the secondary link hover, the intro link card's hover (Components → Content patterns).
+- **Orange (`tmx-primary-orange` #FF8000)** is an accent only: the price box, heading and paragraph highlights, badges and active states. Orange never fills a button, never colours an action, and is never used as small text on white.
+- **Warm surfaces.** Beige (`tmx-secondary-beige` #FFF5ED) is used for the intro section of every page (`bg-container-beige`) and surface boxes. Sand (`tmx-secondary-sand` #F5E6D7) is used for the stronger surface boxes and bands, and the intro link card's border. White, beige and sand are the only page surfaces (Elevation & Depth → Surfaces).
+- **Neutrals.** Grey (#636363) is used for field labels, placeholders and hover/focus borders. Light grey (#E3E3E3) is used for resting borders on inputs, tiles and filters. Lightest grey (#F9FAFB) is used for the blog tile's category pill.
 - **Status (`tmx-status-{info,error,success,warning,neutral}`).** Each status has four shades: `-subtle` (50) for backgrounds, the default (600) for icons and accents, `-text` (700) for hint text under a field, and `-strong` (900) for message text. Notice messages use `neutral`.
-- **Other palette colours.** Blue (#80A5E4) is used only at 10% as the tint behind PDP info notes. Red (#FF4D4D) is used for the logged-out indicator. Brown (#8A7B6C) is used for breadcrumb text. Black (#11171F) is used for "show more" text. Yellow (#FFCB00) is a palette swatch without a component role.
+- **Black (`tmx-primary-black` #11171F)** is used only for the image tile's scrim, at 60%.
 
 Colour proportions: warm and white surfaces carry about 60%, green structure and text about 30%, and lime and orange stay at about 10%. Accents work because they are rare. Keep green purposeful (header, footer, text, focused UI) rather than atmospheric: a green-dominant page reads as "plants", not "structures". On green, text is white; on beige and sand, text is green.
 
 ### Contrast
 
-Meet WCAG 2.2 AA: 4.5:1 for body text, 3:1 for text of at least 24px, or at least 18.66px bold, and 3:1 for UI graphics. Safe pairs: green on white, beige or sand (above 12:1), and white on green. White text on a photo (the image tile) always sits on a dark scrim, so it reaches AA whatever the photo shows (Components → Image tile).
+Meet WCAG 2.2 AA: 4.5:1 for body text, 3:1 for text of at least 24px, or at least 18.66px bold, and 3:1 for UI graphics. Safe pairs: green on white, beige or sand (above 12:1), and white on green. White text on a photo (the image tile) always sits on a dark scrim, so it reaches AA whatever the photo shows (Components → Content patterns → Image tile).
 
 The linter's contrast warnings come from the live theme and are known:
 
@@ -774,7 +416,6 @@ The linter's contrast warnings come from the live theme and are known:
 | `button-tertiary-hover` | #809700 on white | 3.31:1 | Hover state only; the resting state is green. |
 | `form-choice-checked` | white glyph on #809700 | 3.31:1 | A non-text graphic; passes 3:1. |
 | `heading-highlight`, `paragraph-highlight`, `price-box` | white on #FF8000 | 2.52:1 | Signature brand detail. Use it only on heavy text: headings, the paragraph highlight and the price box at its size per component (Components → Price box). The product tile's 16px weight-900 price is the theme's own choice, a documented exception like the primary button. Never put small or regular-weight text on orange. |
-| `breadcrumbs` | #8A7B6C on #FFF5ED | 3.81:1 | Theme as is. Don't reuse brown for other text. |
 
 ## Typography
 
@@ -797,18 +438,17 @@ The black weight is used on h1 and h2 only. `.heading-small` steps h1 down to `t
 - **Small text:** `.paragraph-sm` 12px, `.paragraph-esm` 10px, `.paragraph-tiny` 10px bold uppercase, only inside badges and pills.
 - **No eyebrows.** Never put an eyebrow or kicker label (a small line, often uppercase or letter-spaced) above a heading, on any page type. The heading carries the point on its own; a highlight inside it adds the emphasis.
 - **Highlights:** `.heading-highlight` puts white text on an orange chip (`px-3 pt-2 pb-0.5`), rotated −2°. `.paragraph-highlight` is the same chip at weight 900 (`w-fit px-3 pt-1 pb-0.5`). Every highlight tilts, on every heading level; a flat highlight is wrong (Shapes).
-- **UI text:** buttons 16px semibold, field labels 14px medium grey, inputs 16px regular with a 22px line-height, messages 14px, product-tile names 15px semibold (16px from `lg`), clamped to 3 lines.
+- **UI text:** buttons 16px semibold, field labels 14px medium-weight grey, inputs 16px regular with a 22px line-height, messages 14px, product-tile names 15px semibold (16px from `lg`), clamped to 3 lines.
 - **Font sizes** are a fixed list, not a formula: <!-- design-sync:font-sizes -->`text-2.5` 10px, `text-3` 12px, `text-3.5` 14px, `text-3.75` 15px, `text-4` 16px, `text-4.5` 18px, `text-4.75` 19px (line-height 1), `text-5` 20px, `text-5.5` 22px, `text-6` 24px, `text-7` 28px<!-- /design-sync:font-sizes -->. There is nothing larger. Big hero statements get their weight from black type and the orange highlight, not from sizes beyond 28px.
-- **Line heights:** the size classes carry their own line-height (1.5; 1.25 for `text-6` and `text-7`; 1 for `text-4.75`). The custom `leading-5.5` (22px), `leading-7.5` (30px), `leading-11` (44px) and `leading-12` (48px) join Tailwind's defaults.
+- **Line heights:** the size classes carry their own line-height (1.5; 1.25 for `text-6` and `text-7`; 1 for `text-4.75`). The custom `leading-5.5` (22px) and `leading-7.5` (30px) join Tailwind's defaults.
 - **Lists:** see Components → Lists; list items wrap their text in `.list-text`.
 
 ## Layout
 
 - **Container:** centred, `1rem` side padding, maximum 1314px from `xl`. All content and all images, lifestyle photos included, sit inside it. Only page chrome (header bars, breadcrumbs, USP bar), the beige intro and tinted tile bands (Elevation & Depth) may run full width, and only as colour bands whose content is contained. Images and boxes never bleed past the container.
 - **Breakpoints (min-width):** `500px`, `sm` 640, `md` 768, `lg` 1024, `xl` 1280, `2xl` 1536. Build mobile-first and check every prototype at 375px, `md` and `xl`. Adapt on small screens; never remove critical functionality such as the configurator CTA, the price or the add-to-cart button.
-- **Spacing:** a generated 4px scale. Token `N` equals N × 4px (`p-4` = 16px) and every step has a `.5` half-step that adds 2px (`py-2.5` = 10px). It runs from 0 to 500px, plus `1/4`, `1/2`, `3/4`, `full` and `full-x2` percentages.
-- **Rhythm:** use 8–24px (`gap-2` to `gap-6`) inside components and 32–48px (`gap-8` to `gap-12`) between sections. Use more space above a heading than below it. Prefer `gap` on flex and grid parents over margins on children. Vary section spacing; uniform padding everywhere reads as a template.
-- **Container queries:** `@tailwindcss/container-queries` is enabled. Blocks that editors can place at any width respond to their container (`@container`, then `@md:`, `@lg:` and so on); page layout uses the viewport breakpoints.
+- **Spacing:** a generated 4px scale, defined in the theme's `tailwind.config.js` (and its spacing generator). Token `N` equals N × 4px (`p-4` = 16px) and every step has a `.5` half-step that adds 2px (`gap-1.5` = 6px, `py-2.5` = 10px). It runs from 0 to 500px, plus `1/4`, `1/2`, `3/4`, `full` and `full-x2` percentages. The front matter lists only the rhythm steps below; every other step follows the rule.
+- **Rhythm:** use 4–6px (`gap-1`, `gap-1.5`) for tight pairs such as a label and its input, 8–24px (`gap-2` to `gap-6`) inside components and 32–48px (`gap-8` to `gap-12`) between sections. Use more space above a heading than below it. Prefer `gap` on flex and grid parents over margins on children. Vary section spacing; uniform padding everywhere reads as a template.
 - **Product media:** 16:9 (`aspect-video`), for product media only: the gallery, packshots and tile images. The blog tile's photo is the one editorial image at 16:9 (Components → Content patterns). Category tiles use 450 × 253, the product page 1536 × 864.
 - **Editorial imagery:** lifestyle and project photos take any ratio the config has (`aspect-square`, or a spacing-scale height with `object-cover`), as a contained box with `rounded-2`.
 - **Page grid:** `.columns` is a single-column grid with `gap-x-8 gap-y-4` inside the container.
@@ -840,8 +480,8 @@ The reference is the homepage: a beige intro band holding the image tiles, a con
 
 **The box decision.** Every block on a page gets one of three treatments, as the house Figma components have them. Decide it per block:
 
-1. **A card that repeats** (a product tile, blog tile, review, link card or FAQ row) is a card: white, `rounded-2`. On white it has a 1px light-grey outline (`bg-white border border-tmx-neutral-lightGrey rounded-2`). On a beige or sand band it has no border: the change of surface does the separating. The one exception is the intro link card (Components → Intro link card).
-2. **One block that needs emphasis** (a quote, a text + image content block, a promo) is a surface box: beige, `rounded-2`, no border. Sand is the stronger step; the one green block is the strongest.
+1. **A card that repeats** (a product tile, blog tile, review, link card or FAQ row) is a card: white, `rounded-2`. On white it has a 1px light-grey outline (`bg-white border border-tmx-neutral-lightGrey rounded-2`). On a beige or sand band it has no border: the change of surface does the separating. The one exception is the intro link card (Components → Content patterns → Intro link card).
+2. **One block that needs emphasis** (a quote, a text + image content block, a promo) is a surface box (`surface-box`): beige, `rounded-2`, no border. Sand is the stronger step (`surface-box-strong`); the one green block is the strongest.
 3. **Everything else has no box:** running text in one to four columns, text + image, video + text, a gallery, the SEO text. It sits inside the container, separated by whitespace, with its images `rounded-2`.
 
 A card or surface box takes `p-4` to `p-6` (more on a content block), with `gap-3` to `gap-4` between cards. There is never one wrapper around everything, and a box or card holds its content directly, never another card of the same surface.
@@ -855,12 +495,12 @@ A card or surface box takes `p-4` to `p-6` (more on a content block), with `gap-
 **Category grid.** The intro is a beige band. The grid area is white, with one box per filter group: outlined, or borderless beige. A sand trust or USP block sits between product rows. Below the grid, the FAQ is a list of outlined rows and the SEO text sits unboxed, clamped with the theme's "Lees meer" fade (`bg-gradient-showMore` over the last lines, then a tertiary "Lees meer" button). Product tiles on the white grid keep their white info area and outline; on a tinted band they lose the outline.
 
 - `shadow-1px` (inset 0 0 0 1px green) is a crisp selected or hover outline without layout shift. The product tile uses it together with the green hover border.
-- `shadow-arrow` (0 4px 12px rgb(0 0 0 / 0.16)) is for floating elements only: carousel arrows (Components → Carousel arrows), dropdowns and overlays.
+- `shadow-arrow` (0 4px 12px rgb(0 0 0 / 0.16)) is for floating elements only: carousel arrows (Components → Content patterns → Carousel arrows), dropdowns and overlays.
 - There are no decorative drop shadows on cards, no heavy or dark shadows, no glassmorphism, and the theme is always light.
 
 ## Shapes
 
-Corners are small and consistent: `rounded-1` (4px) for buttons, inputs, checkboxes and messages, `rounded-2` (8px) for product tiles and cards, and `rounded-full` for radios and pills. The full scale is 0.5 (2px), 1, 1.5, 2, 2.5, 3, 3.5, 4, 5 and 6 (24px).
+Corners are small and consistent, and there are four: `rounded-1` (4px) for buttons, inputs, checkboxes and messages, `rounded-2` (8px) for product tiles, cards and boxes, and `rounded-full` for radios and pills, with `rounded-1.5` (6px) as the one step between 4px and 8px.
 
 **The −2° rotation** is the signature brand detail. Every heading highlight, the paragraph highlight and the price box are rotated −2° (`-rotate-2`), and so are the promo labels: the highlight labels in the main banner, the promo banner and the content slider. Reproduce it exactly. Don't rotate anything else, and don't change the angle. A transform doesn't affect an inline element, so a highlight on a phrase inside a heading must be `inline-block` to tilt; the prototype skeleton sets this. Staging's homepage highlight ("genieten") is flat for that reason: a theme bug outside this skill. A struck-through old price is never rotated and has no chip.
 
@@ -883,7 +523,7 @@ The base `.btn` is `flex items-center justify-center gap-2`, 16px semibold, `rou
 
 `form` and `fieldset` are `flex flex-col gap-4`. A `.field` is `flex flex-col gap-1.5`.
 
-- **Label:** 14px medium, grey. Required fields (`field-required` or `required`) get a red asterisk in `tmx-status-error`. A label may carry a trailing info icon for a tooltip, in grey.
+- **Label:** 14px medium, grey. Required fields (`field-required` or `required`) get an asterisk in `tmx-status-error`. A label may carry a trailing info icon for a tooltip, in grey.
 - **Structure:** a label, then `.control` (`relative flex flex-col gap-y-2`) holding the input, then an optional `.messages` or `.warning` line. `.field-group` stacks related fields with `gap-0.5`. `field-reserved` comes from the Hyvä parent theme (`base` doesn't style it); keep it on fields as the theme does.
 - **Input, select and textarea:** full width, 16px, `px-3.5 py-2.5`, `rounded-1`, a white fill, green text, a 1px light-grey border and a grey placeholder at 90%.
 - **Hover:** grey border. **Focus:** grey border plus a 4px `ring-form-input/50`.
@@ -923,9 +563,9 @@ Figma draws the image-tile amount at 28px with `py-2.5`; the theme's promo label
 The house Figma file (Tuinmaximaal website → Content (Desktop), node `1358:29886`) settles these patterns. Its values are mapped onto the theme's scale; where Figma goes past the 28px cap, the nearest step is used.
 
 - **Content block (text + image, on colour).** Figma `1358:30318` and `1358:30329`. One beige box, `rounded-2` and `overflow-hidden`, split in half (`md:grid-cols-2`). The text side has generous padding (`p-6`, `p-12` from `md`, `p-20` (80px) from `xl`) and holds a heading in `text-7 font-black` (Figma draws 32px/40), body text, and a primary button beside a secondary one. The image fills the other half up to the box edges, with no padding (`size-full object-cover`), so it is rounded only on its outer corners by the box's `overflow-hidden`. The image may sit left or right. This is the "one block that needs emphasis" with an image; never a padded box with a separately rounded image inside it.
-- **Image tile.** Figma `1530:37197` and the homepage's category entries. A contained lifestyle photo with `rounded-2` and `overflow-hidden`, with a soft dark scrim behind the text (`bg-gradient-to-br from-tmx-primary-black/60 via-transparent to-transparent` over the top left, and the same `to-tr` over the bottom left). It holds a white heading top left in `text-7 font-black` (the promo banner's title; Figma draws 30px), a price chip under it at the image-tile size (Price box), and a default-size primary button bottom left ("Stel nu samen", "Bekijk producten"). A tile without a price ("Losse onderdelen", "Zelf monteren of via partner?") keeps the heading and the button. Two or six tiles in the intro are the big moment of a home or category page. The scrim is required: white text never sits on a bare photo.
+- **Image tile.** Figma `1530:37197` and the homepage's category entries. A contained lifestyle photo with `rounded-2` and `overflow-hidden`, with a soft dark scrim (`image-tile-scrim`) behind the text (`bg-gradient-to-br from-tmx-primary-black/60 via-transparent to-transparent` over the top left, and the same `to-tr` over the bottom left). It holds a white heading top left in `text-7 font-black` (the promo banner's title; Figma draws 30px), a price chip under it at the image-tile size (Price box), and a default-size primary button bottom left ("Stel nu samen", "Bekijk producten"). A tile without a price ("Losse onderdelen", "Zelf monteren of via partner?") keeps the heading and the button. Two or six tiles in the intro are the big moment of a home or category page. The scrim is required: white text never sits on a bare photo.
 - **Intro link card.** Figma `1358:30013`. In the beige intro: a beige card with a sand border on three sides (`border-2 border-r-0 border-tmx-secondary-sand`; Figma draws 1.5px), `rounded-2` and `overflow-hidden`. The text side is `p-6`, with a `text-5 font-bold` title and an arrow link, and a photo sits flush on the right edge, rounded on its outer corners only. Three in a row from `lg`. It is the one bordered coloured card. Figma colours the link #8BA407, which is 2.7:1 on beige; use green text with the arrow, and #8BA407 on hover only.
-- **Blog tile.** A repeated card: a photo at 16:9 (`aspect-video`), rounded at the top, then `p-4` with a category pill (`bg-tmx-neutral-lightestGrey rounded-full text-3.5 px-3 py-1`), a `text-4 font-semibold` title, a `text-3.5` excerpt clamped to 3 lines (`line-clamp-3`) and a tertiary "Lees verder →" link. Outlined on white, borderless on a tinted band.
+- **Blog tile.** A repeated card: a photo at 16:9 (`aspect-video`), rounded at the top, then `p-4` with a category pill (`pill`: `bg-tmx-neutral-lightestGrey rounded-full text-3.5 px-3 py-1`), a `text-4 font-semibold` title, a `text-3.5` excerpt clamped to 3 lines (`line-clamp-3`) and a tertiary "Lees verder →" link. Outlined on white, borderless on a tinted band.
 - **Review cards.** Outlined white cards on white, with the Trustpilot-style rating summary above them as an outlined pill (`rounded-full border border-tmx-neutral-lightGrey`).
 - **Quote.** A beige surface box with the quote in `text-4.5 font-semibold`, beside a column of running text.
 - **FAQ.** A list of outlined rows on white (`gap-3`), each a question with a chevron that opens its answer (Motion).
@@ -942,14 +582,14 @@ See Typography. The orange chip with white text, rotated −2°, is used for at 
 
 ### Shell
 
-- **Header:** green with white text, a dark-green search field, an orange cart-count badge and light-green service links.
-- **Menu:** sand on desktop, beige on mobile with bone dividers (bone's only use). The active item is marked in orange.
-- **USP bar:** beige on desktop, sand on mobile.
-- **Breadcrumbs:** brown on beige.
-- **Footer:** green with dark-green dividers.
+- **Header:** green with white text, a search field and an orange cart-count badge.
+- **Menu:** sand on desktop, beige on mobile. The active item is marked in orange.
+- **USP bar:** beige on desktop, sand on mobile, with lighter-green check marks.
+- **Breadcrumbs:** on beige, below the USP bar.
+- **Footer:** green with white text.
 - **Checkout:** out of scope; see Known exceptions.
 
-Prototypes replace this shell with a single green bar holding the logo, unless the question is about the shell itself; see the build reference. In prototypes the bar is `h-15` and the logo `h-11` at every breakpoint, in the light frame and the full shell alike.
+Prototypes replace this shell with a single green bar holding the logo, unless the question is about the shell itself; then they use the full shell in `assets/page-shell.html`, built with the theme's own shell classes (see the build reference). In prototypes the bar is `h-15` and the logo `h-11` at every breakpoint, in the light frame and the full shell alike.
 
 ## Motion
 
@@ -963,7 +603,7 @@ Motion confirms a state change (hover, focus, open/close, selection); it never p
 
 **Do**
 
-- Use `tmx-*` and the semantic theme classes (`bg-btn-primary`, `text-body`, `border-form-input`), and only values from the scales above.
+- Use `tmx-*` and the semantic theme classes (`bg-btn-primary`, `text-body`, `border-form-input`), and only values from the theme's scales (Layout → Spacing, Shapes, the font-size list in Typography).
 - Give every veranda or structure view a visible configurator CTA, and every other product a direct add-to-cart button.
 - Keep the primary button #809700 with its 4px #6D8005 bottom border. Keep secondary and tertiary actions visibly quieter.
 - Use orange only for the price box, heading and paragraph highlights, badges and active states, always with the −2° tilt where the theme uses it.
@@ -984,7 +624,7 @@ Motion confirms a state change (hover, focus, open/close, selection); it never p
 - Don't wrap the whole page in one box, and don't box running text on a white page just to separate it. Don't border a white container on a white page unless it is a repeated card or an outlined filter box, don't border a card on a tinted band, and don't border a coloured box anywhere (the intro link card excepted).
 - Don't put a padded content block around a separately rounded image; the image fills its half up to the box edges.
 - Don't put white text on a photo without a scrim. (The scrim is the one functional gradient; decorative gradients stay out.)
-- Don't let images or content bleed past the container, and don't use bone or any surface other than white, beige, sand and one green block.
+- Don't let images or content bleed past the container, and don't use any surface other than white, beige, sand and one green block.
 - Don't put an eyebrow or kicker label above a heading, and don't use `btn-size-lg`.
 - Don't use arbitrary values, new colours, other fonts or type sizes above 28px.
 - Don't rotate anything other than the highlights and price boxes.
@@ -1000,7 +640,8 @@ Motion confirms a state change (hover, focus, open/close, selection); it never p
 
 Sources checked: the StyleGuide module (buttons, colors, form, messages, typography), `tailwind.cheatsheet.md`, `tailwind.dev.rules.md`, `tailwind.spacing.md`, `tailwind.config.js` and the component CSS.
 
+- **Niche colours and details:** theme colours and details with a single niche use aren't part of the house style; build with the palette above.
 - **Font sizes `text-6.5` and `text-7.5` to `text-15`**, and the **`aspect-11/5`** ratio: the cheatsheet lists them, but `tailwind.config.js` doesn't define them, so the classes don't compile. The config wins.
-- **PageBuilder and content-type styles** (`components/valantic/pagebuilder/`, `theme/components/content-types/`) and **module skins** (Amasty, Mirasvit, Fancybox, Swiper, the bamboo decking calculator): out of scope for prototypes. Their colours are covered as tokens.
+- **PageBuilder and content-type styles** (`components/valantic/pagebuilder/`, `theme/components/content-types/`) and **module skins** (Amasty, Mirasvit, Fancybox, Swiper, the bamboo decking calculator): out of scope for prototypes.
 - **Image utilities** (`bg-right-arrow`, `bg-close`, `bg-search` and the `content-chevron` family): they point at theme image files that prototypes can't load. Use inline SVG icons in `currentColor` instead.
 - **Adding values:** the dev rules allow a new token only after agreement with the DEV/FED lead, recorded in the cheatsheet. A prototype never adds one; if a value is missing, flag it in the hand-off.

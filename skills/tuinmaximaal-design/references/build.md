@@ -36,7 +36,7 @@ Every variant, bold or not, follows these rules:
 
 - **Containers:** all content and all images sit inside the container. Only the beige intro, page chrome and tinted tile bands may run full width, as colour bands with contained content (DESIGN.md → Layout).
 - **Beige intro:** a variant that is a whole page opens with a beige first section for its page type (a single section or component sits where it would on its page): the H1, intro and an optional CTA on content, brand and service pages; the H1 and intro with its link tiles or product-line cards on white on a category page; the gallery and buy-box row, with the buy box white on beige, on a product page. After it the background is white by default (DESIGN.md → Layout → Beige intro).
-- **Surfaces:** white, beige and sand only, on the ladder (on white: beige, then sand; on beige: white; on sand: white or green), and at most one green emphasis block with white text. Never bone (DESIGN.md → Elevation & Depth → Surfaces).
+- **Surfaces:** white, beige and sand only, on the ladder (on white: beige, then sand; on beige: white; on sand: white or green), and at most one green emphasis block with white text (DESIGN.md → Elevation & Depth → Surfaces).
 - **The box decision:** decide for every block, in this order (DESIGN.md → Elevation & Depth → The box decision):
   1. Is it a card that repeats (product tile, blog tile, review, link card, FAQ row)? A white `rounded-2` card: with `border border-tmx-neutral-lightGrey` on white, without a border on a beige or sand band.
   2. Is it the one block that needs emphasis (a quote, a text + image content block, a promo)? A beige surface box with `rounded-2` and no border; sand for a stronger step. With an image, use the content block: the image fills its half up to the box edges, never a padded box with a separately rounded image inside.
@@ -45,7 +45,7 @@ Every variant, bold or not, follows these rules:
   Filter groups keep a box each, outlined or borderless beige, one style for all. Never one wrapper around everything. Coloured boxes have no border, except the intro link card. Nest one level at most, and only when the inner box changes surface. On a category grid, follow DESIGN.md → Elevation & Depth → Category grid. Use the Figma patterns in DESIGN.md → Components → Content patterns (content block, image tile, intro link card, blog tile, reviews, quote, FAQ, carousel arrows) instead of inventing a new treatment.
 - **Price box:** size it by its component from DESIGN.md → Components → Price box: the theme's 16px chip on a product tile, the promo-label chip ("vanaf" plus the amount) on an image tile or promo, the largest price in the buy box. Never one size for every price on the page.
 - **Option cards:** a selectable card (colour, size, package) is `label.option-card` around an `sr-only` radio or checkbox and the card's content; the skeleton styles its selected and focus states. Never write `has-[:checked]:` or any other `has-[…]:` variant: it is an arbitrary variant.
-- **Text on photos:** white text on a photo (the image tile) always sits on the scrim from DESIGN.md → Components → Image tile.
+- **Text on photos:** white text on a photo (the image tile) always sits on the scrim from DESIGN.md → Components → Content patterns → Image tile.
 - **No eyebrows:** no eyebrow or kicker label above a heading, on any page type. Uppercase `paragraph-tiny` appears only inside badges and pills.
 - **Buttons:** `btn-size-sm` or the default size only; never `btn-size-lg`. A full-width CTA is `btn btn-primary w-full`.
 - **Tilt:** every heading highlight, paragraph highlight, price box and promo label tilts −2°.
@@ -87,7 +87,7 @@ Follow the delegation rules in SKILL.md. Every text without an approved source i
 - **Big moment:** each variant has exactly one, matching the register: the product photo plus the price box on product surfaces, a large contained image with an orange heading highlight, a large project photo or the intro's image tiles on brand-forward pages.
 - **Containers:** every image and every piece of content sits inside the container; only the beige intro, page chrome and tinted tile bands run full width, as colour bands.
 - **Beige intro:** each whole-page variant opens with the beige first section for its page type, and the background after it is white unless a box or band says otherwise.
-- **Surfaces:** only white, beige and sand on the ladder, at most one green block, no bone.
+- **Surfaces:** only white, beige and sand on the ladder, at most one green block.
 - **Box decision:** go block by block and name its treatment: card (repeated: outlined on white, borderless on a tinted band), beige box (the one block that needs emphasis) or no box (everything else). No running text boxed on white just to separate it; a content block with an image has the image flush to its half, not a separately rounded image inside padding; no wrapper around everything; no border on a coloured box except the intro link card; nesting one level deep at most, and only with a change of surface.
 - **Price box:** each price chip matches its component in DESIGN.md → Components → Price box (no 16px chip on an image tile, no promo-size chip on a product tile).
 - **Option cards:** selectable cards use `.option-card`; there is no `has-[` in the file.
