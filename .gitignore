@@ -1,0 +1,11 @@
+# Disposable local working files
+/tmp/
+
+# Dependencies
+node_modules/
+
+# Browser automation artifacts
+.playwright-mcp/
+
+# Local Claude Code settings (personal permissions)
+.claude/settings.local.json
