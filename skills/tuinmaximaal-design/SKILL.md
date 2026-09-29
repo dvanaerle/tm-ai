@@ -14,6 +14,7 @@ The brand essentials, which every output honours:
 - Veranda and structure pages lead to the configurator; other products go straight to the cart. "Offerte" is a checkout payment method, so the flow ends in the cart.
 - Body text is green (#003017) in ArticulatCF; the surfaces are light and warm.
 - Whitespace groups content first, then a change of surface, and a border only where DESIGN.md → Elevation & Depth gives one. Every page has one big moment for its register.
+- Every page opens with a beige intro, keeps all content and images inside the container, and is split into boxes on white, beige and sand. No eyebrow labels, no `btn-size-lg`.
 
 ## Pick the job
 

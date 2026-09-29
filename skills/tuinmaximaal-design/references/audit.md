@@ -19,12 +19,14 @@ Checkout pages run on a separate LESS theme: judge them against their own styles
 Check the input against DESIGN.md, section by section:
 
 - **Tokens:** only theme classes and scale values; no arbitrary values, inline colours, new fonts or sizes above 28px (`text-7`).
-- **Action colour:** the primary button is #809700 with the 4px #6D8005 bottom border; there is one primary action per view; secondary and tertiary are visibly quieter.
+- **Action colour:** the primary button is #809700 with the 4px #6D8005 bottom border; there is one primary action per view; secondary and tertiary are visibly quieter. Buttons are `btn-size-sm` or the default size; `btn-size-lg` is a finding.
 - **Orange:** only on the price box, heading and paragraph highlights, badges and active states. An orange button, link or small text is a finding.
 - **Purchase path:** verandas and structures lead to the configurator, other products to the cart. Any quote-request CTA or form is a finding ("offerte" is a checkout payment method).
 - **Components:** messages have a tinted background, an icon and no border; product tiles have a white info area and the rotated price box; form fields show the theme's states; headings use the h1–h6 scale with black weight on h1–h2 only.
-- **Shape and depth:** `rounded-1` for controls, `rounded-2` for tiles and cards; separation by whitespace, then a change of surface, then a 1px border only where Elevation & Depth gives one; `shadow-arrow` only on floating elements; the −2° rotation only on highlights and price boxes.
-- **Surfaces:** light and warm, green for structure and text; no dark theme.
+- **Shape and depth:** `rounded-1` for controls, `rounded-2` for tiles and cards; separation by whitespace, then a change of surface, then a 1px border only where Elevation & Depth gives one; `shadow-arrow` only on floating elements; the −2° rotation only on highlights, price boxes and promo labels.
+- **Tilt:** every heading highlight, the paragraph highlight, the price box and the promo labels tilt −2°. A flat heading highlight is a theme-level finding: the theme rotates an inline span, which a transform doesn't affect (DESIGN.md → Shapes). Report it under Theme-level notes, not as an error of the page.
+- **Surfaces:** white, beige and sand only, on the ladder in DESIGN.md → Elevation & Depth → Surfaces, plus at most one green emphasis block; green for structure and text; no dark theme. A bone surface, any other surface colour, or a second green block is a finding.
+- **Layout:** the container rule and the beige intro per page type (DESIGN.md → Layout); boxes and, on a category page, the category grid (DESIGN.md → Elevation & Depth). The craft floor below flags the misses.
 - **Visual principles:** apply the flag line of each principle in DESIGN.md → Visual principles (Clarity, Deference, Depth, Hierarchy) to every view.
 
 ## 3. Craft floor
@@ -43,15 +45,18 @@ Each item is a target; the "flag" line names the common pattern that misses it.
 
 **Composition:**
 
-- **Containers:** content is grouped by one level of surface: a card sits on the page, never inside another card. Flag: nested cards, including a bordered wrapper around a card.
+- **Containers:** the page is split into boxes, one per job, and a box nests one level deep at most, only when the inner box is a different surface (white tiles in a beige box). Flag: nested cards that don't change surface (a white card in a white card, a bordered wrapper around a card), nesting past one level, or one wrapper around everything.
+- **Container width:** every image and piece of content sits inside the container; only page chrome and the beige intro run full width, as colour bands. Flag: a full-bleed image or content outside the container.
+- **Intro:** the page opens with the beige first section for its page type (DESIGN.md → Layout → Beige intro). Flag: no beige intro.
 - **Emphasis:** emphasis comes from weight, size and the orange highlight. Flag: gradient text (`bg-clip-text` with a gradient).
 - **Alerts and callouts:** a status is shown with a tinted background and an icon. Flag: a coloured `border-left` or `border-right` above 1px on cards, list items, callouts or alerts.
 - **Depth:** depth comes from tonal layers. Flag: decorative or heavy drop shadows (`shadow-lg` and similar), hard offset shadows, glass and blur.
-- **Borders:** whitespace groups content, then a change of surface separates groups; a border sits only on a theme component that owns one or where two white surfaces meet and space can't separate them. Flag: a border on a white container on a white page.
+- **Borders:** whitespace groups content, then a change of surface separates groups; a border sits only on a theme component that owns one, on an outlined box (white, 1px light grey, `rounded-2`, one job, holding its content directly; DESIGN.md → Elevation & Depth → Boxes), or where two white surfaces meet and space can't separate them. Flag: a bordered white container on a white page that isn't an outlined box (it wraps other boxes or cards, has square corners, or is bordered only for decoration), a border on a coloured (beige, sand or green) box, or outlined and beige boxes mixed for the same role.
 - **Big moment:** each page has exactly one, matching its register (DESIGN.md → Expression). Flag: no big moment, or more than one competing for it.
 - **Brand:** the page passes the logo-swap test (DESIGN.md → Expression). Flag: with another retailer's logo, the page would still work unchanged.
 - **Images:** product media sit at 16:9; editorial images take the ratio the composition asks for. Flag: product media at any other ratio.
-- **Structure:** the page structure follows the content and the decision the visitor makes. Flag: a generic grid of equal cards where the content asks for something else (a comparison, a sequence, one big moment), a page built from same-size icon-heading-text cards, the big-number-plus-stats hero template, an eyebrow label above a heading, section numbers without meaning, a modal for a task that doesn't need one.
+- **Structure:** the page structure follows the content and the decision the visitor makes. Flag: a generic grid of equal cards where the content asks for something else (a comparison, a sequence, one big moment), a page built from same-size icon-heading-text cards, the big-number-plus-stats hero template, section numbers without meaning, a modal for a task that doesn't need one.
+- **Headings:** a heading stands on its own. Flag: an eyebrow or kicker label above a heading, on any page type (uppercase `paragraph-tiny` belongs only inside badges and pills).
 - **Icons:** one drawn icon set, in one stroke and weight. Flag: emoji or unicode glyphs used as icons.
 - **Placeholders:** real content, or visibly marked placeholders. Flag: soft-shadowed rectangles, sparklines or fake charts standing in for content.
 

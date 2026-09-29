@@ -724,15 +724,15 @@ The design principles decide what a view must do; these decide how it looks. Eac
 
 1. **Clarity.** One message per view, readable at a glance: the heading states the point, and the rest of the view proves it. Flag: a view carrying several competing messages, or a heading that only makes sense after its body text.
 2. **Deference.** The product photo and the specs lead; the chrome (borders, boxes, panels, decoration) steps back and leaves the space to them. Flag: chrome that draws the eye before the product or the content it holds.
-3. **Depth.** Layers come from tone: white, beige and sand, one step apart, as Elevation & Depth sets out. Glass, blur and translucency never carry depth. Flag: depth from shadows, blur or translucency, or surfaces stacked more than one level deep.
+3. **Depth.** Layers come from tone: white, beige and sand, one step apart, as Elevation & Depth sets out. Glass, blur and translucency never carry depth. Flag: depth from shadows, blur or translucency, a box nested in a box of the same surface, or nesting more than one level deep.
 4. **Hierarchy.** One obvious first thing per view, then an obvious second. Flag: two or more elements of equal weight competing for the first look.
 
 ### Expression
 
-The house style is fixed; expression comes from how the existing tokens are composed. Product surfaces use it sparingly, brand-forward pages generously.
+The house style is fixed; expression comes from how the existing tokens are composed, always inside the container and the box rules (Layout, Elevation & Depth). Product surfaces use it sparingly, brand-forward pages generously. Restraint is part of the style: no eyebrow labels, no oversized buttons, no bulky decoration that makes a page look generated.
 
-- **Full-width lifestyle photography.** A veranda in use, a finished garden, a project in progress: across the full width or bleeding past the container, with more image and less text than a spec sheet.
-- **Editorial and asymmetric layouts.** Uneven splits (`col-span-2` beside `col-span-1`), text set beside a large photo instead of under it, an image that crosses a change of surface. The structure follows the content rather than a grid of equal cards.
+- **Large lifestyle photography.** A veranda in use, a finished garden, a project in progress: a large photo box inside the container, with `rounded-2`, and more image and less text than a spec sheet.
+- **Editorial and asymmetric layouts.** Uneven splits (`col-span-2` beside `col-span-1`), text set beside a large photo instead of under it. The structure follows the content rather than a grid of equal cards.
 - **A bolder −2° heading highlight.** A short phrase of the page's main heading on the orange chip, carrying the page's voice, still within the orange rules: one highlight per section, on large, heavy text.
 - **Contrast in scale and density.** One large, calm moment against tighter blocks of proof, so the page has a focal point instead of evenly weighted sections.
 
@@ -741,7 +741,7 @@ The 28px cap stays: scale comes from black weight, the highlight and the ratio o
 **The big moment.** Every page has exactly one, and everything around it stays calm:
 
 - **Product surfaces:** the product photo plus the price box. The shopping task comes first, so there is no hero above them.
-- **Brand-forward pages:** a full-width image with an orange heading highlight, or a large project photo.
+- **Brand-forward pages:** a large contained image with an orange heading highlight, or a large project photo.
 
 **Logo-swap test.** Put another retailer's logo on the design. If it would still work unchanged, it isn't Tuinmaximaal yet: add a brand moment, such as a highlight, a project photo, a warm surface or specific proof.
 
@@ -754,7 +754,7 @@ The palette comes from the theme's `tmx` namespace. `primary` is an alias for `t
 - **Lighter green (`tmx-primary-lighterGreen` #809700)** is the action colour: the primary button, checked checkboxes and radios, selected cards, the pager, link hover and the USP check marks. **Light green (`tmx-primary-lightGreen` #6D8005)** is its shadow: the primary button's 4px bottom border and hover fill, header service links and the logged-in indicator.
 - **Lighter green second (#8BA407)** is used for search-suggestion hover and the secondary link hover. The PDP configurator button also uses it, which is a known theme bug: the primary button is always #809700.
 - **Orange (`tmx-primary-orange` #FF8000)** is an accent only: the price box, heading and paragraph highlights, badges (cart count) and active states (active menu item). Orange never fills a button, never colours an action, and is never used as small text on white.
-- **Warm surfaces.** Beige (`tmx-secondary-beige` #FFF5ED) is used for the category page, the product page (`bg-container-beige`), breadcrumbs and the desktop USP bar. Sand (`tmx-secondary-sand` #F5E6D7) is used for the desktop menu, the mobile USP bar and content-block borders. Bone (#E0D2C5) is used for mobile menu dividers.
+- **Warm surfaces.** Beige (`tmx-secondary-beige` #FFF5ED) is used for the intro section of every page (`bg-container-beige`), content boxes, breadcrumbs and the desktop USP bar. Sand (`tmx-secondary-sand` #F5E6D7) is used for the desktop menu, the mobile USP bar, content-block borders in the theme, and stronger content bands. White, beige and sand are the only page surfaces (Elevation & Depth → Surfaces). Bone (#E0D2C5) is not a surface: it is used only for the shell's mobile-menu dividers.
 - **Neutrals.** Grey (#636363) is used for field labels, placeholders and hover/focus borders. Light grey (#E3E3E3) is used for resting borders on inputs, tiles and filters. Lightest grey (#F9FAFB) is used for read-only value blocks. Medium grey (#878787) is used for the active slider dot.
 - **Status (`tmx-status-{info,error,success,warning,neutral}`).** Each status has four shades: `-subtle` (50) for backgrounds, the default (600) for icons and accents, `-text` (700) for hint text under a field, and `-strong` (900) for message text. Notice messages use `neutral`.
 - **Other palette colours.** Blue (#80A5E4) is used only at 10% as the tint behind PDP info notes. Red (#FF4D4D) is used for the logged-out indicator. Brown (#8A7B6C) is used for breadcrumb text. Black (#11171F) is used for "show more" text. Yellow (#FFCB00) is a palette swatch without a component role.
@@ -769,7 +769,7 @@ The linter's contrast warnings come from the live theme and are known:
 
 | Component | Pair | Ratio | Rule for prototypes |
 |---|---|---|---|
-| `button-primary` | white on #809700 | 3.31:1 | Brand standard; keep it. Passes only as large text (`btn-size-lg`). Flag it in audits as a theme-level finding, not a prototype error. |
+| `button-primary` | white on #809700 | 3.31:1 | Brand standard; keep it, at the default size anyway (Buttons → Sizes). Flag it in audits as a theme-level finding, not a prototype error. |
 | `button-primary-hover` | white on #6D8005 | 4.43:1 | As above. |
 | `button-tertiary-hover` | #809700 on white | 3.31:1 | Hover state only; the resting state is green. |
 | `form-choice-checked` | white glyph on #809700 | 3.31:1 | A non-text graphic; passes 3:1. |
@@ -794,34 +794,62 @@ There is one family: **ArticulatCF** (`font-body`), self-hosted and licensed. Pr
 The black weight is used on h1 and h2 only. `.heading-small` steps h1 down to `text-6` and h2 down to `text-5`; it has no effect on h3–h6. `.heading-highlight` works on every heading level. Element tags carry these styles, so use real `h1`–`h6` elements.
 
 - **Body:** `text-base` (16px / 1.5), weight 400, green. Cap reading columns at about 65–75ch.
-- **Small text:** `.paragraph-sm` 12px, `.paragraph-esm` 10px, `.paragraph-tiny` 10px bold uppercase (short labels only).
-- **Highlights:** `.heading-highlight` puts white text on an orange chip (`px-3 pt-2 pb-0.5`), rotated −2°. `.paragraph-highlight` is the same chip at weight 900 (`w-fit px-3 pt-1 pb-0.5`).
-- **UI text:** buttons 16px semibold (24px for `btn-size-lg`), field labels 14px medium grey, inputs 16px regular with a 22px line-height, messages 14px, product-tile names 15px semibold (16px from `lg`), clamped to 3 lines.
+- **Small text:** `.paragraph-sm` 12px, `.paragraph-esm` 10px, `.paragraph-tiny` 10px bold uppercase, only inside badges and pills.
+- **No eyebrows.** Never put an eyebrow or kicker label (a small line, often uppercase or letter-spaced) above a heading, on any page type. The heading carries the point on its own; a highlight inside it adds the emphasis.
+- **Highlights:** `.heading-highlight` puts white text on an orange chip (`px-3 pt-2 pb-0.5`), rotated −2°. `.paragraph-highlight` is the same chip at weight 900 (`w-fit px-3 pt-1 pb-0.5`). Every highlight tilts, on every heading level; a flat highlight is wrong (Shapes).
+- **UI text:** buttons 16px semibold, field labels 14px medium grey, inputs 16px regular with a 22px line-height, messages 14px, product-tile names 15px semibold (16px from `lg`), clamped to 3 lines.
 - **Font sizes** are a fixed list, not a formula: <!-- design-sync:font-sizes -->`text-2.5` 10px, `text-3` 12px, `text-3.5` 14px, `text-3.75` 15px, `text-4` 16px, `text-4.5` 18px, `text-4.75` 19px (line-height 1), `text-5` 20px, `text-5.5` 22px, `text-6` 24px, `text-7` 28px<!-- /design-sync:font-sizes -->. There is nothing larger. Big hero statements get their weight from black type and the orange highlight, not from sizes beyond 28px.
-- `tracking-loose` (4px) is the only custom letter-spacing, for short uppercase labels. Tailwind's defaults (`tracking-tight` to `tracking-widest`) are also available.
 - **Line heights:** the size classes carry their own line-height (1.5; 1.25 for `text-6` and `text-7`; 1 for `text-4.75`). The custom `leading-5.5` (22px), `leading-7.5` (30px), `leading-11` (44px) and `leading-12` (48px) join Tailwind's defaults.
 - **Lists:** see Components → Lists; list items wrap their text in `.list-text`.
 
 ## Layout
 
-- **Container:** centred, `1rem` side padding, maximum 1314px from `xl`.
+- **Container:** centred, `1rem` side padding, maximum 1314px from `xl`. All content and all images, lifestyle photos included, sit inside it. Only page chrome (header bars, breadcrumbs, USP bar) and the beige intro may run full width, and only as colour bands whose content is contained. Nothing bleeds past the container.
 - **Breakpoints (min-width):** `500px`, `sm` 640, `md` 768, `lg` 1024, `xl` 1280, `2xl` 1536. Build mobile-first and check every prototype at 375px, `md` and `xl`. Adapt on small screens; never remove critical functionality such as the configurator CTA, the price or the add-to-cart button.
 - **Spacing:** a generated 4px scale. Token `N` equals N × 4px (`p-4` = 16px) and every step has a `.5` half-step that adds 2px (`py-2.5` = 10px). It runs from 0 to 500px, plus `1/4`, `1/2`, `3/4`, `full` and `full-x2` percentages.
 - **Rhythm:** use 8–24px (`gap-2` to `gap-6`) inside components and 32–48px (`gap-8` to `gap-12`) between sections. Use more space above a heading than below it. Prefer `gap` on flex and grid parents over margins on children. Vary section spacing; uniform padding everywhere reads as a template.
 - **Container queries:** `@tailwindcss/container-queries` is enabled. Blocks that editors can place at any width respond to their container (`@container`, then `@md:`, `@lg:` and so on); page layout uses the viewport breakpoints.
 - **Product media:** 16:9 (`aspect-video`), for product media only: the gallery, packshots and tile images. Category tiles use 450 × 253, the product page 1536 × 864.
-- **Editorial imagery:** lifestyle and project photos take any ratio the config has (`aspect-square`, `aspect-video`, or a spacing-scale height with `object-cover`), run as full-width bands outside the container, or bleed past it.
-- **Page grid:** `.columns` is a single-column grid with `gap-x-8 gap-y-4` inside the container. Product and category pages sit on beige.
+- **Editorial imagery:** lifestyle and project photos take any ratio the config has (`aspect-square`, or a spacing-scale height with `object-cover`), as a contained box with `rounded-2`.
+- **Page grid:** `.columns` is a single-column grid with `gap-x-8 gap-y-4` inside the container.
+- **Beige intro.** Every page type opens with a beige first section: a full-width band with contained content.
+  - **Content, brand and service pages:** the H1, the intro text and an optional CTA.
+  - **Category page:** the H1 and intro, with its link tiles or product-line cards on white.
+  - **Product page:** the gallery and buy-box row, with the buy box white on beige.
+
+  After the intro the background is free and white by default. On staging the category grid area and the product content section are white.
 
 ## Elevation & Depth
 
 Depth comes from space and tone. Separate content in this order:
 
 1. **Whitespace** groups related content. Reach for it first.
-2. **A change of surface** separates groups: white on beige or sand, or a beige or sand band on a white page.
-3. **A 1px border** only where it does work: on the theme components that own one (inputs, checkboxes, radios, the product tile, the secondary button, the selected card), or a light-grey (#E3E3E3) one where two white surfaces meet and space can't separate them.
+2. **A change of surface** separates groups, on the surface ladder below.
+3. **A 1px border** only where it does work: on the theme components that own one (inputs, checkboxes, radios, the product tile, the secondary button, the selected card), on an outlined box (Boxes, below), or a light-grey (#E3E3E3) one where two white surfaces meet and space can't separate them.
 
-A white container on a white page stands on its whitespace alone, without a border. The product tile keeps its border in every context, white pages included: packshots are photographed on white, and without the border the tile runs into the page.
+A white container on a white page stands on its whitespace alone, without a border, unless it is an outlined box. The product tile keeps its border in every context, white pages included: packshots are photographed on white, and without the border the tile runs into the page.
+
+**Surfaces.** White, beige and sand are the only surfaces. Use them generously to separate content:
+
+- **On white:** beige first, then sand for a stronger step.
+- **On beige:** white.
+- **On sand:** white or green.
+- **Green:** at most one emphasis block per page, with white text.
+
+The reference is the homepage: a beige intro band holding the image tiles, a contained beige banner box on white, and a full-width sand band holding a contained group with one green column.
+
+**Boxes.** A page is split into boxes, one per job (the intro, each filter group, a trust or USP block, the SEO text, the FAQ, the blog), each with `rounded-2`, `p-4` to `p-6`, and `gap-3` to `gap-4` between them. There is never one wrapper around everything. A box comes in one of two styles:
+
+- **Surface box:** beige or sand (or the one green block), with no border. Its tone separates it.
+- **Outlined box:** white with a 1px light-grey border (`bg-white border border-tmx-neutral-lightGrey rounded-2`), as the theme's filters have it. It sits on white or on beige and holds its content directly, never another box or card.
+
+Use one style per role on a page: all filter groups outlined, or all beige, not a mix.
+
+- **One box per filter group.** On the category page each filter group is its own box, as on staging: outlined, or borderless beige.
+- **No borders on coloured boxes.** A beige, sand or green box is separated by its tone; the product tile keeps its own border.
+- **One level of nesting,** and only when the inner box is a different surface: white tiles in a beige box, as on staging's product page. The same surface inside the same surface, or a third level, is wrong.
+
+**Category grid.** The intro is a beige band. The grid area is white, with one box per filter group: outlined, or borderless beige. A sand trust or USP block sits between product rows. Below the grid, the SEO text and the FAQ sit in beige boxes. Product tiles keep their white info area and border.
 
 - `shadow-1px` (inset 0 0 0 1px green) is a crisp selected or hover outline without layout shift. The product tile uses it together with the green hover border.
 - `shadow-arrow` (0 4px 12px rgb(0 0 0 / 0.16)) is for floating elements only: slider arrows, dropdowns and overlays.
@@ -831,7 +859,7 @@ A white container on a white page stands on its whitespace alone, without a bord
 
 Corners are small and consistent: `rounded-1` (4px) for buttons, inputs, checkboxes and messages, `rounded-2` (8px) for product tiles and cards, and `rounded-full` for radios and pills. The full scale is 0.5 (2px), 1, 1.5, 2, 2.5, 3, 3.5, 4, 5 and 6 (24px).
 
-**The −2° rotation** is the signature brand detail. The heading highlight, the paragraph highlight and the price box are rotated −2° (`-rotate-2`), and so are the highlight labels in the main banner, the promo banner and the content slider. Reproduce it exactly. Don't rotate anything else, and don't change the angle. A struck-through old price is never rotated and has no chip.
+**The −2° rotation** is the signature brand detail. Every heading highlight, the paragraph highlight and the price box are rotated −2° (`-rotate-2`), and so are the promo labels: the highlight labels in the main banner, the promo banner and the content slider. Reproduce it exactly. Don't rotate anything else, and don't change the angle. A transform doesn't affect an inline element, so a highlight on a phrase inside a heading must be `inline-block` to tilt; the prototype skeleton sets this. Staging's homepage highlight ("genieten") is flat for that reason: a theme bug outside this skill. A struck-through old price is never rotated and has no chip.
 
 ## Components
 
@@ -844,7 +872,7 @@ The base `.btn` is `flex items-center justify-center gap-2`, 16px semibold, `rou
 - **Primary** (`.btn-primary`): a #809700 fill, white text and a **4px bottom border in #6D8005** (`border-b-4 border-btn-primary`), with `pt-3 pb-2 px-6` so the label sits optically centred. On hover and focus the fill turns #6D8005. This is the only action colour. Use one primary action per view.
 - **Secondary** (`.btn-secondary`): transparent, green text and a 1px green border. On hover it fills green with white text.
 - **Tertiary** (`.btn-tertiary`): no padding, green text, and #809700 on hover. It behaves like an inline link.
-- **Sizes:** `btn-size-sm` (`px-4 py-1.5`), the default (`px-6 py-2.5`) and `btn-size-lg` (`px-8 py-4.5`, 24px text). Primary buttons swap the vertical padding for the bottom-border correction. Tertiary buttons keep `p-0` at every size. Add `w-full` for a full-width button. (The theme CSS also defines a misspelled `btm-size-full`; use `w-full` instead.)
+- **Sizes:** use `btn-size-sm` (`px-4 py-1.5`) and the default (`px-6 py-2.5`, no size class) only. The theme also defines `btn-size-lg` (`px-8 py-4.5`, 24px text); never use it. Staging uses no size class at all, and the product page's main CTA is a default-size `btn-primary w-full`. Primary buttons swap the vertical padding for the bottom-border correction. Tertiary buttons keep `p-0` at every size. Add `w-full` for a full-width button. (The theme CSS also defines a misspelled `btm-size-full`; use `w-full` instead.)
 - **Forced states:** `--hovered`, `--focused` and `--disabled` apply the hover, focus and disabled looks without interaction. The styleguide uses them, and they are handy for showing states side by side in a prototype.
 - **Focus:** the theme removes the outline and shows the hover fill. Prototypes add a visible ring as well (`focus-visible:ring-4 ring-form-input/50`).
 
@@ -886,13 +914,13 @@ See Typography. The orange chip with white text, rotated −2°, is used for at 
 ### Shell
 
 - **Header:** green with white text, a dark-green search field, an orange cart-count badge and light-green service links.
-- **Menu:** sand on desktop, beige on mobile with bone dividers. The active item is marked in orange.
+- **Menu:** sand on desktop, beige on mobile with bone dividers (bone's only use). The active item is marked in orange.
 - **USP bar:** beige on desktop, sand on mobile.
 - **Breadcrumbs:** brown on beige.
 - **Footer:** green with dark-green dividers.
 - **Checkout:** out of scope; see Known exceptions.
 
-Prototypes replace this shell with a single green bar holding the logo, unless the question is about the shell itself; see the build reference.
+Prototypes replace this shell with a single green bar holding the logo, unless the question is about the shell itself; see the build reference. In prototypes the bar is `h-15` and the logo `h-11` at every breakpoint, in the light frame and the full shell alike.
 
 ## Motion
 
@@ -912,7 +940,8 @@ Motion confirms a state change (hover, focus, open/close, selection); it never p
 - Use orange only for the price box, heading and paragraph highlights, badges and active states, always with the −2° tilt where the theme uses it.
 - Lead with proof at decision points: USP check lists, specs, reviews, guarantee and delivery terms.
 - Keep surfaces light and warm, with green for structure and text. Separate content with whitespace first, then a change of surface, and a border only where Elevation & Depth gives one.
-- Give every page one big moment for its register, and compose around it with the expression options (Overview → Expression): full-width lifestyle photography, editorial and asymmetric layouts, a bolder heading highlight, contrast in scale and density.
+- Open every page with a beige intro, keep all content and images inside the container, and split the page into boxes, one per job, on the white, beige and sand ladder (Elevation & Depth).
+- Give every page one big moment for its register, and compose around it with the expression options (Overview → Expression): large contained lifestyle photography, editorial and asymmetric layouts, a bolder heading highlight, contrast in scale and density.
 - Test with long German and French strings, and at 375px, `md` and `xl`.
 
 **Don't**
@@ -921,8 +950,10 @@ Motion confirms a state change (hover, focus, open/close, selection); it never p
 - Don't use orange buttons, orange links or orange small text. Blog links in the theme are orange; don't copy them.
 - Don't put coloured side stripes (`border-l-4` and similar) on cards, alerts or messages.
 - Don't use gradient text, decorative gradients, glassmorphism, neon accents or a dark theme.
-- Don't nest cards inside cards, and don't build endless identical card grids.
-- Don't border a white container on a white page.
+- Don't nest a box in a box of the same surface, don't nest more than one level deep, and don't build endless identical card grids.
+- Don't wrap the whole page in one box. Don't border a white container on a white page unless it is an outlined box, don't border a coloured box anywhere, and don't wrap other boxes or cards in an outlined box.
+- Don't let images or content bleed past the container, and don't use bone or any surface other than white, beige, sand and one green block.
+- Don't put an eyebrow or kicker label above a heading, and don't use `btn-size-lg`.
 - Don't use arbitrary values, new colours, other fonts or type sizes above 28px.
 - Don't rotate anything other than the highlights and price boxes.
 - Don't centre everything, and don't apply the same padding to every section.
