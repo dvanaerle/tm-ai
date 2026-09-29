@@ -18,20 +18,24 @@ Build prompts (1–6, 9 when it is a build) must also have:
 
 - 3 genuinely different variants, each with a trade-off line
 - at least one bold variant per set, its trade-off line starting with "Bold:"
-- no border on a white container on a white page, except an outlined box; borders only on theme components that own one, outlined boxes, or where two white surfaces meet
+- no border on a white container on a white page, except a repeated card or an outlined filter box; borders only on theme components that own one, repeated cards on white, outlined filter boxes, the intro link card, or where two white surfaces meet
 - one big moment per variant, matching the register (product photo plus price box on product surfaces; a large contained image with a heading highlight, or a large project photo, on brand-forward pages)
-- 16:9 only on product media
+- 16:9 only on product media and the blog tile photo
 - the green logo bar at production's header height instead of the full shell, unless the prompt is about the header, menu or footer
 - every variant passes the logo-swap test
 - the green bar is `h-15` with the `h-11` logo at every breakpoint, in the frame and the full shell
 - `btn-size-sm` or the default button size only; no `btn-size-lg`
 - no eyebrow or kicker label above any heading
 - every heading highlight, paragraph highlight, price box and promo label tilted −2°
-- all content and images inside the container; only page chrome and the beige intro run full width, as colour bands
+- all content and images inside the container; only page chrome, the beige intro and tinted tile bands run full width, as colour bands
 - on whole pages, a beige intro section matching the page type; white after it by default
 - only white, beige and sand surfaces on the ladder, at most one green emphasis block, no bone
-- one box per job (`rounded-2`, `p-4` to `p-6`, a gap of 3 to 4), surface or outlined with one style per role, no wrapper around everything, no border on a coloured box, no box or card inside an outlined box, and nesting only one level deep with a change of surface
-- a category grid (prompt 2) follows the agreed layout: beige intro band, white grid area with one box per filter group (outlined, or borderless beige), a sand trust or USP block between product rows, SEO text and FAQ in beige boxes below, tiles with their white info area and border
+- the box decision per block: repeated cards as white `rounded-2` cards, outlined on white and borderless on a beige or sand band; the one block that needs emphasis as a borderless beige box; everything else (running text, text + image, gallery, SEO text) unboxed on whitespace. No text boxed on white just to separate it, no padded content block around a separately rounded image, no wrapper around everything, no border on a coloured box except the intro link card, and nesting only one level deep with a change of surface
+- the price box sized per component (DESIGN.md → Components → Price box): the theme's 16px chip on product tiles, the promo-label chip on image tiles and promos, the largest price in the buy box
+- white text on a photo always on a scrim
+- no `has-[…]:` variants; selectable cards use `.option-card`
+- product media at 16:9 at every breakpoint, never cropped off it in a card; no `aspect-video` on lifestyle or project photos
+- a category grid (prompt 2) follows the agreed layout: beige intro band, white grid area with one box per filter group (outlined, or borderless beige), a sand trust or USP block between product rows, the FAQ as outlined rows and the SEO text unboxed with the "Lees meer" fade below, tiles with their white info area, outlined on white and borderless where a tinted tile band is used
 
 Whether the designs are less generic than the baseline (`tmp/prototypes/baseline/`, compared at 375px and xl), and from the third iteration closer to the live site than the i2 run, is the user's judgement, recorded in the notes.
 
@@ -66,7 +70,7 @@ Audit prompts (7, 8, 9 when it is an audit) must also have ranked findings, each
    </section>
    ```
 
-   Planted violations: an orange button, a left-border stripe, gradient text, nested cards, a redundant border on the white USP wrapper on a white page, which isn't an outlined box: square corners, bordered only to frame it (plus a quote-request CTA and a non-theme drop shadow).
+   Planted violations: an orange button, a left-border stripe, gradient text, nested cards, a redundant border on the white USP wrapper on a white page, which is neither a repeated card nor a filter box: plain content boxed on white, with square corners, bordered only to frame it (plus a quote-request CTA and a non-theme drop shadow).
 9. **Real request (schuifwand redesign, a build).** "I want you to audit this page: https://m2stagingnl.intern.systems/schuifwand. Create a re-design of this page, with its content. For CRO, this page is not optional, and we can make this page more creative, more in a block design with the Tuinmaximaal Design System. I want you to create some prototypes to improve this page." (The user's request from 2026-09-25, lightly corrected. The first run named the Playwright MCP server; any browser tool will do.)
 
 ## Results
@@ -112,3 +116,10 @@ Third-iteration rerun (issue 06): all 9 prompts in fresh Claude Code sessions, c
 | 7 | Claude Code | 2026-09-29 | uncommitted (issue 05) | Pass | Same staging screenshots as the earlier runs. Findings P0–P3, each with a rule and a fix, and a CRO section. Minor: flags an untilted badge, though badges aren't on the tilt list. |
 | 8 | Claude Code | 2026-09-29 | uncommitted (issue 05) | Pass | Every planted violation flagged: quote CTA (P0), orange button, gradient text, side stripe and `shadow-lg` (P1), nested cards (P2, the nesting rule). Minor: the USP wrapper is flagged as "a leftover wrapper" with the fix to drop it, but the rule cited is the outlined-box shape, and the fallback fix keeps the border with `rounded-2`; i2 named the redundant border on white more clearly. |
 | 9 | Claude Code | 2026-09-29 | uncommitted (issue 05) | Fail | A's smaller product cards crop product photos to about 0.93–1.19 at xl (16:9 is required on product media), the same failure as i2. Fixed since i2: no breadcrumb, no orange decoration. Otherwise: audit of staging with 12 ranked findings, beige intro holding the product lines, one configurator primary per variant, at most one green block, contained. C bold (large contained project photo with highlight, uneven chapters). Closer to live: *pending* |
+
+Fourth-iteration smoke test (issue 07): prompts 4 and 2 in fresh Claude Code subagent sessions, output in `tmp/prototypes/rerun-i4/`. The skill was the issue 07 working tree on top of 91c4d43.
+
+| # | Surface | Date | Skill version (commit) | Pass? | Notes |
+|---|---|---|---|---|---|
+| 4 | Claude Code | 2026-09-29 | uncommitted (issue 07) | Pass | Running text on white unboxed in all three; A's content block is the one beige box with the image flush to its edges (measured). Price chips per component: promo-label chip in A's intro and B's image tile, the theme's 16px chip on B's product tiles, the buy-box size in C. B's image tile has the scrim; reviews and FAQ are outlined rows on white; B's cards on sand and blog tiles on beige are borderless. No `has-[`, no arbitrary values, no overflow at 375px. Found a conflict between the blog tile's 16:9 photo and the "no `aspect-video` on editorial photos" check; the blog tile is now the named exception. |
+| 2 | Claude Code | 2026-09-29 | uncommitted (issue 07) | Pass | Agreed grid layout in all three: filter groups outlined (A, C) or beige (B), sand trust block between rows, FAQ as outlined rows, SEO text unboxed with the "Lees meer" fade. Tiles on white outlined (28/28 measured), tiles on B's sand band borderless (4/4). Theme 16px chip on tiles, promo-label chip on C's image tiles, with the scrim. A uses the intro link cards. Product media 16:9. No `has-[`, no arbitrary values, no overflow at 375px. Open: long DE names still clamp at 3 lines in 3- and 4-up grids at xl. |

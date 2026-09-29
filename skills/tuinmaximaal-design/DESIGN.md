@@ -741,7 +741,7 @@ The 28px cap stays: scale comes from black weight, the highlight and the ratio o
 **The big moment.** Every page has exactly one, and everything around it stays calm:
 
 - **Product surfaces:** the product photo plus the price box. The shopping task comes first, so there is no hero above them.
-- **Brand-forward pages:** a large contained image with an orange heading highlight, or a large project photo.
+- **Brand-forward pages:** a large contained image with an orange heading highlight, a large project photo, or the intro's image tiles (Components → Content patterns → Image tile).
 
 **Logo-swap test.** Put another retailer's logo on the design. If it would still work unchanged, it isn't Tuinmaximaal yet: add a brand moment, such as a highlight, a project photo, a warm surface or specific proof.
 
@@ -763,7 +763,7 @@ Colour proportions: warm and white surfaces carry about 60%, green structure and
 
 ### Contrast
 
-Meet WCAG 2.2 AA: 4.5:1 for body text, 3:1 for text of at least 24px, or at least 18.66px bold, and 3:1 for UI graphics. Safe pairs: green on white, beige or sand (above 12:1), and white on green.
+Meet WCAG 2.2 AA: 4.5:1 for body text, 3:1 for text of at least 24px, or at least 18.66px bold, and 3:1 for UI graphics. Safe pairs: green on white, beige or sand (above 12:1), and white on green. White text on a photo (the image tile) always sits on a dark scrim, so it reaches AA whatever the photo shows (Components → Image tile).
 
 The linter's contrast warnings come from the live theme and are known:
 
@@ -773,7 +773,7 @@ The linter's contrast warnings come from the live theme and are known:
 | `button-primary-hover` | white on #6D8005 | 4.43:1 | As above. |
 | `button-tertiary-hover` | #809700 on white | 3.31:1 | Hover state only; the resting state is green. |
 | `form-choice-checked` | white glyph on #809700 | 3.31:1 | A non-text graphic; passes 3:1. |
-| `heading-highlight`, `paragraph-highlight`, `price-box` | white on #FF8000 | 2.52:1 | Signature brand detail. Use it only on large, heavy text (headings, prices of at least 20px). Never put small text on orange. |
+| `heading-highlight`, `paragraph-highlight`, `price-box` | white on #FF8000 | 2.52:1 | Signature brand detail. Use it only on heavy text: headings, the paragraph highlight and the price box at its size per component (Components → Price box). The product tile's 16px weight-900 price is the theme's own choice, a documented exception like the primary button. Never put small or regular-weight text on orange. |
 | `breadcrumbs` | #8A7B6C on #FFF5ED | 3.81:1 | Theme as is. Don't reuse brown for other text. |
 
 ## Typography
@@ -804,12 +804,12 @@ The black weight is used on h1 and h2 only. `.heading-small` steps h1 down to `t
 
 ## Layout
 
-- **Container:** centred, `1rem` side padding, maximum 1314px from `xl`. All content and all images, lifestyle photos included, sit inside it. Only page chrome (header bars, breadcrumbs, USP bar) and the beige intro may run full width, and only as colour bands whose content is contained. Nothing bleeds past the container.
+- **Container:** centred, `1rem` side padding, maximum 1314px from `xl`. All content and all images, lifestyle photos included, sit inside it. Only page chrome (header bars, breadcrumbs, USP bar), the beige intro and tinted tile bands (Elevation & Depth) may run full width, and only as colour bands whose content is contained. Images and boxes never bleed past the container.
 - **Breakpoints (min-width):** `500px`, `sm` 640, `md` 768, `lg` 1024, `xl` 1280, `2xl` 1536. Build mobile-first and check every prototype at 375px, `md` and `xl`. Adapt on small screens; never remove critical functionality such as the configurator CTA, the price or the add-to-cart button.
 - **Spacing:** a generated 4px scale. Token `N` equals N × 4px (`p-4` = 16px) and every step has a `.5` half-step that adds 2px (`py-2.5` = 10px). It runs from 0 to 500px, plus `1/4`, `1/2`, `3/4`, `full` and `full-x2` percentages.
 - **Rhythm:** use 8–24px (`gap-2` to `gap-6`) inside components and 32–48px (`gap-8` to `gap-12`) between sections. Use more space above a heading than below it. Prefer `gap` on flex and grid parents over margins on children. Vary section spacing; uniform padding everywhere reads as a template.
 - **Container queries:** `@tailwindcss/container-queries` is enabled. Blocks that editors can place at any width respond to their container (`@container`, then `@md:`, `@lg:` and so on); page layout uses the viewport breakpoints.
-- **Product media:** 16:9 (`aspect-video`), for product media only: the gallery, packshots and tile images. Category tiles use 450 × 253, the product page 1536 × 864.
+- **Product media:** 16:9 (`aspect-video`), for product media only: the gallery, packshots and tile images. The blog tile's photo is the one editorial image at 16:9 (Components → Content patterns). Category tiles use 450 × 253, the product page 1536 × 864.
 - **Editorial imagery:** lifestyle and project photos take any ratio the config has (`aspect-square`, or a spacing-scale height with `object-cover`), as a contained box with `rounded-2`.
 - **Page grid:** `.columns` is a single-column grid with `gap-x-8 gap-y-4` inside the container.
 - **Beige intro.** Every page type opens with a beige first section: a full-width band with contained content.
@@ -825,9 +825,9 @@ Depth comes from space and tone. Separate content in this order:
 
 1. **Whitespace** groups related content. Reach for it first.
 2. **A change of surface** separates groups, on the surface ladder below.
-3. **A 1px border** only where it does work: on the theme components that own one (inputs, checkboxes, radios, the product tile, the secondary button, the selected card), on an outlined box (Boxes, below), or a light-grey (#E3E3E3) one where two white surfaces meet and space can't separate them.
+3. **A 1px border** only where it does work: on the theme components that own one (inputs, checkboxes, radios, the secondary button, the selected card), on a repeated card on white (The box decision, below), on an outlined filter box, or a light-grey (#E3E3E3) one where two white surfaces meet and space can't separate them.
 
-A white container on a white page stands on its whitespace alone, without a border, unless it is an outlined box. The product tile keeps its border in every context, white pages included: packshots are photographed on white, and without the border the tile runs into the page.
+A white container on a white page stands on its whitespace alone, without a border, unless it is a repeated card or an outlined filter box. Text on a white page is never boxed just to separate it.
 
 **Surfaces.** White, beige and sand are the only surfaces. Use them generously to separate content:
 
@@ -838,21 +838,24 @@ A white container on a white page stands on its whitespace alone, without a bord
 
 The reference is the homepage: a beige intro band holding the image tiles, a contained beige banner box on white, and a full-width sand band holding a contained group with one green column.
 
-**Boxes.** A page is split into boxes, one per job (the intro, each filter group, a trust or USP block, the SEO text, the FAQ, the blog), each with `rounded-2`, `p-4` to `p-6`, and `gap-3` to `gap-4` between them. There is never one wrapper around everything. A box comes in one of two styles:
+**The box decision.** Every block on a page gets one of three treatments, as the house Figma components have them. Decide it per block:
 
-- **Surface box:** beige or sand (or the one green block), with no border. Its tone separates it.
-- **Outlined box:** white with a 1px light-grey border (`bg-white border border-tmx-neutral-lightGrey rounded-2`), as the theme's filters have it. It sits on white or on beige and holds its content directly, never another box or card.
+1. **A card that repeats** (a product tile, blog tile, review, link card or FAQ row) is a card: white, `rounded-2`. On white it has a 1px light-grey outline (`bg-white border border-tmx-neutral-lightGrey rounded-2`). On a beige or sand band it has no border: the change of surface does the separating. The one exception is the intro link card (Components → Intro link card).
+2. **One block that needs emphasis** (a quote, a text + image content block, a promo) is a surface box: beige, `rounded-2`, no border. Sand is the stronger step; the one green block is the strongest.
+3. **Everything else has no box:** running text in one to four columns, text + image, video + text, a gallery, the SEO text. It sits inside the container, separated by whitespace, with its images `rounded-2`.
 
-Use one style per role on a page: all filter groups outlined, or all beige, not a mix.
+A card or surface box takes `p-4` to `p-6` (more on a content block), with `gap-3` to `gap-4` between cards. There is never one wrapper around everything, and a box or card holds its content directly, never another card of the same surface.
 
-- **One box per filter group.** On the category page each filter group is its own box, as on staging: outlined, or borderless beige.
-- **No borders on coloured boxes.** A beige, sand or green box is separated by its tone; the product tile keeps its own border.
+- **Filter groups** keep a box each, as on staging: outlined, or borderless beige, one style for all of them on a page.
+- **No borders on coloured boxes.** A beige, sand or green box is separated by its tone. The intro link card is the one bordered coloured card.
 - **One level of nesting,** and only when the inner box is a different surface: white tiles in a beige box, as on staging's product page. The same surface inside the same surface, or a third level, is wrong.
 
-**Category grid.** The intro is a beige band. The grid area is white, with one box per filter group: outlined, or borderless beige. A sand trust or USP block sits between product rows. Below the grid, the SEO text and the FAQ sit in beige boxes. Product tiles keep their white info area and border.
+**Tinted tile bands.** A section of repeated cards may sit on a full-width beige or sand band, with its content in the container, to set it apart from the white around it (Figma "Tile's on colored background"). The cards on it are white without a border. A band is a colour only: its images and cards stay contained.
+
+**Category grid.** The intro is a beige band. The grid area is white, with one box per filter group: outlined, or borderless beige. A sand trust or USP block sits between product rows. Below the grid, the FAQ is a list of outlined rows and the SEO text sits unboxed, clamped with the theme's "Lees meer" fade (`bg-gradient-showMore` over the last lines, then a tertiary "Lees meer" button). Product tiles on the white grid keep their white info area and outline; on a tinted band they lose the outline.
 
 - `shadow-1px` (inset 0 0 0 1px green) is a crisp selected or hover outline without layout shift. The product tile uses it together with the green hover border.
-- `shadow-arrow` (0 4px 12px rgb(0 0 0 / 0.16)) is for floating elements only: slider arrows, dropdowns and overlays.
+- `shadow-arrow` (0 4px 12px rgb(0 0 0 / 0.16)) is for floating elements only: carousel arrows (Components → Carousel arrows), dropdowns and overlays.
 - There are no decorative drop shadows on cards, no heavy or dark shadows, no glassmorphism, and the theme is always light.
 
 ## Shapes
@@ -893,7 +896,7 @@ The base `.btn` is `flex items-center justify-center gap-2`, 16px semibold, `rou
 - **Floating label** (`field-floating`, input before label in the markup): the label sits inside the field (`p-3.5`, 16px) and, on focus or once filled, scales to 75% at 65% opacity and moves up; the input switches to `pt-5 pb-1.5`. The transition is 100ms `ease-in-out` on opacity and transform.
 - **`aria-invalid:`** is a theme variant for `[aria-invalid="true"]`, used for the error border and ring on a flagged field.
 - **Checkbox and radio:** 20px, a 1px light-grey border, grey on hover and focus, and a 4px grey focus ring. When checked they fill #809700 with a white glyph and a transparent border. A disabled checked control is a white box with a light-grey border and a light-grey glyph. The checkbox is `rounded-1`, the radio `rounded-full`. The label is 16px regular green; give the whole row a comfortable hit area.
-- **Selected card** (option tiles): #F8FCE6 background with a #809700 border.
+- **Selected card** (option tiles): #F8FCE6 background with a #809700 border. The base theme has no class for it (the bamboo decking calculator writes it with `has-[:checked]:` variants, a module skin), so prototypes use the skeleton's `.option-card`: a `label.option-card` holding a visually hidden radio or checkbox (`sr-only`) and the card's content. It turns selected when its input is checked and shows the focus ring when the input has keyboard focus. Never write the `has-[…]:` variants yourself.
 
 ### Messages
 
@@ -901,7 +904,33 @@ The base `.btn` is `flex items-center justify-center gap-2`, 16px semibold, `rou
 
 ### Product tile
 
-The product tile is a 1px light-grey border with `rounded-2` and `overflow-hidden`. On hover it gets a green border plus `shadow-1px`, with colour and shadow transitions. It has a 16:9 image and a **white info area** (`py-3 px-4`) holding the name (15/16px semibold, clamped to 3 lines), up to three dash-prefixed USPs in 14px, and the price. The price sits in the **orange price box**: white weight-900 text on #FF8000, `py-1 px-2`, rotated −2°. The old price is struck through, 16px medium, with no box and no rotation. In related-product sliders the tile gets a full-width primary button. The tile keeps its border on every background (Elevation & Depth).
+The product tile is a 1px light-grey border with `rounded-2` and `overflow-hidden`. On hover it gets a green border plus `shadow-1px`, with colour and shadow transitions. It has a 16:9 image and a **white info area** (`py-3 px-4`) holding the name (15/16px semibold, clamped to 3 lines), up to three dash-prefixed USPs in 14px, and the price. The price sits in the **orange price box**: white weight-900 text on #FF8000, `py-1 px-2`, rotated −2°. The old price is struck through, 16px medium, with no box and no rotation, before the price. In related-product sliders the tile gets a full-width primary button. On white the tile has its 1px light-grey outline; on a beige or sand band it has none (Elevation & Depth → The box decision).
+
+### Price box
+
+The price box scales with its component; pick the size by component, not from the global `price` token. Every chip is `bg-price` with white text, tilted −2°, and the old price is never in a chip.
+
+| Component | Chip | Source |
+|---|---|---|
+| Product tile | the theme's `.price-container` > `.price`: 16px weight 900, `py-1 px-2` (Figma draws `p-2`); the old price 16px medium, struck through, before it | `product-prices.css`, Figma `1358:30459` |
+| Image tile and promo label | "vanaf" `text-4.75` semibold, then the amount `text-6` black (24px), `px-2 py-1.5`, `gap-1.5` between them; below `md` "vanaf" is `text-3.75` and the amount `text-5` | the theme's promo-banner label, Figma `1530:37200` |
+| Product page buy box | the largest on the page: the final price `text-5`, `text-6` from `md`; the old price 16px semibold green, 20px from `md`, struck through | `product-prices.css` (`.buy-box-wrapper`) |
+
+Figma draws the image-tile amount at 28px with `py-2.5`; the theme's promo label, which the tile reuses, sets 24px and `py-1.5`, and the theme wins. Use the table's classes on a `span` chip where the theme markup doesn't apply (the image tile, a promo label).
+
+### Content patterns
+
+The house Figma file (Tuinmaximaal website → Content (Desktop), node `1358:29886`) settles these patterns. Its values are mapped onto the theme's scale; where Figma goes past the 28px cap, the nearest step is used.
+
+- **Content block (text + image, on colour).** Figma `1358:30318` and `1358:30329`. One beige box, `rounded-2` and `overflow-hidden`, split in half (`md:grid-cols-2`). The text side has generous padding (`p-6`, `p-12` from `md`, `p-20` (80px) from `xl`) and holds a heading in `text-7 font-black` (Figma draws 32px/40), body text, and a primary button beside a secondary one. The image fills the other half up to the box edges, with no padding (`size-full object-cover`), so it is rounded only on its outer corners by the box's `overflow-hidden`. The image may sit left or right. This is the "one block that needs emphasis" with an image; never a padded box with a separately rounded image inside it.
+- **Image tile.** Figma `1530:37197` and the homepage's category entries. A contained lifestyle photo with `rounded-2` and `overflow-hidden`, with a soft dark scrim behind the text (`bg-gradient-to-br from-tmx-primary-black/60 via-transparent to-transparent` over the top left, and the same `to-tr` over the bottom left). It holds a white heading top left in `text-7 font-black` (the promo banner's title; Figma draws 30px), a price chip under it at the image-tile size (Price box), and a default-size primary button bottom left ("Stel nu samen", "Bekijk producten"). A tile without a price ("Losse onderdelen", "Zelf monteren of via partner?") keeps the heading and the button. Two or six tiles in the intro are the big moment of a home or category page. The scrim is required: white text never sits on a bare photo.
+- **Intro link card.** Figma `1358:30013`. In the beige intro: a beige card with a sand border on three sides (`border-2 border-r-0 border-tmx-secondary-sand`; Figma draws 1.5px), `rounded-2` and `overflow-hidden`. The text side is `p-6`, with a `text-5 font-bold` title and an arrow link, and a photo sits flush on the right edge, rounded on its outer corners only. Three in a row from `lg`. It is the one bordered coloured card. Figma colours the link #8BA407, which is 2.7:1 on beige; use green text with the arrow, and #8BA407 on hover only.
+- **Blog tile.** A repeated card: a photo at 16:9 (`aspect-video`), rounded at the top, then `p-4` with a category pill (`bg-tmx-neutral-lightestGrey rounded-full text-3.5 px-3 py-1`), a `text-4 font-semibold` title, a `text-3.5` excerpt clamped to 3 lines (`line-clamp-3`) and a tertiary "Lees verder →" link. Outlined on white, borderless on a tinted band.
+- **Review cards.** Outlined white cards on white, with the Trustpilot-style rating summary above them as an outlined pill (`rounded-full border border-tmx-neutral-lightGrey`).
+- **Quote.** A beige surface box with the quote in `text-4.5 font-semibold`, beside a column of running text.
+- **FAQ.** A list of outlined rows on white (`gap-3`), each a question with a chevron that opens its answer (Motion).
+- **Carousel arrows.** The theme's slider buttons: `size-12` white squares at 90% opacity (`bg-white/90`), `rounded-1`, `shadow-arrow`, a green arrow icon, placed over the images. Figma adds a light-grey border; the theme has none, and the theme wins.
+- **Buttons.** Default size everywhere (48px high), a primary beside a secondary where a block offers two actions (Buttons).
 
 ### Heading and paragraph highlight
 
@@ -940,7 +969,8 @@ Motion confirms a state change (hover, focus, open/close, selection); it never p
 - Use orange only for the price box, heading and paragraph highlights, badges and active states, always with the −2° tilt where the theme uses it.
 - Lead with proof at decision points: USP check lists, specs, reviews, guarantee and delivery terms.
 - Keep surfaces light and warm, with green for structure and text. Separate content with whitespace first, then a change of surface, and a border only where Elevation & Depth gives one.
-- Open every page with a beige intro, keep all content and images inside the container, and split the page into boxes, one per job, on the white, beige and sand ladder (Elevation & Depth).
+- Open every page with a beige intro, keep all content and images inside the container, and make the box decision per block: repeated cards as cards, one emphasised block as a beige box, everything else unboxed on whitespace (Elevation & Depth → The box decision).
+- Size the price box by its component (Components → Price box).
 - Give every page one big moment for its register, and compose around it with the expression options (Overview → Expression): large contained lifestyle photography, editorial and asymmetric layouts, a bolder heading highlight, contrast in scale and density.
 - Test with long German and French strings, and at 375px, `md` and `xl`.
 
@@ -951,7 +981,9 @@ Motion confirms a state change (hover, focus, open/close, selection); it never p
 - Don't put coloured side stripes (`border-l-4` and similar) on cards, alerts or messages.
 - Don't use gradient text, decorative gradients, glassmorphism, neon accents or a dark theme.
 - Don't nest a box in a box of the same surface, don't nest more than one level deep, and don't build endless identical card grids.
-- Don't wrap the whole page in one box. Don't border a white container on a white page unless it is an outlined box, don't border a coloured box anywhere, and don't wrap other boxes or cards in an outlined box.
+- Don't wrap the whole page in one box, and don't box running text on a white page just to separate it. Don't border a white container on a white page unless it is a repeated card or an outlined filter box, don't border a card on a tinted band, and don't border a coloured box anywhere (the intro link card excepted).
+- Don't put a padded content block around a separately rounded image; the image fills its half up to the box edges.
+- Don't put white text on a photo without a scrim. (The scrim is the one functional gradient; decorative gradients stay out.)
 - Don't let images or content bleed past the container, and don't use bone or any surface other than white, beige, sand and one green block.
 - Don't put an eyebrow or kicker label above a heading, and don't use `btn-size-lg`.
 - Don't use arbitrary values, new colours, other fonts or type sizes above 28px.

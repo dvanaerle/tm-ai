@@ -534,11 +534,17 @@ const prototypeCss = [
     '@layer components {',
     ...indent(Object.entries(productTile).map(([selector, classes]) => `${selector} { @apply ${classes.join(' ')}; }`)),
     '}',
-    '/* Prototype additions: a visible focus ring (the theme only swaps the fill), and a highlight that rotates on an inline phrase. */',
+    '/* Prototype additions: a visible focus ring (the theme only swaps the fill), a highlight that rotates on an inline phrase,',
+    '   and the selected card (DESIGN.md → Forms), which the base theme has no class for: `label.option-card` around an `sr-only` input. */',
     '@layer components {',
     ...indent([
         '.btn { @apply focus-visible:ring-4 focus-visible:ring-form-input/50; }',
         '.heading-highlight { @apply inline-block; }',
+        '.option-card { @apply cursor-pointer rounded-2 border border-tmx-neutral-lightGrey bg-white transition-colors; }',
+        '.option-card:hover { @apply border-tmx-neutral-grey; }',
+        '.option-card:has(input:checked) { @apply border-tmx-primary-lighterGreen bg-tmx-primary-lighterGreenSubtle; }',
+        '.option-card:has(input:focus-visible) { @apply ring-4 ring-form-input/50; }',
+        '.option-card:has(input:disabled) { @apply cursor-not-allowed opacity-50; }',
     ]),
     '}',
 ].join('\n');
