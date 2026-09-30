@@ -1,0 +1,327 @@
+<!-- slot: plan -->
+Question: approved example of a category landing: /schuifwand round 4, variant A, cleaned against the redesign rules. Goal: pick the right wall and start its configurator. Audience: owners of an overkapping validating fit, look and colour, mostly mobile. Primary action: configurator (Stel nu samen). N: 1. Source: /schuifwand, keep the copy.
+<!-- slot: title -->
+Schuifwanden (approved category landing)
+<!-- slot: variants -->
+[
+  {
+    "key": "A",
+    "name": "Naast elkaar",
+    "tradeoff": "Approved category landing: calm intro, sticky product tabs, one light content block per product, then the comparison table, the benefits on beige and the side walls on sand."
+  }
+]
+<!-- slot: head -->
+<style type="text/tailwindcss">
+@layer base { html { @apply motion-safe:scroll-smooth; } }
+</style>
+<!-- slot: main -->
+<section data-variant="A">
+    <div>
+        <!-- Beige intro: the H1 and intro beside a modest photo, never large image tiles. -->
+        <div class="bg-container-beige">
+            <div class="container py-8 md:py-10 grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
+                <div class="flex flex-col gap-2">
+                    <h1>Gumax<sup>®</sup> schuifwanden voor uw overkapping</h1>
+                    <p>Een Gumax<sup>®</sup> schuifwand stelt u zelf samen aan de hand van de onderstaande opties. Meer beschutting, privacy, schaduw of bescherming tegen insecten? Dankzij de verschillende opties geniet u op ieder moment van de dag van optimaal comfort onder uw overkapping. De schuifwanden passen in hetzelfde railsysteem, waarin u ze soepel verschuift.</p>
+                </div>
+                <img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/Categoriepagina/Schuifwanden/modular-system-combine-gumax-sliding-doors.jpg" alt="Modulair systeem" class="w-full h-56 md:h-72 object-cover rounded-2">
+            </div>
+        </div>
+        <!-- Sticky product tabs: thumbnail (from sm), name and "Vanaf" price; the active tab gets the beige pill. -->
+        <nav aria-label="Alle Gumax® schuifwanden" class="sticky top-0 z-40 bg-white border-b border-tmx-neutral-lightGrey">
+            <div class="container">
+                <ul class="flex gap-1 md:gap-2 overflow-x-auto snap-x py-2" data-tabs>
+                    <li class="shrink-0 snap-start">
+                        <a href="#schuifwand-glas" class="flex items-center gap-3 min-h-11 h-full px-3 py-2 rounded-2 transition-colors hover:text-tmx-primary-lighterGreen bg-container-beige" aria-current="true">
+                            <img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/Categoriepagina/Schuifwanden/gumax-glass-sliding-doors.jpg" alt="" class="hidden sm:block w-16 aspect-video object-cover rounded-1">
+                            <span class="flex flex-col"><span class="text-3.5 md:text-4 font-semibold whitespace-nowrap">Glazen schuifwand</span><span class="text-3 md:text-3.5 whitespace-nowrap">Vanaf € 70</span></span>
+                        </a>
+                    </li>
+                    <li class="shrink-0 snap-start">
+                        <a href="#schuifwand-steel" class="flex items-center gap-3 min-h-11 h-full px-3 py-2 rounded-2 transition-colors hover:text-tmx-primary-lighterGreen">
+                            <img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/Categoriepagina/Schuifwanden/gumax-steel-look-glass-sliding-doors.jpg" alt="" class="hidden sm:block w-16 aspect-video object-cover rounded-1">
+                            <span class="flex flex-col"><span class="text-3.5 md:text-4 font-semibold whitespace-nowrap">Steel Look</span><span class="text-3 md:text-3.5 whitespace-nowrap">Vanaf € 57,75</span></span>
+                        </a>
+                    </li>
+                    <li class="shrink-0 snap-start">
+                        <a href="#schuifwand-shading" class="flex items-center gap-3 min-h-11 h-full px-3 py-2 rounded-2 transition-colors hover:text-tmx-primary-lighterGreen">
+                            <img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/Categoriepagina/Schuifwanden/gumax-shading-panel.jpg" alt="" class="hidden sm:block w-16 aspect-video object-cover rounded-1">
+                            <span class="flex flex-col"><span class="text-3.5 md:text-4 font-semibold whitespace-nowrap">Shading Panel</span><span class="text-3 md:text-3.5 whitespace-nowrap">Vanaf € 314</span></span>
+                        </a>
+                    </li>
+                    <li class="shrink-0 snap-start">
+                        <a href="#schuifwand-hor" class="flex items-center gap-3 min-h-11 h-full px-3 py-2 rounded-2 transition-colors hover:text-tmx-primary-lighterGreen">
+                            <img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/Categoriepagina/Schuifwanden/Hor_schuideur.jpg" alt="" class="hidden sm:block w-16 aspect-video object-cover rounded-1">
+                            <span class="flex flex-col"><span class="text-3.5 md:text-4 font-semibold whitespace-nowrap">Hor schuifdeur</span><span class="text-3 md:text-3.5 whitespace-nowrap">Vanaf € 146</span></span>
+                        </a>
+                    </li>
+                    <li class="shrink-0 snap-start">
+                        <a href="#zijwanden" class="flex items-center gap-3 min-h-11 h-full px-3 py-2 rounded-2 transition-colors hover:text-tmx-primary-lighterGreen">
+                            <img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/Categoriepagina/Schuifwanden/Wall_System_Anthracite_Grey-Beige.jpg" alt="" class="hidden sm:block w-16 aspect-video object-cover rounded-1">
+                            <span class="flex flex-col"><span class="text-3.5 md:text-4 font-semibold whitespace-nowrap">Zijwanden</span></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- One light content block per product (DESIGN.md → Content patterns → Content block). -->
+        <div class="container py-8 md:py-10 flex flex-col gap-6 md:gap-8">
+            <article id="schuifwand-glas" class="content-block scroll-mt-28">
+                <div class="content-block-media"><img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/Categoriepagina/Schuifwanden/glass-sliding-doors-comfortable-all-year-round.jpg" alt="Gumax® glazen schuifwand"></div>
+                <div class="content-block-text">
+                    <div class="flex flex-col items-start gap-3">
+                        <h2 class="text-7 font-black break-words hyphens-auto">Gumax<sup>®</sup> glazen schuifwand</h2>
+                        <span class="inline-flex items-baseline gap-1.5 w-fit bg-price text-white px-2 py-1.5 -rotate-2"><span class="text-3.75 md:text-4.75 font-semibold">Vanaf</span><span class="text-5 md:text-6 font-black whitespace-nowrap">€ 70</span></span>
+                    </div>
+                    <p>Door de veelzijdigheid van de Gumax<sup>®</sup> glazen schuifwand zit u er altijd comfortabel en droog bij.</p>
+                    <ul class="list-usps">
+                        <li><span class="list-text"><strong class="font-semibold">Geniet nog langer</strong> van uw tuin</span></li>
+                        <li><span class="list-text"><strong class="font-semibold">Isolerende werking</strong> doordat warmte blijft hangen</span></li>
+                        <li><span class="list-text"><strong class="font-semibold">Modulair uitbreidbaar</strong> met accessoires</span></li>
+                        <li><span class="list-text"><strong class="font-semibold">Eenvoudig verschuifbaar</strong> via het railsysteem</span></li>
+                        <li><span class="list-text"><strong class="font-semibold">Combineerbaar</strong> met Gumax<sup>®</sup> Shading Panel &amp; Steel Look</span></li>
+                    </ul>
+                    <div class="content-block-actions"><a class="btn btn-primary" href="https://m2stagingnl.intern.systems/glazen-schuifwand#productbuilder">Stel nu samen</a><a class="btn btn-secondary" href="https://m2stagingnl.intern.systems/glazen-schuifwand/productinformatie">Meer informatie</a></div>
+                </div>
+            </article>
+            <article id="schuifwand-steel" class="content-block --media-right scroll-mt-28">
+                <div class="content-block-media"><img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/Categoriepagina/Schuifwanden/configure-your-steel-look-sliding-door.jpg" alt="Kies uw Gumax® Steel Look glazen schuifwand"></div>
+                <div class="content-block-text">
+                    <div class="flex flex-col items-start gap-3">
+                        <h2 class="text-7 font-black break-words hyphens-auto">Gumax<sup>®</sup> Steel Look glazen schuifwand</h2>
+                        <span class="inline-flex items-baseline gap-1.5 w-fit bg-price text-white px-2 py-1.5 -rotate-2"><span class="text-3.75 md:text-4.75 font-semibold">Vanaf</span><span class="text-5 md:text-6 font-black whitespace-nowrap">€ 57,75</span></span>
+                    </div>
+                    <p>Met een Gumax<sup>®</sup> Steel Look glazen schuifwand voor buiten geeft u in een handomdraai een luxe, industriële look aan uw overkapping als verlengstuk van uw woning.</p>
+                    <ul class="list-usps">
+                        <li><span class="list-text"><strong class="font-semibold">Geef een industriële look</strong> aan uw overkapping</span></li>
+                        <li><span class="list-text"><strong class="font-semibold">Makkelijk en snel monteren</strong> met meettools</span></li>
+                        <li><span class="list-text"><strong class="font-semibold">Stevige bevestiging</strong> dankzij 3M tape</span></li>
+                        <li><span class="list-text">Kies uit <strong class="font-semibold">3- of 4-vlakverdeling</strong></span></li>
+                        <li><span class="list-text"><strong class="font-semibold">Perfecte afwerking</strong> inclusief eindkapjes</span></li>
+                    </ul>
+                    <div class="content-block-actions"><a class="btn btn-primary" href="https://m2stagingnl.intern.systems/steel-look-glazen-schuifwand#productbuilder">Stel nu samen</a><a class="btn btn-secondary" href="https://m2stagingnl.intern.systems/steel-look-glazen-schuifwand/productinformatie">Meer informatie</a></div>
+                </div>
+            </article>
+            <article id="schuifwand-shading" class="content-block scroll-mt-28">
+                <div class="content-block-media"><img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/Categoriepagina/Schuifwanden/configure-your-shading-panel.jpg" alt="Kies uw Gumax® Shading Panel"></div>
+                <div class="content-block-text">
+                    <div class="flex flex-col items-start gap-3">
+                        <h2 class="text-7 font-black break-words hyphens-auto">Gumax<sup>®</sup> Shading Panel</h2>
+                        <span class="inline-flex items-baseline gap-1.5 w-fit bg-price text-white px-2 py-1.5 -rotate-2"><span class="text-3.75 md:text-4.75 font-semibold">Vanaf</span><span class="text-5 md:text-6 font-black whitespace-nowrap">€ 314</span></span>
+                    </div>
+                    <p>Dankzij Gumax<sup>®</sup> Shading Panels heeft u eenvoudig de gewenste hoeveelheid schaduw, beschutting en privacy onder uw overkapping.</p>
+                    <ul class="list-usps">
+                        <li><span class="list-text"><strong class="font-semibold">Geef een industriële look</strong> aan uw overkapping</span></li>
+                        <li><span class="list-text"><strong class="font-semibold">Optimale luchtstromen</strong> bepalen</span></li>
+                        <li><span class="list-text"><strong class="font-semibold">Naar eigen smaak samenstellen</strong> in verschillende kleuren</span></li>
+                        <li><span class="list-text"><strong class="font-semibold">Eenvoudig verschuifbaar</strong> via het railsysteem</span></li>
+                        <li><span class="list-text"><strong class="font-semibold">Combineerbaar</strong> met Gumax<sup>®</sup> glazen schuifwand (met of zonder Steel Look)</span></li>
+                    </ul>
+                    <div class="content-block-actions"><a class="btn btn-primary" href="https://m2stagingnl.intern.systems/shading-panel#productbuilder">Stel nu samen</a><a class="btn btn-secondary" href="https://m2stagingnl.intern.systems/shading-panel/productinformatie">Meer informatie</a></div>
+                </div>
+            </article>
+            <article id="schuifwand-hor" class="content-block --media-right scroll-mt-28">
+                <div class="content-block-media"><img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/Categoriepagina/Schuifwanden/Hor_schuifdeur_2.jpg" alt="Gumax® Hor schuifdeur"></div>
+                <div class="content-block-text">
+                    <div class="flex flex-col items-start gap-3">
+                        <h2 class="text-7 font-black break-words hyphens-auto">Gumax<sup>®</sup> hor schuifdeur</h2>
+                        <span class="inline-flex items-baseline gap-1.5 w-fit bg-price text-white px-2 py-1.5 -rotate-2"><span class="text-3.75 md:text-4.75 font-semibold">Vanaf</span><span class="text-5 md:text-6 font-black whitespace-nowrap">€ 146</span></span>
+                    </div>
+                    <p>Houd insecten buiten uw overkapping en laat frisse lucht binnen met de stevige Gumax<sup>®</sup> hordeur met aluminium frame en een strak gespannen horgaas.</p>
+                    <ul class="list-usps">
+                        <li><span class="list-text"><strong class="font-semibold">Houd insecten buiten</strong> en laat frisse lucht binnen</span></li>
+                        <li><span class="list-text"><strong class="font-semibold">Stevige hordeur</strong> met aluminium frame</span></li>
+                        <li><span class="list-text"><strong class="font-semibold">Kwalitatief horgaas</strong> met heldere doorkijk</span></li>
+                        <li><span class="list-text"><strong class="font-semibold">Extra strak gespannen gaas,</strong> bevestigd in het frame</span></li>
+                        <li><span class="list-text"><strong class="font-semibold">Eenvoudig plaatsen en verschuiven</strong> in het railsysteem</span></li>
+                    </ul>
+                    <div class="content-block-actions"><a class="btn btn-primary" href="https://m2stagingnl.intern.systems/hor-schuifdeuren">Stel nu samen</a><a class="btn btn-secondary" href="https://m2stagingnl.intern.systems/glazen-schuifwand/hor-schuifdeur">Meer informatie</a></div>
+                </div>
+            </article>
+        </div>
+        <!-- Comparison: need rows with ticks at every width, colours from md, prices and buttons from lg. -->
+        <div class="container py-12 flex flex-col gap-6">
+            <h2>Alle Gumax<sup>®</sup> schuifwanden</h2>
+            <div class="relative">
+                <table class="w-full table-fixed border-collapse text-left">
+                    <caption class="sr-only">Alle Gumax<sup>®</sup> schuifwanden</caption>
+                    <thead>
+                        <tr>
+                            <td class="w-2/5 md:w-1/4"></td>
+                            <th scope="col" class="align-top font-normal px-1 md:px-3 pb-4">
+                                <a href="#schuifwand-glas" class="flex flex-col gap-2 hover:text-tmx-primary-lighterGreen transition-colors"><img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/Categoriepagina/Schuifwanden/gumax-glass-sliding-doors.jpg" alt="" class="w-full aspect-video object-cover rounded-1 md:rounded-2"><span class="text-3 md:text-4 font-semibold break-words hyphens-auto">Glazen schuifwand</span></a>
+                                <div class="hidden lg:block pt-2"><div class="price-container w-fit"><span class="price whitespace-nowrap">Vanaf € 70</span></div></div>
+                            </th>
+                            <th scope="col" class="align-top font-normal px-1 md:px-3 pb-4">
+                                <a href="#schuifwand-steel" class="flex flex-col gap-2 hover:text-tmx-primary-lighterGreen transition-colors"><img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/Categoriepagina/Schuifwanden/gumax-steel-look-glass-sliding-doors.jpg" alt="" class="w-full aspect-video object-cover rounded-1 md:rounded-2"><span class="text-3 md:text-4 font-semibold break-words hyphens-auto">Steel Look</span></a>
+                                <div class="hidden lg:block pt-2"><div class="price-container w-fit"><span class="price whitespace-nowrap">Vanaf € 57,75</span></div></div>
+                            </th>
+                            <th scope="col" class="align-top font-normal px-1 md:px-3 pb-4">
+                                <a href="#schuifwand-shading" class="flex flex-col gap-2 hover:text-tmx-primary-lighterGreen transition-colors"><img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/Categoriepagina/Schuifwanden/gumax-shading-panel.jpg" alt="" class="w-full aspect-video object-cover rounded-1 md:rounded-2"><span class="text-3 md:text-4 font-semibold break-words hyphens-auto">Shading Panel</span></a>
+                                <div class="hidden lg:block pt-2"><div class="price-container w-fit"><span class="price whitespace-nowrap">Vanaf € 314</span></div></div>
+                            </th>
+                            <th scope="col" class="align-top font-normal px-1 md:px-3 pb-4">
+                                <a href="#schuifwand-hor" class="flex flex-col gap-2 hover:text-tmx-primary-lighterGreen transition-colors"><img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/Categoriepagina/Schuifwanden/Hor_schuideur.jpg" alt="" class="w-full aspect-video object-cover rounded-1 md:rounded-2"><span class="text-3 md:text-4 font-semibold break-words hyphens-auto">Hor schuifdeur</span></a>
+                                <div class="hidden lg:block pt-2"><div class="price-container w-fit"><span class="price whitespace-nowrap">Vanaf € 146</span></div></div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-t border-tmx-neutral-lightGrey">
+                            <th scope="row" class="py-2.5 pr-2 font-normal"><span class="flex items-center gap-2 md:gap-3 text-3.5 md:text-4 font-semibold break-words hyphens-auto"><span class="hidden sm:flex size-8 shrink-0 rounded-1 bg-tmx-secondary-sand items-center justify-center"><svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v5c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10V6l-8-3Z"/></svg></span>Beschutting</span></th>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-primary-lighterGreen" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 18.33a8.33 8.33 0 1 1 0-16.66 8.33 8.33 0 0 1 0 16.66Zm-.83-5 5.89-5.9-1.18-1.17-4.71 4.71-2.36-2.36-1.18 1.18 3.54 3.54Z"/></svg><span class="sr-only">ja</span></td>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-primary-lighterGreen" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 18.33a8.33 8.33 0 1 1 0-16.66 8.33 8.33 0 0 1 0 16.66Zm-.83-5 5.89-5.9-1.18-1.17-4.71 4.71-2.36-2.36-1.18 1.18 3.54 3.54Z"/></svg><span class="sr-only">ja</span></td>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-primary-lighterGreen" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 18.33a8.33 8.33 0 1 1 0-16.66 8.33 8.33 0 0 1 0 16.66Zm-.83-5 5.89-5.9-1.18-1.17-4.71 4.71-2.36-2.36-1.18 1.18 3.54 3.54Z"/></svg><span class="sr-only">ja</span></td>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-neutral-grey" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6.5 10h7"/></svg><span class="sr-only">nee</span></td>
+                        </tr>
+                        <tr class="border-t border-tmx-neutral-lightGrey">
+                            <th scope="row" class="py-2.5 pr-2 font-normal"><span class="flex items-center gap-2 md:gap-3 text-3.5 md:text-4 font-semibold break-words hyphens-auto"><span class="hidden sm:flex size-8 shrink-0 rounded-1 bg-tmx-secondary-sand items-center justify-center"><svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3l18 18"/><path d="M10.6 5.1A10 10 0 0 1 12 5c6 0 9.5 7 9.5 7a17 17 0 0 1-2.9 3.7M6.6 6.6C3.9 8.3 2.5 12 2.5 12S6 19 12 19a9.6 9.6 0 0 0 5.4-1.6"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg></span>Privacy</span></th>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-neutral-grey" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6.5 10h7"/></svg><span class="sr-only">nee</span></td>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-neutral-grey" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6.5 10h7"/></svg><span class="sr-only">nee</span></td>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-primary-lighterGreen" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 18.33a8.33 8.33 0 1 1 0-16.66 8.33 8.33 0 0 1 0 16.66Zm-.83-5 5.89-5.9-1.18-1.17-4.71 4.71-2.36-2.36-1.18 1.18 3.54 3.54Z"/></svg><span class="sr-only">ja</span></td>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-neutral-grey" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6.5 10h7"/></svg><span class="sr-only">nee</span></td>
+                        </tr>
+                        <tr class="border-t border-tmx-neutral-lightGrey">
+                            <th scope="row" class="py-2.5 pr-2 font-normal"><span class="flex items-center gap-2 md:gap-3 text-3.5 md:text-4 font-semibold break-words hyphens-auto"><span class="hidden sm:flex size-8 shrink-0 rounded-1 bg-tmx-secondary-sand items-center justify-center"><svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span>Schaduw</span></th>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-neutral-grey" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6.5 10h7"/></svg><span class="sr-only">nee</span></td>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-neutral-grey" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6.5 10h7"/></svg><span class="sr-only">nee</span></td>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-primary-lighterGreen" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 18.33a8.33 8.33 0 1 1 0-16.66 8.33 8.33 0 0 1 0 16.66Zm-.83-5 5.89-5.9-1.18-1.17-4.71 4.71-2.36-2.36-1.18 1.18 3.54 3.54Z"/></svg><span class="sr-only">ja</span></td>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-neutral-grey" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6.5 10h7"/></svg><span class="sr-only">nee</span></td>
+                        </tr>
+                        <tr class="border-t border-tmx-neutral-lightGrey">
+                            <th scope="row" class="py-2.5 pr-2 font-normal"><span class="flex items-center gap-2 md:gap-3 text-3.5 md:text-4 font-semibold break-words hyphens-auto"><span class="hidden sm:flex size-8 shrink-0 rounded-1 bg-tmx-secondary-sand items-center justify-center"><svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8a4 4 0 1 1 8 0"/><rect x="7" y="8" width="10" height="11" rx="5"/><path d="M12 11v8M3 12h4M17 12h4M4 7l3 2M20 7l-3 2M4 18l3-2M20 18l-3-2"/></svg></span>Bescherming tegen insecten</span></th>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-neutral-grey" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6.5 10h7"/></svg><span class="sr-only">nee</span></td>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-neutral-grey" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6.5 10h7"/></svg><span class="sr-only">nee</span></td>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-neutral-grey" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6.5 10h7"/></svg><span class="sr-only">nee</span></td>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-primary-lighterGreen" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 18.33a8.33 8.33 0 1 1 0-16.66 8.33 8.33 0 0 1 0 16.66Zm-.83-5 5.89-5.9-1.18-1.17-4.71 4.71-2.36-2.36-1.18 1.18 3.54 3.54Z"/></svg><span class="sr-only">ja</span></td>
+                        </tr>
+                        <tr class="border-t border-tmx-neutral-lightGrey">
+                            <th scope="row" class="py-2.5 pr-2 font-normal"><span class="flex items-center gap-2 md:gap-3 text-3.5 md:text-4 font-semibold break-words hyphens-auto"><span class="hidden sm:flex size-8 shrink-0 rounded-1 bg-tmx-secondary-sand items-center justify-center"><svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5 12 5s9.5 7 9.5 7-3.5 7-9.5 7-9.5-7-9.5-7Z"/><circle cx="12" cy="12" r="3"/></svg></span>Vrij uitzicht</span></th>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-primary-lighterGreen" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 18.33a8.33 8.33 0 1 1 0-16.66 8.33 8.33 0 0 1 0 16.66Zm-.83-5 5.89-5.9-1.18-1.17-4.71 4.71-2.36-2.36-1.18 1.18 3.54 3.54Z"/></svg><span class="sr-only">ja</span></td>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-primary-lighterGreen" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 18.33a8.33 8.33 0 1 1 0-16.66 8.33 8.33 0 0 1 0 16.66Zm-.83-5 5.89-5.9-1.18-1.17-4.71 4.71-2.36-2.36-1.18 1.18 3.54 3.54Z"/></svg><span class="sr-only">ja</span></td>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-neutral-grey" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6.5 10h7"/></svg><span class="sr-only">nee</span></td>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-primary-lighterGreen" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 18.33a8.33 8.33 0 1 1 0-16.66 8.33 8.33 0 0 1 0 16.66Zm-.83-5 5.89-5.9-1.18-1.17-4.71 4.71-2.36-2.36-1.18 1.18 3.54 3.54Z"/></svg><span class="sr-only">ja</span></td>
+                        </tr>
+                        <tr class="hidden md:table-row border-t border-tmx-neutral-lightGrey">
+                            <td></td>
+                            <td class="align-top py-3 px-3"><div class="flex flex-col gap-2"><div class="flex flex-col gap-1"><span class="text-3.5">Handgrepen in 3 kleuren</span><span class="flex flex-wrap gap-1"><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-tmx-neutral-grey" title="mat antraciet · RAL 7016" aria-hidden="true"></span><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-white" title="mat wit · RAL 9016" aria-hidden="true"></span><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-tmx-primary-black" title="mat zwart · RAL 9005" aria-hidden="true"></span></span><span class="sr-only">mat antraciet RAL 7016, mat wit RAL 9016, mat zwart RAL 9005</span></div><div class="flex flex-col gap-1"><span class="text-3.5">Sierstrips in 3 kleuren</span><span class="flex flex-wrap gap-1"><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-tmx-neutral-grey" title="mat antraciet · RAL 7016" aria-hidden="true"></span><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-white" title="mat wit · RAL 9016" aria-hidden="true"></span><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-tmx-primary-black" title="mat zwart · RAL 9005" aria-hidden="true"></span></span><span class="sr-only">mat antraciet RAL 7016, mat wit RAL 9016, mat zwart RAL 9005</span></div></div></td>
+                            <td class="align-top py-3 px-3"><div class="flex flex-col gap-2"><div class="flex flex-col gap-1"><span class="text-3.5">Steel Look strips in 2 kleuren</span><span class="flex flex-wrap gap-1"><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-tmx-neutral-grey" title="mat antraciet · RAL 7016" aria-hidden="true"></span><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-tmx-primary-black" title="mat zwart · RAL 9005" aria-hidden="true"></span></span><span class="sr-only">mat antraciet RAL 7016, mat zwart RAL 9005</span></div></div></td>
+                            <td class="align-top py-3 px-3"><div class="flex flex-col gap-2"><div class="flex flex-col gap-1"><span class="text-3.5">Frame in 3 kleuren</span><span class="flex flex-wrap gap-1"><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-tmx-neutral-grey" title="mat antraciet · RAL 7016" aria-hidden="true"></span><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-white" title="mat wit · RAL 9016" aria-hidden="true"></span><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-tmx-primary-black" title="mat zwart · RAL 9005" aria-hidden="true"></span></span><span class="sr-only">mat antraciet RAL 7016, mat wit RAL 9016, mat zwart RAL 9005</span></div><div class="flex flex-col gap-1"><span class="text-3.5">Lamellen in 5 kleuren</span><span class="flex flex-wrap gap-1"><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-tmx-neutral-grey" title="mat antraciet · RAL 7016" aria-hidden="true"></span><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-white" title="mat wit · RAL 9016" aria-hidden="true"></span><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-tmx-primary-black" title="mat zwart · RAL 9005" aria-hidden="true"></span><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-tmx-primary-brown" title="RAL 1019" aria-hidden="true"></span><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-tmx-neutral-mediumGrey" title="RAL 9007" aria-hidden="true"></span></span><span class="sr-only">mat antraciet RAL 7016, mat wit RAL 9016, mat zwart RAL 9005, RAL 1019, RAL 9007</span></div></div></td>
+                            <td class="align-top py-3 px-3"><div class="flex flex-col gap-2"><div class="flex flex-col gap-1"><span class="text-3.5">Frame in 3 kleuren</span><span class="flex flex-wrap gap-1"><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-tmx-neutral-grey" title="mat antraciet · RAL 7016" aria-hidden="true"></span><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-white" title="mat wit · RAL 9016" aria-hidden="true"></span><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-tmx-primary-black" title="mat zwart · RAL 9005" aria-hidden="true"></span></span><span class="sr-only">mat antraciet RAL 7016, mat wit RAL 9016, mat zwart RAL 9005</span></div></div></td>
+                        </tr>
+                        <tr class="hidden lg:table-row">
+                            <td></td>
+                            <td class="align-top pt-4 px-3"><a class="btn btn-primary w-full" href="https://m2stagingnl.intern.systems/glazen-schuifwand#productbuilder">Stel nu samen</a></td>
+                            <td class="align-top pt-4 px-3"><a class="btn btn-primary w-full" href="https://m2stagingnl.intern.systems/steel-look-glazen-schuifwand#productbuilder">Stel nu samen</a></td>
+                            <td class="align-top pt-4 px-3"><a class="btn btn-primary w-full" href="https://m2stagingnl.intern.systems/shading-panel#productbuilder">Stel nu samen</a></td>
+                            <td class="align-top pt-4 px-3"><a class="btn btn-primary w-full" href="https://m2stagingnl.intern.systems/hor-schuifdeuren">Stel nu samen</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Benefits: "+ Lees meer" for secondary card text, in this one section only. -->
+        <div class="bg-container-beige">
+            <div class="container py-12 flex flex-col gap-6">
+                <h2 class="max-w-3xl">De voordelen van een Gumax<sup>®</sup> schuifwand systeem op maat kopen</h2>
+                <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                    <div class="flex flex-col gap-3 lg:pr-4">
+                        <h3 class="heading-5">Modulair schuifwand systeem</h3>
+                        <p>Een Gumax<sup>®</sup> schuifwand stelt u zelf op maat samen en breidt u later altijd makkelijk uit.</p>
+                        <details class="group">
+                            <summary class="btn btn-tertiary w-fit min-h-11 cursor-pointer list-none"><svg class="size-5 shrink-0 transition-transform duration-200 group-open:rotate-45 motion-reduce:transition-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>Lees meer</span></summary>
+                            <div class="flex flex-col gap-4 pt-4"><p>Wilt u alleen een <a class="underline hover:text-tmx-primary-lighterGreen" href="https://m2stagingnl.intern.systems/glazen-schuifwand">Gumax<sup>®</sup> glazen schuifwand</a> kopen? Of een combinatie van Gumax<sup>®</sup> glazen schuifwanden, Gumax<sup>®</sup> Steel Look glazen schuifwanden, Gumax<sup>®</sup> Shading Panels en een Gumax<sup>®</sup> hor schuifdeur? Wilt u één of meerdere zijkanten van de overkapping afsluiten? U hebt de keuze. Voeg de shading panelen* eenvoudig toe aan het railsysteem en verplaats of verwijder ze wanneer u dat wilt. Heeft u al een Gumax<sup>®</sup> glazen schuifwand en spreekt Steel Look u aan? De strips zijn los verkrijgbaar als <a class="underline hover:text-tmx-primary-lighterGreen" href="https://m2stagingnl.intern.systems/steel-look-glazen-schuifwand?acc_composition=6035#productbuilder">Steel Look pakket</a>. Eenvoudig achteraf te monteren.</p><p class="text-3.5">* Als het aantal glazen schuifwanden en de producten zoals Gumax<sup>®</sup> Shading Panel tezamen meer zijn dan het aantal rails in het railsysteem, dan kunnen niet àlle wanden volledig achter elkaar geplaatst worden.</p></div>
+                        </details>
+                    </div>
+                    <article class="bg-white rounded-2 overflow-hidden flex flex-col">
+                        <img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/Categoriepagina/Schuifwanden/365-days-a-year-enjoy-in-all-weather-conditions.jpg" alt="365 dagen per jaar comfortabel buiten genieten" class="w-full h-48 object-cover">
+                        <div class="p-6 flex flex-col gap-3 grow">
+                            <h3 class="heading-5">365 dagen per jaar comfortabel buiten in de tuin genieten</h3>
+                            <p>Geniet onder alle weersomstandigheden van uw tuin met Gumax<sup>®</sup> een schuifwand.</p>
+                            <details class="group mt-auto">
+                                <summary class="btn btn-tertiary w-fit min-h-11 cursor-pointer list-none"><svg class="size-5 shrink-0 transition-transform duration-200 group-open:rotate-45 motion-reduce:transition-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>Lees meer</span></summary>
+                                <div class="flex flex-col gap-4 pt-4"><p>Is het fris onder de overkapping? Schuif dan eenvoudig één of meerdere panelen dicht. Meer schaduw, beschutting of privacy nodig? Maak dan gebruik van <a class="underline hover:text-tmx-primary-lighterGreen" href="https://m2stagingnl.intern.systems/shading-panel">Gumax<sup>®</sup> Shading Panels</a> en schuif ze eenvoudig op de gewenste plek. Zo is het op ieder moment comfortabel onder uw terrasoverkapping.</p></div>
+                            </details>
+                        </div>
+                    </article>
+                    <article class="bg-white rounded-2 overflow-hidden flex flex-col">
+                        <div class="p-6 flex flex-col gap-3 grow">
+                            <h3 class="heading-5">Kies uw stijl: van basic tot industrieel</h3>
+                            <p>Kies uw stijl met behulp van de verschillende opties en kleuren per schuifwand.</p>
+                            <ul class="flex flex-wrap gap-x-4 gap-y-2"><li class="flex items-center gap-1.5 text-3.5"><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-tmx-neutral-grey" title="mat antraciet · RAL 7016" aria-hidden="true"></span><span>mat antraciet RAL 7016</span></li><li class="flex items-center gap-1.5 text-3.5"><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-white" title="mat wit · RAL 9016" aria-hidden="true"></span><span>mat wit RAL 9016</span></li><li class="flex items-center gap-1.5 text-3.5"><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-tmx-primary-black" title="mat zwart · RAL 9005" aria-hidden="true"></span><span>mat zwart RAL 9005</span></li></ul>
+                            <details class="group mt-auto">
+                                <summary class="btn btn-tertiary w-fit min-h-11 cursor-pointer list-none"><svg class="size-5 shrink-0 transition-transform duration-200 group-open:rotate-45 motion-reduce:transition-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>Lees meer</span></summary>
+                                <div class="flex flex-col gap-4 pt-4"><p>Ga voor een tijdloze look of kies voor een stoere, industriële schuifwand. De kleuren mat antraciet (RAL 7016), mat wit (RAL 9016) en mat zwart (RAL 9005) komen overeen voor de Gumax<sup>®</sup> schuifwanden en terrasoverkappingen.</p></div>
+                            </details>
+                        </div>
+                    </article>
+                    <article class="bg-white rounded-2 overflow-hidden flex flex-col">
+                        <img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/Categoriepagina/Schuifwanden/suitable-for-all-types-of-verandas.jpg" alt="Voor ieder type overkapping" class="w-full h-48 object-cover">
+                        <div class="p-6 flex flex-col gap-3 grow">
+                            <h3 class="heading-5">Voor ieder type overkapping</h3>
+                            <p>Door het tijdloze design en het grote aanbod aan formaten en kleuren zijn Gumax<sup>®</sup> schuifwanden toepasbaar onder vrijwel ieder type overkapping, dus ook houten overkappingen.</p>
+                            <details class="group mt-auto">
+                                <summary class="btn btn-tertiary w-fit min-h-11 cursor-pointer list-none"><svg class="size-5 shrink-0 transition-transform duration-200 group-open:rotate-45 motion-reduce:transition-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>Lees meer</span></summary>
+                                <div class="flex flex-col gap-4 pt-4"><p>Een Steel Look glazen schuifwand vormt een stijlvolle combinatie met een houten overkapping.</p><p>Denk ook aan andere toepassingen van de verschillende soorten schuifpanelen, zoals carports of binnenruimtes, mits:</p><ul class="list-base"><li><span class="list-text">de lengte- en hoogtematen overeenkomen;</span></li><li><span class="list-text">het installeren van een railsysteem mogelijk is.</span></li></ul></div>
+                            </details>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+        <!-- Side walls on a sand band: white cards without a border. -->
+        <div id="zijwanden" class="scroll-mt-28 bg-tmx-secondary-sand">
+            <div class="container py-12 flex flex-col gap-6">
+                <h2>Ontdek Gumax<sup>®</sup> zijwanden</h2>
+                <div class="grid gap-4 md:grid-cols-2">
+                    <article class="bg-white rounded-2 overflow-hidden flex flex-col">
+                        <img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/Categoriepagina/Schuifwanden/Wall_System_Anthracite_Grey-Beige.jpg" alt="Gumax® aluminium zijwand" class="w-full aspect-video object-cover">
+                        <div class="p-6 flex flex-col gap-3 grow">
+                            <h3>Aluminium zijwand</h3>
+                            <p>Een sterke en stijlvolle zijwand die optimale privacy biedt en beschermt tegen wisselende weersomstandigheden.</p>
+                            <div class="mt-auto pt-3 flex flex-wrap gap-2"><a class="btn btn-primary" href="https://m2stagingnl.intern.systems/aluminium-zijwand">Bekijk producten</a><a class="btn btn-secondary" href="https://m2stagingnl.intern.systems/aluminium-zijwand/productinformatie">Meer informatie</a></div>
+                        </div>
+                    </article>
+                    <article class="bg-white rounded-2 overflow-hidden flex flex-col">
+                        <img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/overig/Zijwand-en-spie/ACC-5008.jpg" alt="Polycarbonaat zijwand" class="w-full aspect-video object-cover">
+                        <div class="p-6 flex flex-col gap-3 grow">
+                            <h3>Polycarbonaat zijwand</h3>
+                            <p>Een zijwand die goed afsluit en een zacht, diffuus licht doorlaat. Meer privacy met behoud van een rustige lichtinval.</p>
+                            <div class="mt-auto pt-3 flex flex-wrap gap-2"><a class="btn btn-primary" href="https://m2stagingnl.intern.systems/polycarbonaat-zijwand">Bekijk producten</a><a class="btn btn-secondary" href="https://m2stagingnl.intern.systems/terrasoverkapping/zijwand">Meer informatie</a></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- slot: scripts -->
+<script>
+// Sticky product tabs: the tab of the section in view gets the beige pill and scrolls into view in the tab row.
+// Positions are read on scroll only, never at start-up, when the Tailwind CDN hasn't styled the page yet.
+document.querySelectorAll('[data-tabs]').forEach((list) => {
+    const links = [...list.querySelectorAll('a')];
+    const targets = links.map((a) => document.querySelector(a.hash));
+    let active = links[0];
+    const activate = (link) => {
+        if (link === active) return;
+        active.classList.remove('bg-container-beige');
+        active.removeAttribute('aria-current');
+        link.classList.add('bg-container-beige');
+        link.setAttribute('aria-current', 'true');
+        list.scrollTo({ left: link.parentElement.offsetLeft - list.offsetLeft, behavior: 'smooth' });
+        active = link;
+    };
+    let queued = false;
+    addEventListener('scroll', () => {
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(() => {
+            queued = false;
+            const line = innerHeight * 0.35;
+            const current = targets.findLastIndex((target) => target.getBoundingClientRect().top <= line);
+            activate(links[Math.max(current, 0)]);
+        });
+    }, { passive: true });
+});
+</script>

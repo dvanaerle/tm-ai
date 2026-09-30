@@ -179,7 +179,9 @@ fieldset > legend { @apply float-left w-full; }
    a USP check mark that keeps its size when the text wraps (the theme lets it shrink), a tertiary button without the
    theme's white fill and border, so it reads as a link on every surface, the content block (DESIGN.md → Content patterns),
    which the theme only styles through PageBuilder markup (content-types/page-builder-block-image-with-text.css),
-   and the selected card (DESIGN.md → Forms), which the base theme has no class for: `label.option-card` around an `sr-only` input. */
+   the selected card (DESIGN.md → Forms), which the base theme has no class for: `label.option-card` around an `sr-only` input,
+   and two layout traps: a fieldset that does not shrink below its content, and `sr-only` text escaping an unpositioned
+   scroll container and widening the page (references/build.md → 6. Check before delivering → Build traps). */
 @layer components {
     .btn { @apply focus-visible:ring-4 focus-visible:ring-form-input/50; }
     .heading-highlight { @apply inline-block; }
@@ -187,16 +189,18 @@ fieldset > legend { @apply float-left w-full; }
     .btn-tertiary, .btn-tertiary:hover, .btn-tertiary.--hovered, .btn-tertiary:focus, .btn-tertiary.--focused { @apply bg-transparent border-transparent; }
     .content-block { @apply grid overflow-hidden rounded-2 bg-tmx-secondary-beige md:grid-cols-2; }
     .content-block-text { @apply flex min-w-0 flex-col justify-center gap-5 p-6 md:p-12 xl:p-20; }
-    .content-block-actions { @apply mt-2 flex flex-wrap gap-3 md:gap-5; }
+    .content-block-actions { @apply mt-2 flex flex-wrap gap-2; }
     .content-block-media { @apply relative order-first h-64 md:h-auto md:min-h-80; }
     .content-block.--media-right > .content-block-media { @apply md:order-last; }
     .content-block-media > img, .content-block-media > video, .content-block-media > iframe { @apply absolute inset-0 size-full object-cover; }
     .content-block-play { @apply absolute inset-0 flex items-center justify-center bg-tmx-primary-black/20 text-white; }
-    .option-card { @apply cursor-pointer rounded-2 border border-tmx-neutral-lightGrey bg-white transition-colors; }
+    .option-card { @apply relative cursor-pointer rounded-2 border border-tmx-neutral-lightGrey bg-white transition-colors; }
     .option-card:hover { @apply border-tmx-neutral-grey; }
     .option-card:has(input:checked) { @apply border-tmx-primary-lighterGreen bg-tmx-primary-lighterGreenSubtle; }
     .option-card:has(input:focus-visible) { @apply ring-4 ring-form-input/50; }
     .option-card:has(input:disabled) { @apply cursor-not-allowed opacity-50; }
+    fieldset { @apply min-w-0; }
+    .overflow-auto, .overflow-scroll, .overflow-x-auto, .overflow-x-scroll, .overflow-y-auto, .overflow-y-scroll { @apply relative; }
 }
 /* design-sync:end */
 @media (prefers-reduced-motion: reduce) {
@@ -281,6 +285,16 @@ fieldset > legend { @apply float-left w-full; }
         show(current + (event.key === 'ArrowRight' ? 1 : -1), true);
     });
     show(current, false);
+})();
+// Load lazy images at once, also those a script adds later: automated screenshots don't scroll, so lazy ones stay blank.
+(() => {
+    const eager = (root) => root.querySelectorAll?.('img[loading="lazy"]').forEach((img) => { img.loading = 'eager'; });
+    eager(document);
+    new MutationObserver((records) => records.forEach((record) => record.addedNodes.forEach((node) => {
+        if (node.nodeType !== 1) return;
+        if (node.matches('img[loading="lazy"]')) node.loading = 'eager';
+        eager(node);
+    }))).observe(document.body, { childList: true, subtree: true });
 })();
 </script>
 </body>

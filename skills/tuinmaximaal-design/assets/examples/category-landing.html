@@ -1,0 +1,1695 @@
+<!doctype html>
+<!-- PLAN: Question: approved example of a category landing: /schuifwand round 4, variant A, cleaned against the redesign rules. Goal: pick the right wall and start its configurator. Audience: owners of an overkapping validating fit, look and colour, mostly mobile. Primary action: configurator (Stel nu samen). N: 1. Source: /schuifwand, keep the copy. -->
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PROTOTYPE · Schuifwanden (approved category landing) · Tuinmaximaal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<script>
+// Generated from the Valantic base theme by tools/design-sync/sync.mjs. Do not edit by hand.
+// Load after https://cdn.tailwindcss.com?plugins=forms,typography,container-queries
+tailwind.config = {
+  "theme": {
+    "extend": {
+      "screens": {
+        "500px": "500px",
+        "sm": "640px",
+        "md": "768px",
+        "lg": "1024px",
+        "xl": "1280px",
+        "2xl": "1536px"
+      },
+      "container": {
+        "center": true,
+        "padding": "1rem",
+        "screens": {
+          "xl": "1314px",
+          "2xl": "1314px"
+        }
+      },
+      "spacing": {
+        "0": "0rem",
+        "1": "0.25rem",
+        "2": "0.5rem",
+        "3": "0.75rem",
+        "4": "1rem",
+        "5": "1.25rem",
+        "6": "1.5rem",
+        "7": "1.75rem",
+        "8": "2rem",
+        "9": "2.25rem",
+        "10": "2.5rem",
+        "11": "2.75rem",
+        "12": "3rem",
+        "13": "3.25rem",
+        "14": "3.5rem",
+        "15": "3.75rem",
+        "16": "4rem",
+        "17": "4.25rem",
+        "18": "4.5rem",
+        "19": "4.75rem",
+        "20": "5rem",
+        "21": "5.25rem",
+        "22": "5.5rem",
+        "23": "5.75rem",
+        "24": "6rem",
+        "25": "6.25rem",
+        "26": "6.5rem",
+        "27": "6.75rem",
+        "28": "7rem",
+        "29": "7.25rem",
+        "30": "7.5rem",
+        "31": "7.75rem",
+        "32": "8rem",
+        "33": "8.25rem",
+        "34": "8.5rem",
+        "35": "8.75rem",
+        "36": "9rem",
+        "37": "9.25rem",
+        "38": "9.5rem",
+        "39": "9.75rem",
+        "40": "10rem",
+        "41": "10.25rem",
+        "42": "10.5rem",
+        "43": "10.75rem",
+        "44": "11rem",
+        "45": "11.25rem",
+        "46": "11.5rem",
+        "47": "11.75rem",
+        "48": "12rem",
+        "49": "12.25rem",
+        "50": "12.5rem",
+        "51": "12.75rem",
+        "52": "13rem",
+        "53": "13.25rem",
+        "54": "13.5rem",
+        "55": "13.75rem",
+        "56": "14rem",
+        "57": "14.25rem",
+        "58": "14.5rem",
+        "59": "14.75rem",
+        "60": "15rem",
+        "61": "15.25rem",
+        "62": "15.5rem",
+        "63": "15.75rem",
+        "64": "16rem",
+        "65": "16.25rem",
+        "66": "16.5rem",
+        "67": "16.75rem",
+        "68": "17rem",
+        "69": "17.25rem",
+        "70": "17.5rem",
+        "71": "17.75rem",
+        "72": "18rem",
+        "73": "18.25rem",
+        "74": "18.5rem",
+        "75": "18.75rem",
+        "76": "19rem",
+        "77": "19.25rem",
+        "78": "19.5rem",
+        "79": "19.75rem",
+        "80": "20rem",
+        "81": "20.25rem",
+        "82": "20.5rem",
+        "83": "20.75rem",
+        "84": "21rem",
+        "85": "21.25rem",
+        "86": "21.5rem",
+        "87": "21.75rem",
+        "88": "22rem",
+        "89": "22.25rem",
+        "90": "22.5rem",
+        "91": "22.75rem",
+        "92": "23rem",
+        "93": "23.25rem",
+        "94": "23.5rem",
+        "95": "23.75rem",
+        "96": "24rem",
+        "97": "24.25rem",
+        "98": "24.5rem",
+        "99": "24.75rem",
+        "100": "25rem",
+        "101": "25.25rem",
+        "102": "25.5rem",
+        "103": "25.75rem",
+        "104": "26rem",
+        "105": "26.25rem",
+        "106": "26.5rem",
+        "107": "26.75rem",
+        "108": "27rem",
+        "109": "27.25rem",
+        "110": "27.5rem",
+        "111": "27.75rem",
+        "112": "28rem",
+        "113": "28.25rem",
+        "114": "28.5rem",
+        "115": "28.75rem",
+        "116": "29rem",
+        "117": "29.25rem",
+        "118": "29.5rem",
+        "119": "29.75rem",
+        "120": "30rem",
+        "121": "30.25rem",
+        "122": "30.5rem",
+        "123": "30.75rem",
+        "124": "31rem",
+        "125": "31.25rem",
+        "0.5": "0.125rem",
+        "1.5": "0.375rem",
+        "2.5": "0.625rem",
+        "3.5": "0.875rem",
+        "4.5": "1.125rem",
+        "5.5": "1.375rem",
+        "6.5": "1.625rem",
+        "7.5": "1.875rem",
+        "8.5": "2.125rem",
+        "9.5": "2.375rem",
+        "10.5": "2.625rem",
+        "11.5": "2.875rem",
+        "12.5": "3.125rem",
+        "13.5": "3.375rem",
+        "14.5": "3.625rem",
+        "15.5": "3.875rem",
+        "16.5": "4.125rem",
+        "17.5": "4.375rem",
+        "18.5": "4.625rem",
+        "19.5": "4.875rem",
+        "20.5": "5.125rem",
+        "21.5": "5.375rem",
+        "22.5": "5.625rem",
+        "23.5": "5.875rem",
+        "24.5": "6.125rem",
+        "25.5": "6.375rem",
+        "26.5": "6.625rem",
+        "27.5": "6.875rem",
+        "28.5": "7.125rem",
+        "29.5": "7.375rem",
+        "30.5": "7.625rem",
+        "31.5": "7.875rem",
+        "32.5": "8.125rem",
+        "33.5": "8.375rem",
+        "34.5": "8.625rem",
+        "35.5": "8.875rem",
+        "36.5": "9.125rem",
+        "37.5": "9.375rem",
+        "38.5": "9.625rem",
+        "39.5": "9.875rem",
+        "40.5": "10.125rem",
+        "41.5": "10.375rem",
+        "42.5": "10.625rem",
+        "43.5": "10.875rem",
+        "44.5": "11.125rem",
+        "45.5": "11.375rem",
+        "46.5": "11.625rem",
+        "47.5": "11.875rem",
+        "48.5": "12.125rem",
+        "49.5": "12.375rem",
+        "50.5": "12.625rem",
+        "51.5": "12.875rem",
+        "52.5": "13.125rem",
+        "53.5": "13.375rem",
+        "54.5": "13.625rem",
+        "55.5": "13.875rem",
+        "56.5": "14.125rem",
+        "57.5": "14.375rem",
+        "58.5": "14.625rem",
+        "59.5": "14.875rem",
+        "60.5": "15.125rem",
+        "61.5": "15.375rem",
+        "62.5": "15.625rem",
+        "63.5": "15.875rem",
+        "64.5": "16.125rem",
+        "65.5": "16.375rem",
+        "66.5": "16.625rem",
+        "67.5": "16.875rem",
+        "68.5": "17.125rem",
+        "69.5": "17.375rem",
+        "70.5": "17.625rem",
+        "71.5": "17.875rem",
+        "72.5": "18.125rem",
+        "73.5": "18.375rem",
+        "74.5": "18.625rem",
+        "75.5": "18.875rem",
+        "76.5": "19.125rem",
+        "77.5": "19.375rem",
+        "78.5": "19.625rem",
+        "79.5": "19.875rem",
+        "80.5": "20.125rem",
+        "81.5": "20.375rem",
+        "82.5": "20.625rem",
+        "83.5": "20.875rem",
+        "84.5": "21.125rem",
+        "85.5": "21.375rem",
+        "86.5": "21.625rem",
+        "87.5": "21.875rem",
+        "88.5": "22.125rem",
+        "89.5": "22.375rem",
+        "90.5": "22.625rem",
+        "91.5": "22.875rem",
+        "92.5": "23.125rem",
+        "93.5": "23.375rem",
+        "94.5": "23.625rem",
+        "95.5": "23.875rem",
+        "96.5": "24.125rem",
+        "97.5": "24.375rem",
+        "98.5": "24.625rem",
+        "99.5": "24.875rem",
+        "100.5": "25.125rem",
+        "101.5": "25.375rem",
+        "102.5": "25.625rem",
+        "103.5": "25.875rem",
+        "104.5": "26.125rem",
+        "105.5": "26.375rem",
+        "106.5": "26.625rem",
+        "107.5": "26.875rem",
+        "108.5": "27.125rem",
+        "109.5": "27.375rem",
+        "110.5": "27.625rem",
+        "111.5": "27.875rem",
+        "112.5": "28.125rem",
+        "113.5": "28.375rem",
+        "114.5": "28.625rem",
+        "115.5": "28.875rem",
+        "116.5": "29.125rem",
+        "117.5": "29.375rem",
+        "118.5": "29.625rem",
+        "119.5": "29.875rem",
+        "120.5": "30.125rem",
+        "121.5": "30.375rem",
+        "122.5": "30.625rem",
+        "123.5": "30.875rem",
+        "124.5": "31.125rem",
+        "125.5": "31.375rem",
+        "1/4": "25%",
+        "1/2": "50%",
+        "3/4": "75%",
+        "full": "100%",
+        "full-x2": "200%"
+      },
+      "fontFamily": {
+        "body": [
+          "ArticulatCF",
+          "system-ui",
+          "sans-serif"
+        ]
+      },
+      "fontSize": {
+        "3": [
+          "0.75rem",
+          "1.5"
+        ],
+        "4": [
+          "1rem",
+          "1.5"
+        ],
+        "5": [
+          "1.25rem",
+          "1.5"
+        ],
+        "6": [
+          "1.5rem",
+          "1.25"
+        ],
+        "7": [
+          "1.75rem",
+          "1.25"
+        ],
+        "base": [
+          "1rem",
+          "1.5"
+        ],
+        "2.5": [
+          "0.625rem",
+          "1.5"
+        ],
+        "3.5": [
+          "0.875rem",
+          "1.5"
+        ],
+        "3.75": [
+          "0.9375rem",
+          "1.5"
+        ],
+        "4.5": [
+          "1.125rem",
+          "1.5"
+        ],
+        "4.75": [
+          "1.1875rem",
+          "1"
+        ],
+        "5.5": [
+          "1.375rem",
+          "1.5"
+        ]
+      },
+      "letterSpacing": {
+        "loose": "0.25rem"
+      },
+      "lineHeight": {
+        "11": "2.75rem",
+        "12": "3rem",
+        "5.5": "1.375rem",
+        "7.5": "1.875rem"
+      },
+      "borderRadius": {
+        "1": "0.25rem",
+        "2": "0.5rem",
+        "3": "0.75rem",
+        "4": "1.0rem",
+        "5": "1.25rem",
+        "6": "1.5rem",
+        "0.5": "0.125rem",
+        "1.5": "0.375rem",
+        "2.5": "0.625rem",
+        "3.5": "0.875rem"
+      },
+      "colors": {
+        "tmx": {
+          "primary": {
+            "darkGreen": "#001A13",
+            "green": "#003017",
+            "mediumGreen": "#002E21",
+            "orange": "#FF8000",
+            "lighterGreen": "#809700",
+            "lighterGreenSubtle": "#F8FCE6",
+            "lighterGreenSecond": "#8BA407",
+            "lightGreen": "#6D8005",
+            "blue": "#80A5E4",
+            "yellow": "#FFCB00",
+            "red": "#FF4D4D",
+            "black": "#11171F",
+            "brown": "#8A7B6C"
+          },
+          "secondary": {
+            "sand": "#F5E6D7",
+            "beige": "#FFF5ED",
+            "bone": "#E0D2C5"
+          },
+          "neutral": {
+            "grey": "#636363",
+            "mediumGrey": "#878787",
+            "lightGrey": "#E3E3E3",
+            "lightestGrey": "#f9fafb",
+            "white": "#FFFFFF",
+            "darkGrey": "#151A1F"
+          },
+          "status": {
+            "info": {
+              "subtle": "#f0f9ff",
+              "DEFAULT": "#0284c7",
+              "text": "#0369a1",
+              "strong": "#0c4a6e"
+            },
+            "error": {
+              "subtle": "#fef2f2",
+              "DEFAULT": "#dc2626",
+              "text": "#b91c1c",
+              "strong": "#7f1d1d"
+            },
+            "success": {
+              "subtle": "#f0fdf4",
+              "DEFAULT": "#16a34a",
+              "text": "#15803d",
+              "strong": "#14532d"
+            },
+            "warning": {
+              "subtle": "#fffbeb",
+              "DEFAULT": "#d97706",
+              "text": "#b45309",
+              "strong": "#78350f"
+            },
+            "neutral": {
+              "subtle": "#f5f5f5",
+              "DEFAULT": "#525252",
+              "text": "#404040",
+              "strong": "#171717"
+            }
+          }
+        }
+      },
+      "textColor": {
+        "body": {
+          "DEFAULT": "#003017"
+        },
+        "heading": {
+          "highlight": {
+            "DEFAULT": "#fff"
+          }
+        },
+        "showMore": {
+          "DEFAULT": "#11171F"
+        },
+        "btn": {
+          "primary": {
+            "DEFAULT": "#fff",
+            "hover": "#fff"
+          },
+          "secondary": {
+            "DEFAULT": "#003017",
+            "hover": "#fff"
+          },
+          "tertiary": {
+            "DEFAULT": "#003017",
+            "hover": "#809700"
+          }
+        },
+        "link": {
+          "DEFAULT": "#003017",
+          "main": "#809700",
+          "hover": "#809700",
+          "secondHover": "#8BA407"
+        },
+        "header": {
+          "serviceLink": {
+            "DEFAULT": "#6D8005"
+          },
+          "usps": {
+            "DEFAULT": "#F5E6D7",
+            "link": "#809700"
+          }
+        },
+        "menu": {
+          "DEFAULT": "#003017"
+        },
+        "breadcrumbs": {
+          "DEFAULT": "#8A7B6C"
+        },
+        "form": {
+          "label": {
+            "DEFAULT": "#636363"
+          },
+          "input": {
+            "DEFAULT": "#003017",
+            "placeholder": "#636363",
+            "choice": {
+              "glyph": {
+                "DEFAULT": "#fff",
+                "inactive": "#E3E3E3"
+              }
+            }
+          },
+          "tooltip": {
+            "icon": {
+              "DEFAULT": "#636363",
+              "hover": "#636363"
+            }
+          }
+        },
+        "blog": {
+          "link": "#FF8000"
+        },
+        "tmx": {
+          "primary": {
+            "darkGreen": "#001A13",
+            "green": "#003017",
+            "mediumGreen": "#002E21",
+            "orange": "#FF8000",
+            "lighterGreen": "#809700",
+            "lighterGreenSubtle": "#F8FCE6",
+            "lighterGreenSecond": "#8BA407",
+            "lightGreen": "#6D8005",
+            "blue": "#80A5E4",
+            "yellow": "#FFCB00",
+            "red": "#FF4D4D",
+            "black": "#11171F",
+            "brown": "#8A7B6C"
+          },
+          "secondary": {
+            "sand": "#F5E6D7",
+            "beige": "#FFF5ED",
+            "bone": "#E0D2C5"
+          },
+          "neutral": {
+            "grey": "#636363",
+            "mediumGrey": "#878787",
+            "lightGrey": "#E3E3E3",
+            "lightestGrey": "#f9fafb",
+            "white": "#FFFFFF",
+            "darkGrey": "#151A1F"
+          },
+          "status": {
+            "info": {
+              "subtle": "#f0f9ff",
+              "DEFAULT": "#0284c7",
+              "text": "#0369a1",
+              "strong": "#0c4a6e"
+            },
+            "error": {
+              "subtle": "#fef2f2",
+              "DEFAULT": "#dc2626",
+              "text": "#b91c1c",
+              "strong": "#7f1d1d"
+            },
+            "success": {
+              "subtle": "#f0fdf4",
+              "DEFAULT": "#16a34a",
+              "text": "#15803d",
+              "strong": "#14532d"
+            },
+            "warning": {
+              "subtle": "#fffbeb",
+              "DEFAULT": "#d97706",
+              "text": "#b45309",
+              "strong": "#78350f"
+            },
+            "neutral": {
+              "subtle": "#f5f5f5",
+              "DEFAULT": "#525252",
+              "text": "#404040",
+              "strong": "#171717"
+            }
+          }
+        }
+      },
+      "backgroundColor": {
+        "primary": {
+          "darkGreen": "#001A13",
+          "green": "#003017",
+          "mediumGreen": "#002E21",
+          "orange": "#FF8000",
+          "lighterGreen": "#809700",
+          "lighterGreenSubtle": "#F8FCE6",
+          "lighterGreenSecond": "#8BA407",
+          "lightGreen": "#6D8005",
+          "blue": "#80A5E4",
+          "yellow": "#FFCB00",
+          "red": "#FF4D4D",
+          "black": "#11171F",
+          "brown": "#8A7B6C"
+        },
+        "secondary": {
+          "sand": "#F5E6D7",
+          "beige": "#FFF5ED",
+          "bone": "#E0D2C5"
+        },
+        "neutral": {
+          "grey": "#636363",
+          "mediumGrey": "#878787",
+          "lightGrey": "#E3E3E3",
+          "lightestGrey": "#f9fafb",
+          "white": "#FFFFFF",
+          "darkGrey": "#151A1F"
+        },
+        "status": {
+          "info": {
+            "subtle": "#f0f9ff",
+            "DEFAULT": "#0284c7",
+            "text": "#0369a1",
+            "strong": "#0c4a6e"
+          },
+          "error": {
+            "subtle": "#fef2f2",
+            "DEFAULT": "#dc2626",
+            "text": "#b91c1c",
+            "strong": "#7f1d1d"
+          },
+          "success": {
+            "subtle": "#f0fdf4",
+            "DEFAULT": "#16a34a",
+            "text": "#15803d",
+            "strong": "#14532d"
+          },
+          "warning": {
+            "subtle": "#fffbeb",
+            "DEFAULT": "#d97706",
+            "text": "#b45309",
+            "strong": "#78350f"
+          },
+          "neutral": {
+            "subtle": "#f5f5f5",
+            "DEFAULT": "#525252",
+            "text": "#404040",
+            "strong": "#171717"
+          }
+        },
+        "heading": {
+          "highlight": {
+            "DEFAULT": "#FF8000"
+          }
+        },
+        "btn": {
+          "primary": {
+            "DEFAULT": "#809700",
+            "hover": "#6D8005"
+          },
+          "secondary": {
+            "DEFAULT": "transparent",
+            "hover": "#003017"
+          },
+          "tertiary": {
+            "DEFAULT": "#fff",
+            "hover": "#fff"
+          }
+        },
+        "header": {
+          "DEFAULT": "#003017",
+          "logo": {
+            "DEFAULT": "#003017"
+          },
+          "search": {
+            "DEFAULT": "#001A13"
+          },
+          "cartCount": {
+            "DEFAULT": "#FF8000"
+          },
+          "customerService": {
+            "DEFAULT": "#003017"
+          },
+          "mobileSearch": {
+            "DEFAULT": "#F5E6D7"
+          },
+          "login": {
+            "loggedOut": "#FF4D4D",
+            "loggedIn": "#6D8005"
+          }
+        },
+        "menu": {
+          "DEFAULT": "#F5E6D7",
+          "mobile": "#FFF5ED",
+          "activeMenuItem": "#FF8000"
+        },
+        "usps": {
+          "DEFAULT": "#FFF5ED",
+          "mobile": "#F5E6D7"
+        },
+        "price": {
+          "DEFAULT": "#FF8000"
+        },
+        "category": {
+          "DEFAULT": "#FFF5ED"
+        },
+        "breadcrumbs": {
+          "DEFAULT": "#FFF5ED"
+        },
+        "sliderDots": {
+          "DEFAULT": "#E3E3E3",
+          "active": "#878787"
+        },
+        "pager": {
+          "DEFAULT": "#809700"
+        },
+        "amasty": {
+          "tooltip": "#FF8000",
+          "header": "#003017",
+          "sliderPriceDefault": "#E3E3E3",
+          "sliderPriceActive": "#003017"
+        },
+        "blog": {
+          "item": "#E3E3E3",
+          "catLink": "#003017"
+        },
+        "mirasvitSearch": {
+          "suggestions": "#E3E3E3",
+          "suggestionsHover": "#8BA407"
+        },
+        "footer": {
+          "DEFAULT": "#003017"
+        },
+        "form": {
+          "input": {
+            "DEFAULT": "#fff",
+            "error": "#fff",
+            "success": "#fff",
+            "choice": {
+              "DEFAULT": "#fff",
+              "hover": "transparent",
+              "active": "#809700",
+              "inactive": "#fff"
+            }
+          }
+        },
+        "container": {
+          "lighter": "#ffffff",
+          "DEFAULT": "#fafafa",
+          "darker": "#f5f5f5",
+          "beige": "#FFF5ED"
+        },
+        "tmx": {
+          "primary": {
+            "darkGreen": "#001A13",
+            "green": "#003017",
+            "mediumGreen": "#002E21",
+            "orange": "#FF8000",
+            "lighterGreen": "#809700",
+            "lighterGreenSubtle": "#F8FCE6",
+            "lighterGreenSecond": "#8BA407",
+            "lightGreen": "#6D8005",
+            "blue": "#80A5E4",
+            "yellow": "#FFCB00",
+            "red": "#FF4D4D",
+            "black": "#11171F",
+            "brown": "#8A7B6C"
+          },
+          "secondary": {
+            "sand": "#F5E6D7",
+            "beige": "#FFF5ED",
+            "bone": "#E0D2C5"
+          },
+          "neutral": {
+            "grey": "#636363",
+            "mediumGrey": "#878787",
+            "lightGrey": "#E3E3E3",
+            "lightestGrey": "#f9fafb",
+            "white": "#FFFFFF",
+            "darkGrey": "#151A1F"
+          },
+          "status": {
+            "info": {
+              "subtle": "#f0f9ff",
+              "DEFAULT": "#0284c7",
+              "text": "#0369a1",
+              "strong": "#0c4a6e"
+            },
+            "error": {
+              "subtle": "#fef2f2",
+              "DEFAULT": "#dc2626",
+              "text": "#b91c1c",
+              "strong": "#7f1d1d"
+            },
+            "success": {
+              "subtle": "#f0fdf4",
+              "DEFAULT": "#16a34a",
+              "text": "#15803d",
+              "strong": "#14532d"
+            },
+            "warning": {
+              "subtle": "#fffbeb",
+              "DEFAULT": "#d97706",
+              "text": "#b45309",
+              "strong": "#78350f"
+            },
+            "neutral": {
+              "subtle": "#f5f5f5",
+              "DEFAULT": "#525252",
+              "text": "#404040",
+              "strong": "#171717"
+            }
+          }
+        }
+      },
+      "borderColor": {
+        "primary": {
+          "darkGreen": "#001A13",
+          "green": "#003017",
+          "mediumGreen": "#002E21",
+          "orange": "#FF8000",
+          "lighterGreen": "#809700",
+          "lighterGreenSubtle": "#F8FCE6",
+          "lighterGreenSecond": "#8BA407",
+          "lightGreen": "#6D8005",
+          "blue": "#80A5E4",
+          "yellow": "#FFCB00",
+          "red": "#FF4D4D",
+          "black": "#11171F",
+          "brown": "#8A7B6C"
+        },
+        "secondary": {
+          "sand": "#F5E6D7",
+          "beige": "#FFF5ED",
+          "bone": "#E0D2C5"
+        },
+        "neutral": {
+          "grey": "#636363",
+          "mediumGrey": "#878787",
+          "lightGrey": "#E3E3E3",
+          "lightestGrey": "#f9fafb",
+          "white": "#FFFFFF",
+          "darkGrey": "#151A1F"
+        },
+        "status": {
+          "info": {
+            "subtle": "#f0f9ff",
+            "DEFAULT": "#0284c7",
+            "text": "#0369a1",
+            "strong": "#0c4a6e"
+          },
+          "error": {
+            "subtle": "#fef2f2",
+            "DEFAULT": "#dc2626",
+            "text": "#b91c1c",
+            "strong": "#7f1d1d"
+          },
+          "success": {
+            "subtle": "#f0fdf4",
+            "DEFAULT": "#16a34a",
+            "text": "#15803d",
+            "strong": "#14532d"
+          },
+          "warning": {
+            "subtle": "#fffbeb",
+            "DEFAULT": "#d97706",
+            "text": "#b45309",
+            "strong": "#78350f"
+          },
+          "neutral": {
+            "subtle": "#f5f5f5",
+            "DEFAULT": "#525252",
+            "text": "#404040",
+            "strong": "#171717"
+          }
+        },
+        "btn": {
+          "primary": {
+            "DEFAULT": "#6D8005",
+            "hover": "#6D8005"
+          },
+          "secondary": {
+            "DEFAULT": "#003017",
+            "hover": "#003017"
+          },
+          "tertiary": {
+            "DEFAULT": "#fff",
+            "hover": "#fff"
+          }
+        },
+        "logo": {
+          "DEFAULT": "#001A13"
+        },
+        "usps": {
+          "DEFAULT": "#F5E6D7"
+        },
+        "menuMobile": {
+          "DEFAULT": "#E0D2C5"
+        },
+        "activeMenuItem": {
+          "DEFAULT": "#FF8000"
+        },
+        "productTile": {
+          "DEFAULT": "#E3E3E3",
+          "hover": "#003017"
+        },
+        "contentBlock": {
+          "DEFAULT": "#F5E6D7"
+        },
+        "currentFilters": {
+          "DEFAULT": "#003017"
+        },
+        "filterCard": {
+          "DEFAULT": "#E3E3E3"
+        },
+        "searchAutocomplete": {
+          "DEFAULT": "#E3E3E3"
+        },
+        "amasty": {
+          "delimiter": "#003017"
+        },
+        "form": {
+          "input": {
+            "DEFAULT": "#E3E3E3",
+            "hover": "#636363",
+            "focus": "#636363",
+            "error": "#dc2626",
+            "success": "#16a34a",
+            "choice": {
+              "DEFAULT": "#E3E3E3",
+              "hover": "#636363",
+              "focus": "#636363",
+              "active": "#809700",
+              "error": "#dc2626",
+              "inactive": "#E3E3E3"
+            }
+          }
+        },
+        "tmx": {
+          "primary": {
+            "darkGreen": "#001A13",
+            "green": "#003017",
+            "mediumGreen": "#002E21",
+            "orange": "#FF8000",
+            "lighterGreen": "#809700",
+            "lighterGreenSubtle": "#F8FCE6",
+            "lighterGreenSecond": "#8BA407",
+            "lightGreen": "#6D8005",
+            "blue": "#80A5E4",
+            "yellow": "#FFCB00",
+            "red": "#FF4D4D",
+            "black": "#11171F",
+            "brown": "#8A7B6C"
+          },
+          "secondary": {
+            "sand": "#F5E6D7",
+            "beige": "#FFF5ED",
+            "bone": "#E0D2C5"
+          },
+          "neutral": {
+            "grey": "#636363",
+            "mediumGrey": "#878787",
+            "lightGrey": "#E3E3E3",
+            "lightestGrey": "#f9fafb",
+            "white": "#FFFFFF",
+            "darkGrey": "#151A1F"
+          },
+          "status": {
+            "info": {
+              "subtle": "#f0f9ff",
+              "DEFAULT": "#0284c7",
+              "text": "#0369a1",
+              "strong": "#0c4a6e"
+            },
+            "error": {
+              "subtle": "#fef2f2",
+              "DEFAULT": "#dc2626",
+              "text": "#b91c1c",
+              "strong": "#7f1d1d"
+            },
+            "success": {
+              "subtle": "#f0fdf4",
+              "DEFAULT": "#16a34a",
+              "text": "#15803d",
+              "strong": "#14532d"
+            },
+            "warning": {
+              "subtle": "#fffbeb",
+              "DEFAULT": "#d97706",
+              "text": "#b45309",
+              "strong": "#78350f"
+            },
+            "neutral": {
+              "subtle": "#f5f5f5",
+              "DEFAULT": "#525252",
+              "text": "#404040",
+              "strong": "#171717"
+            }
+          }
+        }
+      },
+      "ringColor": {
+        "form": {
+          "input": {
+            "DEFAULT": "#636363",
+            "error": "#dc2626",
+            "success": "#16a34a",
+            "choice": {
+              "DEFAULT": "#636363"
+            }
+          }
+        },
+        "tmx": {
+          "primary": {
+            "darkGreen": "#001A13",
+            "green": "#003017",
+            "mediumGreen": "#002E21",
+            "orange": "#FF8000",
+            "lighterGreen": "#809700",
+            "lighterGreenSubtle": "#F8FCE6",
+            "lighterGreenSecond": "#8BA407",
+            "lightGreen": "#6D8005",
+            "blue": "#80A5E4",
+            "yellow": "#FFCB00",
+            "red": "#FF4D4D",
+            "black": "#11171F",
+            "brown": "#8A7B6C"
+          },
+          "secondary": {
+            "sand": "#F5E6D7",
+            "beige": "#FFF5ED",
+            "bone": "#E0D2C5"
+          },
+          "neutral": {
+            "grey": "#636363",
+            "mediumGrey": "#878787",
+            "lightGrey": "#E3E3E3",
+            "lightestGrey": "#f9fafb",
+            "white": "#FFFFFF",
+            "darkGrey": "#151A1F"
+          },
+          "status": {
+            "info": {
+              "subtle": "#f0f9ff",
+              "DEFAULT": "#0284c7",
+              "text": "#0369a1",
+              "strong": "#0c4a6e"
+            },
+            "error": {
+              "subtle": "#fef2f2",
+              "DEFAULT": "#dc2626",
+              "text": "#b91c1c",
+              "strong": "#7f1d1d"
+            },
+            "success": {
+              "subtle": "#f0fdf4",
+              "DEFAULT": "#16a34a",
+              "text": "#15803d",
+              "strong": "#14532d"
+            },
+            "warning": {
+              "subtle": "#fffbeb",
+              "DEFAULT": "#d97706",
+              "text": "#b45309",
+              "strong": "#78350f"
+            },
+            "neutral": {
+              "subtle": "#f5f5f5",
+              "DEFAULT": "#525252",
+              "text": "#404040",
+              "strong": "#171717"
+            }
+          }
+        }
+      },
+      "boxShadow": {
+        "1px": "inset 0 0 0 1px#003017",
+        "arrow": "0 4px 12px 0 rgb(0 0 0 / 0.16)"
+      },
+      "backgroundImage": {
+        "gradient-showMore": "linear-gradient(to bottom, rgba(255, 255, 255, 0.00) 0%, #FFFFFF 65%)"
+      },
+      "content": {
+        "asterisk": "\"*\"",
+        "empty": "\"\"",
+        "dash": "\"-\"",
+        "separator": "\"|\""
+      },
+      "transitionProperty": {
+        "border": "border-color"
+      },
+      "minHeight": {
+        "screen-25": "25vh",
+        "screen-50": "50vh",
+        "screen-75": "75vh"
+      },
+      "maxHeight": {
+        "0": "0",
+        "screen-25": "25vh",
+        "screen-50": "50vh",
+        "screen-75": "75vh"
+      },
+      "aria": {
+        "invalid": "invalid=\"true\""
+      }
+    }
+  }
+};
+</script>
+<!-- Between the design-sync markers: the theme's component CSS (typography, buttons, forms, messages, prices, product tile), flattened for the Tailwind CDN and regenerated by tools/design-sync. Don't edit it by hand. -->
+<style type="text/tailwindcss">
+/* design-sync:begin */
+/* typography.css */
+@layer base {
+    html { @apply antialiased; }
+    body { @apply text-body text-base font-body; }
+    .heading-1 { @apply text-7 font-black; }
+    .heading-1.heading-small { @apply text-6; }
+    h1 { @apply heading-1; }
+    .heading-2 { @apply text-6 font-black; }
+    .heading-2.heading-small { @apply text-5; }
+    h2 { @apply heading-2; }
+    .heading-3 { @apply text-5.5 font-bold; }
+    h3 { @apply heading-3; }
+    .heading-4 { @apply text-5 font-bold; }
+    h4 { @apply heading-4; }
+    .heading-5 { @apply text-4.5 font-bold; }
+    h5 { @apply heading-5; }
+    .heading-6 { @apply text-4 font-semibold; }
+    h6 { @apply heading-6; }
+    .heading-highlight { @apply px-3 pt-2 pb-0.5 text-heading-highlight bg-heading-highlight; }
+    .heading-highlight { transform: rotate(-2deg); }
+    .paragraph-base { @apply text-base; }
+    .paragraph-sm { @apply text-3; }
+    .paragraph-esm { @apply text-2.5; }
+    .paragraph-tiny { @apply text-2.5 font-bold uppercase; }
+    .paragraph-highlight { @apply w-fit px-3 pt-1 pb-0.5 text-heading-highlight bg-heading-highlight font-black; }
+    .paragraph-highlight { transform: rotate(-2deg); }
+}
+@layer components {
+    ul.list-base, ol.list-base { @apply list-none flex flex-col gap-1; }
+    ul.list-base li, ol.list-base li { @apply flex gap-1.5; }
+    ul.list-base li .list-text, ol.list-base li .list-text { @apply text-3.5 font-normal leading-6; }
+    ul.list-base li:before, ol.list-base li:before { @apply content-dash inline-block size-5 text-center; }
+    .product-description .prose ul, .product-description .prose ol, ul.list-usps, ol.list-usps { @apply list-none flex flex-col gap-2 pl-0; }
+    .product-description .prose ul .list-text, .product-description .prose ol .list-text, ul.list-usps .list-text, ol.list-usps .list-text { @apply text-sm font-normal; }
+    .product-description .prose ul li, .product-description .prose ol li, ul.list-usps li, ol.list-usps li { @apply my-0; }
+    .product-description .prose ul li:before, .product-description .prose ol li:before, ul.list-usps li:before, ol.list-usps li:before { @apply content-empty size-5; }
+    .product-description .prose ul li:before, .product-description .prose ol li:before, ul.list-usps li:before, ol.list-usps li:before { background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjEiIHZpZXdCb3g9IjAgMCAyMCAyMSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgaWQ9Ikdyb3VwIj4KPHBhdGggaWQ9IlZlY3RvciIgZD0iTTkuOTk5ODQgMTkuMjQ3N0M1LjM5NzM0IDE5LjI0NzcgMS42NjY1IDE1LjUxNjkgMS42NjY1IDEwLjkxNDRDMS42NjY1IDYuMzExODkgNS4zOTczNCAyLjU4MTA1IDkuOTk5ODQgMi41ODEwNUMxNC42MDIzIDIuNTgxMDUgMTguMzMzMiA2LjMxMTg5IDE4LjMzMzIgMTAuOTE0NEMxOC4zMzMyIDE1LjUxNjkgMTQuNjAyMyAxOS4yNDc3IDkuOTk5ODQgMTkuMjQ3N1pNOS4xNjkgMTQuMjQ3N0wxNS4wNjA3IDguMzU1MjJMMTMuODgyMyA3LjE3Njg5TDkuMTY5IDExLjg5MTFMNi44MTE1IDkuNTMzNTZMNS42MzMxNyAxMC43MTE5TDkuMTY5IDE0LjI0NzdaIiBmaWxsPSIjODA5NzAwIi8+CjwvZz4KPC9zdmc+Cg=='); }
+    ul.list-usps li, ol.list-usps li { @apply flex gap-1.5 pl-0; }
+    ul.list-usps li:before, ol.list-usps li:before { @apply inline-block; }
+    .product-description .prose ul li { @apply relative my-0 pl-7; }
+    .product-description .prose ul li:before { @apply absolute left-0 top-px bg-cover bg-center bg-no-repeat; }
+}
+/* button.css */
+@layer components {
+    .btn { @apply px-6 py-2.5 flex items-center justify-center gap-2 text-white text-base text-center font-semibold rounded-1 transition-all; }
+    .btn svg { @apply inline-flex; }
+    .btn span { @apply mt-0.5 align-middle; }
+    .btn:hover { @apply bg-gray-600; }
+    .btn:focus { @apply outline-none border-transparent; }
+    .btn:disabled, .btn.--disabled { @apply cursor-not-allowed opacity-50; }
+    .btn-primary { @apply text-btn-primary bg-btn-primary border-b-4 border-btn-primary; }
+    .btn-primary { @apply pt-3 pb-2; }
+    .btn-primary:hover, .btn-primary.--hovered, .btn-primary:focus, .btn-primary.--focused { @apply text-btn-primary-hover bg-btn-primary-hover border-btn-primary-hover; }
+    .btn-secondary { @apply text-btn-secondary bg-btn-secondary border border-btn-secondary; }
+    .btn-secondary:hover, .btn-secondary.--hovered, .btn-secondary:focus, .btn-secondary.--focused { @apply text-btn-secondary-hover bg-btn-secondary-hover border-btn-secondary-hover; }
+    .btn-tertiary { @apply text-btn-tertiary bg-btn-tertiary border border-btn-tertiary; }
+    .btn-tertiary { @apply p-0; }
+    .btn-tertiary:hover, .btn-tertiary.--hovered, .btn-tertiary:focus, .btn-tertiary.--focused { @apply text-btn-tertiary-hover bg-btn-tertiary-hover border-btn-tertiary-hover; }
+    .btn-size-lg { @apply px-8 py-4.5 text-6; }
+    .btn-size-lg.btn-primary { @apply pt-5 pb-4; }
+    .btn-size-lg.btn-tertiary { @apply p-0; }
+    .btn-size-default { @apply px-6 py-2.5 text-base; }
+    .btn-size-default.btn-primary { @apply pt-3 pb-2; }
+    .btn-size-default.btn-tertiary { @apply p-0; }
+    .btn-size-sm { @apply px-4 py-1.5 text-base; }
+    .btn-size-sm.btn-primary { @apply pt-2 pb-1; }
+    .btn-size-sm.btn-tertiary { @apply p-0; }
+    .btm-size-full { @apply w-full; }
+}
+/* forms.css */
+@layer utilities {
+    .icon-asterisk { --tw-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Cpath d='M12 6v12M17.196 9 6.804 15M6.804 9l10.392 6'/%3E%3C/svg%3E"); --tw-icon-size: 1em; display: inline-block; width: var(--tw-icon-size); height: var(--tw-icon-size); background-color: currentcolor; mask-repeat: no-repeat; mask-size: contain; mask-image: var(--tw-icon); }
+    .field-status-icon { @apply relative; }
+    .field-status-icon:has(.form-input) .form-input, .field-status-icon:has(.form-select) .form-input, .field-status-icon:has(.form-textarea) .form-input, .field-status-icon:has(.form-input) .form-select, .field-status-icon:has(.form-select) .form-select, .field-status-icon:has(.form-textarea) .form-select, .field-status-icon:has(.form-input) .form-textarea, .field-status-icon:has(.form-select) .form-textarea, .field-status-icon:has(.form-textarea) .form-textarea { @apply pr-12; }
+    .field-status-icon:has(.form-input):after, .field-status-icon:has(.form-select):after, .field-status-icon:has(.form-textarea):after { @apply content-empty absolute top-1/2 -translate-y-1/2 right-4 left-auto size-5 bg-current; }
+    .field-status-icon:has(.form-input):after, .field-status-icon:has(.form-select):after, .field-status-icon:has(.form-textarea):after { mask: var(--tw-status-icon) center / contain no-repeat; }
+    .field-status-icon:has(.form-input):has(.form-select):after, .field-status-icon:has(.form-select):has(.form-select):after, .field-status-icon:has(.form-textarea):has(.form-select):after { @apply right-12; }
+    .field-error-icon { --tw-status-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M9.99984 1.66667C14.6022 1.66667 18.3332 5.39763 18.3332 10C18.3332 14.6023 14.6022 18.3333 9.99984 18.3333C5.39746 18.3333 1.6665 14.6023 1.6665 10C1.6665 5.39763 5.39746 1.66667 9.99984 1.66667ZM9.99984 3.33334C6.31794 3.33334 3.33317 6.31811 3.33317 10C3.33317 13.6819 6.31794 16.6667 9.99984 16.6667C13.6818 16.6667 16.6665 13.6819 16.6665 10C16.6665 6.31811 13.6818 3.33334 9.99984 3.33334ZM8.23212 7.0537L9.99984 8.82142L11.7676 7.05368C12.093 6.72824 12.6207 6.72824 12.9461 7.05368C13.2715 7.37911 13.2715 7.90676 12.9461 8.23219L11.1783 9.99992L12.9462 11.7678C13.2716 12.0932 13.2716 12.6208 12.9462 12.9463C12.6208 13.2717 12.0931 13.2717 11.7677 12.9463L9.99984 11.1784L8.23204 12.9463C7.9066 13.2717 7.37897 13.2717 7.05353 12.9463C6.7281 12.6208 6.7281 12.0932 7.05353 11.7678L8.82134 9.99992L7.0536 8.23221C6.72817 7.90677 6.72817 7.37914 7.0536 7.0537C7.37905 6.72826 7.90668 6.72826 8.23212 7.0537Z'/%3E%3C/svg%3E"); @apply field-status-icon text-tmx-status-error; }
+    .field-success-icon { --tw-status-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M9.99984 1.66667C14.6022 1.66667 18.3332 5.39763 18.3332 10C18.3332 14.6023 14.6022 18.3333 9.99984 18.3333C5.39746 18.3333 1.6665 14.6023 1.6665 10C1.6665 5.39763 5.39746 1.66667 9.99984 1.66667ZM9.99984 3.33333C6.31794 3.33333 3.33317 6.3181 3.33317 10C3.33317 13.6819 6.31794 16.6667 9.99984 16.6667C13.6818 16.6667 16.6665 13.6819 16.6665 10C16.6665 6.3181 13.6818 3.33333 9.99984 3.33333ZM12.946 6.98437C13.2714 6.65893 13.7991 6.65893 14.1245 6.98437C14.4249 7.28477 14.448 7.75746 14.1938 8.08437L14.1245 8.16288L9.46942 12.818C9.13699 13.1504 8.61279 13.1742 8.25297 12.8892L8.17302 12.818L5.87492 10.5199C5.54949 10.1945 5.54949 9.66683 5.87492 9.34142C6.17533 9.04096 6.64802 9.01784 6.97492 9.27208L7.05343 9.34142L8.82117 11.1092L12.946 6.98437Z'/%3E%3C/svg%3E"); @apply field-status-icon text-tmx-status-success; }
+}
+form, fieldset { @apply flex flex-col gap-4; }
+fieldset > legend { @apply float-left w-full; }
+.field { @apply w-full flex flex-col gap-1.5; }
+.field > label, .field > .label { @apply inline-flex items-center gap-1.5 text-3.5 font-medium text-form-label; }
+.field > .control { @apply relative flex flex-col gap-y-2; }
+.field > .messages { @apply text-3.5 text-tmx-status-error-text; }
+.field > .warning { @apply relative text-3.5 pl-5 text-form-label; }
+.field > .warning:after { @apply content-empty absolute top-0.5 left-0 size-4 bg-current; }
+.field > .warning:after { mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8.00016 1.33334C11.682 1.33334 14.6668 4.3181 14.6668 8C14.6668 11.6819 11.682 14.6667 8.00016 14.6667C4.31826 14.6667 1.3335 11.6819 1.3335 8C1.3335 4.3181 4.31826 1.33334 8.00016 1.33334ZM8.00016 10C7.63196 10 7.3335 10.2985 7.3335 10.6667C7.3335 11.0349 7.63196 11.3333 8.00016 11.3333C8.36836 11.3333 8.66683 11.0349 8.66683 10.6667C8.66683 10.2985 8.36836 10 8.00016 10ZM8.00016 4C7.65826 4 7.37649 4.25737 7.33798 4.58892L7.3335 4.66667V8.66667C7.3335 9.03487 7.63196 9.33334 8.00016 9.33334C8.34206 9.33334 8.62384 9.07598 8.66234 8.74442L8.66683 8.66667V4.66667C8.66683 4.29848 8.36836 4 8.00016 4Z'/%3E%3C/svg%3E") center / contain no-repeat; }
+.field.required label, .field.field-required label { @apply after:icon-asterisk after:text-3 after:text-tmx-status-error; }
+.field.field-error.field-floating { @apply field-error-icon; }
+.field.field-error:not(.field-floating) .control { @apply field-error-icon; }
+.field.password-field .control:after { @apply !right-16; }
+.field.password-field.field-floating:after { @apply !right-16; }
+.field.field-success.field-floating { @apply field-success-icon; }
+.field.field-success:not(.field-floating) .control { @apply field-success-icon; }
+.field-group { @apply flex flex-col gap-0.5; }
+.field.choice, .field.field-choice, .filter-row { @apply flex flex-row items-center gap-3 cursor-pointer; }
+.field.choice > label, .field.field-choice > label, .filter-row > label { @apply mt-px flex items-center gap-0 text-4/6 font-normal text-body cursor-pointer; }
+.field.choice > input, .field.field-choice > input, .filter-row > input { @apply my-1 size-5 cursor-pointer bg-form-input-choice border border-form-input-choice; }
+.field.choice > input[type="checkbox"], .field.field-choice > input[type="checkbox"], .filter-row > input[type="checkbox"] { --tw-choice-glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3E%3C/svg%3E"); @apply rounded-1; }
+.field.choice > input[type="radio"], .field.field-choice > input[type="radio"], .filter-row > input[type="radio"] { --tw-choice-glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='3'/%3E%3C/svg%3E"); @apply rounded-full; }
+.field.choice > input:focus, .field.field-choice > input:focus, .filter-row > input:focus { @apply border-form-input-choice-focus ring-4 ring-offset-0 ring-form-input-choice/50; }
+.field.choice > input:checked, .field.field-choice > input:checked, .filter-row > input:checked { @apply bg-none bg-form-input-choice-active border-transparent text-form-input-choice-glyph; }
+.field.choice > input:checked::after, .field.field-choice > input:checked::after, .filter-row > input:checked::after { @apply content-empty block size-full bg-current; }
+.field.choice > input:checked::after, .field.field-choice > input:checked::after, .filter-row > input:checked::after { mask: var(--tw-choice-glyph) center / contain no-repeat; }
+.field.choice > input:disabled, .field.field-choice > input:disabled, .filter-row > input:disabled { @apply opacity-50 cursor-not-allowed; }
+.field.choice > input:disabled:checked, .field.field-choice > input:disabled:checked, .filter-row > input:disabled:checked { @apply opacity-100 bg-form-input-choice-inactive border-form-input-choice-inactive text-form-input-choice-glyph-inactive; }
+.field.choice:hover > input:not(:disabled, :checked), .field.field-choice:hover > input:not(:disabled, :checked), .filter-row:hover > input:not(:disabled, :checked), label:hover .field.choice > input:not(:disabled, :checked), label:hover .field.field-choice > input:not(:disabled, :checked), label:hover .filter-row > input:not(:disabled, :checked) { @apply bg-form-input-choice-hover border-form-input-choice-hover; }
+.field.choice.field-error > input:not(:checked), .field.field-choice.field-error > input:not(:checked), .filter-row.field-error > input:not(:checked) { @apply border-form-input-choice-error; }
+.field.choice > .messages, .field.field-choice > .messages, .filter-row > .messages { @apply hidden; }
+.form-input, .form-select, .form-textarea { @apply w-full text-4 leading-5.5 font-normal px-3.5 py-2.5 rounded-1 border border-form-input bg-form-input text-form-input placeholder:text-form-input-placeholder/90; }
+.form-input:hover:not(:disabled):is(.control:hover > *, :not(.control > *)), .form-select:hover:not(:disabled):is(.control:hover > *, :not(.control > *)), .form-textarea:hover:not(:disabled):is(.control:hover > *, :not(.control > *)) { @apply border-form-input-hover; }
+.form-input:focus, .form-select:focus, .form-textarea:focus { @apply border-form-input-focus ring-4 ring-form-input/50; }
+.form-input:disabled, .form-select:disabled, .form-textarea:disabled { @apply opacity-50; }
+.field-error .form-input, .field-error .form-select, .field-error .form-textarea { @apply border-form-input-error; }
+.field-error .form-input:focus, .field-error .form-select:focus, .field-error .form-textarea:focus { @apply ring-form-input-error/20; }
+.field-success .form-input, .field-success .form-select, .field-success .form-textarea { @apply border-form-input-success; }
+.field-success .form-input:focus, .field-success .form-select:focus, .field-success .form-textarea:focus { @apply ring-form-input-success/20; }
+.form-select { @apply pr-13; }
+.form-select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='none'%3E%3Cpath fill='%23003017' fill-rule='evenodd' d='M5.293 7.293a1 1 0 0 1 1.414 0L10 10.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-4-4a1 1 0 0 1 0-1.414Z' clip-rule='evenodd'/%3E%3C/svg%3E"); background-size: 1.25em; background-position: right 1rem center; }
+.form-select.--loading { background-image: unset; }
+/* messages.css */
+.message { @apply flex items-start gap-2 w-full p-3 rounded-1 mb-2 text-3.5 font-normal bg-tmx-status-neutral-subtle text-tmx-status-neutral-strong; }
+.message > svg { @apply shrink-0 size-5; }
+.message > span { @apply grow; }
+.message.notice { @apply bg-tmx-status-neutral-subtle text-tmx-status-neutral-strong; }
+.message.error { @apply bg-tmx-status-error-subtle text-tmx-status-error-strong; }
+.message.error > svg { @apply text-tmx-status-error; }
+.message.success { @apply bg-tmx-status-success-subtle text-tmx-status-success-strong; }
+.message.success > svg { @apply text-tmx-status-success; }
+.message.info { @apply bg-tmx-status-info-subtle text-tmx-status-info-strong; }
+.message.info > svg { @apply text-tmx-status-info; }
+.message.warning { @apply bg-tmx-status-warning-subtle text-tmx-status-warning-strong; }
+.message.warning > svg { @apply text-tmx-status-warning; }
+.message a { @apply underline; }
+/* product-prices.css */
+.price-including-tax + .price-excluding-tax { @apply text-sm; }
+.price-including-tax + .price-excluding-tax:before { content: attr(data-label) ': '; }
+.price-excluding-tax, .price-including-tax { @apply whitespace-nowrap; }
+.price-excluding-tax .price, .price-including-tax .price { @apply font-semibold leading-relaxed; }
+.price-excluding-tax { @apply block; }
+.price-container.price-tier_price { @apply flex gap-1; }
+.price-container.price-tier_price > .price-including-tax + .price-excluding-tax:before { content: '(' attr(data-label) ': '; }
+.price-container.price-tier_price > .price-including-tax + .price-excluding-tax:after { content: ')'; }
+.price-container { @apply block; }
+.price-container .price { @apply font-semibold font-black bg-price text-white block py-1 px-2 -rotate-2; }
+.price-container .price-label { @apply text-sm; }
+.price-box { @apply flex items-center gap-x-2; }
+.price-box .special-price { @apply order-1; }
+.price-box .old-price { @apply line-through pt-1; }
+.price-box .minimal-price-link { @apply hidden; }
+.special-price .price-container .price-label { @apply sr-only; }
+.old-price .price-label, .old-price .price-container .price-label { @apply sr-only; }
+.old-price .price, .old-price .price-container .price { @apply font-medium text-base bg-transparent text-current p-0 rotate-0; }
+.product-info-main .buy-box-wrapper .old-price .price { @apply font-semibold text-4 p-0 text-tmx-primary-green md:text-5; }
+.product-info-main .buy-box-wrapper .final-price .price { @apply text-5 md:text-6; }
+/* Magento_Catalog/templates/product/list/item.phtml */
+@layer components {
+    .product-tile { @apply flex flex-col h-full border border-productTile rounded-2 overflow-hidden transition-colors hover:border-productTile-hover hover:shadow-1px; }
+    .product-tile-info { @apply bg-white flex flex-col grow py-3 px-4; }
+    .product-tile-name { @apply font-semibold text-3.75 lg:text-base line-clamp-3; }
+}
+/* Prototype additions: a visible focus ring (the theme only swaps the fill), a highlight that rotates on an inline phrase,
+   a USP check mark that keeps its size when the text wraps (the theme lets it shrink), a tertiary button without the
+   theme's white fill and border, so it reads as a link on every surface, the content block (DESIGN.md → Content patterns),
+   which the theme only styles through PageBuilder markup (content-types/page-builder-block-image-with-text.css),
+   the selected card (DESIGN.md → Forms), which the base theme has no class for: `label.option-card` around an `sr-only` input,
+   and two layout traps: a fieldset that does not shrink below its content, and `sr-only` text escaping an unpositioned
+   scroll container and widening the page (references/build.md → 6. Check before delivering → Build traps). */
+@layer components {
+    .btn { @apply focus-visible:ring-4 focus-visible:ring-form-input/50; }
+    .heading-highlight { @apply inline-block; }
+    ul.list-usps li:before, ol.list-usps li:before { @apply shrink-0; }
+    .btn-tertiary, .btn-tertiary:hover, .btn-tertiary.--hovered, .btn-tertiary:focus, .btn-tertiary.--focused { @apply bg-transparent border-transparent; }
+    .content-block { @apply grid overflow-hidden rounded-2 bg-tmx-secondary-beige md:grid-cols-2; }
+    .content-block-text { @apply flex min-w-0 flex-col justify-center gap-5 p-6 md:p-12 xl:p-20; }
+    .content-block-actions { @apply mt-2 flex flex-wrap gap-2; }
+    .content-block-media { @apply relative order-first h-64 md:h-auto md:min-h-80; }
+    .content-block.--media-right > .content-block-media { @apply md:order-last; }
+    .content-block-media > img, .content-block-media > video, .content-block-media > iframe { @apply absolute inset-0 size-full object-cover; }
+    .content-block-play { @apply absolute inset-0 flex items-center justify-center bg-tmx-primary-black/20 text-white; }
+    .option-card { @apply relative cursor-pointer rounded-2 border border-tmx-neutral-lightGrey bg-white transition-colors; }
+    .option-card:hover { @apply border-tmx-neutral-grey; }
+    .option-card:has(input:checked) { @apply border-tmx-primary-lighterGreen bg-tmx-primary-lighterGreenSubtle; }
+    .option-card:has(input:focus-visible) { @apply ring-4 ring-form-input/50; }
+    .option-card:has(input:disabled) { @apply cursor-not-allowed opacity-50; }
+    fieldset { @apply min-w-0; }
+    .overflow-auto, .overflow-scroll, .overflow-x-auto, .overflow-x-scroll, .overflow-y-auto, .overflow-y-scroll { @apply relative; }
+}
+/* design-sync:end */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+</style>
+<style type="text/tailwindcss">
+@layer base { html { @apply motion-safe:scroll-smooth; } }
+</style>
+</head>
+<body>
+<!-- PROTOTYPE: throwaway, not production code -->
+
+<!-- Variant registry: one entry per variant, in switcher order. The switcher reads it. -->
+<script type="application/json" id="prototype-variants">
+[
+  {
+    "key": "A",
+    "name": "Naast elkaar",
+    "tradeoff": "Approved category landing: calm intro, sticky product tabs, one light content block per product, then the comparison table, the benefits on beige and the side walls on sand."
+  }
+]
+</script>
+
+<!-- ===== Page frame: one green bar, h-15 with the logo at h-11 at every breakpoint. Shared by every variant; keep it.
+     Only for a question about the header, menu or footer: swap it for the full shell in page-shell.html. ===== -->
+<header class="bg-header">
+    <div class="container flex items-center justify-center lg:justify-start h-15">
+        <a href="#" aria-label="Tuinmaximaal, naar de startpagina">
+            <svg class="h-11 w-auto" aria-hidden="true" width="97" height="60" viewBox="0 0 97 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g id="Logo" clip-path="url(#clip0_1409_5468)">
+        <path id="Vector" d="M10.8788 13.3265H13.1908V42.267H10.5896V15.8732H0L31.9134 0.0507538L33.0648 2.32742L10.8788 13.3265ZM85.5917 13.2757H83.278V59.7517H84.854V15.8225H96.4687L64.5572 0L63.4058 2.27667L85.5917 13.2757ZM22.3269 45.74C20.8003 49.465 19.118 53.1972 17.7085 56.9693C16.3008 53.199 14.6168 49.465 13.0901 45.74H10.5878V59.7535H12.3377V53.1156C12.3853 51.2758 12.184 49.436 12.2389 47.5961C12.9199 49.4106 13.6466 51.2087 14.4227 52.9869C15.3837 55.2418 16.3448 57.4986 17.3076 59.7535H18.1057C19.0686 57.4986 20.0296 55.2418 20.9906 52.9869C21.7668 51.2087 22.4935 49.4106 23.1745 47.5961C23.2294 49.436 23.028 51.2758 23.0756 53.1156V59.7535H24.8238V45.74H22.3233H22.3269ZM34.0478 52.9942V59.7535H32.6676L32.479 58.6695C31.6956 59.5414 30.7583 60.0073 29.336 60C28.3127 60.0054 27.5988 59.7698 26.96 59.1898C25.6347 57.8883 25.7061 55.3397 27.3316 54.3047C28.8418 53.3349 30.7675 53.6032 32.4003 54.0926C32.3857 53.3748 32.5266 52.561 32.0525 51.9501C31.5162 51.2123 30.5478 50.9423 29.6673 50.9713C28.7301 50.9441 27.8203 51.2051 26.938 51.4842V50.1157C28.3787 49.5574 30.0042 49.3617 31.5125 49.7641C32.3399 49.9852 33.1124 50.4746 33.5773 51.1978C33.9343 51.7217 34.0551 52.3688 34.0441 52.9924M32.4021 55.3905C31.1885 55.1258 29.8559 54.7887 28.6606 55.2926C27.5531 55.7784 27.4725 57.4206 28.2963 58.2001C28.926 58.7185 29.8303 58.7475 30.5844 58.5191C31.2544 58.3034 31.8786 57.9263 32.3783 57.4351C32.4516 56.759 32.393 56.072 32.404 55.3923M72.3479 52.9942V59.7535H70.9695L70.781 58.6695C69.9993 59.5414 69.0603 60.0073 67.6379 60C66.6147 60.0054 65.9008 59.7698 65.2619 59.1898C63.9366 57.8883 64.008 55.3397 65.6335 54.3047C67.1437 53.3349 69.0694 53.6032 70.7022 54.0926C70.6876 53.3748 70.8304 52.561 70.3544 51.9501C69.8181 51.2123 68.8498 50.9423 67.9693 50.9713C67.032 50.9441 66.1223 51.2051 65.24 51.4842V50.1157C66.6806 49.5574 68.3061 49.3617 69.8163 49.7641C70.6437 49.9852 71.4162 50.4746 71.8811 51.1978C72.2381 51.7217 72.3589 52.3688 72.3479 52.9924M70.7022 55.3905C69.4886 55.1258 68.156 54.7887 66.9606 55.2926C65.8532 55.7784 65.7726 57.4206 66.5964 58.2001C67.2261 58.7185 68.1304 58.7475 68.8845 58.5191C69.5545 58.3034 70.1787 57.9263 70.6766 57.4351C70.7498 56.759 70.6913 56.072 70.7022 55.3923M81.8502 52.9942V59.7535H80.4699L80.2832 58.6695C79.4998 59.5414 78.5625 60.0073 77.1402 60C76.1169 60.0054 75.403 59.7698 74.7642 59.1898C73.4389 57.8883 73.5103 55.3397 75.1358 54.3047C76.646 53.3349 78.5717 53.6032 80.2045 54.0926C80.1899 53.3748 80.3326 52.561 79.8567 51.9501C79.3204 51.2123 78.352 50.9423 77.4715 50.9713C76.5343 50.9441 75.6245 51.2051 74.7422 51.4842V50.1157C76.1828 49.5574 77.8083 49.3617 79.3185 49.7641C80.1459 49.9852 80.9184 50.4746 81.3834 51.1978C81.7403 51.7217 81.8611 52.3688 81.8502 52.9924M80.2045 55.3905C78.9909 55.1258 77.6582 54.7887 76.4629 55.2926C75.3554 55.7784 75.2749 57.4206 76.0986 58.2001C76.7283 58.7185 77.6326 58.7475 78.3868 58.5191C79.0568 58.3034 79.681 57.9263 80.1807 57.4351C80.2539 56.759 80.1954 56.072 80.2063 55.3923M52.3 49.6517C51.3334 49.842 50.5115 50.4637 49.9111 51.2178L49.6109 49.8438H48.3204V59.7535H49.9844V52.7186C50.5097 51.8776 51.3609 51.167 52.3659 50.9894C52.9187 50.9314 53.5264 50.9314 54.0024 51.2577C54.6247 51.6438 54.8737 52.4141 54.8627 53.1102V59.7535H56.5175V52.8836C56.5175 52.7186 56.6054 52.5918 56.6951 52.4685C57.3284 51.6601 58.2492 50.9604 59.3274 50.964C59.9351 50.9169 60.5758 51.129 60.9748 51.5966C61.3538 52.0878 61.4434 52.7259 61.4727 53.3259V59.7517H63.069L63.0653 52.7821C63.0964 51.6129 62.4722 50.364 61.3501 49.8927C60.1767 49.3707 58.7434 49.4541 57.6524 50.1375C57.0795 50.509 56.6255 51.022 56.1917 51.5386C55.983 51.1924 55.7926 50.8281 55.5107 50.5344C54.7382 49.6408 53.4184 49.3852 52.2981 49.6499M44.1413 59.7662L40.3393 54.7035L44.015 49.8456H42.2028L39.5174 53.6087L36.6892 49.8438H34.877L38.5527 54.7053L34.7507 59.768L36.519 59.7553L39.3893 55.8128L42.3712 59.7553L44.1395 59.768L44.1413 59.7662ZM46.7608 49.8438H45.1152V59.7662H46.7608V49.8438ZM46.7608 45.7074H45.1152V47.4946H46.7608V45.7074ZM44.3463 17.0805V42.1039H47.5278V17.0805H44.3463ZM53.2647 17.0805V42.1039H56.3582C56.3582 37.4073 56.3656 32.709 56.3564 28.0124C56.3784 26.3213 56.2576 24.6355 56.221 22.9443C56.1898 22.3933 56.091 21.8422 56.1477 21.2894C56.4571 21.6428 56.6822 22.0561 56.944 22.444C58.8478 25.3533 60.8449 28.2046 62.8731 31.0323C65.4981 34.7246 68.1175 38.4133 70.7462 42.1039H73.8343V17.0823H70.7315L70.7352 31.964C70.748 32.6202 70.7224 33.28 70.8102 33.9307C70.8505 34.7428 70.8231 35.5566 70.8743 36.3687C70.9402 36.8617 70.9713 37.3602 70.9475 37.8569C70.7974 37.6973 70.6547 37.536 70.5393 37.353C68.2805 33.8509 65.8715 30.4486 63.446 27.059C61.0847 23.7346 58.7105 20.4103 56.3546 17.0823H53.2628L53.2647 17.0805ZM35.5635 17.0805V32.9428C35.4829 34.3168 35.2925 35.7397 34.5768 36.9469C33.8977 38.1451 32.7554 39.0858 31.4265 39.4937C30.5643 39.7656 29.6618 39.8779 28.7594 39.8725C27.8569 39.8779 26.9545 39.7656 26.0923 39.4937C24.7634 39.0858 23.6211 38.1451 22.942 36.9469C22.2262 35.7397 22.0377 34.3168 21.9553 32.9428V17.0805H18.9185V33.0516C18.9057 34.344 19.0887 35.6382 19.4951 36.8672C20.0186 38.4568 20.9888 39.9269 22.3818 40.8966C24.044 42.0386 26.0887 42.5262 28.0894 42.5606C28.3127 42.5661 28.5361 42.5679 28.7594 42.5679C28.9827 42.5679 29.206 42.5661 29.4294 42.5606C31.4301 42.5262 33.4748 42.0386 35.137 40.8966C36.53 39.9269 37.5002 38.4568 38.0237 36.8672C38.4301 35.6382 38.6131 34.344 38.5985 33.0516V17.0805H35.5635Z" fill="white"/>
+    </g>
+    <defs>
+        <clipPath id="clip0_1409_5468">
+            <rect width="96.4706" height="60" fill="white"/>
+        </clipPath>
+    </defs>
+</svg>
+        </a>
+    </div>
+</header>
+
+<main class="pb-28">
+<section data-variant="A">
+    <div>
+        <!-- Beige intro: the H1 and intro beside a modest photo, never large image tiles. -->
+        <div class="bg-container-beige">
+            <div class="container py-8 md:py-10 grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
+                <div class="flex flex-col gap-2">
+                    <h1>Gumax<sup>®</sup> schuifwanden voor uw overkapping</h1>
+                    <p>Een Gumax<sup>®</sup> schuifwand stelt u zelf samen aan de hand van de onderstaande opties. Meer beschutting, privacy, schaduw of bescherming tegen insecten? Dankzij de verschillende opties geniet u op ieder moment van de dag van optimaal comfort onder uw overkapping. De schuifwanden passen in hetzelfde railsysteem, waarin u ze soepel verschuift.</p>
+                </div>
+                <img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/Categoriepagina/Schuifwanden/modular-system-combine-gumax-sliding-doors.jpg" alt="Modulair systeem" class="w-full h-56 md:h-72 object-cover rounded-2">
+            </div>
+        </div>
+        <!-- Sticky product tabs: thumbnail (from sm), name and "Vanaf" price; the active tab gets the beige pill. -->
+        <nav aria-label="Alle Gumax® schuifwanden" class="sticky top-0 z-40 bg-white border-b border-tmx-neutral-lightGrey">
+            <div class="container">
+                <ul class="flex gap-1 md:gap-2 overflow-x-auto snap-x py-2" data-tabs>
+                    <li class="shrink-0 snap-start">
+                        <a href="#schuifwand-glas" class="flex items-center gap-3 min-h-11 h-full px-3 py-2 rounded-2 transition-colors hover:text-tmx-primary-lighterGreen bg-container-beige" aria-current="true">
+                            <img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/Categoriepagina/Schuifwanden/gumax-glass-sliding-doors.jpg" alt="" class="hidden sm:block w-16 aspect-video object-cover rounded-1">
+                            <span class="flex flex-col"><span class="text-3.5 md:text-4 font-semibold whitespace-nowrap">Glazen schuifwand</span><span class="text-3 md:text-3.5 whitespace-nowrap">Vanaf € 70</span></span>
+                        </a>
+                    </li>
+                    <li class="shrink-0 snap-start">
+                        <a href="#schuifwand-steel" class="flex items-center gap-3 min-h-11 h-full px-3 py-2 rounded-2 transition-colors hover:text-tmx-primary-lighterGreen">
+                            <img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/Categoriepagina/Schuifwanden/gumax-steel-look-glass-sliding-doors.jpg" alt="" class="hidden sm:block w-16 aspect-video object-cover rounded-1">
+                            <span class="flex flex-col"><span class="text-3.5 md:text-4 font-semibold whitespace-nowrap">Steel Look</span><span class="text-3 md:text-3.5 whitespace-nowrap">Vanaf € 57,75</span></span>
+                        </a>
+                    </li>
+                    <li class="shrink-0 snap-start">
+                        <a href="#schuifwand-shading" class="flex items-center gap-3 min-h-11 h-full px-3 py-2 rounded-2 transition-colors hover:text-tmx-primary-lighterGreen">
+                            <img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/Categoriepagina/Schuifwanden/gumax-shading-panel.jpg" alt="" class="hidden sm:block w-16 aspect-video object-cover rounded-1">
+                            <span class="flex flex-col"><span class="text-3.5 md:text-4 font-semibold whitespace-nowrap">Shading Panel</span><span class="text-3 md:text-3.5 whitespace-nowrap">Vanaf € 314</span></span>
+                        </a>
+                    </li>
+                    <li class="shrink-0 snap-start">
+                        <a href="#schuifwand-hor" class="flex items-center gap-3 min-h-11 h-full px-3 py-2 rounded-2 transition-colors hover:text-tmx-primary-lighterGreen">
+                            <img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/Categoriepagina/Schuifwanden/Hor_schuideur.jpg" alt="" class="hidden sm:block w-16 aspect-video object-cover rounded-1">
+                            <span class="flex flex-col"><span class="text-3.5 md:text-4 font-semibold whitespace-nowrap">Hor schuifdeur</span><span class="text-3 md:text-3.5 whitespace-nowrap">Vanaf € 146</span></span>
+                        </a>
+                    </li>
+                    <li class="shrink-0 snap-start">
+                        <a href="#zijwanden" class="flex items-center gap-3 min-h-11 h-full px-3 py-2 rounded-2 transition-colors hover:text-tmx-primary-lighterGreen">
+                            <img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/Categoriepagina/Schuifwanden/Wall_System_Anthracite_Grey-Beige.jpg" alt="" class="hidden sm:block w-16 aspect-video object-cover rounded-1">
+                            <span class="flex flex-col"><span class="text-3.5 md:text-4 font-semibold whitespace-nowrap">Zijwanden</span></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- One light content block per product (DESIGN.md → Content patterns → Content block). -->
+        <div class="container py-8 md:py-10 flex flex-col gap-6 md:gap-8">
+            <article id="schuifwand-glas" class="content-block scroll-mt-28">
+                <div class="content-block-media"><img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/Categoriepagina/Schuifwanden/glass-sliding-doors-comfortable-all-year-round.jpg" alt="Gumax® glazen schuifwand"></div>
+                <div class="content-block-text">
+                    <div class="flex flex-col items-start gap-3">
+                        <h2 class="text-7 font-black break-words hyphens-auto">Gumax<sup>®</sup> glazen schuifwand</h2>
+                        <span class="inline-flex items-baseline gap-1.5 w-fit bg-price text-white px-2 py-1.5 -rotate-2"><span class="text-3.75 md:text-4.75 font-semibold">Vanaf</span><span class="text-5 md:text-6 font-black whitespace-nowrap">€ 70</span></span>
+                    </div>
+                    <p>Door de veelzijdigheid van de Gumax<sup>®</sup> glazen schuifwand zit u er altijd comfortabel en droog bij.</p>
+                    <ul class="list-usps">
+                        <li><span class="list-text"><strong class="font-semibold">Geniet nog langer</strong> van uw tuin</span></li>
+                        <li><span class="list-text"><strong class="font-semibold">Isolerende werking</strong> doordat warmte blijft hangen</span></li>
+                        <li><span class="list-text"><strong class="font-semibold">Modulair uitbreidbaar</strong> met accessoires</span></li>
+                        <li><span class="list-text"><strong class="font-semibold">Eenvoudig verschuifbaar</strong> via het railsysteem</span></li>
+                        <li><span class="list-text"><strong class="font-semibold">Combineerbaar</strong> met Gumax<sup>®</sup> Shading Panel &amp; Steel Look</span></li>
+                    </ul>
+                    <div class="content-block-actions"><a class="btn btn-primary" href="https://m2stagingnl.intern.systems/glazen-schuifwand#productbuilder">Stel nu samen</a><a class="btn btn-secondary" href="https://m2stagingnl.intern.systems/glazen-schuifwand/productinformatie">Meer informatie</a></div>
+                </div>
+            </article>
+            <article id="schuifwand-steel" class="content-block --media-right scroll-mt-28">
+                <div class="content-block-media"><img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/Categoriepagina/Schuifwanden/configure-your-steel-look-sliding-door.jpg" alt="Kies uw Gumax® Steel Look glazen schuifwand"></div>
+                <div class="content-block-text">
+                    <div class="flex flex-col items-start gap-3">
+                        <h2 class="text-7 font-black break-words hyphens-auto">Gumax<sup>®</sup> Steel Look glazen schuifwand</h2>
+                        <span class="inline-flex items-baseline gap-1.5 w-fit bg-price text-white px-2 py-1.5 -rotate-2"><span class="text-3.75 md:text-4.75 font-semibold">Vanaf</span><span class="text-5 md:text-6 font-black whitespace-nowrap">€ 57,75</span></span>
+                    </div>
+                    <p>Met een Gumax<sup>®</sup> Steel Look glazen schuifwand voor buiten geeft u in een handomdraai een luxe, industriële look aan uw overkapping als verlengstuk van uw woning.</p>
+                    <ul class="list-usps">
+                        <li><span class="list-text"><strong class="font-semibold">Geef een industriële look</strong> aan uw overkapping</span></li>
+                        <li><span class="list-text"><strong class="font-semibold">Makkelijk en snel monteren</strong> met meettools</span></li>
+                        <li><span class="list-text"><strong class="font-semibold">Stevige bevestiging</strong> dankzij 3M tape</span></li>
+                        <li><span class="list-text">Kies uit <strong class="font-semibold">3- of 4-vlakverdeling</strong></span></li>
+                        <li><span class="list-text"><strong class="font-semibold">Perfecte afwerking</strong> inclusief eindkapjes</span></li>
+                    </ul>
+                    <div class="content-block-actions"><a class="btn btn-primary" href="https://m2stagingnl.intern.systems/steel-look-glazen-schuifwand#productbuilder">Stel nu samen</a><a class="btn btn-secondary" href="https://m2stagingnl.intern.systems/steel-look-glazen-schuifwand/productinformatie">Meer informatie</a></div>
+                </div>
+            </article>
+            <article id="schuifwand-shading" class="content-block scroll-mt-28">
+                <div class="content-block-media"><img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/Categoriepagina/Schuifwanden/configure-your-shading-panel.jpg" alt="Kies uw Gumax® Shading Panel"></div>
+                <div class="content-block-text">
+                    <div class="flex flex-col items-start gap-3">
+                        <h2 class="text-7 font-black break-words hyphens-auto">Gumax<sup>®</sup> Shading Panel</h2>
+                        <span class="inline-flex items-baseline gap-1.5 w-fit bg-price text-white px-2 py-1.5 -rotate-2"><span class="text-3.75 md:text-4.75 font-semibold">Vanaf</span><span class="text-5 md:text-6 font-black whitespace-nowrap">€ 314</span></span>
+                    </div>
+                    <p>Dankzij Gumax<sup>®</sup> Shading Panels heeft u eenvoudig de gewenste hoeveelheid schaduw, beschutting en privacy onder uw overkapping.</p>
+                    <ul class="list-usps">
+                        <li><span class="list-text"><strong class="font-semibold">Geef een industriële look</strong> aan uw overkapping</span></li>
+                        <li><span class="list-text"><strong class="font-semibold">Optimale luchtstromen</strong> bepalen</span></li>
+                        <li><span class="list-text"><strong class="font-semibold">Naar eigen smaak samenstellen</strong> in verschillende kleuren</span></li>
+                        <li><span class="list-text"><strong class="font-semibold">Eenvoudig verschuifbaar</strong> via het railsysteem</span></li>
+                        <li><span class="list-text"><strong class="font-semibold">Combineerbaar</strong> met Gumax<sup>®</sup> glazen schuifwand (met of zonder Steel Look)</span></li>
+                    </ul>
+                    <div class="content-block-actions"><a class="btn btn-primary" href="https://m2stagingnl.intern.systems/shading-panel#productbuilder">Stel nu samen</a><a class="btn btn-secondary" href="https://m2stagingnl.intern.systems/shading-panel/productinformatie">Meer informatie</a></div>
+                </div>
+            </article>
+            <article id="schuifwand-hor" class="content-block --media-right scroll-mt-28">
+                <div class="content-block-media"><img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/Categoriepagina/Schuifwanden/Hor_schuifdeur_2.jpg" alt="Gumax® Hor schuifdeur"></div>
+                <div class="content-block-text">
+                    <div class="flex flex-col items-start gap-3">
+                        <h2 class="text-7 font-black break-words hyphens-auto">Gumax<sup>®</sup> hor schuifdeur</h2>
+                        <span class="inline-flex items-baseline gap-1.5 w-fit bg-price text-white px-2 py-1.5 -rotate-2"><span class="text-3.75 md:text-4.75 font-semibold">Vanaf</span><span class="text-5 md:text-6 font-black whitespace-nowrap">€ 146</span></span>
+                    </div>
+                    <p>Houd insecten buiten uw overkapping en laat frisse lucht binnen met de stevige Gumax<sup>®</sup> hordeur met aluminium frame en een strak gespannen horgaas.</p>
+                    <ul class="list-usps">
+                        <li><span class="list-text"><strong class="font-semibold">Houd insecten buiten</strong> en laat frisse lucht binnen</span></li>
+                        <li><span class="list-text"><strong class="font-semibold">Stevige hordeur</strong> met aluminium frame</span></li>
+                        <li><span class="list-text"><strong class="font-semibold">Kwalitatief horgaas</strong> met heldere doorkijk</span></li>
+                        <li><span class="list-text"><strong class="font-semibold">Extra strak gespannen gaas,</strong> bevestigd in het frame</span></li>
+                        <li><span class="list-text"><strong class="font-semibold">Eenvoudig plaatsen en verschuiven</strong> in het railsysteem</span></li>
+                    </ul>
+                    <div class="content-block-actions"><a class="btn btn-primary" href="https://m2stagingnl.intern.systems/hor-schuifdeuren">Stel nu samen</a><a class="btn btn-secondary" href="https://m2stagingnl.intern.systems/glazen-schuifwand/hor-schuifdeur">Meer informatie</a></div>
+                </div>
+            </article>
+        </div>
+        <!-- Comparison: need rows with ticks at every width, colours from md, prices and buttons from lg. -->
+        <div class="container py-12 flex flex-col gap-6">
+            <h2>Alle Gumax<sup>®</sup> schuifwanden</h2>
+            <div class="relative">
+                <table class="w-full table-fixed border-collapse text-left">
+                    <caption class="sr-only">Alle Gumax<sup>®</sup> schuifwanden</caption>
+                    <thead>
+                        <tr>
+                            <td class="w-2/5 md:w-1/4"></td>
+                            <th scope="col" class="align-top font-normal px-1 md:px-3 pb-4">
+                                <a href="#schuifwand-glas" class="flex flex-col gap-2 hover:text-tmx-primary-lighterGreen transition-colors"><img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/Categoriepagina/Schuifwanden/gumax-glass-sliding-doors.jpg" alt="" class="w-full aspect-video object-cover rounded-1 md:rounded-2"><span class="text-3 md:text-4 font-semibold break-words hyphens-auto">Glazen schuifwand</span></a>
+                                <div class="hidden lg:block pt-2"><div class="price-container w-fit"><span class="price whitespace-nowrap">Vanaf € 70</span></div></div>
+                            </th>
+                            <th scope="col" class="align-top font-normal px-1 md:px-3 pb-4">
+                                <a href="#schuifwand-steel" class="flex flex-col gap-2 hover:text-tmx-primary-lighterGreen transition-colors"><img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/Categoriepagina/Schuifwanden/gumax-steel-look-glass-sliding-doors.jpg" alt="" class="w-full aspect-video object-cover rounded-1 md:rounded-2"><span class="text-3 md:text-4 font-semibold break-words hyphens-auto">Steel Look</span></a>
+                                <div class="hidden lg:block pt-2"><div class="price-container w-fit"><span class="price whitespace-nowrap">Vanaf € 57,75</span></div></div>
+                            </th>
+                            <th scope="col" class="align-top font-normal px-1 md:px-3 pb-4">
+                                <a href="#schuifwand-shading" class="flex flex-col gap-2 hover:text-tmx-primary-lighterGreen transition-colors"><img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/Categoriepagina/Schuifwanden/gumax-shading-panel.jpg" alt="" class="w-full aspect-video object-cover rounded-1 md:rounded-2"><span class="text-3 md:text-4 font-semibold break-words hyphens-auto">Shading Panel</span></a>
+                                <div class="hidden lg:block pt-2"><div class="price-container w-fit"><span class="price whitespace-nowrap">Vanaf € 314</span></div></div>
+                            </th>
+                            <th scope="col" class="align-top font-normal px-1 md:px-3 pb-4">
+                                <a href="#schuifwand-hor" class="flex flex-col gap-2 hover:text-tmx-primary-lighterGreen transition-colors"><img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/Categoriepagina/Schuifwanden/Hor_schuideur.jpg" alt="" class="w-full aspect-video object-cover rounded-1 md:rounded-2"><span class="text-3 md:text-4 font-semibold break-words hyphens-auto">Hor schuifdeur</span></a>
+                                <div class="hidden lg:block pt-2"><div class="price-container w-fit"><span class="price whitespace-nowrap">Vanaf € 146</span></div></div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-t border-tmx-neutral-lightGrey">
+                            <th scope="row" class="py-2.5 pr-2 font-normal"><span class="flex items-center gap-2 md:gap-3 text-3.5 md:text-4 font-semibold break-words hyphens-auto"><span class="hidden sm:flex size-8 shrink-0 rounded-1 bg-tmx-secondary-sand items-center justify-center"><svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v5c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10V6l-8-3Z"/></svg></span>Beschutting</span></th>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-primary-lighterGreen" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 18.33a8.33 8.33 0 1 1 0-16.66 8.33 8.33 0 0 1 0 16.66Zm-.83-5 5.89-5.9-1.18-1.17-4.71 4.71-2.36-2.36-1.18 1.18 3.54 3.54Z"/></svg><span class="sr-only">ja</span></td>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-primary-lighterGreen" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 18.33a8.33 8.33 0 1 1 0-16.66 8.33 8.33 0 0 1 0 16.66Zm-.83-5 5.89-5.9-1.18-1.17-4.71 4.71-2.36-2.36-1.18 1.18 3.54 3.54Z"/></svg><span class="sr-only">ja</span></td>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-primary-lighterGreen" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 18.33a8.33 8.33 0 1 1 0-16.66 8.33 8.33 0 0 1 0 16.66Zm-.83-5 5.89-5.9-1.18-1.17-4.71 4.71-2.36-2.36-1.18 1.18 3.54 3.54Z"/></svg><span class="sr-only">ja</span></td>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-neutral-grey" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6.5 10h7"/></svg><span class="sr-only">nee</span></td>
+                        </tr>
+                        <tr class="border-t border-tmx-neutral-lightGrey">
+                            <th scope="row" class="py-2.5 pr-2 font-normal"><span class="flex items-center gap-2 md:gap-3 text-3.5 md:text-4 font-semibold break-words hyphens-auto"><span class="hidden sm:flex size-8 shrink-0 rounded-1 bg-tmx-secondary-sand items-center justify-center"><svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3l18 18"/><path d="M10.6 5.1A10 10 0 0 1 12 5c6 0 9.5 7 9.5 7a17 17 0 0 1-2.9 3.7M6.6 6.6C3.9 8.3 2.5 12 2.5 12S6 19 12 19a9.6 9.6 0 0 0 5.4-1.6"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg></span>Privacy</span></th>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-neutral-grey" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6.5 10h7"/></svg><span class="sr-only">nee</span></td>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-neutral-grey" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6.5 10h7"/></svg><span class="sr-only">nee</span></td>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-primary-lighterGreen" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 18.33a8.33 8.33 0 1 1 0-16.66 8.33 8.33 0 0 1 0 16.66Zm-.83-5 5.89-5.9-1.18-1.17-4.71 4.71-2.36-2.36-1.18 1.18 3.54 3.54Z"/></svg><span class="sr-only">ja</span></td>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-neutral-grey" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6.5 10h7"/></svg><span class="sr-only">nee</span></td>
+                        </tr>
+                        <tr class="border-t border-tmx-neutral-lightGrey">
+                            <th scope="row" class="py-2.5 pr-2 font-normal"><span class="flex items-center gap-2 md:gap-3 text-3.5 md:text-4 font-semibold break-words hyphens-auto"><span class="hidden sm:flex size-8 shrink-0 rounded-1 bg-tmx-secondary-sand items-center justify-center"><svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span>Schaduw</span></th>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-neutral-grey" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6.5 10h7"/></svg><span class="sr-only">nee</span></td>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-neutral-grey" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6.5 10h7"/></svg><span class="sr-only">nee</span></td>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-primary-lighterGreen" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 18.33a8.33 8.33 0 1 1 0-16.66 8.33 8.33 0 0 1 0 16.66Zm-.83-5 5.89-5.9-1.18-1.17-4.71 4.71-2.36-2.36-1.18 1.18 3.54 3.54Z"/></svg><span class="sr-only">ja</span></td>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-neutral-grey" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6.5 10h7"/></svg><span class="sr-only">nee</span></td>
+                        </tr>
+                        <tr class="border-t border-tmx-neutral-lightGrey">
+                            <th scope="row" class="py-2.5 pr-2 font-normal"><span class="flex items-center gap-2 md:gap-3 text-3.5 md:text-4 font-semibold break-words hyphens-auto"><span class="hidden sm:flex size-8 shrink-0 rounded-1 bg-tmx-secondary-sand items-center justify-center"><svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8a4 4 0 1 1 8 0"/><rect x="7" y="8" width="10" height="11" rx="5"/><path d="M12 11v8M3 12h4M17 12h4M4 7l3 2M20 7l-3 2M4 18l3-2M20 18l-3-2"/></svg></span>Bescherming tegen insecten</span></th>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-neutral-grey" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6.5 10h7"/></svg><span class="sr-only">nee</span></td>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-neutral-grey" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6.5 10h7"/></svg><span class="sr-only">nee</span></td>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-neutral-grey" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6.5 10h7"/></svg><span class="sr-only">nee</span></td>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-primary-lighterGreen" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 18.33a8.33 8.33 0 1 1 0-16.66 8.33 8.33 0 0 1 0 16.66Zm-.83-5 5.89-5.9-1.18-1.17-4.71 4.71-2.36-2.36-1.18 1.18 3.54 3.54Z"/></svg><span class="sr-only">ja</span></td>
+                        </tr>
+                        <tr class="border-t border-tmx-neutral-lightGrey">
+                            <th scope="row" class="py-2.5 pr-2 font-normal"><span class="flex items-center gap-2 md:gap-3 text-3.5 md:text-4 font-semibold break-words hyphens-auto"><span class="hidden sm:flex size-8 shrink-0 rounded-1 bg-tmx-secondary-sand items-center justify-center"><svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5 12 5s9.5 7 9.5 7-3.5 7-9.5 7-9.5-7-9.5-7Z"/><circle cx="12" cy="12" r="3"/></svg></span>Vrij uitzicht</span></th>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-primary-lighterGreen" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 18.33a8.33 8.33 0 1 1 0-16.66 8.33 8.33 0 0 1 0 16.66Zm-.83-5 5.89-5.9-1.18-1.17-4.71 4.71-2.36-2.36-1.18 1.18 3.54 3.54Z"/></svg><span class="sr-only">ja</span></td>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-primary-lighterGreen" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 18.33a8.33 8.33 0 1 1 0-16.66 8.33 8.33 0 0 1 0 16.66Zm-.83-5 5.89-5.9-1.18-1.17-4.71 4.71-2.36-2.36-1.18 1.18 3.54 3.54Z"/></svg><span class="sr-only">ja</span></td>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-neutral-grey" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6.5 10h7"/></svg><span class="sr-only">nee</span></td>
+                            <td class="py-2.5 px-1 md:px-3"><svg class="size-6 shrink-0 text-tmx-primary-lighterGreen" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 18.33a8.33 8.33 0 1 1 0-16.66 8.33 8.33 0 0 1 0 16.66Zm-.83-5 5.89-5.9-1.18-1.17-4.71 4.71-2.36-2.36-1.18 1.18 3.54 3.54Z"/></svg><span class="sr-only">ja</span></td>
+                        </tr>
+                        <tr class="hidden md:table-row border-t border-tmx-neutral-lightGrey">
+                            <td></td>
+                            <td class="align-top py-3 px-3"><div class="flex flex-col gap-2"><div class="flex flex-col gap-1"><span class="text-3.5">Handgrepen in 3 kleuren</span><span class="flex flex-wrap gap-1"><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-tmx-neutral-grey" title="mat antraciet · RAL 7016" aria-hidden="true"></span><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-white" title="mat wit · RAL 9016" aria-hidden="true"></span><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-tmx-primary-black" title="mat zwart · RAL 9005" aria-hidden="true"></span></span><span class="sr-only">mat antraciet RAL 7016, mat wit RAL 9016, mat zwart RAL 9005</span></div><div class="flex flex-col gap-1"><span class="text-3.5">Sierstrips in 3 kleuren</span><span class="flex flex-wrap gap-1"><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-tmx-neutral-grey" title="mat antraciet · RAL 7016" aria-hidden="true"></span><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-white" title="mat wit · RAL 9016" aria-hidden="true"></span><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-tmx-primary-black" title="mat zwart · RAL 9005" aria-hidden="true"></span></span><span class="sr-only">mat antraciet RAL 7016, mat wit RAL 9016, mat zwart RAL 9005</span></div></div></td>
+                            <td class="align-top py-3 px-3"><div class="flex flex-col gap-2"><div class="flex flex-col gap-1"><span class="text-3.5">Steel Look strips in 2 kleuren</span><span class="flex flex-wrap gap-1"><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-tmx-neutral-grey" title="mat antraciet · RAL 7016" aria-hidden="true"></span><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-tmx-primary-black" title="mat zwart · RAL 9005" aria-hidden="true"></span></span><span class="sr-only">mat antraciet RAL 7016, mat zwart RAL 9005</span></div></div></td>
+                            <td class="align-top py-3 px-3"><div class="flex flex-col gap-2"><div class="flex flex-col gap-1"><span class="text-3.5">Frame in 3 kleuren</span><span class="flex flex-wrap gap-1"><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-tmx-neutral-grey" title="mat antraciet · RAL 7016" aria-hidden="true"></span><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-white" title="mat wit · RAL 9016" aria-hidden="true"></span><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-tmx-primary-black" title="mat zwart · RAL 9005" aria-hidden="true"></span></span><span class="sr-only">mat antraciet RAL 7016, mat wit RAL 9016, mat zwart RAL 9005</span></div><div class="flex flex-col gap-1"><span class="text-3.5">Lamellen in 5 kleuren</span><span class="flex flex-wrap gap-1"><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-tmx-neutral-grey" title="mat antraciet · RAL 7016" aria-hidden="true"></span><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-white" title="mat wit · RAL 9016" aria-hidden="true"></span><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-tmx-primary-black" title="mat zwart · RAL 9005" aria-hidden="true"></span><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-tmx-primary-brown" title="RAL 1019" aria-hidden="true"></span><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-tmx-neutral-mediumGrey" title="RAL 9007" aria-hidden="true"></span></span><span class="sr-only">mat antraciet RAL 7016, mat wit RAL 9016, mat zwart RAL 9005, RAL 1019, RAL 9007</span></div></div></td>
+                            <td class="align-top py-3 px-3"><div class="flex flex-col gap-2"><div class="flex flex-col gap-1"><span class="text-3.5">Frame in 3 kleuren</span><span class="flex flex-wrap gap-1"><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-tmx-neutral-grey" title="mat antraciet · RAL 7016" aria-hidden="true"></span><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-white" title="mat wit · RAL 9016" aria-hidden="true"></span><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-tmx-primary-black" title="mat zwart · RAL 9005" aria-hidden="true"></span></span><span class="sr-only">mat antraciet RAL 7016, mat wit RAL 9016, mat zwart RAL 9005</span></div></div></td>
+                        </tr>
+                        <tr class="hidden lg:table-row">
+                            <td></td>
+                            <td class="align-top pt-4 px-3"><a class="btn btn-primary w-full" href="https://m2stagingnl.intern.systems/glazen-schuifwand#productbuilder">Stel nu samen</a></td>
+                            <td class="align-top pt-4 px-3"><a class="btn btn-primary w-full" href="https://m2stagingnl.intern.systems/steel-look-glazen-schuifwand#productbuilder">Stel nu samen</a></td>
+                            <td class="align-top pt-4 px-3"><a class="btn btn-primary w-full" href="https://m2stagingnl.intern.systems/shading-panel#productbuilder">Stel nu samen</a></td>
+                            <td class="align-top pt-4 px-3"><a class="btn btn-primary w-full" href="https://m2stagingnl.intern.systems/hor-schuifdeuren">Stel nu samen</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Benefits: "+ Lees meer" for secondary card text, in this one section only. -->
+        <div class="bg-container-beige">
+            <div class="container py-12 flex flex-col gap-6">
+                <h2 class="max-w-3xl">De voordelen van een Gumax<sup>®</sup> schuifwand systeem op maat kopen</h2>
+                <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                    <div class="flex flex-col gap-3 lg:pr-4">
+                        <h3 class="heading-5">Modulair schuifwand systeem</h3>
+                        <p>Een Gumax<sup>®</sup> schuifwand stelt u zelf op maat samen en breidt u later altijd makkelijk uit.</p>
+                        <details class="group">
+                            <summary class="btn btn-tertiary w-fit min-h-11 cursor-pointer list-none"><svg class="size-5 shrink-0 transition-transform duration-200 group-open:rotate-45 motion-reduce:transition-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>Lees meer</span></summary>
+                            <div class="flex flex-col gap-4 pt-4"><p>Wilt u alleen een <a class="underline hover:text-tmx-primary-lighterGreen" href="https://m2stagingnl.intern.systems/glazen-schuifwand">Gumax<sup>®</sup> glazen schuifwand</a> kopen? Of een combinatie van Gumax<sup>®</sup> glazen schuifwanden, Gumax<sup>®</sup> Steel Look glazen schuifwanden, Gumax<sup>®</sup> Shading Panels en een Gumax<sup>®</sup> hor schuifdeur? Wilt u één of meerdere zijkanten van de overkapping afsluiten? U hebt de keuze. Voeg de shading panelen* eenvoudig toe aan het railsysteem en verplaats of verwijder ze wanneer u dat wilt. Heeft u al een Gumax<sup>®</sup> glazen schuifwand en spreekt Steel Look u aan? De strips zijn los verkrijgbaar als <a class="underline hover:text-tmx-primary-lighterGreen" href="https://m2stagingnl.intern.systems/steel-look-glazen-schuifwand?acc_composition=6035#productbuilder">Steel Look pakket</a>. Eenvoudig achteraf te monteren.</p><p class="text-3.5">* Als het aantal glazen schuifwanden en de producten zoals Gumax<sup>®</sup> Shading Panel tezamen meer zijn dan het aantal rails in het railsysteem, dan kunnen niet àlle wanden volledig achter elkaar geplaatst worden.</p></div>
+                        </details>
+                    </div>
+                    <article class="bg-white rounded-2 overflow-hidden flex flex-col">
+                        <img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/Categoriepagina/Schuifwanden/365-days-a-year-enjoy-in-all-weather-conditions.jpg" alt="365 dagen per jaar comfortabel buiten genieten" class="w-full h-48 object-cover">
+                        <div class="p-6 flex flex-col gap-3 grow">
+                            <h3 class="heading-5">365 dagen per jaar comfortabel buiten in de tuin genieten</h3>
+                            <p>Geniet onder alle weersomstandigheden van uw tuin met Gumax<sup>®</sup> een schuifwand.</p>
+                            <details class="group mt-auto">
+                                <summary class="btn btn-tertiary w-fit min-h-11 cursor-pointer list-none"><svg class="size-5 shrink-0 transition-transform duration-200 group-open:rotate-45 motion-reduce:transition-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>Lees meer</span></summary>
+                                <div class="flex flex-col gap-4 pt-4"><p>Is het fris onder de overkapping? Schuif dan eenvoudig één of meerdere panelen dicht. Meer schaduw, beschutting of privacy nodig? Maak dan gebruik van <a class="underline hover:text-tmx-primary-lighterGreen" href="https://m2stagingnl.intern.systems/shading-panel">Gumax<sup>®</sup> Shading Panels</a> en schuif ze eenvoudig op de gewenste plek. Zo is het op ieder moment comfortabel onder uw terrasoverkapping.</p></div>
+                            </details>
+                        </div>
+                    </article>
+                    <article class="bg-white rounded-2 overflow-hidden flex flex-col">
+                        <div class="p-6 flex flex-col gap-3 grow">
+                            <h3 class="heading-5">Kies uw stijl: van basic tot industrieel</h3>
+                            <p>Kies uw stijl met behulp van de verschillende opties en kleuren per schuifwand.</p>
+                            <ul class="flex flex-wrap gap-x-4 gap-y-2"><li class="flex items-center gap-1.5 text-3.5"><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-tmx-neutral-grey" title="mat antraciet · RAL 7016" aria-hidden="true"></span><span>mat antraciet RAL 7016</span></li><li class="flex items-center gap-1.5 text-3.5"><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-white" title="mat wit · RAL 9016" aria-hidden="true"></span><span>mat wit RAL 9016</span></li><li class="flex items-center gap-1.5 text-3.5"><span class="inline-block size-5 shrink-0 rounded-full border border-tmx-neutral-lightGrey bg-tmx-primary-black" title="mat zwart · RAL 9005" aria-hidden="true"></span><span>mat zwart RAL 9005</span></li></ul>
+                            <details class="group mt-auto">
+                                <summary class="btn btn-tertiary w-fit min-h-11 cursor-pointer list-none"><svg class="size-5 shrink-0 transition-transform duration-200 group-open:rotate-45 motion-reduce:transition-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>Lees meer</span></summary>
+                                <div class="flex flex-col gap-4 pt-4"><p>Ga voor een tijdloze look of kies voor een stoere, industriële schuifwand. De kleuren mat antraciet (RAL 7016), mat wit (RAL 9016) en mat zwart (RAL 9005) komen overeen voor de Gumax<sup>®</sup> schuifwanden en terrasoverkappingen.</p></div>
+                            </details>
+                        </div>
+                    </article>
+                    <article class="bg-white rounded-2 overflow-hidden flex flex-col">
+                        <img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/Categoriepagina/Schuifwanden/suitable-for-all-types-of-verandas.jpg" alt="Voor ieder type overkapping" class="w-full h-48 object-cover">
+                        <div class="p-6 flex flex-col gap-3 grow">
+                            <h3 class="heading-5">Voor ieder type overkapping</h3>
+                            <p>Door het tijdloze design en het grote aanbod aan formaten en kleuren zijn Gumax<sup>®</sup> schuifwanden toepasbaar onder vrijwel ieder type overkapping, dus ook houten overkappingen.</p>
+                            <details class="group mt-auto">
+                                <summary class="btn btn-tertiary w-fit min-h-11 cursor-pointer list-none"><svg class="size-5 shrink-0 transition-transform duration-200 group-open:rotate-45 motion-reduce:transition-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>Lees meer</span></summary>
+                                <div class="flex flex-col gap-4 pt-4"><p>Een Steel Look glazen schuifwand vormt een stijlvolle combinatie met een houten overkapping.</p><p>Denk ook aan andere toepassingen van de verschillende soorten schuifpanelen, zoals carports of binnenruimtes, mits:</p><ul class="list-base"><li><span class="list-text">de lengte- en hoogtematen overeenkomen;</span></li><li><span class="list-text">het installeren van een railsysteem mogelijk is.</span></li></ul></div>
+                            </details>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+        <!-- Side walls on a sand band: white cards without a border. -->
+        <div id="zijwanden" class="scroll-mt-28 bg-tmx-secondary-sand">
+            <div class="container py-12 flex flex-col gap-6">
+                <h2>Ontdek Gumax<sup>®</sup> zijwanden</h2>
+                <div class="grid gap-4 md:grid-cols-2">
+                    <article class="bg-white rounded-2 overflow-hidden flex flex-col">
+                        <img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/Categoriepagina/Schuifwanden/Wall_System_Anthracite_Grey-Beige.jpg" alt="Gumax® aluminium zijwand" class="w-full aspect-video object-cover">
+                        <div class="p-6 flex flex-col gap-3 grow">
+                            <h3>Aluminium zijwand</h3>
+                            <p>Een sterke en stijlvolle zijwand die optimale privacy biedt en beschermt tegen wisselende weersomstandigheden.</p>
+                            <div class="mt-auto pt-3 flex flex-wrap gap-2"><a class="btn btn-primary" href="https://m2stagingnl.intern.systems/aluminium-zijwand">Bekijk producten</a><a class="btn btn-secondary" href="https://m2stagingnl.intern.systems/aluminium-zijwand/productinformatie">Meer informatie</a></div>
+                        </div>
+                    </article>
+                    <article class="bg-white rounded-2 overflow-hidden flex flex-col">
+                        <img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/overig/Zijwand-en-spie/ACC-5008.jpg" alt="Polycarbonaat zijwand" class="w-full aspect-video object-cover">
+                        <div class="p-6 flex flex-col gap-3 grow">
+                            <h3>Polycarbonaat zijwand</h3>
+                            <p>Een zijwand die goed afsluit en een zacht, diffuus licht doorlaat. Meer privacy met behoud van een rustige lichtinval.</p>
+                            <div class="mt-auto pt-3 flex flex-wrap gap-2"><a class="btn btn-primary" href="https://m2stagingnl.intern.systems/polycarbonaat-zijwand">Bekijk producten</a><a class="btn btn-secondary" href="https://m2stagingnl.intern.systems/terrasoverkapping/zijwand">Meer informatie</a></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
+
+<!-- ===== Prototype switcher: prototype chrome, not part of the design. Keep it as is. ===== -->
+<div id="prototype-switcher" class="fixed inset-x-4 bottom-4 z-50 mx-auto w-fit max-w-full flex items-center gap-2 rounded-full bg-tmx-primary-black text-white shadow-arrow p-1.5 font-body">
+    <button type="button" data-step="-1" class="flex items-center justify-center size-11 shrink-0 rounded-full hover:bg-tmx-neutral-darkGrey focus:outline-none focus-visible:ring-4 focus-visible:ring-tmx-neutral-lightGrey" aria-label="Vorige variant">
+        <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg>
+    </button>
+    <div class="min-w-0 px-2 text-center" aria-live="polite">
+        <p data-label class="text-3.5 font-semibold"></p>
+        <p data-tradeoff class="text-3 text-tmx-neutral-lightGrey line-clamp-2 md:line-clamp-none"></p>
+    </div>
+    <button type="button" data-step="1" class="flex items-center justify-center size-11 shrink-0 rounded-full hover:bg-tmx-neutral-darkGrey focus:outline-none focus-visible:ring-4 focus-visible:ring-tmx-neutral-lightGrey" aria-label="Volgende variant">
+        <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+    </button>
+</div>
+<script>
+(() => {
+    const variants = JSON.parse(document.getElementById('prototype-variants').textContent);
+    const bar = document.getElementById('prototype-switcher');
+    const rule = document.head.appendChild(document.createElement('style'));
+    const readParam = () => {
+        try { return new URL(location.href).searchParams.get('variant'); } catch { return null; }
+    };
+    let current = Math.max(0, variants.findIndex((v) => v.key === (readParam() || '').toUpperCase()));
+
+    // Works for static sections and for sections a React root renders later.
+    function show(index, updateUrl) {
+        current = (index + variants.length) % variants.length;
+        const { key, name, tradeoff } = variants[current];
+        rule.textContent = `[data-variant]:not([data-variant="${key}"]) { display: none !important; }`;
+        bar.querySelector('[data-label]').textContent = `${key} (${name})`;
+        bar.querySelector('[data-tradeoff]').textContent = tradeoff;
+        if (!updateUrl) return;
+        try {
+            const url = new URL(location.href);
+            url.searchParams.set('variant', key);
+            history.replaceState(null, '', url);
+        } catch { /* sandboxed artifact: keep the variant in memory */ }
+    }
+
+    bar.querySelectorAll('[data-step]').forEach((button) => {
+        button.addEventListener('click', () => show(current + Number(button.dataset.step), true));
+    });
+    document.addEventListener('keydown', (event) => {
+        if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+        if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+        if (event.target.closest?.('input, textarea, select, [contenteditable]:not([contenteditable="false"])')) return;
+        event.preventDefault();
+        show(current + (event.key === 'ArrowRight' ? 1 : -1), true);
+    });
+    show(current, false);
+})();
+// Load lazy images at once, also those a script adds later: automated screenshots don't scroll, so lazy ones stay blank.
+(() => {
+    const eager = (root) => root.querySelectorAll?.('img[loading="lazy"]').forEach((img) => { img.loading = 'eager'; });
+    eager(document);
+    new MutationObserver((records) => records.forEach((record) => record.addedNodes.forEach((node) => {
+        if (node.nodeType !== 1) return;
+        if (node.matches('img[loading="lazy"]')) node.loading = 'eager';
+        eager(node);
+    }))).observe(document.body, { childList: true, subtree: true });
+})();
+</script>
+<script>
+// Sticky product tabs: the tab of the section in view gets the beige pill and scrolls into view in the tab row.
+// Positions are read on scroll only, never at start-up, when the Tailwind CDN hasn't styled the page yet.
+document.querySelectorAll('[data-tabs]').forEach((list) => {
+    const links = [...list.querySelectorAll('a')];
+    const targets = links.map((a) => document.querySelector(a.hash));
+    let active = links[0];
+    const activate = (link) => {
+        if (link === active) return;
+        active.classList.remove('bg-container-beige');
+        active.removeAttribute('aria-current');
+        link.classList.add('bg-container-beige');
+        link.setAttribute('aria-current', 'true');
+        list.scrollTo({ left: link.parentElement.offsetLeft - list.offsetLeft, behavior: 'smooth' });
+        active = link;
+    };
+    let queued = false;
+    addEventListener('scroll', () => {
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(() => {
+            queued = false;
+            const line = innerHeight * 0.35;
+            const current = targets.findLastIndex((target) => target.getBoundingClientRect().top <= line);
+            activate(links[Math.max(current, 0)]);
+        });
+    }, { passive: true });
+});
+</script>
+</body>
+</html>

@@ -5,6 +5,8 @@
 - **Content block.** Builds hand-rolled the text + image block and got it wrong: the image sat in the grid flow with `h-full`, so the photo's ratio set the height and the text floated, or the image sat in padding with its own rounding. Figma (`1358:30317`: `1358:30318` image right, `1358:30329` video left) and the theme's PageBuilder block (`content-types/page-builder-block-image-with-text.css`) both let the text set the height and the image cover its half. The skeleton now carries `.content-block`, `.content-block-text`, `.content-block-actions`, `.content-block-media` (`--media-right` modifier) and `.content-block-play`; DESIGN.md gives the markup, and build and audit require and check it.
 - **Tertiary button.** The theme paints `.btn-tertiary` with a white fill and border, which shows as a white box on beige and sand. The house style drops both: the skeleton makes them transparent, the sync drops them from the front matter tokens, and the prose, build and audit say so.
 
+- **Follow-up.** Buttons side by side are `gap-2` apart (the content block's actions row too). Page text writes `Gumax<sup>®</sup>`, never a bare `Gumax®`; attribute text keeps the plain sign. Build (rules and step 6), audit and DESIGN.md → Typography say so.
+
 **Blocked by:** None.
 
 **Status:** done

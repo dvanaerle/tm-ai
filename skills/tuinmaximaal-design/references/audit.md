@@ -35,14 +35,15 @@ Checkout pages run on a separate LESS theme: judge them against their own styles
 Check the input against DESIGN.md, section by section:
 
 - **Tokens:** only theme classes and scale values; no arbitrary values, inline colours, new fonts or sizes above 28px (`text-7`).
-- **Action colour:** the primary button is #809700 with the 4px #6D8005 bottom border; there is one primary action per view; secondary and tertiary are visibly quieter, and a tertiary button has no fill or border (a white box around a tertiary label on beige or sand is a finding). Buttons are `btn-size-sm` or the default size; `btn-size-lg` is a finding.
-- **Orange:** only on the price box, heading and paragraph highlights, badges and active states. An orange button, link or small text is a finding.
+- **Action colour:** the primary button is #809700 with the 4px #6D8005 bottom border; there is one primary action per view; secondary and tertiary are visibly quieter, and a tertiary button has no fill or border (a white box around a tertiary label on beige or sand is a finding); buttons side by side are `gap-2` apart. Buttons are `btn-size-sm` or the default size; `btn-size-lg` is a finding.
+- **Orange:** only on the price box, heading and paragraph highlights, badges and the main menu's active item. An orange button, link or small text is a finding, and so is an orange active state anywhere else, such as an orange bar under an in-page tab: the active tab gets the beige pill (DESIGN.md → Components → Content patterns → Sticky product tabs).
 - **Purchase path:** verandas and structures lead to the configurator, other products to the cart. Any quote-request CTA or form is a finding ("offerte" is a checkout payment method).
 - **Components:** messages have a tinted background, an icon and no border; product tiles have a white info area and the rotated price box, sized for the tile; the Figma content patterns (content block, image tile, intro link card, blog tile, reviews, FAQ) follow DESIGN.md → Components → Content patterns; form fields show the theme's states; headings use the h1–h6 scale with black weight on h1–h2 only.
 - **Shape and depth:** `rounded-1` for controls, `rounded-2` for tiles and cards; separation by whitespace, then a change of surface, then a 1px border only where Elevation & Depth gives one; `shadow-arrow` only on floating elements; the −2° rotation only on highlights, price boxes and promo labels.
 - **Tilt:** every heading highlight, the paragraph highlight, the price box and the promo labels tilt −2°. A flat heading highlight is a theme-level finding: the theme rotates an inline span, which a transform doesn't affect (DESIGN.md → Shapes). Report it under Theme-level notes, not as an error of the page.
 - **Surfaces:** white, beige and sand only, on the ladder in DESIGN.md → Elevation & Depth → Surfaces, plus at most one green emphasis block; green for structure and text; no dark theme. Any other surface colour or a second green block is a finding.
-- **Layout:** the container rule and the beige intro per page type (DESIGN.md → Layout); the box decision and, on a category page, the category grid (DESIGN.md → Elevation & Depth). The craft floor below flags the misses.
+- **Layout:** the container rule, the vertical flow, nothing over a photo and the beige intro per page type (DESIGN.md → Layout); the box decision, the surface change every one or two sections and, on a category page, the category grid (DESIGN.md → Elevation & Depth). The craft floor below flags the misses.
+- **Redesigns:** when the input is a redesign of an existing page that should keep its copy, compare it with the source (DESIGN.md → Overview → Redesigns). The craft floor below flags invented copy and visuals.
 - **Visual principles:** apply the flag line of each principle in DESIGN.md → Visual principles (Clarity, Deference, Depth, Hierarchy) to every view.
 
 ## 3. Craft floor
@@ -56,17 +57,20 @@ Each item is a target; the "flag" line names the common pattern that misses it.
 - **Type:** body lines run about 65–75 characters; the heading steps are obvious in size and weight; headings wrap in balanced lines.
 - **Motion:** motion confirms a state change and stays within 100–300ms with ease-out or ease-in-out; reduced motion keeps the state change visible.
 - **States:** every control has hover, focus, disabled, loading and error states; lists and results have an empty state; focus is visible from the keyboard.
-- **Copy:** controls name their action ("Configureer je veranda", not "Klik hier"); errors name the problem and how to recover.
+- **Copy:** `Gumax®` in page text is a finding; it is `Gumax<sup>®</sup>` (attribute text excepted). Controls name their action ("Configureer je veranda", not "Klik hier"); errors name the problem and how to recover.
 - **Coverage:** everything the page promises can be found within seconds.
 
 **Composition:**
 
 - **Box decision:** each block has the treatment DESIGN.md → Elevation & Depth → The box decision gives it: repeated cards as white cards, the one block that needs emphasis as a borderless beige box, everything else unboxed on whitespace. A box nests one level deep at most, only when the inner box is a different surface (white tiles in a beige box). Flag: a box around plain text content on white; a repeated white card on white without its light-grey outline, or white cards on a beige or sand band with one; a padded content block holding a separately rounded image instead of the flush split, or a content block whose image sets the height, leaving the text floating or a beige strip above or below the image (Components → Content patterns → Content block); nested cards that don't change surface (a white card in a white card, a bordered wrapper around a card), nesting past one level, or one wrapper around everything.
+- **Light content block:** a product content block holds the name, the price, the first sentence, the USP list and two buttons (Components → Content patterns → Content block). Flag: "Lees meer" inside a content block (opening it stretches the flush photo), an icon row or a colour line such as "Handgrepen in 3 kleuren" in one, or "+ Lees meer" for card text in more than one section of the page.
 - **Container width:** every image and piece of content sits inside the container; only page chrome, the beige intro and tinted tile bands run full width, as colour bands. Flag: a full-bleed image or content outside the container.
 - **Price box:** each price chip is sized for its component (DESIGN.md → Components → Price box). Flag: a chip sized against its component, such as a 16px product-tile chip on an image tile or a promo-size chip on a product tile.
 - **Text on photos:** white text on a photo sits on a dark scrim (Components → Content patterns → Image tile). Flag: white text on a photo without a scrim, as an AA risk; mark the ratio "unverified" when the evidence can't show it.
 - **Option cards:** a selectable card uses the skeleton's `.option-card` or the theme's markup. Flag: `has-[:checked]:` or any other `has-[…]:` variant in a prototype (an arbitrary variant).
-- **Intro:** the page opens with the beige first section for its page type (DESIGN.md → Layout → Beige intro). Flag: no beige intro.
+- **Intro:** the page opens with the beige first section for its page type (DESIGN.md → Layout → Beige intro). Flag: no beige intro; a category or landing page whose intro is built from large image tiles instead of the H1 and intro beside a modest photo.
+- **Flow:** content stacks vertically, and nothing floats over a photo (DESIGN.md → Layout). Flag: a content carousel (a slider of content blocks, benefit cards or product sections; the theme's own sliders such as related products are fine); a card, box or panel floating over or overlapping a photo.
+- **Surface rhythm:** the surface changes every one or two sections (DESIGN.md → Elevation & Depth → Surfaces). Flag: three or more bare-white sections in a row.
 - **Emphasis:** emphasis comes from weight, size and the orange highlight. Flag: gradient text (`bg-clip-text` with a gradient).
 - **Alerts and callouts:** a status is shown with a tinted background and an icon. Flag: a coloured `border-left` or `border-right` above 1px on cards, list items, callouts or alerts.
 - **Depth:** depth comes from tonal layers. Flag: decorative or heavy drop shadows (`shadow-lg` and similar), hard offset shadows, glass and blur.
@@ -78,6 +82,8 @@ Each item is a target; the "flag" line names the common pattern that misses it.
 - **Headings:** a heading stands on its own. Flag: an eyebrow or kicker label above a heading, on any page type (uppercase `paragraph-tiny` belongs only inside badges and pills).
 - **Icons:** one drawn icon set, in one stroke and weight. Flag: emoji or unicode glyphs used as icons.
 - **Placeholders:** real content, or visibly marked placeholders. Flag: soft-shadowed rectangles, sparklines or fake charts standing in for content.
+- **Invented copy:** a redesign that keeps the copy uses the page's own text (DESIGN.md → Overview → Redesigns). Flag: a label, caption, chart title, stat or heading the source page doesn't have, including labels a new structure needed (filter chips, tab names, comparison rows); mark it "unverified" when the source isn't available.
+- **Invented visuals:** data shows only when the page holds it, as icons and ticks. Flag: a custom illustration, drawn diagram, bar chart or big "365"-style number, or an image that isn't the page's own in a keep-the-copy redesign.
 
 ## 4. Refine checklist
 

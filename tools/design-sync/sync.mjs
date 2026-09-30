@@ -2,8 +2,8 @@
 /**
  * Regenerates the tuinmaximaal-design skill's DESIGN.md front matter, the generated
  * regions of its prose, the prototype Tailwind config and the prototype skeleton's
- * component CSS from the Valantic `base` theme, copies the theme logo, then checks
- * the prose for drift and lints DESIGN.md.
+ * component CSS from the Valantic `base` theme, copies the theme logo, re-assembles the
+ * approved examples, then checks the prose for drift and lints DESIGN.md.
  *
  * Usage: npm run design:sync -- [themePath] [--skill-dir <dir>]
  *
@@ -11,8 +11,9 @@
  * reads component CSS. Prose outside the `design-sync` regions is kept as written,
  * but every value it quotes is checked against the theme.
  */
+import { spawnSync } from 'node:child_process';
 import { createRequire } from 'node:module';
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { parseArgs } from 'node:util';
 import { lint } from '@google/design.md/linter';
@@ -542,7 +543,9 @@ const prototypeCss = [
     '   a USP check mark that keeps its size when the text wraps (the theme lets it shrink), a tertiary button without the',
     '   theme\'s white fill and border, so it reads as a link on every surface, the content block (DESIGN.md → Content patterns),',
     '   which the theme only styles through PageBuilder markup (content-types/page-builder-block-image-with-text.css),',
-    '   and the selected card (DESIGN.md → Forms), which the base theme has no class for: `label.option-card` around an `sr-only` input. */',
+    '   the selected card (DESIGN.md → Forms), which the base theme has no class for: `label.option-card` around an `sr-only` input,',
+    '   and two layout traps: a fieldset that does not shrink below its content, and `sr-only` text escaping an unpositioned',
+    '   scroll container and widening the page (references/build.md → 6. Check before delivering → Build traps). */',
     '@layer components {',
     ...indent([
         '.btn { @apply focus-visible:ring-4 focus-visible:ring-form-input/50; }',
@@ -551,16 +554,18 @@ const prototypeCss = [
         '.btn-tertiary, .btn-tertiary:hover, .btn-tertiary.--hovered, .btn-tertiary:focus, .btn-tertiary.--focused { @apply bg-transparent border-transparent; }',
         '.content-block { @apply grid overflow-hidden rounded-2 bg-tmx-secondary-beige md:grid-cols-2; }',
         '.content-block-text { @apply flex min-w-0 flex-col justify-center gap-5 p-6 md:p-12 xl:p-20; }',
-        '.content-block-actions { @apply mt-2 flex flex-wrap gap-3 md:gap-5; }',
+        '.content-block-actions { @apply mt-2 flex flex-wrap gap-2; }',
         '.content-block-media { @apply relative order-first h-64 md:h-auto md:min-h-80; }',
         '.content-block.--media-right > .content-block-media { @apply md:order-last; }',
         '.content-block-media > img, .content-block-media > video, .content-block-media > iframe { @apply absolute inset-0 size-full object-cover; }',
         '.content-block-play { @apply absolute inset-0 flex items-center justify-center bg-tmx-primary-black/20 text-white; }',
-        '.option-card { @apply cursor-pointer rounded-2 border border-tmx-neutral-lightGrey bg-white transition-colors; }',
+        '.option-card { @apply relative cursor-pointer rounded-2 border border-tmx-neutral-lightGrey bg-white transition-colors; }',
         '.option-card:hover { @apply border-tmx-neutral-grey; }',
         '.option-card:has(input:checked) { @apply border-tmx-primary-lighterGreen bg-tmx-primary-lighterGreenSubtle; }',
         '.option-card:has(input:focus-visible) { @apply ring-4 ring-form-input/50; }',
         '.option-card:has(input:disabled) { @apply cursor-not-allowed opacity-50; }',
+        'fieldset { @apply min-w-0; }',
+        '.overflow-auto, .overflow-scroll, .overflow-x-auto, .overflow-x-scroll, .overflow-y-auto, .overflow-y-scroll { @apply relative; }',
     ]),
     '}',
 ].join('\n');
@@ -598,11 +603,25 @@ const compilePrototypeCss = async () => {
 };
 const prototypeCssCompiles = await compilePrototypeCss();
 
+// --- Approved examples -----------------------------------------------------------
+
+// Each example is committed assembled, so it opens anywhere; re-assemble it on the fresh skeleton, config and logo.
+const examplesDir = join(skillDir, 'assets/examples');
+let examplesAssemble = true;
+for (const parts of (existsSync(examplesDir) ? readdirSync(examplesDir) : []).filter((file) => file.endsWith('.parts.html'))) {
+    const input = join(examplesDir, parts);
+    const result = spawnSync(process.execPath, [join(skillDir, 'scripts/assemble.mjs'), input, input.replace(/\.parts\.html$/, '.html')], { encoding: 'utf8' });
+    if (result.status !== 0) {
+        console.log(`error   example ${parts}: ${result.stderr.trim()}`);
+        examplesAssemble = false;
+    }
+}
+
 // --- Lint ------------------------------------------------------------------------
 
 const { findings, summary } = lint(designMd);
 for (const { severity, path, message } of findings.filter((finding) => finding.severity !== 'info')) {
     console.log(`${severity.padEnd(7)} ${path ?? ''} ${message}`);
 }
-console.log(`DESIGN.md lint: ${summary.errors} errors, ${summary.warnings} warnings; prose drift: ${drift.length}; prototype CSS: ${prototypeCssCompiles ? 'ok' : 'fails'}`);
-process.exitCode = summary.errors > 0 || drift.length > 0 || !prototypeCssCompiles ? 1 : 0;
+console.log(`DESIGN.md lint: ${summary.errors} errors, ${summary.warnings} warnings; prose drift: ${drift.length}; prototype CSS: ${prototypeCssCompiles ? 'ok' : 'fails'}; examples: ${examplesAssemble ? 'ok' : 'fail'}`);
+process.exitCode = summary.errors > 0 || drift.length > 0 || !prototypeCssCompiles || !examplesAssemble ? 1 : 0;
