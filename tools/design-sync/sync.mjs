@@ -245,10 +245,13 @@ const add = (name, classes, extra = {}) => {
 };
 
 const btn = classesOf(buttonCss, '\\.btn').filter((name) => !name.startsWith('text-white'));
+// The house style drops the tertiary button's white fill and border (the prototype skeleton overrides them), so it reads as a link
+const asLink = (classes) => classes.filter((name) => !/^(bg|border)-btn-tertiary(-hover)?$/.test(name));
 for (const variant of ['primary', 'secondary', 'tertiary']) {
     const typographyRef = { typography: '{typography.button-label}' };
-    add(`button-${variant}`, [...btn, ...classesOf(buttonCss, `\\.btn-${variant}`)], typographyRef);
-    add(`button-${variant}-hover`, classesOf(buttonCss, `\\.btn-${variant}`, '&:hover[^{]*'));
+    const own = variant === 'tertiary' ? asLink : (classes) => classes;
+    add(`button-${variant}`, own([...btn, ...classesOf(buttonCss, `\\.btn-${variant}`)]), typographyRef);
+    add(`button-${variant}-hover`, own(classesOf(buttonCss, `\\.btn-${variant}`, '&:hover[^{]*')));
 }
 
 add('form-input', classesOf(formsCss, '^\\.form-textarea'), { typography: '{typography.form-input}' });
@@ -536,11 +539,23 @@ const prototypeCss = [
     ...indent(Object.entries(productTile).map(([selector, classes]) => `${selector} { @apply ${classes.join(' ')}; }`)),
     '}',
     '/* Prototype additions: a visible focus ring (the theme only swaps the fill), a highlight that rotates on an inline phrase,',
+    '   a USP check mark that keeps its size when the text wraps (the theme lets it shrink), a tertiary button without the',
+    '   theme\'s white fill and border, so it reads as a link on every surface, the content block (DESIGN.md → Content patterns),',
+    '   which the theme only styles through PageBuilder markup (content-types/page-builder-block-image-with-text.css),',
     '   and the selected card (DESIGN.md → Forms), which the base theme has no class for: `label.option-card` around an `sr-only` input. */',
     '@layer components {',
     ...indent([
         '.btn { @apply focus-visible:ring-4 focus-visible:ring-form-input/50; }',
         '.heading-highlight { @apply inline-block; }',
+        'ul.list-usps li:before, ol.list-usps li:before { @apply shrink-0; }',
+        '.btn-tertiary, .btn-tertiary:hover, .btn-tertiary.--hovered, .btn-tertiary:focus, .btn-tertiary.--focused { @apply bg-transparent border-transparent; }',
+        '.content-block { @apply grid overflow-hidden rounded-2 bg-tmx-secondary-beige md:grid-cols-2; }',
+        '.content-block-text { @apply flex min-w-0 flex-col justify-center gap-5 p-6 md:p-12 xl:p-20; }',
+        '.content-block-actions { @apply mt-2 flex flex-wrap gap-3 md:gap-5; }',
+        '.content-block-media { @apply relative order-first h-64 md:h-auto md:min-h-80; }',
+        '.content-block.--media-right > .content-block-media { @apply md:order-last; }',
+        '.content-block-media > img, .content-block-media > video, .content-block-media > iframe { @apply absolute inset-0 size-full object-cover; }',
+        '.content-block-play { @apply absolute inset-0 flex items-center justify-center bg-tmx-primary-black/20 text-white; }',
         '.option-card { @apply cursor-pointer rounded-2 border border-tmx-neutral-lightGrey bg-white transition-colors; }',
         '.option-card:hover { @apply border-tmx-neutral-grey; }',
         '.option-card:has(input:checked) { @apply border-tmx-primary-lighterGreen bg-tmx-primary-lighterGreenSubtle; }',

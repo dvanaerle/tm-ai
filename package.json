@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "design:sync": "node tools/design-sync/sync.mjs",
-    "design:install": "node tools/design-sync/install.mjs"
+    "design:install": "node tools/design-sync/install.mjs",
+    "test": "node --test \"tools/tests/*.test.mjs\""
   },
   "devDependencies": {
     "@google/design.md": "0.4.0"

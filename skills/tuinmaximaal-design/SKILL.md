@@ -18,8 +18,10 @@ The brand essentials, which every output honours:
 
 ## Pick the job
 
-- **Build:** the user wants something made: a page, section, component or prototype. Read [references/build.md](references/build.md) and follow it. The result is one throwaway file with 3 structurally different variants (or the number asked for, at most 5) below a green logo bar that stands in for the page shell, with a switcher.
-- **Audit:** the user hands over an existing page, screenshot, URL or snippet to review. Read [references/audit.md](references/audit.md) and follow it. The result is a report with findings ranked by impact, each with the rule it breaks and a fix, plus a CRO assessment.
+- **Build:** the user wants something made: a page, section, component or prototype. Read [references/build.md](references/build.md) and follow it. The result is one throwaway file with 3 structurally different variants (or the number asked for, at most 5) below a green logo bar that stands in for the page shell, with a switcher. You write the variants; a script assembles the file and a reviewer sub-agent checks it.
+- **Audit:** the user hands over an existing page, screenshot, URL or snippet to review. Read [references/audit.md](references/audit.md) and follow it. The result is a report with findings ranked by impact, each with the rule it breaks and a fix, plus a CRO assessment. The design-system and CRO axes run as parallel sub-agents and report side by side.
+
+Keep the main context for shaping and judging: the bundled script and sub-agents take the mechanical and independent work. Where scripts or sub-agents aren't available (claude.ai, Desktop), each step says how to do the same work inline.
 
 If a request asks for both ("review this block and suggest better versions"), audit first, then build variants that fix the top findings.
 

@@ -46,3 +46,5 @@ npm run design:install                       # link the skill into ~/.claude/ski
 ```
 
 The sync lints DESIGN.md with the pinned `@google/design.md` linter, checks the values quoted in its prose against the theme, and compiles the skeleton CSS with the theme's Tailwind install (run `npm install` in the theme's `web/tailwind` folder first). It exits non-zero on lint errors, prose drift or CSS that doesn't compile. Its remaining warnings are the theme's known contrast exceptions, documented under Colors → Contrast in DESIGN.md.
+
+In a Build, the skill writes only the variant parts and runs `scripts/assemble.mjs` to fill the skeleton with the config and the logo. `npm test` checks the script against the current assets, so run it after a sync.

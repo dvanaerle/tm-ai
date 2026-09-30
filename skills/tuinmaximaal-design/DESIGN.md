@@ -169,17 +169,10 @@
   "button-tertiary":
     "rounded": "{rounded.1}"
     "textColor": "{colors.tmx-primary-green}"
-    "backgroundColor": "{colors.tmx-neutral-white}"
     "padding": "0px"
     "typography": "{typography.button-label}"
-  "button-tertiary-border":
-    "size": "1px"
-    "backgroundColor": "{colors.tmx-neutral-white}"
   "button-tertiary-hover":
     "textColor": "{colors.tmx-primary-lighterGreen}"
-    "backgroundColor": "{colors.tmx-neutral-white}"
-  "button-tertiary-hover-border":
-    "backgroundColor": "{colors.tmx-neutral-white}"
   "form-input":
     "rounded": "{rounded.1}"
     "backgroundColor": "{colors.tmx-neutral-white}"
@@ -413,7 +406,7 @@ The linter's contrast warnings come from the live theme and are known:
 |---|---|---|---|
 | `button-primary` | white on #809700 | 3.31:1 | Brand standard; keep it, at the default size anyway (Buttons → Sizes). Flag it in audits as a theme-level finding, not a prototype error. |
 | `button-primary-hover` | white on #6D8005 | 4.43:1 | As above. |
-| `button-tertiary-hover` | #809700 on white | 3.31:1 | Hover state only; the resting state is green. |
+| `button-tertiary-hover` | #809700 on white | 3.31:1 | Hover state only; the resting state is green. The button has no fill, so on beige or sand the hover is lower still; it stays a hover-only colour. |
 | `form-choice-checked` | white glyph on #809700 | 3.31:1 | A non-text graphic; passes 3:1. |
 | `heading-highlight`, `paragraph-highlight`, `price-box` | white on #FF8000 | 2.52:1 | Signature brand detail. Use it only on heavy text: headings, the paragraph highlight and the price box at its size per component (Components → Price box). The product tile's 16px weight-900 price is the theme's own choice, a documented exception like the primary button. Never put small or regular-weight text on orange. |
 
@@ -514,7 +507,7 @@ The base `.btn` is `flex items-center justify-center gap-2`, 16px semibold, `rou
 
 - **Primary** (`.btn-primary`): a #809700 fill, white text and a **4px bottom border in #6D8005** (`border-b-4 border-btn-primary`), with `pt-3 pb-2 px-6` so the label sits optically centred. On hover and focus the fill turns #6D8005. This is the only action colour. Use one primary action per view.
 - **Secondary** (`.btn-secondary`): transparent, green text and a 1px green border. On hover it fills green with white text.
-- **Tertiary** (`.btn-tertiary`): no padding, green text, and #809700 on hover. It behaves like an inline link.
+- **Tertiary** (`.btn-tertiary`): no padding, no fill and no border, green text, and #809700 on hover. It is a text link with a button's label style, so it sits on white, beige and sand alike. The theme paints its fill and border white; the house style drops them, and the prototype skeleton makes both transparent.
 - **Sizes:** use `btn-size-sm` (`px-4 py-1.5`) and the default (`px-6 py-2.5`, no size class) only. The theme also defines `btn-size-lg` (`px-8 py-4.5`, 24px text); never use it. Staging uses no size class at all, and the product page's main CTA is a default-size `btn-primary w-full`. Primary buttons swap the vertical padding for the bottom-border correction. Tertiary buttons keep `p-0` at every size. Add `w-full` for a full-width button. (The theme CSS also defines a misspelled `btm-size-full`; use `w-full` instead.)
 - **Forced states:** `--hovered`, `--focused` and `--disabled` apply the hover, focus and disabled looks without interaction. The styleguide uses them, and they are handy for showing states side by side in a prototype.
 - **Focus:** the theme removes the outline and shows the hover fill. Prototypes add a visible ring as well (`focus-visible:ring-4 ring-form-input/50`).
@@ -562,7 +555,20 @@ Figma draws the image-tile amount at 28px with `py-2.5`; the theme's promo label
 
 The house Figma file (Tuinmaximaal website → Content (Desktop), node `1358:29886`) settles these patterns. Its values are mapped onto the theme's scale; where Figma goes past the 28px cap, the nearest step is used.
 
-- **Content block (text + image, on colour).** Figma `1358:30318` and `1358:30329`. One beige box, `rounded-2` and `overflow-hidden`, split in half (`md:grid-cols-2`). The text side has generous padding (`p-6`, `p-12` from `md`, `p-20` (80px) from `xl`) and holds a heading in `text-7 font-black` (Figma draws 32px/40), body text, and a primary button beside a secondary one. The image fills the other half up to the box edges, with no padding (`size-full object-cover`), so it is rounded only on its outer corners by the box's `overflow-hidden`. The image may sit left or right. This is the "one block that needs emphasis" with an image; never a padded box with a separately rounded image inside it.
+- **Content block (text + image or video, on colour).** Figma `1358:30318` (image right) and `1358:30329` (video left); in the theme, the PageBuilder "image with text" block (`content-types/page-builder-block-image-with-text.css`). Build it with the skeleton's `content-block` classes, never by hand:
+
+  ```html
+  <div class="content-block"><!-- add --media-right to put the image on the right from md -->
+      <div class="content-block-media"><img src="…" alt="…"></div>
+      <div class="content-block-text">
+          <h2 class="text-7 font-black">…</h2>
+          <p>…</p>
+          <div class="content-block-actions"><a class="btn btn-primary" href="…">…</a><a class="btn btn-secondary" href="…">…</a></div>
+      </div>
+  </div>
+  ```
+
+  One beige box, `rounded-2` and `overflow-hidden`, split in half from `md`. **The text sets the height:** it is centred vertically, with `p-6`, `p-12` from `md` and `p-20` (80px) from `xl`, `gap-5` (20px) between heading and body, a heading in `text-7 font-black` (Figma draws 32px/40), and the buttons 28px below the body (`mt-2` on the actions row), a primary beside a secondary. **The image covers its half:** it is absolutely positioned (`absolute inset-0 size-full object-cover`), so it runs to the box edges on three sides, is rounded only on its outer corners by the box, never sets the height and never leaves a beige strip above or below it. From `md` the image half is at least `min-h-80`; below `md` the image sits on top at `h-64` (256px), then the text. A video gets `content-block-play` over it: a 20% black wash with a centred white play icon of `size-25` (100px), as a `button` with an accessible name. The block sits in the container as a direct child of its section, never inside another box, without margins or widths of its own; the section's gap spaces it. It is the "one block that needs emphasis" with an image; never a padded box with a separately rounded image inside it, and never an image in the grid flow with `h-full`, which lets the photo's own ratio set the height and leaves the text floating.
 - **Image tile.** Figma `1530:37197` and the homepage's category entries. A contained lifestyle photo with `rounded-2` and `overflow-hidden`, with a soft dark scrim (`image-tile-scrim`) behind the text (`bg-gradient-to-br from-tmx-primary-black/60 via-transparent to-transparent` over the top left, and the same `to-tr` over the bottom left). It holds a white heading top left in `text-7 font-black` (the promo banner's title; Figma draws 30px), a price chip under it at the image-tile size (Price box), and a default-size primary button bottom left ("Stel nu samen", "Bekijk producten"). A tile without a price ("Losse onderdelen", "Zelf monteren of via partner?") keeps the heading and the button. Two or six tiles in the intro are the big moment of a home or category page. The scrim is required: white text never sits on a bare photo.
 - **Intro link card.** Figma `1358:30013`. In the beige intro: a beige card with a sand border on three sides (`border-2 border-r-0 border-tmx-secondary-sand`; Figma draws 1.5px), `rounded-2` and `overflow-hidden`. The text side is `p-6`, with a `text-5 font-bold` title and an arrow link, and a photo sits flush on the right edge, rounded on its outer corners only. Three in a row from `lg`. It is the one bordered coloured card. Figma colours the link #8BA407, which is 2.7:1 on beige; use green text with the arrow, and #8BA407 on hover only.
 - **Blog tile.** A repeated card: a photo at 16:9 (`aspect-video`), rounded at the top, then `p-4` with a category pill (`pill`: `bg-tmx-neutral-lightestGrey rounded-full text-3.5 px-3 py-1`), a `text-4 font-semibold` title, a `text-3.5` excerpt clamped to 3 lines (`line-clamp-3`) and a tertiary "Lees verder →" link. Outlined on white, borderless on a tinted band.
@@ -578,7 +584,7 @@ See Typography. The orange chip with white text, rotated −2°, is used for at 
 
 ### Lists
 
-`.list-usps` is a column with `gap-2` and a #809700 check-circle marker, 14px text, used for USPs and selling points. `.list-base` uses dash markers, `gap-1` and 14px text.
+`.list-usps` is a column with `gap-2` and a 20px #809700 check-circle marker, 14px text, used for USPs and selling points. The marker is `shrink-0`, so it keeps its size when the text wraps; the theme lets it shrink, and the prototype skeleton corrects this. A hand-built USP icon gets `shrink-0` too. `.list-base` uses dash markers, `gap-1` and 14px text.
 
 ### Shell
 
@@ -642,6 +648,6 @@ Sources checked: the StyleGuide module (buttons, colors, form, messages, typogra
 
 - **Niche colours and details:** theme colours and details with a single niche use aren't part of the house style; build with the palette above.
 - **Font sizes `text-6.5` and `text-7.5` to `text-15`**, and the **`aspect-11/5`** ratio: the cheatsheet lists them, but `tailwind.config.js` doesn't define them, so the classes don't compile. The config wins.
-- **PageBuilder and content-type styles** (`components/valantic/pagebuilder/`, `theme/components/content-types/`) and **module skins** (Amasty, Mirasvit, Fancybox, Swiper, the bamboo decking calculator): out of scope for prototypes.
+- **PageBuilder and content-type styles** (`components/valantic/pagebuilder/`, `theme/components/content-types/`) and **module skins** (Amasty, Mirasvit, Fancybox, Swiper, the bamboo decking calculator): out of scope for prototypes. The one exception is the image-with-text block, which the skeleton mirrors as `content-block` (Components → Content patterns → Content block).
 - **Image utilities** (`bg-right-arrow`, `bg-close`, `bg-search` and the `content-chevron` family): they point at theme image files that prototypes can't load. Use inline SVG icons in `currentColor` instead.
 - **Adding values:** the dev rules allow a new token only after agreement with the DEV/FED lead, recorded in the cheatsheet. A prototype never adds one; if a value is missing, flag it in the hand-off.

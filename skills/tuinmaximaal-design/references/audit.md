@@ -4,11 +4,27 @@
 
 An audit judges existing work against DESIGN.md, a craft floor and a CRO lens, and reports findings ranked by impact. It documents and recommends; it changes nothing unless the user asks for fixes.
 
+## How it runs
+
+The audit has two axes, judged separately so neither hides the other: a page can hold the design system and still lose the sale, or sell well off-system.
+
+- **Design system:** DESIGN.md, 2. Design system and 3. Craft floor, and 4. Refine checklist, without the three CRO items below.
+- **CRO:** the purchase path (2. Design system), the big moment and the logo-swap test (3. Craft floor → Big moment and Brand), and 5. CRO lens.
+
+**With sub-agents (Claude Code):** do step 1 yourself, then start both axes as sub-agents in parallel, in one message, and write the report from their findings (step 6). Give each sub-agent the input (the file path, the snippet, the screenshot's file path or the URL), the skill's folder, and this brief:
+
+- **Design-system sub-agent:** "Audit `<input>` on the design-system axis. Read `<skill folder>/DESIGN.md` and `<skill folder>/references/audit.md`, then follow audit.md steps 1 to 4, leaving out the purchase path, the big moment and the logo-swap test: the CRO axis covers them. Report findings ranked P0–P3 in the finding format of audit.md → 6. Report, then two short lists: what works, and theme-level notes. Under 600 words."
+- **CRO sub-agent:** "Audit `<input>` on the CRO axis. Read `<skill folder>/DESIGN.md` → Overview and Expression and `<skill folder>/references/audit.md`, then follow audit.md step 1 and judge only the purchase path (2. Design system), the big moment and the logo-swap test (3. Craft floor) and 5. CRO lens. Report findings ranked P0–P3 in the finding format of audit.md → 6. Report, then the CTA visibility, trust signals and friction assessment, then what works. Under 500 words."
+
+For a URL, each sub-agent takes its own captures at 375px and `xl`, so screenshots stay out of your context; you only see findings. A screenshot that exists only in the chat, not as a file, can't be handed over: run that audit inline.
+
+**Without sub-agents, or for a screenshot that is only in the chat:** run steps 1 to 6 yourself, in order, and report in the single-list structure under 6. Report → Inline report.
+
 ## 1. Read the input
 
 - **Snippet or file:** read the classes and markup directly. Resolve every class against the theme config: anything outside the `tmx-*` and semantic names, or any `[…]` value, is off-system.
 - **Screenshot:** judge what is visible. Estimate colours and sizes against the palette and scale, and name the token you think was meant.
-- **URL:** capture it at 375px and `xl` when a browser tool is available; otherwise ask for a screenshot.
+- **URL:** capture it at 375px and `xl` when a browser tool is available (with sub-agents, each axis takes its own captures; you don't); otherwise ask for a screenshot.
 
 Note what the evidence can't show (hover and focus states, the exact contrast in a compressed screenshot, behaviour at other widths) and keep those checks out of the findings, or mark them "unverified".
 
@@ -19,7 +35,7 @@ Checkout pages run on a separate LESS theme: judge them against their own styles
 Check the input against DESIGN.md, section by section:
 
 - **Tokens:** only theme classes and scale values; no arbitrary values, inline colours, new fonts or sizes above 28px (`text-7`).
-- **Action colour:** the primary button is #809700 with the 4px #6D8005 bottom border; there is one primary action per view; secondary and tertiary are visibly quieter. Buttons are `btn-size-sm` or the default size; `btn-size-lg` is a finding.
+- **Action colour:** the primary button is #809700 with the 4px #6D8005 bottom border; there is one primary action per view; secondary and tertiary are visibly quieter, and a tertiary button has no fill or border (a white box around a tertiary label on beige or sand is a finding). Buttons are `btn-size-sm` or the default size; `btn-size-lg` is a finding.
 - **Orange:** only on the price box, heading and paragraph highlights, badges and active states. An orange button, link or small text is a finding.
 - **Purchase path:** verandas and structures lead to the configurator, other products to the cart. Any quote-request CTA or form is a finding ("offerte" is a checkout payment method).
 - **Components:** messages have a tinted background, an icon and no border; product tiles have a white info area and the rotated price box, sized for the tile; the Figma content patterns (content block, image tile, intro link card, blog tile, reviews, FAQ) follow DESIGN.md → Components → Content patterns; form fields show the theme's states; headings use the h1–h6 scale with black weight on h1–h2 only.
@@ -45,7 +61,7 @@ Each item is a target; the "flag" line names the common pattern that misses it.
 
 **Composition:**
 
-- **Box decision:** each block has the treatment DESIGN.md → Elevation & Depth → The box decision gives it: repeated cards as white cards, the one block that needs emphasis as a borderless beige box, everything else unboxed on whitespace. A box nests one level deep at most, only when the inner box is a different surface (white tiles in a beige box). Flag: a box around plain text content on white; a repeated white card on white without its light-grey outline, or white cards on a beige or sand band with one; a padded content block holding a separately rounded image instead of the flush split (Components → Content patterns → Content block); nested cards that don't change surface (a white card in a white card, a bordered wrapper around a card), nesting past one level, or one wrapper around everything.
+- **Box decision:** each block has the treatment DESIGN.md → Elevation & Depth → The box decision gives it: repeated cards as white cards, the one block that needs emphasis as a borderless beige box, everything else unboxed on whitespace. A box nests one level deep at most, only when the inner box is a different surface (white tiles in a beige box). Flag: a box around plain text content on white; a repeated white card on white without its light-grey outline, or white cards on a beige or sand band with one; a padded content block holding a separately rounded image instead of the flush split, or a content block whose image sets the height, leaving the text floating or a beige strip above or below the image (Components → Content patterns → Content block); nested cards that don't change surface (a white card in a white card, a bordered wrapper around a card), nesting past one level, or one wrapper around everything.
 - **Container width:** every image and piece of content sits inside the container; only page chrome, the beige intro and tinted tile bands run full width, as colour bands. Flag: a full-bleed image or content outside the container.
 - **Price box:** each price chip is sized for its component (DESIGN.md → Components → Price box). Flag: a chip sized against its component, such as a 16px product-tile chip on an image tile or a promo-size chip on a product tile.
 - **Text on photos:** white text on a photo sits on a dark scrim (Components → Content patterns → Image tile). Flag: white text on a photo without a scrim, as an AA risk; mark the ratio "unverified" when the evidence can't show it.
@@ -86,7 +102,41 @@ Rank the findings by impact:
 - **P2 Minor:** craft-floor misses and refine items with a workaround.
 - **P3 Polish:** small inconsistencies. Keep P3 short; noise hides what matters.
 
-Use this structure:
+Every finding has a location, the rule it breaks (a DESIGN.md section or a craft-floor item), the impact and a concrete fix in theme classes. A combined issue (e.g. an orange button that is also a quote CTA) may be one finding, as long as each broken rule is named.
+
+### Report by axis (with sub-agents)
+
+Put each axis under its own heading, in the order the sub-agent ranked it. Don't merge or re-rank findings across the axes; the split in How it runs keeps them from overlapping. Number the findings through, so the CRO assessment can refer to them.
+
+```markdown
+**Verdict:** one or two sentences: does it hold the Tuinmaximaal system, does it sell, and the worst finding within each axis.
+
+### Design system
+1. **[P1] Orange primary button** · `button.bg-tmx-primary-orange`
+   - Rule: DESIGN.md → Colors: orange is an accent only; the primary button is #809700 (Buttons → Primary).
+   - Impact: the action reads as a price or promotion; white on orange is 2.52:1 at 16px.
+   - Fix: `class="btn btn-primary"`.
+2. …
+
+### CRO
+3. **[P0] Quote CTA instead of the configurator** · …
+4. …
+- **CTA visibility:** assessment and the finding numbers it relates to.
+- **Trust signals:** what is present, what is missing.
+- **Friction:** the path to the configurator or cart, and what slows it.
+
+### What works
+- Patterns to keep, from both axes.
+
+### Theme-level notes
+- Known theme exceptions touched by this page (if any).
+```
+
+End with one line: the number of findings per axis. Don't name a single worst finding across both axes.
+
+### Inline report
+
+Without sub-agents, rank all findings in one list:
 
 ```markdown
 **Verdict:** one or two sentences: does it hold the Tuinmaximaal system, and what matters most.
@@ -110,4 +160,4 @@ Use this structure:
 - Known theme exceptions touched by this page (if any).
 ```
 
-Every finding has a location, the rule it breaks (a DESIGN.md section or a craft-floor item), the impact and a concrete fix in theme classes. A combined issue (e.g. an orange button that is also a quote CTA) may be one finding, as long as each broken rule is named. Offer to apply the fixes, or to build variants of the weakest part with the build job.
+Either way, offer to apply the fixes, or to build variants of the weakest part with the build job.
