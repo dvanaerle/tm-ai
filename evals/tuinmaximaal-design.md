@@ -14,7 +14,7 @@ For every prompt:
 - long strings don't break the layout
 - copy is delegated or marked as a placeholder
 
-Build prompts (1–6, 9 when it is a build) must also have:
+Build prompts (1–6, 9 when it is a build, and 10) must also have:
 
 - 3 genuinely different variants, each with a trade-off line
 - at least one bold variant per set, its trade-off line starting with "Bold:"
@@ -36,6 +36,15 @@ Build prompts (1–6, 9 when it is a build) must also have:
 - no `has-[…]:` variants; selectable cards use `.option-card`
 - product media at 16:9 at every breakpoint, never cropped off it in a card; no `aspect-video` on lifestyle or project photos
 - a category grid (prompt 2) follows the agreed layout: beige intro band, white grid area with one box per filter group (outlined, or borderless beige), a sand trust or USP block between product rows, the FAQ as outlined rows and the SEO text unboxed with the "Lees meer" fade below, tiles with their white info area, outlined on white and borderless where a tinted tile band is used
+
+Redesign prompts (9 and 10) keep the source page's copy, so there the copy comes from the page instead of being delegated. They fail when a variant:
+
+- puts content in a carousel: a slider of content blocks, benefit cards or product sections (the theme's own sliders, such as related products, are allowed)
+- invents copy: a heading, label, caption, chart title or stat the source page doesn't have, including a label a new structure needed
+- invents visuals: a custom illustration, drawn diagram, bar chart, big "365"-style number, or an image that isn't one of the page's own
+- puts "Lees meer" inside a product content block
+- has a card, box or panel floating over or overlapping a photo (the image tile's heading, chip and button on the scrim are the exception)
+- opens a category or landing page with large image tiles instead of the H1 and intro beside a modest photo
 
 Whether the designs are less generic than the baseline (`tmp/prototypes/baseline/`, compared at 375px and xl), and from the third iteration closer to the live site than the i2 run, is the user's judgement, recorded in the notes.
 
@@ -72,6 +81,7 @@ Audit prompts (7, 8, 9 when it is an audit) must also have ranked findings, each
 
    Planted violations: an orange button, a left-border stripe, gradient text, nested cards, a redundant border on the white USP wrapper on a white page, which is neither a repeated card nor a filter box: plain content boxed on white, with square corners, bordered only to frame it (plus a quote-request CTA and a non-theme drop shadow).
 9. **Real request (schuifwand redesign, a build).** "I want you to audit this page: https://m2stagingnl.intern.systems/schuifwand. Create a re-design of this page, with its content. For CRO, this page is not optional, and we can make this page more creative, more in a block design with the Tuinmaximaal Design System. I want you to create some prototypes to improve this page." (The user's request from 2026-09-25, lightly corrected. The first run named the Playwright MCP server; any browser tool will do.)
+10. **Keep-the-copy redesign (a build).** "Redesign this page and keep its copy: https://m2stagingnl.intern.systems/zonwering. Use the page's own text and images, and make me some prototypes." (A category landing with product tiles, benefit sections, an FAQ and blog links, like /schuifwand but not the approved example's own page.)
 
 ## Results
 
@@ -137,3 +147,18 @@ Fifth-iteration rerun (issue 10): all 9 prompts in fresh Claude Code sub-agent s
 | 7 | Claude Code | 2026-09-30 | 802e249 (overlapped the edit) | Pass | 91k (87k) | Design-system and CRO axes ran as parallel sub-agents and were awaited. The report shows each axis under its own heading, with 13 findings each with a rule and a fix, and names where the axes disagree. |
 | 8 | Claude Code | 2026-09-30 | 802e249 | Pass | 68k (89k) | Every planted violation flagged, axes side by side: quote CTA (P0), orange button, gradient, stripe and `shadow-lg` (P1), nested white card (P2), USP wrapper (P2, fix drops it). Same weakness as i3: the wrapper finding leads with square corners, not the redundant border on white. |
 | 9 | Claude Code | 2026-09-30 | 802e249 | Fail | 209k (191k) | A's intro is four image tiles, each with a primary "Stel nu samen": four primaries in one view (brand essential: one primary per view). The reviewer only flagged the four tiles as off-pattern (P3). Fixed since i3: product photos 16:9 everywhere. The reviewer caught white tile headings past the scrim and a second big moment in C, both fixed. The only prompt where tokens grew: two audit axes, a reviewer and a fix pass in one session. |
+
+Sixth-iteration rerun (issue 14): all 10 prompts, the new keep-the-copy redesign (10) included, in fresh Claude Code sub-agent sessions with the issue 12 redesign rules and the issue 13 approved example, compared with the i5 run (issue 10) in `tmp/prototypes/rerun-i6/compare.html`; prompt 10 is shown beside the staging source. The skill was the uncommitted issues 11–13 working tree on top of fff849f, unchanged during the run. All 10 ran in one round with the issue 10 session notes; every reviewer and audit axis reported before hand-back. Main-context tokens are measured as in issue 10. Grading notes, the redesign checks (`tmp/shots/check-redesign.mjs`) and the staging source snapshots are in `tmp/prototypes/rerun-i6/`.
+
+| # | Surface | Date | Skill version (commit) | Pass? | Main-context tokens (i5) | Notes |
+|---|---|---|---|---|---|---|
+| 1 | Claude Code | 2026-09-30 | uncommitted (issues 11–13 on fff849f) | Pass | 153k (138k) | Beige intro, 16:9 media, buy-box price size, one configurator primary per view (B's sticky bar only shows when the buy-box button is off screen). Gallery is placeholder boxes, as in i5. The reviewer's 8 lower findings were all applied, including B's big-number spec tiles. |
+| 2 | Claude Code | 2026-09-30 | uncommitted (issues 11–13 on fff849f) | Pass | 144k (137k) | Agreed grid layout in all three; C's sand tile band holds borderless white tiles. Long DE names clamp in A (named in its trade-off), shown in full in B and C. Images are placeholders. |
+| 3 | Claude Code | 2026-09-30 | uncommitted (issues 11–13 on fff849f) | Fail | 132k (141k) | New failure: C opens with a full-width sand notice band above the beige intro, so the first section isn't beige and the band is neither chrome, intro nor a tile band. The reviewer flagged it (P2); the builder kept it as "page chrome". A and B pass. |
+| 4 | Claude Code | 2026-09-30 | uncommitted (issues 11–13 on fff849f) | Fail | 208k (147k) | A and B put the comparison table on a full-width beige band, which is not a tile band (i5 failed the same criterion on a sand CTA band). Otherwise every primary is "In winkelwagen", real images, FAQ rows borderless on a tinted band. Tokens grew most here: the session read the approved example and the project's page export. |
+| 5 | Claude Code | 2026-09-30 | uncommitted (issues 11–13 on fff849f) | Pass | 132k (119k) | Content block, bold image tile with scrim, editorial split, each with the highlight. The reviewer's full-width sand band on C was removed. |
+| 6 | Claude Code | 2026-09-30 | uncommitted (issues 11–13 on fff849f) | Pass | 164k (145k) | Beige intro in all three, states via the pill and the live form, FAQ outlined rows. All 8 reviewer findings fixed. |
+| 7 | Claude Code | 2026-09-30 | uncommitted (issues 11–13 on fff849f) | Pass | 69k (91k) | Both axes in parallel and awaited; 16 findings with a rule and a fix, and a CRO section. Applies the new vertical-flow rule (tiles scroll sideways at 375px). |
+| 8 | Claude Code | 2026-09-30 | uncommitted (issues 11–13 on fff849f) | Pass | 93k (68k) | Every planted violation flagged. Fixed since i3: the USP wrapper finding names running text boxed on white, not only the square corners. |
+| 9 | Claude Code | 2026-09-30 | uncommitted (issues 11–13 on fff849f) | Pass | 174k (209k) | Fixed since i5: no four-tile intro with four primaries. All three start from the approved example and pass the redesign criteria: no content carousel, no "Lees meer" in a content block, nothing over a photo, a modest intro photo, only the page's images, no drawings or big numbers. Text not on the source: the approved "Vrij uitzicht" paraphrase and B's German test strings. Minor: A is the approved base plus a highlight, and the first primary is below the first viewport in A and B. |
+| 10 | Claude Code | 2026-09-30 | uncommitted (issues 11–13 on fff849f) | Pass | 187k (new) | All six redesign criteria hold in every variant. The only non-source string is "Filteren & Sorteren", staging's own mobile label; source typos kept. Built from DESIGN.md rather than the example (a category grid, not a landing). Minor: no primary button (no configurator; the tiles lead to the product), and the large photos reuse the blog images. |
