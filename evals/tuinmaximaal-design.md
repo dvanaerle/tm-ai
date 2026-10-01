@@ -14,7 +14,7 @@ For every prompt:
 - long strings don't break the layout
 - copy is delegated or marked as a placeholder
 
-Build prompts (1–6, 9 when it is a build, and 10) must also have:
+Build prompts (1–6, 9 when it is a build, 10 and 11) must also have:
 
 - 3 genuinely different variants, each with a trade-off line
 - at least one bold variant per set, its trade-off line starting with "Bold:"
@@ -49,7 +49,17 @@ Redesign prompts (9 and 10) keep the source page's copy, so there the copy comes
 
 Whether the designs are less generic than the baseline (`tmp/prototypes/baseline/`, compared at 375px and xl), and from the third iteration closer to the live site than the i2 run, is the user's judgement, recorded in the notes.
 
-Audit prompts (7, 8, 9 when it is an audit) must also have ranked findings, each with a rule and a fix, plus a CRO assessment covering CTA visibility, trust signals and friction. Prompt 8 must flag every planted violation; its nested cards (a white card inside a bordered white wrapper, no change of surface) still count as a violation under the one-level nesting rule.
+The component build (11) uses the theme's and the skeleton's components instead of hand-built ones. It fails when a variant breaks one of these rules (DESIGN.md → Components):
+
+- **Choices → Swatch:** the colours are `label.swatch` around `sr-only` radios in a `.swatch-group`, inside a `fieldset` with a `legend`; one style and one size in the group (L, no size class, on a product page); every colour swatch has its `span.swatch-colour` chip and keeps the colour's name; a sold-out colour, if there is one, stays visible as a disabled swatch. Not radio rows, option cards, a dropdown or bare colour dots.
+- **Choices → Quantity:** one quantity style on the page: `.quantity` (plus and minus, with an `aria-label` or a field label), or `.quantity-update` for square metres typed at once; no hand-built stepper, and no width utility on `.field` or `.form-select`.
+- **Messages:** the delivery notice is a `.message` fill in the page (notice, info or warning, with its status icon), no border, no side stripe; `role="status"` or `role="alert"` only when it appears after an action. Never a modal or a pop-up.
+- **Dialogs → Modal:** removing an item asks in a `dialog.modal` opened with `showModal()` (`data-dialog-open` or script) from the customer's own remove action, never on load; `aria-labelledby` names the title, which takes `tabindex="-1" autofocus`; the actions are the secondary way back ("Annuleren") before the primary decision, inside a `form method="dialog"`, so Esc and the secondary close it. The yellow exclamation only if the question is a warning. No `.popup` anywhere in the order step.
+- **Action menu** (if the line has more than one action): an `.action-menu` from a tertiary icon button, at most five verbs, the destructive item `--danger` and last after an `hr`. A single "Verwijderen" is a button, not a menu.
+- **Forms:** any field has its label above it (no `field-floating`), a hint tied with `aria-describedby`, and `aria-invalid="true"` with `field-error`.
+- **Flow:** the product isn't configurable, so the primary goes to the cart ("In winkelwagen"), or from the cart on to checkout ("Verder naar afrekenen"); no configurator or quote path.
+
+Audit prompts (7, 8, 12, and 9 when it is an audit) must also have ranked findings, each with a rule and a fix, plus a CRO assessment covering CTA visibility, trust signals and friction. Prompt 8 must flag every planted violation; its nested cards (a white card inside a bordered white wrapper, no change of surface) still count as a violation under the one-level nesting rule. Prompt 12 must flag every planted violation, each citing the component rule it breaks: Forms → Label (the floating label), Forms → Hint (the untied hint), Forms → Feedback and `aria-invalid:` (the error field), Colors (the `tmx-*` orange hint), Messages and Dialogs → Modal (the modal that only informs, opened on load), and Dialogs → Pop-up (the pop-up without a way out, in a checkout step).
 
 ## Prompts
 
@@ -83,6 +93,56 @@ Audit prompts (7, 8, 9 when it is an audit) must also have ranked findings, each
    Planted violations: an orange button, a left-border stripe, gradient text, nested cards, a redundant border on the white USP wrapper on a white page, which is neither a repeated card nor a filter box: plain content boxed on white, with square corners, bordered only to frame it (plus a quote-request CTA and a non-theme drop shadow).
 9. **Real request (schuifwand redesign, a build).** "I want you to audit this page: https://m2stagingnl.intern.systems/schuifwand. Create a re-design of this page, with its content. For CRO, this page is not optional, and we can make this page more creative, more in a block design with the Tuinmaximaal Design System. I want you to create some prototypes to improve this page." (The user's request from 2026-09-25, lightly corrected. The first run named the Playwright MCP server; any browser tool will do.)
 10. **Keep-the-copy redesign (a build).** "Redesign this page and keep its copy: https://m2stagingnl.intern.systems/zonwering. Use the page's own text and images, and make me some prototypes." (A category landing with product tiles, benefit sections, an FAQ and blog links, like /schuifwand but not the approved example's own page.)
+11. **Bamboo decking order step (a component build).** "Prototype a Tuinmaximaal order step for bamboo decking boards. The customer picks a colour from swatches and sets the quantity, sees a notice about the delivery time, and has to confirm before an item is removed from the order. The product is not configurable." (Needs the swatches, the quantity selector, a message and the modal from issues 20–26.)
+12. **Form and dialog audit.** "Review this Tuinmaximaal checkout step:" followed by this snippet:
+
+   ```html
+   <section class="bg-white py-8">
+     <div class="container flex flex-col gap-6">
+       <h1>Je gegevens</h1>
+       <form class="flex flex-col gap-4">
+         <div class="field field-floating">
+           <div class="control">
+             <input id="email" type="email" class="form-input" placeholder=" ">
+             <label for="email">E-mailadres</label>
+           </div>
+         </div>
+         <div class="field">
+           <label for="postcode">Postcode</label>
+           <div class="control"><input id="postcode" class="form-input" placeholder="1234 AB"></div>
+           <p class="hint">Zonder spatie</p>
+         </div>
+         <div class="field field-error">
+           <label for="huisnummer">Huisnummer</label>
+           <div class="control"><input id="huisnummer" class="form-input"></div>
+           <p class="hint text-tmx-primary-orange">Dit veld is verplicht</p>
+         </div>
+         <button class="btn btn-primary">Verder naar betalen</button>
+       </form>
+     </div>
+     <dialog class="modal" id="levertijd" aria-labelledby="levertijd-title">
+       <div class="modal-body">
+         <div class="modal-text">
+           <h2 class="modal-title" id="levertijd-title">Langere levertijd</h2>
+           <p>Bamboe vlonderplanken worden geleverd in week 44.</p>
+         </div>
+       </div>
+       <div class="modal-actions"><button class="btn btn-primary" onclick="this.closest('dialog').close()">OK</button></div>
+     </dialog>
+     <div class="popup fixed inset-0 m-auto h-fit" role="dialog">
+       <div class="popup-content">
+         <h2 class="popup-title">10% korting op je eerste bestelling</h2>
+         <form class="popup-form">
+           <input class="form-input" type="email" placeholder="E-mailadres">
+           <button class="btn btn-primary">Aanmelden</button>
+         </form>
+       </div>
+     </div>
+     <script>addEventListener('DOMContentLoaded', () => document.getElementById('levertijd').showModal());</script>
+   </section>
+   ```
+
+   Planted violations: a floating label (`field-floating`, the label below the input); the postcode hint not tied to its input with `aria-describedby`; an error field without `aria-invalid="true"`, its message not tied either and in a `tmx-*` orange instead of the danger text (and not in the words of the problem); a modal that only informs (the delivery week needs no decision, so it's a message in the page) and opens on load instead of from the customer's action; a pop-up without a way out (a `div`, not a native `dialog`, so no Esc, focus trap or backdrop, and no close button) in a checkout step, where a pop-up never goes. (Plus: the pop-up's field has no label, only a placeholder, and the modal title lacks `tabindex="-1" autofocus`.)
 
 ## Results
 
@@ -163,3 +223,20 @@ Sixth-iteration rerun (issue 14): all 10 prompts, the new keep-the-copy redesign
 | 8 | Claude Code | 2026-09-30 | df8f6df | Pass | 93k (68k) | Every planted violation flagged. Fixed since i3: the USP wrapper finding names running text boxed on white, not only the square corners. |
 | 9 | Claude Code | 2026-09-30 | df8f6df | Pass | 174k (209k) | Fixed since i5: no four-tile intro with four primaries. All three start from the approved example and pass the redesign criteria: no content carousel, no "Lees meer" in a content block, nothing over a photo, a modest intro photo, only the page's images, no drawings or big numbers. Text not on the source: the approved "Vrij uitzicht" paraphrase and B's German test strings. Minor: A is the approved base plus a highlight, and the first primary is below the first viewport in A and B. |
 | 10 | Claude Code | 2026-09-30 | df8f6df | Pass | 187k (new) | All six redesign criteria hold in every variant. The only non-source string is "Filteren & Sorteren", staging's own mobile label; source typos kept. Built from DESIGN.md rather than the example (a category grid, not a landing). Minor: no primary button (no configurator; the tiles lead to the product), and the large photos reuse the blog images. |
+
+Seventh-iteration baseline (issue 27): all 12 prompts, the new component build (11) and form and dialog audit (12) included, in fresh Claude Code sub-agent sessions, compared with the i6 run (issue 14) in `tmp/prototypes/rerun-i7/compare.html`. The skill was pinned at 6cc7b7a (issues 15–26) while issue 28 edited the live folder: each session read SKILL.md from a `git archive` copy in `tmp/skill-6cc7b7a/` instead of using the Skill tool, and passed that folder to its reviewer and audit axes; none of the 29 transcripts touched the live folder, and the copy was fingerprinted unchanged at the start and the end. All 12 ran in one round with the i6 session notes; every reviewer and audit axis reported before hand-back. Main-context tokens are measured as in issue 10. Grading notes, the band crops, the component check (`tmp/shots/check-components.mjs`) and the redesign checks against fresh staging snapshots are in `tmp/prototypes/rerun-i7/`.
+
+| # | Surface | Date | Skill version (commit) | Pass? | Main-context tokens (i6) | Notes |
+|---|---|---|---|---|---|---|
+| 1 | Claude Code | 2026-10-01 | 6cc7b7a | Fail | 174k (153k) | New failure: A's USP text and C's spec list sit on full-width sand bands, which are neither chrome, the intro nor a tile band. A's band came from the reviewer's P2 ("now running text in columns on sand"). Otherwise clean: beige intro, 16:9 media, buy-box price, one configurator primary per variant. |
+| 2 | Claude Code | 2026-10-01 | 6cc7b7a | Pass | 180k (144k) | Agreed grid layout in all three; FAQ rows on beige (B) and the tile band on sand (C) are tile bands. A clamps the DE names at 375px (named in its trade-off). Images and prices are placeholders. |
+| 3 | Claude Code | 2026-10-01 | 6cc7b7a | Pass | 151k (132k) | Fixed since i6: the notice sits inside the beige intro (B), in the buy box (A) or in a contained sand block (C), not on a full-width band. Minor: C has a second configurator primary far below the first. |
+| 4 | Claude Code | 2026-10-01 | 6cc7b7a | Fail | 207k (208k) | Third run on this criterion: C's benefits text on a full-width beige band and its split image on a full-width sand band; A and B put the maintenance text beside two product cards on a full-width band. Every primary "In winkelwagen", real images. |
+| 5 | Claude Code | 2026-10-01 | 6cc7b7a | Pass | 177k (132k) | Beige split image, bold large contained photo with a scrim, beige intro with a photo; one configurator primary each. |
+| 6 | Claude Code | 2026-10-01 | 6cc7b7a | Fail | 199k (164k) | New failure (borderline): B's three contact routes run on a full-width sand band without cards; the reviewer's P2 removed the white cards that made it a tile band. States work via `?state=` and the live form. |
+| 7 | Claude Code | 2026-10-01 | 6cc7b7a | Pass | 117k (69k) | Both axes in parallel and awaited; 15 findings with a rule and a fix, and a CRO section. Applies the issue 21 `link` token. Minor: takes the review score as proof though reviews aren't enabled. |
+| 8 | Claude Code | 2026-10-01 | 6cc7b7a | Pass | 115k (93k) | Every planted violation flagged. Minor: the fixes use `tmx-*` classes and say the theme "has no semantic colour layer yet". |
+| 9 | Claude Code | 2026-10-01 | 6cc7b7a | Pass | 198k (174k) | All three start from the approved example and pass the redesign criteria; non-source text as in i6 ("Vrij uitzicht", the RAL line). Minor: no variant gets a CTA into the first mobile viewport. |
+| 10 | Claude Code | 2026-10-01 | 6cc7b7a | Pass | 227k (187k) | All six redesign criteria hold. Non-source text: staging's own filter tooltips and one German test tile in B; it corrected a source typo. |
+| 11 | Claude Code | 2026-10-01 | 6cc7b7a | Fail | 185k (new) | Swatches, plus/minus quantity, `message info` and the removal `dialog.modal` are all the theme's components and work (title focused, Esc closes, Annuleren first). Fails: the colour swatches have no `swatch-colour` chip (DESIGN.md gives chip colours only for RAL), and B's total and C's proof band run full width without tiles. The reviewer dropped `.quantity-update` because its check button is a second primary. |
+| 12 | Claude Code | 2026-10-01 | 6cc7b7a | Pass | 116k (new) | Every planted violation flagged with its component rule, the extras included. Minor: the floating label and the untied hint rank only P2. |
