@@ -357,16 +357,25 @@ tailwind.config = {
         "3.5": "0.875rem"
       },
       "colors": {
+        "primary": {
+          "DEFAULT": "rgb(var(--color-primary) / <alpha-value>)",
+          "dark": "rgb(var(--color-primary-dark) / <alpha-value>)"
+        },
+        "secondary": {
+          "subtle": "rgb(var(--color-secondary-subtle) / <alpha-value>)",
+          "DEFAULT": "rgb(var(--color-secondary) / <alpha-value>)",
+          "strong": "rgb(var(--color-secondary-strong) / <alpha-value>)"
+        },
         "tmx": {
           "primary": {
-            "darkGreen": "#001A13",
-            "green": "#003017",
+            "darkGreen": "rgb(var(--color-primary-dark) / <alpha-value>)",
+            "green": "rgb(var(--color-primary) / <alpha-value>)",
             "mediumGreen": "#002E21",
-            "orange": "#FF8000",
-            "lighterGreen": "#809700",
-            "lighterGreenSubtle": "#F8FCE6",
+            "orange": "rgb(var(--color-accent) / <alpha-value>)",
+            "lighterGreen": "rgb(var(--color-secondary) / <alpha-value>)",
+            "lighterGreenSubtle": "rgb(var(--color-secondary-subtle) / <alpha-value>)",
             "lighterGreenSecond": "#8BA407",
-            "lightGreen": "#6D8005",
+            "lightGreen": "rgb(var(--color-secondary-strong) / <alpha-value>)",
             "blue": "#80A5E4",
             "yellow": "#FFCB00",
             "red": "#FF4D4D",
@@ -374,42 +383,42 @@ tailwind.config = {
             "brown": "#8A7B6C"
           },
           "secondary": {
-            "sand": "#F5E6D7",
-            "beige": "#FFF5ED",
-            "bone": "#E0D2C5"
+            "sand": "rgb(var(--color-surface-raised) / <alpha-value>)",
+            "beige": "rgb(var(--color-surface) / <alpha-value>)",
+            "bone": "rgb(var(--color-surface-strong) / <alpha-value>)"
           },
           "neutral": {
-            "grey": "#636363",
+            "grey": "rgb(var(--color-border-strong) / <alpha-value>)",
             "mediumGrey": "#878787",
-            "lightGrey": "#E3E3E3",
+            "lightGrey": "rgb(var(--color-border) / <alpha-value>)",
             "lightestGrey": "#f9fafb",
             "white": "#FFFFFF",
             "darkGrey": "#151A1F"
           },
           "status": {
             "info": {
-              "subtle": "#f0f9ff",
-              "DEFAULT": "#0284c7",
-              "text": "#0369a1",
-              "strong": "#0c4a6e"
+              "subtle": "rgb(var(--color-info-subtle) / <alpha-value>)",
+              "DEFAULT": "rgb(var(--color-info) / <alpha-value>)",
+              "text": "rgb(var(--color-info-text) / <alpha-value>)",
+              "strong": "rgb(var(--color-on-info-subtle) / <alpha-value>)"
             },
             "error": {
-              "subtle": "#fef2f2",
-              "DEFAULT": "#dc2626",
-              "text": "#b91c1c",
-              "strong": "#7f1d1d"
+              "subtle": "rgb(var(--color-danger-subtle) / <alpha-value>)",
+              "DEFAULT": "rgb(var(--color-danger) / <alpha-value>)",
+              "text": "rgb(var(--color-danger-text) / <alpha-value>)",
+              "strong": "rgb(var(--color-on-danger-subtle) / <alpha-value>)"
             },
             "success": {
-              "subtle": "#f0fdf4",
-              "DEFAULT": "#16a34a",
-              "text": "#15803d",
-              "strong": "#14532d"
+              "subtle": "rgb(var(--color-success-subtle) / <alpha-value>)",
+              "DEFAULT": "rgb(var(--color-success) / <alpha-value>)",
+              "text": "rgb(var(--color-success-text) / <alpha-value>)",
+              "strong": "rgb(var(--color-on-success-subtle) / <alpha-value>)"
             },
             "warning": {
-              "subtle": "#fffbeb",
-              "DEFAULT": "#d97706",
-              "text": "#b45309",
-              "strong": "#78350f"
+              "subtle": "rgb(var(--color-warning-subtle) / <alpha-value>)",
+              "DEFAULT": "rgb(var(--color-warning) / <alpha-value>)",
+              "text": "rgb(var(--color-warning-text) / <alpha-value>)",
+              "strong": "rgb(var(--color-on-warning-subtle) / <alpha-value>)"
             },
             "neutral": {
               "subtle": "#f5f5f5",
@@ -418,11 +427,58 @@ tailwind.config = {
               "strong": "#171717"
             }
           }
-        }
+        },
+        "on-primary": "rgb(var(--color-on-primary) / <alpha-value>)",
+        "on-secondary": "rgb(var(--color-on-secondary) / <alpha-value>)",
+        "accent": "rgb(var(--color-accent) / <alpha-value>)",
+        "on-accent": "rgb(var(--color-on-accent) / <alpha-value>)",
+        "surface": {
+          "DEFAULT": "rgb(var(--color-surface) / <alpha-value>)",
+          "raised": "rgb(var(--color-surface-raised) / <alpha-value>)",
+          "strong": "rgb(var(--color-surface-strong) / <alpha-value>)"
+        },
+        "on-surface": "rgb(var(--color-on-surface) / <alpha-value>)",
+        "text": {
+          "DEFAULT": "rgb(var(--color-text) / <alpha-value>)",
+          "muted": "rgb(var(--color-text-muted) / <alpha-value>)"
+        },
+        "link": {
+          "DEFAULT": "rgb(var(--color-link) / <alpha-value>)",
+          "hover": "rgb(var(--color-link-hover) / <alpha-value>)"
+        },
+        "ring": "rgb(var(--color-ring) / <alpha-value>)",
+        "border": {
+          "DEFAULT": "rgb(var(--color-border) / <alpha-value>)",
+          "strong": "rgb(var(--color-border-strong) / <alpha-value>)"
+        },
+        "warning": {
+          "subtle": "rgb(var(--color-warning-subtle) / <alpha-value>)",
+          "DEFAULT": "rgb(var(--color-warning) / <alpha-value>)",
+          "text": "rgb(var(--color-warning-text) / <alpha-value>)"
+        },
+        "on-warning-subtle": "rgb(var(--color-on-warning-subtle) / <alpha-value>)",
+        "danger": {
+          "subtle": "rgb(var(--color-danger-subtle) / <alpha-value>)",
+          "DEFAULT": "rgb(var(--color-danger) / <alpha-value>)",
+          "text": "rgb(var(--color-danger-text) / <alpha-value>)"
+        },
+        "on-danger-subtle": "rgb(var(--color-on-danger-subtle) / <alpha-value>)",
+        "success": {
+          "subtle": "rgb(var(--color-success-subtle) / <alpha-value>)",
+          "DEFAULT": "rgb(var(--color-success) / <alpha-value>)",
+          "text": "rgb(var(--color-success-text) / <alpha-value>)"
+        },
+        "on-success-subtle": "rgb(var(--color-on-success-subtle) / <alpha-value>)",
+        "info": {
+          "subtle": "rgb(var(--color-info-subtle) / <alpha-value>)",
+          "DEFAULT": "rgb(var(--color-info) / <alpha-value>)",
+          "text": "rgb(var(--color-info-text) / <alpha-value>)"
+        },
+        "on-info-subtle": "rgb(var(--color-on-info-subtle) / <alpha-value>)"
       },
       "textColor": {
         "body": {
-          "DEFAULT": "#003017"
+          "DEFAULT": "rgb(var(--color-text) / <alpha-value>)"
         },
         "heading": {
           "highlight": {
@@ -438,69 +494,69 @@ tailwind.config = {
             "hover": "#fff"
           },
           "secondary": {
-            "DEFAULT": "#003017",
+            "DEFAULT": "rgb(var(--color-text) / <alpha-value>)",
             "hover": "#fff"
           },
           "tertiary": {
-            "DEFAULT": "#003017",
-            "hover": "#809700"
+            "DEFAULT": "rgb(var(--color-text) / <alpha-value>)",
+            "hover": "rgb(var(--color-secondary) / <alpha-value>)"
           }
         },
         "link": {
-          "DEFAULT": "#003017",
-          "main": "#809700",
-          "hover": "#809700",
+          "DEFAULT": "rgb(var(--color-link) / <alpha-value>)",
+          "main": "rgb(var(--color-secondary) / <alpha-value>)",
+          "hover": "rgb(var(--color-link-hover) / <alpha-value>)",
           "secondHover": "#8BA407"
         },
         "header": {
           "serviceLink": {
-            "DEFAULT": "#6D8005"
+            "DEFAULT": "rgb(var(--color-secondary-strong) / <alpha-value>)"
           },
           "usps": {
-            "DEFAULT": "#F5E6D7",
-            "link": "#809700"
+            "DEFAULT": "rgb(var(--color-surface-raised) / <alpha-value>)",
+            "link": "rgb(var(--color-secondary) / <alpha-value>)"
           }
         },
         "menu": {
-          "DEFAULT": "#003017"
+          "DEFAULT": "rgb(var(--color-text) / <alpha-value>)"
         },
         "breadcrumbs": {
           "DEFAULT": "#8A7B6C"
         },
         "form": {
           "label": {
-            "DEFAULT": "#636363"
+            "DEFAULT": "rgb(var(--color-text-muted) / <alpha-value>)"
           },
           "input": {
-            "DEFAULT": "#003017",
-            "placeholder": "#636363",
+            "DEFAULT": "rgb(var(--color-text) / <alpha-value>)",
+            "placeholder": "rgb(var(--color-text-muted) / <alpha-value>)",
             "choice": {
               "glyph": {
                 "DEFAULT": "#fff",
-                "inactive": "#E3E3E3"
+                "inactive": "rgb(var(--color-border) / <alpha-value>)"
               }
             }
           },
           "tooltip": {
             "icon": {
-              "DEFAULT": "#636363",
-              "hover": "#636363"
+              "DEFAULT": "rgb(var(--color-text-muted) / <alpha-value>)",
+              "hover": "rgb(var(--color-text-muted) / <alpha-value>)"
             }
           }
         },
         "blog": {
-          "link": "#FF8000"
+          "link": "rgb(var(--color-accent) / <alpha-value>)"
         },
         "tmx": {
           "primary": {
-            "darkGreen": "#001A13",
-            "green": "#003017",
+            "darkGreen": "rgb(var(--color-primary-dark) / <alpha-value>)",
+            "green": "rgb(var(--color-text) / <alpha-value>)",
             "mediumGreen": "#002E21",
-            "orange": "#FF8000",
-            "lighterGreen": "#809700",
-            "lighterGreenSubtle": "#F8FCE6",
+            "orange": "rgb(var(--color-accent) / <alpha-value>)",
+            "lighterGreen": "rgb(var(--color-secondary) / <alpha-value>)",
+            "lighterGreenSubtle": "rgb(var(--color-secondary-subtle) / <alpha-value>)",
             "lighterGreenSecond": "#8BA407",
-            "lightGreen": "#6D8005",
+            "lightGreen": "rgb(var(--color-secondary-strong) / <alpha-value>)",
             "blue": "#80A5E4",
             "yellow": "#FFCB00",
             "red": "#FF4D4D",
@@ -508,42 +564,42 @@ tailwind.config = {
             "brown": "#8A7B6C"
           },
           "secondary": {
-            "sand": "#F5E6D7",
-            "beige": "#FFF5ED",
-            "bone": "#E0D2C5"
+            "sand": "rgb(var(--color-surface-raised) / <alpha-value>)",
+            "beige": "rgb(var(--color-surface) / <alpha-value>)",
+            "bone": "rgb(var(--color-surface-strong) / <alpha-value>)"
           },
           "neutral": {
-            "grey": "#636363",
+            "grey": "rgb(var(--color-text-muted) / <alpha-value>)",
             "mediumGrey": "#878787",
-            "lightGrey": "#E3E3E3",
+            "lightGrey": "rgb(var(--color-border) / <alpha-value>)",
             "lightestGrey": "#f9fafb",
             "white": "#FFFFFF",
             "darkGrey": "#151A1F"
           },
           "status": {
             "info": {
-              "subtle": "#f0f9ff",
-              "DEFAULT": "#0284c7",
-              "text": "#0369a1",
-              "strong": "#0c4a6e"
+              "subtle": "rgb(var(--color-info-subtle) / <alpha-value>)",
+              "DEFAULT": "rgb(var(--color-info) / <alpha-value>)",
+              "text": "rgb(var(--color-info-text) / <alpha-value>)",
+              "strong": "rgb(var(--color-on-info-subtle) / <alpha-value>)"
             },
             "error": {
-              "subtle": "#fef2f2",
-              "DEFAULT": "#dc2626",
-              "text": "#b91c1c",
-              "strong": "#7f1d1d"
+              "subtle": "rgb(var(--color-danger-subtle) / <alpha-value>)",
+              "DEFAULT": "rgb(var(--color-danger) / <alpha-value>)",
+              "text": "rgb(var(--color-danger-text) / <alpha-value>)",
+              "strong": "rgb(var(--color-on-danger-subtle) / <alpha-value>)"
             },
             "success": {
-              "subtle": "#f0fdf4",
-              "DEFAULT": "#16a34a",
-              "text": "#15803d",
-              "strong": "#14532d"
+              "subtle": "rgb(var(--color-success-subtle) / <alpha-value>)",
+              "DEFAULT": "rgb(var(--color-success) / <alpha-value>)",
+              "text": "rgb(var(--color-success-text) / <alpha-value>)",
+              "strong": "rgb(var(--color-on-success-subtle) / <alpha-value>)"
             },
             "warning": {
-              "subtle": "#fffbeb",
-              "DEFAULT": "#d97706",
-              "text": "#b45309",
-              "strong": "#78350f"
+              "subtle": "rgb(var(--color-warning-subtle) / <alpha-value>)",
+              "DEFAULT": "rgb(var(--color-warning) / <alpha-value>)",
+              "text": "rgb(var(--color-warning-text) / <alpha-value>)",
+              "strong": "rgb(var(--color-on-warning-subtle) / <alpha-value>)"
             },
             "neutral": {
               "subtle": "#f5f5f5",
@@ -556,14 +612,14 @@ tailwind.config = {
       },
       "backgroundColor": {
         "primary": {
-          "darkGreen": "#001A13",
-          "green": "#003017",
+          "darkGreen": "rgb(var(--color-primary-dark) / <alpha-value>)",
+          "green": "rgb(var(--color-primary) / <alpha-value>)",
           "mediumGreen": "#002E21",
-          "orange": "#FF8000",
-          "lighterGreen": "#809700",
-          "lighterGreenSubtle": "#F8FCE6",
+          "orange": "rgb(var(--color-accent) / <alpha-value>)",
+          "lighterGreen": "rgb(var(--color-secondary) / <alpha-value>)",
+          "lighterGreenSubtle": "rgb(var(--color-secondary-subtle) / <alpha-value>)",
           "lighterGreenSecond": "#8BA407",
-          "lightGreen": "#6D8005",
+          "lightGreen": "rgb(var(--color-secondary-strong) / <alpha-value>)",
           "blue": "#80A5E4",
           "yellow": "#FFCB00",
           "red": "#FF4D4D",
@@ -571,42 +627,42 @@ tailwind.config = {
           "brown": "#8A7B6C"
         },
         "secondary": {
-          "sand": "#F5E6D7",
-          "beige": "#FFF5ED",
-          "bone": "#E0D2C5"
+          "sand": "rgb(var(--color-surface-raised) / <alpha-value>)",
+          "beige": "rgb(var(--color-surface) / <alpha-value>)",
+          "bone": "rgb(var(--color-surface-strong) / <alpha-value>)"
         },
         "neutral": {
-          "grey": "#636363",
+          "grey": "rgb(var(--color-border-strong) / <alpha-value>)",
           "mediumGrey": "#878787",
-          "lightGrey": "#E3E3E3",
+          "lightGrey": "rgb(var(--color-border) / <alpha-value>)",
           "lightestGrey": "#f9fafb",
           "white": "#FFFFFF",
           "darkGrey": "#151A1F"
         },
         "status": {
           "info": {
-            "subtle": "#f0f9ff",
-            "DEFAULT": "#0284c7",
-            "text": "#0369a1",
-            "strong": "#0c4a6e"
+            "subtle": "rgb(var(--color-info-subtle) / <alpha-value>)",
+            "DEFAULT": "rgb(var(--color-info) / <alpha-value>)",
+            "text": "rgb(var(--color-info-text) / <alpha-value>)",
+            "strong": "rgb(var(--color-on-info-subtle) / <alpha-value>)"
           },
           "error": {
-            "subtle": "#fef2f2",
-            "DEFAULT": "#dc2626",
-            "text": "#b91c1c",
-            "strong": "#7f1d1d"
+            "subtle": "rgb(var(--color-danger-subtle) / <alpha-value>)",
+            "DEFAULT": "rgb(var(--color-danger) / <alpha-value>)",
+            "text": "rgb(var(--color-danger-text) / <alpha-value>)",
+            "strong": "rgb(var(--color-on-danger-subtle) / <alpha-value>)"
           },
           "success": {
-            "subtle": "#f0fdf4",
-            "DEFAULT": "#16a34a",
-            "text": "#15803d",
-            "strong": "#14532d"
+            "subtle": "rgb(var(--color-success-subtle) / <alpha-value>)",
+            "DEFAULT": "rgb(var(--color-success) / <alpha-value>)",
+            "text": "rgb(var(--color-success-text) / <alpha-value>)",
+            "strong": "rgb(var(--color-on-success-subtle) / <alpha-value>)"
           },
           "warning": {
-            "subtle": "#fffbeb",
-            "DEFAULT": "#d97706",
-            "text": "#b45309",
-            "strong": "#78350f"
+            "subtle": "rgb(var(--color-warning-subtle) / <alpha-value>)",
+            "DEFAULT": "rgb(var(--color-warning) / <alpha-value>)",
+            "text": "rgb(var(--color-warning-text) / <alpha-value>)",
+            "strong": "rgb(var(--color-on-warning-subtle) / <alpha-value>)"
           },
           "neutral": {
             "subtle": "#f5f5f5",
@@ -617,17 +673,17 @@ tailwind.config = {
         },
         "heading": {
           "highlight": {
-            "DEFAULT": "#FF8000"
+            "DEFAULT": "rgb(var(--color-accent) / <alpha-value>)"
           }
         },
         "btn": {
           "primary": {
-            "DEFAULT": "#809700",
-            "hover": "#6D8005"
+            "DEFAULT": "rgb(var(--color-secondary) / <alpha-value>)",
+            "hover": "rgb(var(--color-secondary-strong) / <alpha-value>)"
           },
           "secondary": {
             "DEFAULT": "transparent",
-            "hover": "#003017"
+            "hover": "rgb(var(--color-primary) / <alpha-value>)"
           },
           "tertiary": {
             "DEFAULT": "#fff",
@@ -635,68 +691,68 @@ tailwind.config = {
           }
         },
         "header": {
-          "DEFAULT": "#003017",
+          "DEFAULT": "rgb(var(--color-primary) / <alpha-value>)",
           "logo": {
-            "DEFAULT": "#003017"
+            "DEFAULT": "rgb(var(--color-primary) / <alpha-value>)"
           },
           "search": {
-            "DEFAULT": "#001A13"
+            "DEFAULT": "rgb(var(--color-primary-dark) / <alpha-value>)"
           },
           "cartCount": {
-            "DEFAULT": "#FF8000"
+            "DEFAULT": "rgb(var(--color-accent) / <alpha-value>)"
           },
           "customerService": {
-            "DEFAULT": "#003017"
+            "DEFAULT": "rgb(var(--color-primary) / <alpha-value>)"
           },
           "mobileSearch": {
-            "DEFAULT": "#F5E6D7"
+            "DEFAULT": "rgb(var(--color-surface-raised) / <alpha-value>)"
           },
           "login": {
             "loggedOut": "#FF4D4D",
-            "loggedIn": "#6D8005"
+            "loggedIn": "rgb(var(--color-secondary-strong) / <alpha-value>)"
           }
         },
         "menu": {
-          "DEFAULT": "#F5E6D7",
-          "mobile": "#FFF5ED",
-          "activeMenuItem": "#FF8000"
+          "DEFAULT": "rgb(var(--color-surface-raised) / <alpha-value>)",
+          "mobile": "rgb(var(--color-surface) / <alpha-value>)",
+          "activeMenuItem": "rgb(var(--color-accent) / <alpha-value>)"
         },
         "usps": {
-          "DEFAULT": "#FFF5ED",
-          "mobile": "#F5E6D7"
+          "DEFAULT": "rgb(var(--color-surface) / <alpha-value>)",
+          "mobile": "rgb(var(--color-surface-raised) / <alpha-value>)"
         },
         "price": {
-          "DEFAULT": "#FF8000"
+          "DEFAULT": "rgb(var(--color-accent) / <alpha-value>)"
         },
         "category": {
-          "DEFAULT": "#FFF5ED"
+          "DEFAULT": "rgb(var(--color-surface) / <alpha-value>)"
         },
         "breadcrumbs": {
-          "DEFAULT": "#FFF5ED"
+          "DEFAULT": "rgb(var(--color-surface) / <alpha-value>)"
         },
         "sliderDots": {
-          "DEFAULT": "#E3E3E3",
+          "DEFAULT": "rgb(var(--color-border) / <alpha-value>)",
           "active": "#878787"
         },
         "pager": {
-          "DEFAULT": "#809700"
+          "DEFAULT": "rgb(var(--color-secondary) / <alpha-value>)"
         },
         "amasty": {
-          "tooltip": "#FF8000",
-          "header": "#003017",
-          "sliderPriceDefault": "#E3E3E3",
-          "sliderPriceActive": "#003017"
+          "tooltip": "rgb(var(--color-accent) / <alpha-value>)",
+          "header": "rgb(var(--color-primary) / <alpha-value>)",
+          "sliderPriceDefault": "rgb(var(--color-border) / <alpha-value>)",
+          "sliderPriceActive": "rgb(var(--color-primary) / <alpha-value>)"
         },
         "blog": {
-          "item": "#E3E3E3",
-          "catLink": "#003017"
+          "item": "rgb(var(--color-border) / <alpha-value>)",
+          "catLink": "rgb(var(--color-primary) / <alpha-value>)"
         },
         "mirasvitSearch": {
-          "suggestions": "#E3E3E3",
+          "suggestions": "rgb(var(--color-border) / <alpha-value>)",
           "suggestionsHover": "#8BA407"
         },
         "footer": {
-          "DEFAULT": "#003017"
+          "DEFAULT": "rgb(var(--color-primary) / <alpha-value>)"
         },
         "form": {
           "input": {
@@ -706,7 +762,7 @@ tailwind.config = {
             "choice": {
               "DEFAULT": "#fff",
               "hover": "transparent",
-              "active": "#809700",
+              "active": "rgb(var(--color-secondary) / <alpha-value>)",
               "inactive": "#fff"
             }
           }
@@ -715,18 +771,18 @@ tailwind.config = {
           "lighter": "#ffffff",
           "DEFAULT": "#fafafa",
           "darker": "#f5f5f5",
-          "beige": "#FFF5ED"
+          "beige": "rgb(var(--color-surface) / <alpha-value>)"
         },
         "tmx": {
           "primary": {
-            "darkGreen": "#001A13",
-            "green": "#003017",
+            "darkGreen": "rgb(var(--color-primary-dark) / <alpha-value>)",
+            "green": "rgb(var(--color-primary) / <alpha-value>)",
             "mediumGreen": "#002E21",
-            "orange": "#FF8000",
-            "lighterGreen": "#809700",
-            "lighterGreenSubtle": "#F8FCE6",
+            "orange": "rgb(var(--color-accent) / <alpha-value>)",
+            "lighterGreen": "rgb(var(--color-secondary) / <alpha-value>)",
+            "lighterGreenSubtle": "rgb(var(--color-secondary-subtle) / <alpha-value>)",
             "lighterGreenSecond": "#8BA407",
-            "lightGreen": "#6D8005",
+            "lightGreen": "rgb(var(--color-secondary-strong) / <alpha-value>)",
             "blue": "#80A5E4",
             "yellow": "#FFCB00",
             "red": "#FF4D4D",
@@ -734,42 +790,42 @@ tailwind.config = {
             "brown": "#8A7B6C"
           },
           "secondary": {
-            "sand": "#F5E6D7",
-            "beige": "#FFF5ED",
-            "bone": "#E0D2C5"
+            "sand": "rgb(var(--color-surface-raised) / <alpha-value>)",
+            "beige": "rgb(var(--color-surface) / <alpha-value>)",
+            "bone": "rgb(var(--color-surface-strong) / <alpha-value>)"
           },
           "neutral": {
-            "grey": "#636363",
+            "grey": "rgb(var(--color-border-strong) / <alpha-value>)",
             "mediumGrey": "#878787",
-            "lightGrey": "#E3E3E3",
+            "lightGrey": "rgb(var(--color-border) / <alpha-value>)",
             "lightestGrey": "#f9fafb",
             "white": "#FFFFFF",
             "darkGrey": "#151A1F"
           },
           "status": {
             "info": {
-              "subtle": "#f0f9ff",
-              "DEFAULT": "#0284c7",
-              "text": "#0369a1",
-              "strong": "#0c4a6e"
+              "subtle": "rgb(var(--color-info-subtle) / <alpha-value>)",
+              "DEFAULT": "rgb(var(--color-info) / <alpha-value>)",
+              "text": "rgb(var(--color-info-text) / <alpha-value>)",
+              "strong": "rgb(var(--color-on-info-subtle) / <alpha-value>)"
             },
             "error": {
-              "subtle": "#fef2f2",
-              "DEFAULT": "#dc2626",
-              "text": "#b91c1c",
-              "strong": "#7f1d1d"
+              "subtle": "rgb(var(--color-danger-subtle) / <alpha-value>)",
+              "DEFAULT": "rgb(var(--color-danger) / <alpha-value>)",
+              "text": "rgb(var(--color-danger-text) / <alpha-value>)",
+              "strong": "rgb(var(--color-on-danger-subtle) / <alpha-value>)"
             },
             "success": {
-              "subtle": "#f0fdf4",
-              "DEFAULT": "#16a34a",
-              "text": "#15803d",
-              "strong": "#14532d"
+              "subtle": "rgb(var(--color-success-subtle) / <alpha-value>)",
+              "DEFAULT": "rgb(var(--color-success) / <alpha-value>)",
+              "text": "rgb(var(--color-success-text) / <alpha-value>)",
+              "strong": "rgb(var(--color-on-success-subtle) / <alpha-value>)"
             },
             "warning": {
-              "subtle": "#fffbeb",
-              "DEFAULT": "#d97706",
-              "text": "#b45309",
-              "strong": "#78350f"
+              "subtle": "rgb(var(--color-warning-subtle) / <alpha-value>)",
+              "DEFAULT": "rgb(var(--color-warning) / <alpha-value>)",
+              "text": "rgb(var(--color-warning-text) / <alpha-value>)",
+              "strong": "rgb(var(--color-on-warning-subtle) / <alpha-value>)"
             },
             "neutral": {
               "subtle": "#f5f5f5",
@@ -782,14 +838,14 @@ tailwind.config = {
       },
       "borderColor": {
         "primary": {
-          "darkGreen": "#001A13",
-          "green": "#003017",
+          "darkGreen": "rgb(var(--color-primary-dark) / <alpha-value>)",
+          "green": "rgb(var(--color-primary) / <alpha-value>)",
           "mediumGreen": "#002E21",
-          "orange": "#FF8000",
-          "lighterGreen": "#809700",
-          "lighterGreenSubtle": "#F8FCE6",
+          "orange": "rgb(var(--color-accent) / <alpha-value>)",
+          "lighterGreen": "rgb(var(--color-secondary) / <alpha-value>)",
+          "lighterGreenSubtle": "rgb(var(--color-secondary-subtle) / <alpha-value>)",
           "lighterGreenSecond": "#8BA407",
-          "lightGreen": "#6D8005",
+          "lightGreen": "rgb(var(--color-secondary-strong) / <alpha-value>)",
           "blue": "#80A5E4",
           "yellow": "#FFCB00",
           "red": "#FF4D4D",
@@ -797,42 +853,42 @@ tailwind.config = {
           "brown": "#8A7B6C"
         },
         "secondary": {
-          "sand": "#F5E6D7",
-          "beige": "#FFF5ED",
-          "bone": "#E0D2C5"
+          "sand": "rgb(var(--color-surface-raised) / <alpha-value>)",
+          "beige": "rgb(var(--color-surface) / <alpha-value>)",
+          "bone": "rgb(var(--color-surface-strong) / <alpha-value>)"
         },
         "neutral": {
-          "grey": "#636363",
+          "grey": "rgb(var(--color-border-strong) / <alpha-value>)",
           "mediumGrey": "#878787",
-          "lightGrey": "#E3E3E3",
+          "lightGrey": "rgb(var(--color-border) / <alpha-value>)",
           "lightestGrey": "#f9fafb",
           "white": "#FFFFFF",
           "darkGrey": "#151A1F"
         },
         "status": {
           "info": {
-            "subtle": "#f0f9ff",
-            "DEFAULT": "#0284c7",
-            "text": "#0369a1",
-            "strong": "#0c4a6e"
+            "subtle": "rgb(var(--color-info-subtle) / <alpha-value>)",
+            "DEFAULT": "rgb(var(--color-info) / <alpha-value>)",
+            "text": "rgb(var(--color-info-text) / <alpha-value>)",
+            "strong": "rgb(var(--color-on-info-subtle) / <alpha-value>)"
           },
           "error": {
-            "subtle": "#fef2f2",
-            "DEFAULT": "#dc2626",
-            "text": "#b91c1c",
-            "strong": "#7f1d1d"
+            "subtle": "rgb(var(--color-danger-subtle) / <alpha-value>)",
+            "DEFAULT": "rgb(var(--color-danger) / <alpha-value>)",
+            "text": "rgb(var(--color-danger-text) / <alpha-value>)",
+            "strong": "rgb(var(--color-on-danger-subtle) / <alpha-value>)"
           },
           "success": {
-            "subtle": "#f0fdf4",
-            "DEFAULT": "#16a34a",
-            "text": "#15803d",
-            "strong": "#14532d"
+            "subtle": "rgb(var(--color-success-subtle) / <alpha-value>)",
+            "DEFAULT": "rgb(var(--color-success) / <alpha-value>)",
+            "text": "rgb(var(--color-success-text) / <alpha-value>)",
+            "strong": "rgb(var(--color-on-success-subtle) / <alpha-value>)"
           },
           "warning": {
-            "subtle": "#fffbeb",
-            "DEFAULT": "#d97706",
-            "text": "#b45309",
-            "strong": "#78350f"
+            "subtle": "rgb(var(--color-warning-subtle) / <alpha-value>)",
+            "DEFAULT": "rgb(var(--color-warning) / <alpha-value>)",
+            "text": "rgb(var(--color-warning-text) / <alpha-value>)",
+            "strong": "rgb(var(--color-on-warning-subtle) / <alpha-value>)"
           },
           "neutral": {
             "subtle": "#f5f5f5",
@@ -843,12 +899,12 @@ tailwind.config = {
         },
         "btn": {
           "primary": {
-            "DEFAULT": "#6D8005",
-            "hover": "#6D8005"
+            "DEFAULT": "rgb(var(--color-secondary-strong) / <alpha-value>)",
+            "hover": "rgb(var(--color-secondary-strong) / <alpha-value>)"
           },
           "secondary": {
-            "DEFAULT": "#003017",
-            "hover": "#003017"
+            "DEFAULT": "rgb(var(--color-primary) / <alpha-value>)",
+            "hover": "rgb(var(--color-primary) / <alpha-value>)"
           },
           "tertiary": {
             "DEFAULT": "#fff",
@@ -856,63 +912,63 @@ tailwind.config = {
           }
         },
         "logo": {
-          "DEFAULT": "#001A13"
+          "DEFAULT": "rgb(var(--color-primary-dark) / <alpha-value>)"
         },
         "usps": {
-          "DEFAULT": "#F5E6D7"
+          "DEFAULT": "rgb(var(--color-surface-raised) / <alpha-value>)"
         },
         "menuMobile": {
-          "DEFAULT": "#E0D2C5"
+          "DEFAULT": "rgb(var(--color-surface-strong) / <alpha-value>)"
         },
         "activeMenuItem": {
-          "DEFAULT": "#FF8000"
+          "DEFAULT": "rgb(var(--color-accent) / <alpha-value>)"
         },
         "productTile": {
-          "DEFAULT": "#E3E3E3",
-          "hover": "#003017"
+          "DEFAULT": "rgb(var(--color-border) / <alpha-value>)",
+          "hover": "rgb(var(--color-primary) / <alpha-value>)"
         },
         "contentBlock": {
-          "DEFAULT": "#F5E6D7"
+          "DEFAULT": "rgb(var(--color-surface-raised) / <alpha-value>)"
         },
         "currentFilters": {
-          "DEFAULT": "#003017"
+          "DEFAULT": "rgb(var(--color-primary) / <alpha-value>)"
         },
         "filterCard": {
-          "DEFAULT": "#E3E3E3"
+          "DEFAULT": "rgb(var(--color-border) / <alpha-value>)"
         },
         "searchAutocomplete": {
-          "DEFAULT": "#E3E3E3"
+          "DEFAULT": "rgb(var(--color-border) / <alpha-value>)"
         },
         "amasty": {
-          "delimiter": "#003017"
+          "delimiter": "rgb(var(--color-primary) / <alpha-value>)"
         },
         "form": {
           "input": {
-            "DEFAULT": "#E3E3E3",
-            "hover": "#636363",
-            "focus": "#636363",
-            "error": "#dc2626",
-            "success": "#16a34a",
+            "DEFAULT": "rgb(var(--color-border) / <alpha-value>)",
+            "hover": "rgb(var(--color-border-strong) / <alpha-value>)",
+            "focus": "rgb(var(--color-border-strong) / <alpha-value>)",
+            "error": "rgb(var(--color-danger) / <alpha-value>)",
+            "success": "rgb(var(--color-success) / <alpha-value>)",
             "choice": {
-              "DEFAULT": "#E3E3E3",
-              "hover": "#636363",
-              "focus": "#636363",
-              "active": "#809700",
-              "error": "#dc2626",
-              "inactive": "#E3E3E3"
+              "DEFAULT": "rgb(var(--color-border) / <alpha-value>)",
+              "hover": "rgb(var(--color-border-strong) / <alpha-value>)",
+              "focus": "rgb(var(--color-border-strong) / <alpha-value>)",
+              "active": "rgb(var(--color-secondary) / <alpha-value>)",
+              "error": "rgb(var(--color-danger) / <alpha-value>)",
+              "inactive": "rgb(var(--color-border) / <alpha-value>)"
             }
           }
         },
         "tmx": {
           "primary": {
-            "darkGreen": "#001A13",
-            "green": "#003017",
+            "darkGreen": "rgb(var(--color-primary-dark) / <alpha-value>)",
+            "green": "rgb(var(--color-primary) / <alpha-value>)",
             "mediumGreen": "#002E21",
-            "orange": "#FF8000",
-            "lighterGreen": "#809700",
-            "lighterGreenSubtle": "#F8FCE6",
+            "orange": "rgb(var(--color-accent) / <alpha-value>)",
+            "lighterGreen": "rgb(var(--color-secondary) / <alpha-value>)",
+            "lighterGreenSubtle": "rgb(var(--color-secondary-subtle) / <alpha-value>)",
             "lighterGreenSecond": "#8BA407",
-            "lightGreen": "#6D8005",
+            "lightGreen": "rgb(var(--color-secondary-strong) / <alpha-value>)",
             "blue": "#80A5E4",
             "yellow": "#FFCB00",
             "red": "#FF4D4D",
@@ -920,42 +976,42 @@ tailwind.config = {
             "brown": "#8A7B6C"
           },
           "secondary": {
-            "sand": "#F5E6D7",
-            "beige": "#FFF5ED",
-            "bone": "#E0D2C5"
+            "sand": "rgb(var(--color-surface-raised) / <alpha-value>)",
+            "beige": "rgb(var(--color-surface) / <alpha-value>)",
+            "bone": "rgb(var(--color-surface-strong) / <alpha-value>)"
           },
           "neutral": {
-            "grey": "#636363",
+            "grey": "rgb(var(--color-border-strong) / <alpha-value>)",
             "mediumGrey": "#878787",
-            "lightGrey": "#E3E3E3",
+            "lightGrey": "rgb(var(--color-border) / <alpha-value>)",
             "lightestGrey": "#f9fafb",
             "white": "#FFFFFF",
             "darkGrey": "#151A1F"
           },
           "status": {
             "info": {
-              "subtle": "#f0f9ff",
-              "DEFAULT": "#0284c7",
-              "text": "#0369a1",
-              "strong": "#0c4a6e"
+              "subtle": "rgb(var(--color-info-subtle) / <alpha-value>)",
+              "DEFAULT": "rgb(var(--color-info) / <alpha-value>)",
+              "text": "rgb(var(--color-info-text) / <alpha-value>)",
+              "strong": "rgb(var(--color-on-info-subtle) / <alpha-value>)"
             },
             "error": {
-              "subtle": "#fef2f2",
-              "DEFAULT": "#dc2626",
-              "text": "#b91c1c",
-              "strong": "#7f1d1d"
+              "subtle": "rgb(var(--color-danger-subtle) / <alpha-value>)",
+              "DEFAULT": "rgb(var(--color-danger) / <alpha-value>)",
+              "text": "rgb(var(--color-danger-text) / <alpha-value>)",
+              "strong": "rgb(var(--color-on-danger-subtle) / <alpha-value>)"
             },
             "success": {
-              "subtle": "#f0fdf4",
-              "DEFAULT": "#16a34a",
-              "text": "#15803d",
-              "strong": "#14532d"
+              "subtle": "rgb(var(--color-success-subtle) / <alpha-value>)",
+              "DEFAULT": "rgb(var(--color-success) / <alpha-value>)",
+              "text": "rgb(var(--color-success-text) / <alpha-value>)",
+              "strong": "rgb(var(--color-on-success-subtle) / <alpha-value>)"
             },
             "warning": {
-              "subtle": "#fffbeb",
-              "DEFAULT": "#d97706",
-              "text": "#b45309",
-              "strong": "#78350f"
+              "subtle": "rgb(var(--color-warning-subtle) / <alpha-value>)",
+              "DEFAULT": "rgb(var(--color-warning) / <alpha-value>)",
+              "text": "rgb(var(--color-warning-text) / <alpha-value>)",
+              "strong": "rgb(var(--color-on-warning-subtle) / <alpha-value>)"
             },
             "neutral": {
               "subtle": "#f5f5f5",
@@ -969,24 +1025,24 @@ tailwind.config = {
       "ringColor": {
         "form": {
           "input": {
-            "DEFAULT": "#636363",
-            "error": "#dc2626",
-            "success": "#16a34a",
+            "DEFAULT": "rgb(var(--color-text-muted) / <alpha-value>)",
+            "error": "rgb(var(--color-danger) / <alpha-value>)",
+            "success": "rgb(var(--color-success) / <alpha-value>)",
             "choice": {
-              "DEFAULT": "#636363"
+              "DEFAULT": "rgb(var(--color-text-muted) / <alpha-value>)"
             }
           }
         },
         "tmx": {
           "primary": {
-            "darkGreen": "#001A13",
-            "green": "#003017",
+            "darkGreen": "rgb(var(--color-primary-dark) / <alpha-value>)",
+            "green": "rgb(var(--color-primary) / <alpha-value>)",
             "mediumGreen": "#002E21",
-            "orange": "#FF8000",
-            "lighterGreen": "#809700",
-            "lighterGreenSubtle": "#F8FCE6",
+            "orange": "rgb(var(--color-accent) / <alpha-value>)",
+            "lighterGreen": "rgb(var(--color-secondary) / <alpha-value>)",
+            "lighterGreenSubtle": "rgb(var(--color-secondary-subtle) / <alpha-value>)",
             "lighterGreenSecond": "#8BA407",
-            "lightGreen": "#6D8005",
+            "lightGreen": "rgb(var(--color-secondary-strong) / <alpha-value>)",
             "blue": "#80A5E4",
             "yellow": "#FFCB00",
             "red": "#FF4D4D",
@@ -994,42 +1050,42 @@ tailwind.config = {
             "brown": "#8A7B6C"
           },
           "secondary": {
-            "sand": "#F5E6D7",
-            "beige": "#FFF5ED",
-            "bone": "#E0D2C5"
+            "sand": "rgb(var(--color-surface-raised) / <alpha-value>)",
+            "beige": "rgb(var(--color-surface) / <alpha-value>)",
+            "bone": "rgb(var(--color-surface-strong) / <alpha-value>)"
           },
           "neutral": {
-            "grey": "#636363",
+            "grey": "rgb(var(--color-text-muted) / <alpha-value>)",
             "mediumGrey": "#878787",
-            "lightGrey": "#E3E3E3",
+            "lightGrey": "rgb(var(--color-border) / <alpha-value>)",
             "lightestGrey": "#f9fafb",
             "white": "#FFFFFF",
             "darkGrey": "#151A1F"
           },
           "status": {
             "info": {
-              "subtle": "#f0f9ff",
-              "DEFAULT": "#0284c7",
-              "text": "#0369a1",
-              "strong": "#0c4a6e"
+              "subtle": "rgb(var(--color-info-subtle) / <alpha-value>)",
+              "DEFAULT": "rgb(var(--color-info) / <alpha-value>)",
+              "text": "rgb(var(--color-info-text) / <alpha-value>)",
+              "strong": "rgb(var(--color-on-info-subtle) / <alpha-value>)"
             },
             "error": {
-              "subtle": "#fef2f2",
-              "DEFAULT": "#dc2626",
-              "text": "#b91c1c",
-              "strong": "#7f1d1d"
+              "subtle": "rgb(var(--color-danger-subtle) / <alpha-value>)",
+              "DEFAULT": "rgb(var(--color-danger) / <alpha-value>)",
+              "text": "rgb(var(--color-danger-text) / <alpha-value>)",
+              "strong": "rgb(var(--color-on-danger-subtle) / <alpha-value>)"
             },
             "success": {
-              "subtle": "#f0fdf4",
-              "DEFAULT": "#16a34a",
-              "text": "#15803d",
-              "strong": "#14532d"
+              "subtle": "rgb(var(--color-success-subtle) / <alpha-value>)",
+              "DEFAULT": "rgb(var(--color-success) / <alpha-value>)",
+              "text": "rgb(var(--color-success-text) / <alpha-value>)",
+              "strong": "rgb(var(--color-on-success-subtle) / <alpha-value>)"
             },
             "warning": {
-              "subtle": "#fffbeb",
-              "DEFAULT": "#d97706",
-              "text": "#b45309",
-              "strong": "#78350f"
+              "subtle": "rgb(var(--color-warning-subtle) / <alpha-value>)",
+              "DEFAULT": "rgb(var(--color-warning) / <alpha-value>)",
+              "text": "rgb(var(--color-warning-text) / <alpha-value>)",
+              "strong": "rgb(var(--color-on-warning-subtle) / <alpha-value>)"
             },
             "neutral": {
               "subtle": "#f5f5f5",

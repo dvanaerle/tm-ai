@@ -14,7 +14,7 @@ Round 4, variant A ("Naast elkaar") of the /schuifwand redesign, with the page's
 
 1. **Beige intro:** the H1 and intro beside a modest photo (DESIGN.md → Layout → Beige intro).
 2. **Sticky product tabs:** thumbnail, name and "Vanaf €" price per product, the beige pill on the active tab (DESIGN.md → Components → Content patterns → Sticky product tabs).
-3. **One light content block per product**, the image alternating left and right (`--media-right`): name, price chip, first sentence, USP list, "Stel nu samen" beside "Meer informatie" (Content patterns → Content block).
+3. **One light split image per product**, the image alternating left and right (`--media-right`): name, price chip, first sentence, USP list, "Stel nu samen" beside "Meer informatie" (Content patterns → Split image).
 4. **Comparison table "Alle Gumax<sup>®</sup> schuifwanden"** on white: need rows with ticks at every width, colours from `md`, prices and buttons from `lg` (Content patterns → Comparison table).
 5. **Benefits on a beige band:** the copy's own headings and first sentences, the rest behind "+ Lees meer", in this one section only.
 6. **Side walls on a sand band:** white cards without a border.
@@ -23,7 +23,7 @@ The surface changes every one or two sections: beige, white, beige blocks, white
 
 Cleaning the approved round-4 file changed:
 
-- **Content blocks:** they use the skeleton's `content-block` classes instead of a hand-built grid.
+- **Product blocks:** they use the skeleton's `split-image` classes instead of a hand-built grid.
 - **Gumax<sup>®</sup>:** it is superscript in page text, the table caption included.
 - **Steel Look block:** it lost its third link ("Bestel de losse Steel Look set"), so it holds two buttons. The modular benefit keeps that link in its copy.
 - **Side-wall cards:** they pair the primary with a secondary, `gap-2` apart.
@@ -58,8 +58,8 @@ To use it for another category landing, copy the parts file, write your own plan
 |---|---|
 | ![Round 2: one swipeable row per product](examples/carousel-dont.jpg) | ![Product blocks stacked](examples/stacked-do.jpg) |
 
-**Content block.** Don't put "Lees meer" in a content block (round 3): opened, it grows the text and the flush photo stretches with it. Need icons and colour lines crowd the block too. Do: the light block.
+**Product block.** Don't put "Lees meer" in a product split image (round 3): opened, it grows the text and the flush photo stretches with it. Need icons and colour lines crowd the block too. Do: the light block.
 
 | Don't | Do |
 |---|---|
-| ![Round 3: a content block stretched by an open Lees meer](examples/lees-meer-dont.jpg) | ![The light content block](examples/light-block-do.jpg) |
+| ![Round 3: a product block stretched by an open Lees meer](examples/lees-meer-dont.jpg) | ![The light product block](examples/light-block-do.jpg) |

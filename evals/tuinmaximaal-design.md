@@ -6,7 +6,7 @@ A fixed set of prompts for judging whether a change to the skill made results be
 
 For every prompt:
 
-- only `tmx-*` and theme classes, no arbitrary values
+- only the semantic colour tokens (DESIGN.md → Colors) and theme classes, no `tmx-*` colours and no arbitrary values
 - the primary button is `#809700`
 - orange is used only for price and highlights (plus badges and active states)
 - AA contrast, apart from the theme exceptions documented in DESIGN.md
@@ -18,19 +18,19 @@ Build prompts (1–6, 9 when it is a build, and 10) must also have:
 
 - 3 genuinely different variants, each with a trade-off line
 - at least one bold variant per set, its trade-off line starting with "Bold:"
-- no border on a white container on a white page, except a repeated card or an outlined filter box; borders only on theme components that own one, repeated cards on white, outlined filter boxes, the intro link card, or where two white surfaces meet
+- no border on a white container on a white page, except a repeated card or an outlined filter box; borders only on theme components that own one, repeated cards on white, outlined filter boxes, or where two white surfaces meet
 - one big moment per variant, matching the register (product photo plus price box on product surfaces; a large contained image with a heading highlight, or a large project photo, on brand-forward pages)
 - 16:9 only on product media and the blog tile photo
 - the green logo bar at production's header height instead of the full shell, unless the prompt is about the header, menu or footer
 - every variant passes the logo-swap test
 - the green bar is `h-15` with the `h-11` logo at every breakpoint, in the frame and the full shell
-- `btn-size-sm` or the default button size only; no `btn-size-lg`
+- Figma's button sizes (XL by default, no theme `btn-size-*` class); a link-like action is `btn-transparent`
 - no eyebrow or kicker label above any heading
 - every heading highlight, paragraph highlight, price box and promo label tilted −2°
 - all content and images inside the container; only page chrome, the beige intro and tinted tile bands run full width, as colour bands
 - on whole pages, a beige intro section matching the page type; white after it by default
 - only white, beige and sand surfaces on the ladder, at most one green emphasis block, no bone
-- the box decision per block: repeated cards as white `rounded-2` cards, outlined on white and borderless on a beige or sand band; the one block that needs emphasis as a borderless beige box; everything else (running text, text + image, gallery, SEO text) unboxed on whitespace. No text boxed on white just to separate it, no padded content block around a separately rounded image, no wrapper around everything, no border on a coloured box except the intro link card, and nesting only one level deep with a change of surface
+- the box decision per block: repeated cards as white `rounded-2` cards, outlined on white and borderless on a beige or sand band; the one block that needs emphasis as a borderless beige box; everything else (running text, text + image, gallery, SEO text) unboxed on whitespace. No text boxed on white just to separate it, no padded box around a separately rounded image, no wrapper around everything, no border on a coloured box, and nesting only one level deep with a change of surface
 - the price box sized per component (DESIGN.md → Components → Price box): the theme's 16px chip on product tiles, the promo-label chip on image tiles and promos, the largest price in the buy box
 - white text on a photo always on a scrim
 - no `has-[…]:` variants; selectable cards use `.option-card`
@@ -39,10 +39,11 @@ Build prompts (1–6, 9 when it is a build, and 10) must also have:
 
 Redesign prompts (9 and 10) keep the source page's copy, so there the copy comes from the page instead of being delegated. They fail when a variant:
 
-- puts content in a carousel: a slider of content blocks, benefit cards or product sections (the theme's own sliders, such as related products, are allowed)
+- opens a pop-up on load, or puts one in a product page, configurator, cart or checkout; or uses a modal for information that needs no decision
+- puts content in a carousel: a slider of split images, benefit cards or product sections (the theme's own sliders, such as related products, are allowed)
 - invents copy: a heading, label, caption, chart title or stat the source page doesn't have, including a label a new structure needed
 - invents visuals: a custom illustration, drawn diagram, bar chart, big "365"-style number, or an image that isn't one of the page's own
-- puts "Lees meer" inside a product content block
+- puts "Lees meer" inside a product split image
 - has a card, box or panel floating over or overlapping a photo (the image tile's heading, chip and button on the scrim are the exception)
 - opens a category or landing page with large image tiles instead of the H1 and intro beside a modest photo
 

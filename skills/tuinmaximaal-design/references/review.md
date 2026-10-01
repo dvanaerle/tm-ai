@@ -20,7 +20,7 @@ Go through every check in build.md → 6. Check before delivering, for every var
 Rank the findings as audit.md → 6. Report does (P0 Blocking, P1 Major, P2 Minor, P3 Polish), most important first, and keep P3 short. Give each finding one line:
 
 ```markdown
-1. **[P1] B · content block image in the grid flow** · `section[data-variant="B"] .content-block img.h-full`: build.md → Box decision; the photo sets the height and the text floats. Fix: move the image into `.content-block-media`.
+1. **[P1] B · split image photo in the grid flow** · `section[data-variant="B"] .split-image img.h-full`: build.md → Box decision; the photo sets the height and the text floats. Fix: move the image into `.split-image-media`.
 ```
 
 That is: rank, variant key (or "all"), a short name, the location, the rule it breaks and a concrete fix in theme classes. End with one line that names what you couldn't verify. Stay under 500 words, with no praise and no summary of the file.

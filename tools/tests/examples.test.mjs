@@ -31,14 +31,15 @@ function element(html, start) {
 // The build rules a script can check (references/build.md → 3 and 6), on the markup the example's author wrote.
 const rules = {
     'uses no arbitrary values': (parts) => assert.doesNotMatch(parts, /class="[^"]*\[/),
-    'uses no btn-size-lg': (parts) => assert.doesNotMatch(parts, /btn-size-lg/),
+    'uses Figma\'s button sizes, not the theme\'s btn-size-*': (parts) => assert.doesNotMatch(parts, /btn-size-/),
+    'colours with the semantic tokens, not tmx-*': (parts) => assert.doesNotMatch(parts, /class="[^"]*\btmx-/),
     'writes Gumax<sup>®</sup> in page text': (parts) => {
         const text = parts.replace(/<script[\s\S]*?<\/script>/g, '').split(/<[^>]*>/);
         assert.deepEqual(text.filter((segment) => segment.includes('Gumax®')), []);
     },
-    'keeps its product blocks light, in the skeleton\'s content block': (parts) => {
-        const blocks = [...parts.matchAll(/<\w+[^>]*class="content-block[" ]/g)].map((match) => element(parts, match.index));
-        assert.ok(blocks.length > 0, 'no .content-block');
+    'keeps its product blocks light, in the skeleton\'s split image': (parts) => {
+        const blocks = [...parts.matchAll(/<\w+[^>]*class="split-image[" ]/g)].map((match) => element(parts, match.index));
+        assert.ok(blocks.length > 0, 'no .split-image');
         for (const block of blocks) assert.doesNotMatch(block, /Lees meer|<details/);
     },
 };
