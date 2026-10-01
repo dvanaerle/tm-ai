@@ -3,7 +3,7 @@
  * Regenerates the tuinmaximaal-design skill's DESIGN.md front matter, the generated
  * regions of its prose, the prototype Tailwind config and the prototype skeleton's
  * component CSS from the Valantic `base` theme, copies the theme logo, re-assembles the
- * approved examples, then checks the prose for drift and lints DESIGN.md.
+ * approved examples, then checks the prose of DESIGN.md and its component files for drift and lints DESIGN.md.
  *
  * Usage: npm run design:sync -- [themePath] [--skill-dir <dir>]
  *
@@ -282,7 +282,7 @@ const typography = {
     // Figma 1286:12548 sets the default (XL) label in bold; the theme's `.btn` is semibold
     'button-label': typographyOf([...classesOf(buttonCss, '\\.btn'), 'leading-6', 'font-bold']),
     'form-label': typographyOf(classesOf(formsCss, '\\.field', '& > label, & > \\.label')),
-    // Figma's fields set the value on a 24px line; the theme's is 22px (Known exceptions → Forms)
+    // Figma's fields set the value on a 24px line; the theme's is 22px (components/forms.md → Known exceptions)
     'form-input': typographyOf([...classesOf(formsCss, '^\\.form-textarea'), 'leading-6']),
     message: typographyOf(classesOf(messagesCss, '\\.message')),
     price: typographyOf(['text-base', ...classesOf(pricesCss, '\\.price-container', '\\.price')]),
@@ -332,7 +332,8 @@ add('button-transparent-hover', ['text-link-hover']);
 
 add('form-input', classesOf(formsCss, '^\\.form-textarea'), { typography: '{typography.form-input}' });
 add('form-input-hover', classesOf(formsCss, '^\\.form-textarea', '&:hover[^{]*'));
-add('form-input-focus', classesOf(formsCss, '^\\.form-textarea', '&:focus'));
+// Figma rings a focused field in `ring` at 50%; the theme's is `text-muted` (components/forms.md → Known exceptions)
+add('form-input-focus', classesOf(formsCss, '^\\.form-textarea', '&:focus').map((name) => (/^ring-(?!\d|offset)/.test(name) ? 'ring-ring' : name)));
 add('form-input-error', classesOf(formsCss, '^\\.form-textarea', '\\.field-error &'));
 add('form-input-success', classesOf(formsCss, '^\\.form-textarea', '\\.field-success &'));
 add('form-label', classesOf(formsCss, '\\.field', '& > label, & > \\.label'), { typography: '{typography.form-label}' });
@@ -340,9 +341,11 @@ add('form-error-message', classesOf(formsCss, '\\.field', '& > \\.messages'));
 add('form-choice', classesOf(formsCss, '\\.filter-row', '& > input'));
 add('form-choice-checked', classesOf(formsCss, '\\.filter-row', '& > input', '&:checked'));
 
-add('message-notice', classesOf(messagesCss, '\\.message'), { typography: '{typography.message}' });
+// Figma 6814:5244 pads a message `p-4` and fills the notice `gray-50`; the theme's are `p-3` and `neutral-100` (components/messages.md → Known exceptions)
+const message = [...classesOf(messagesCss, '\\.message').filter((name) => !/^p[xytrbl]?-/.test(name)), 'p-4'];
+add('message-notice', [...message, 'bg-gray-50'], { typography: '{typography.message}' });
 for (const status of ['error', 'success', 'info', 'warning']) {
-    add(`message-${status}`, [...classesOf(messagesCss, '\\.message'), ...classesOf(messagesCss, '\\.message', `&\\.${status}`)], { typography: '{typography.message}' });
+    add(`message-${status}`, [...message, ...classesOf(messagesCss, '\\.message', `&\\.${status}`)], { typography: '{typography.message}' });
     add(`message-${status}-icon`, classesOf(messagesCss, '\\.message', `&\\.${status}`, '& > svg'));
 }
 for (const token of Object.keys(statusTokens)) {
@@ -371,12 +374,12 @@ add('selected-card', ['border', 'border-secondary', 'bg-secondary-subtle']);
 add('page', ['bg-white', 'text-text'], { typography: '{typography.body-md}' });
 add('link', ['text-link']);
 add('link-hover', ['text-link-hover']);
-// Blog tile (DESIGN.md → Content patterns)
+// Blog tile (components/content-patterns.md)
 add('pill', ['bg-gray-50', 'text-text']);
 // The box decision's surface box and its stronger step (DESIGN.md → Elevation & Depth)
 add('surface-box', ['bg-surface', 'text-on-surface', 'rounded-2']);
 add('surface-box-strong', ['bg-surface-raised', 'text-on-surface', 'rounded-2']);
-// Used at 60% opacity in a gradient behind the image tile's white text (DESIGN.md → Content patterns)
+// Used at 60% opacity in a gradient behind the image tile's white text (components/content-patterns.md)
 add('image-tile-scrim', ['bg-gray-900']);
 // The prototype skeleton's own patterns that carry a colour no theme component does (DESIGN.md → Components)
 add('split-image-quote-mark', ['text-surface-strong']);
@@ -457,23 +460,31 @@ const pixelsOf = (name) => {
     return null;
 };
 
+const checkProse = (file, prose, startLine) => {
+    for (const [line, number] of prose.split('\n').map((text, index) => [text, startLine + index])) {
+        // `text-[#123456]` illustrates a forbidden arbitrary value, not a colour
+        for (const [hex] of line.matchAll(/(?<!\[)(?:#[0-9A-Fa-f]{6}|#[0-9A-Fa-f]{3})\b/g)) {
+            if (!hexes.has(normalizeHex(hex))) drift.push(`${file} line ${number}: ${hex} is not a theme colour`);
+        }
+        for (const [, name, hex] of line.matchAll(/`([\w-]+)`\s*(#[0-9A-Fa-f]{3,6})\b/g)) {
+            const expected = semanticColors[name] ?? tailwindDefaults[name] ?? colors[name];
+            if (expected && normalizeHex(expected) !== normalizeHex(hex)) drift.push(`${file} line ${number}: ${name} is ${expected}, not ${hex}`);
+        }
+        for (const [, name, value] of line.matchAll(/`([\w.-]+)`\s*(?:\(|=\s*)?(\d+(?:\.\d+)?px)/g)) {
+            const actual = pixelsOf(name);
+            if (actual && actual !== value) drift.push(`${file} line ${number}: ${name} is ${actual} in the theme, not ${value}`);
+        }
+    }
+};
+
 const bodyOffset = designMd.length - body.length;
-const bodyStartLine = designMd.slice(0, bodyOffset).split('\n').length;
-for (const [line, number] of body.split('\n').map((text, index) => [text, bodyStartLine + index])) {
-    // `text-[#123456]` illustrates a forbidden arbitrary value, not a colour
-    for (const [hex] of line.matchAll(/(?<!\[)(?:#[0-9A-Fa-f]{6}|#[0-9A-Fa-f]{3})\b/g)) {
-        if (!hexes.has(normalizeHex(hex))) drift.push(`line ${number}: ${hex} is not a theme colour`);
-    }
-    for (const [, name, hex] of line.matchAll(/`([\w-]+)`\s*(#[0-9A-Fa-f]{3,6})\b/g)) {
-        const expected = semanticColors[name] ?? tailwindDefaults[name] ?? colors[name];
-        if (expected && normalizeHex(expected) !== normalizeHex(hex)) drift.push(`line ${number}: ${name} is ${expected}, not ${hex}`);
-    }
-    for (const [, name, value] of line.matchAll(/`([\w.-]+)`\s*(?:\(|=\s*)?(\d+(?:\.\d+)?px)/g)) {
-        const actual = pixelsOf(name);
-        if (actual && actual !== value) drift.push(`line ${number}: ${name} is ${actual} in the theme, not ${value}`);
-    }
+checkProse('DESIGN.md', body, designMd.slice(0, bodyOffset).split('\n').length);
+// The component files DESIGN.md → Components indexes quote theme values too
+const componentsDir = join(skillDir, 'components');
+for (const file of (existsSync(componentsDir) ? readdirSync(componentsDir) : []).filter((name) => name.endsWith('.md'))) {
+    checkProse(`components/${file}`, readFileSync(join(componentsDir, file), 'utf8').replace(/\r\n/g, '\n'), 1);
 }
-for (const message of drift) console.log(`error   DESIGN.md prose: ${message}`);
+for (const message of drift) console.log(`error   prose: ${message}`);
 
 // --- Prototype Tailwind config ---------------------------------------------------
 
@@ -891,7 +902,7 @@ const pickRules = [
     '.swatch:has(input:disabled), .swatch:has(input:disabled):hover { @apply cursor-not-allowed border-neutral-300 bg-neutral-100 text-neutral-400/75; }',
     // Figma strikes a sold-out swatch through with a 2px line at 45°
     ".swatch:has(input:disabled)::after { @apply pointer-events-none absolute inset-0 content-empty; background-image: linear-gradient(135deg, transparent calc(50% - 1px), theme('colors.neutral.300') calc(50% - 1px), theme('colors.neutral.300') calc(50% + 1px), transparent calc(50% + 1px)); }",
-    // A house addition: a colour swatch leads with a 20px chip in the product colour (Known exceptions → RAL swatches)
+    // A house addition: a colour swatch leads with a 20px chip in the product colour (components/choices.md → Known exceptions)
     '.swatch-colour { @apply size-5 shrink-0 rounded-full border border-border; }',
     '.swatch:has(input:disabled) > .swatch-colour { @apply opacity-50; }',
     // Stars: `--rating` (0 to 5) fills the row from the left, in Figma's 10% steps or finer
@@ -940,15 +951,15 @@ const prototypeCss = [
     '}',
     '/* Prototype additions: the Figma buttons (DESIGN.md → Buttons: sizes, icons, the tertiary outline, the transparent button, focus rings),',
     '   a highlight that rotates on an inline phrase, a USP check mark that keeps its size when the text wraps (the theme lets it shrink),',
-    '   the split image (DESIGN.md → Content patterns),',
+    '   the split image (components/content-patterns.md),',
     '   the text + image block on beige or plain, which the theme only styles through PageBuilder markup (content-types/page-builder-block-image-with-text.css),',
-    '   the image-text item (DESIGN.md → Content patterns), the PageBuilder link card, outlined or `--on-surface`,',
-    '   the accordion (DESIGN.md → Content patterns → Accordion and FAQ) on a native details element, outlined or `--plain`,',
-    '   the Figma pagination (DESIGN.md → Pagination), which the theme pager does not match yet,',
-    '   the Figma message spacing, neutral fill and outline variant (DESIGN.md → Messages), which Figma updates over the theme,',
-    '   the modal and the pop-up (DESIGN.md → Dialogs) on a native dialog element,',
+    '   the image-text item (components/content-patterns.md), the PageBuilder link card, outlined or `--on-surface`,',
+    '   the accordion (components/content-patterns.md → Accordion and FAQ) on a native details element, outlined or `--plain`,',
+    '   the Figma pagination (components/pagination.md), which the theme pager does not match yet,',
+    '   the Figma message spacing, neutral fill and outline variant (components/messages.md), which Figma updates over the theme,',
+    '   the modal and the pop-up (components/dialogs.md) on a native dialog element,',
     '   and two layout traps: a fieldset that does not shrink below its content, and `sr-only` text escaping an unpositioned',
-    '   scroll container and widening the page (references/build.md → 6. Check before delivering → Build traps). */',
+    '   scroll container and widening the page (references/build.md → 7. Check before delivering → Build traps). */',
     '@layer components {',
     ...indent([
         ...buttonRules,

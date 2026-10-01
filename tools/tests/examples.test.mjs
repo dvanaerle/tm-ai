@@ -28,7 +28,7 @@ function element(html, start) {
     throw new Error(`<${tag}> at ${start} is never closed`);
 }
 
-// The build rules a script can check (references/build.md → 3 and 6), on the markup the example's author wrote.
+// The build rules a script can check (references/build.md → 4 and 7), on the markup the example's author wrote.
 const rules = {
     'uses no arbitrary values': (parts) => assert.doesNotMatch(parts, /class="[^"]*\[/),
     'uses Figma\'s button sizes, not the theme\'s btn-size-*': (parts) => assert.doesNotMatch(parts, /btn-size-/),

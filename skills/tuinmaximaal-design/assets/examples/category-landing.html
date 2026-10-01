@@ -1346,15 +1346,15 @@ fieldset > legend { @apply float-left w-full; }
 }
 /* Prototype additions: the Figma buttons (DESIGN.md → Buttons: sizes, icons, the tertiary outline, the transparent button, focus rings),
    a highlight that rotates on an inline phrase, a USP check mark that keeps its size when the text wraps (the theme lets it shrink),
-   the split image (DESIGN.md → Content patterns),
+   the split image (components/content-patterns.md),
    the text + image block on beige or plain, which the theme only styles through PageBuilder markup (content-types/page-builder-block-image-with-text.css),
-   the image-text item (DESIGN.md → Content patterns), the PageBuilder link card, outlined or `--on-surface`,
-   the accordion (DESIGN.md → Content patterns → Accordion and FAQ) on a native details element, outlined or `--plain`,
-   the Figma pagination (DESIGN.md → Pagination), which the theme pager does not match yet,
-   the Figma message spacing, neutral fill and outline variant (DESIGN.md → Messages), which Figma updates over the theme,
-   the modal and the pop-up (DESIGN.md → Dialogs) on a native dialog element,
+   the image-text item (components/content-patterns.md), the PageBuilder link card, outlined or `--on-surface`,
+   the accordion (components/content-patterns.md → Accordion and FAQ) on a native details element, outlined or `--plain`,
+   the Figma pagination (components/pagination.md), which the theme pager does not match yet,
+   the Figma message spacing, neutral fill and outline variant (components/messages.md), which Figma updates over the theme,
+   the modal and the pop-up (components/dialogs.md) on a native dialog element,
    and two layout traps: a fieldset that does not shrink below its content, and `sr-only` text escaping an unpositioned
-   scroll container and widening the page (references/build.md → 6. Check before delivering → Build traps). */
+   scroll container and widening the page (references/build.md → 7. Check before delivering → Build traps). */
 @layer components {
     .btn.--s { @apply h-9 gap-1.5 px-4 py-0 text-3.5 leading-5 font-semibold; }
     .btn.--s > svg { @apply size-5 shrink-0; }
@@ -1756,7 +1756,7 @@ fieldset > legend { @apply float-left w-full; }
                 </ul>
             </div>
         </nav>
-        <!-- One light split image per product (DESIGN.md → Content patterns → Split image). -->
+        <!-- One light split image per product (components/content-patterns.md → Split image). -->
         <div class="container py-8 md:py-10 flex flex-col gap-6 md:gap-8">
             <article id="schuifwand-glas" class="split-image scroll-mt-28">
                 <div class="split-image-media"><img src="https://m2stagingnl.intern.systems/media/wysiwyg/tm/nl-nl/afbeeldingen/Categoriepagina/Schuifwanden/glass-sliding-doors-comfortable-all-year-round.jpg" alt="Gumax® glazen schuifwand"></div>
@@ -2040,14 +2040,14 @@ fieldset > legend { @apply float-left w-full; }
     });
     show(current, false);
 })();
-// Dialogs (DESIGN.md → Dialogs): a button with data-dialog-open="id" opens that dialog as a modal; a button in its
+// Dialogs (components/dialogs.md): a button with data-dialog-open="id" opens that dialog as a modal; a button in its
 // form method="dialog" closes it; a click on a pop-up's backdrop closes the pop-up.
 document.addEventListener('click', (event) => {
     const opener = event.target.closest?.('[data-dialog-open]');
     if (opener) document.getElementById(opener.dataset.dialogOpen)?.showModal();
     if (event.target.matches?.('dialog.popup[open]')) event.target.close();
 });
-// Dropdowns (DESIGN.md → Forms → Dropdown): a [data-dropdown] holds a combobox button and its listbox. A click, Enter,
+// Dropdowns (components/forms.md → Dropdown): a [data-dropdown] holds a combobox button and its listbox. A click, Enter,
 // Space or an arrow key opens it; the arrows, Home and End move through the options; Enter or Space picks one, which is
 // copied into the button and announced as a bubbling `dropdown-change` event; Esc, Tab or a click outside closes it.
 (() => {
@@ -2119,7 +2119,7 @@ document.addEventListener('click', (event) => {
         if (event.key === ' ' && event.target.closest?.('[data-dropdown] .dropdown-button')) event.preventDefault();
     });
 })();
-// Action menus (DESIGN.md → Components → Action menu): a [data-menu] holds a button with aria-haspopup="menu" and its
+// Action menus (components/action-menu.md): a [data-menu] holds a button with aria-haspopup="menu" and its
 // [role="menu"]. A click opens it; Enter, Space or ArrowDown opens it on the first item; the arrows, Home and End move;
 // an item's click, Esc or a click outside closes it and returns focus to the button; Tab closes it.
 (() => {
@@ -2172,7 +2172,7 @@ document.addEventListener('click', (event) => {
         if (event.key === ' ' && event.target.closest?.('[data-menu] [aria-haspopup="menu"]')) event.preventDefault();
     });
 })();
-// Quantity selectors (DESIGN.md → Forms → Product card): the first button lowers the number input, the last raises it,
+// Quantity selectors (components/choices.md → Quantity): the first button lowers the number input, the last raises it,
 // within its min (default 0) and max; a change fires the input's `change` event.
 document.addEventListener('click', (event) => {
     const button = event.target.closest?.('.quantity > button');

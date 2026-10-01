@@ -43,7 +43,6 @@
   "gray-50": "#F9FAFB"
   "gray-900": "#111827"
   "yellow-400": "#FACC15"
-  "neutral-100": "#F5F5F5"
   "neutral-700": "#404040"
   "neutral-900": "#171717"
 "typography":
@@ -220,7 +219,7 @@
     "backgroundColor": "{colors.border-strong}"
   "form-input-focus-ring":
     "size": "4px"
-    "backgroundColor": "{colors.text-muted}"
+    "backgroundColor": "{colors.ring}"
   "form-input-error-border":
     "backgroundColor": "{colors.danger}"
   "form-input-success-border":
@@ -241,15 +240,15 @@
     "textColor": "{colors.white}"
   "message-notice":
     "rounded": "{rounded.1}"
-    "backgroundColor": "{colors.neutral-100}"
+    "backgroundColor": "{colors.gray-50}"
     "textColor": "{colors.neutral-900}"
-    "padding": "0.75rem"
+    "padding": "1rem"
     "typography": "{typography.message}"
   "message-error":
     "rounded": "{rounded.1}"
     "backgroundColor": "{colors.danger-subtle}"
     "textColor": "{colors.on-danger-subtle}"
-    "padding": "0.75rem"
+    "padding": "1rem"
     "typography": "{typography.message}"
   "message-error-icon":
     "textColor": "{colors.danger}"
@@ -257,7 +256,7 @@
     "rounded": "{rounded.1}"
     "backgroundColor": "{colors.success-subtle}"
     "textColor": "{colors.on-success-subtle}"
-    "padding": "0.75rem"
+    "padding": "1rem"
     "typography": "{typography.message}"
   "message-success-icon":
     "textColor": "{colors.success}"
@@ -265,7 +264,7 @@
     "rounded": "{rounded.1}"
     "backgroundColor": "{colors.info-subtle}"
     "textColor": "{colors.on-info-subtle}"
-    "padding": "0.75rem"
+    "padding": "1rem"
     "typography": "{typography.message}"
   "message-info-icon":
     "textColor": "{colors.info}"
@@ -273,7 +272,7 @@
     "rounded": "{rounded.1}"
     "backgroundColor": "{colors.warning-subtle}"
     "textColor": "{colors.on-warning-subtle}"
-    "padding": "0.75rem"
+    "padding": "1rem"
     "typography": "{typography.message}"
   "message-warning-icon":
     "textColor": "{colors.warning}"
@@ -359,9 +358,9 @@
 ---
 # Tuinmaximaal design system
 
-The front matter above is generated from the Valantic `base` theme (Hyvä + Tailwind) by `tools/design-sync/sync.mjs` in the tm-ai workspace. Never edit it by hand, nor the regions between `design-sync` comments below. When the theme changes, re-run the sync: it also regenerates the prototype skeleton's component CSS, and it fails when a value quoted in this prose (a hex colour, a colour token, or a `text-`, `rounded-` or spacing class with a px value) no longer matches the theme. The colour tokens come from Figma `6767:34313`, kept in the sync's semantic table, each resolved to the theme colour it matches. Every other value comes from the theme code; if this document disagrees with it, the code wins.
+The front matter above is generated from the Valantic `base` theme (Hyvä + Tailwind) by `tools/design-sync/sync.mjs` in the tm-ai workspace, for the sync and the linter: skip it, since this prose and the skeleton carry every value a build needs. Never edit it by hand, nor the regions between `design-sync` comments below. When the theme changes, re-run the sync: it also regenerates the prototype skeleton's component CSS, and it fails when a value quoted in this prose (a hex colour, a colour token, or a `text-`, `rounded-` or spacing class with a px value) no longer matches the theme. The colour tokens come from Figma `6767:34313`, kept in the sync's semantic table, each resolved to the theme colour it matches. Every other value comes from the theme code; if this document disagrees with it, the code wins.
 
-Token keys are the Tailwind class suffixes: the colours are Figma's semantic tokens (`secondary` is `bg-secondary`, Colors), the rest mirror the theme's names: `spacing.4` is `p-4`, `rounded.1` is `rounded-1`, `typography.text-3.75` is `text-3.75`. Build with those classes and nothing else: no arbitrary values (`p-[13px]`, `text-[#123456]`).
+Build with the theme's classes and nothing else: the semantic colour tokens (`bg-secondary`, Colors), the spacing scale (`p-4`, Layout), the corners (`rounded-1`, Shapes) and the font sizes (`text-3.75`, Typography). No arbitrary values (`p-[13px]`, `text-[#123456]`).
 
 ## Overview
 
@@ -417,7 +416,7 @@ The 28px cap stays: scale comes from black weight, the highlight and the ratio o
 **The big moment.** Every page has exactly one, and everything around it stays calm:
 
 - **Product surfaces:** the product photo plus the price box. The shopping task comes first, so there is no hero above them.
-- **Brand-forward pages:** a large contained image with an orange heading highlight, a large project photo, or, on the homepage, the intro's image tiles (Components → Content patterns → Image tile). A category or landing page keeps its intro calm (Layout → Beige intro) and lets the product blocks or a large project photo below it carry the big moment.
+- **Brand-forward pages:** a large contained image with an orange heading highlight, a large project photo, or, on the homepage, the intro's image tiles (components/content-patterns.md → Image tile). A category or landing page keeps its intro calm (Layout → Beige intro) and lets the product blocks or a large project photo below it carry the big moment.
 
 **Logo-swap test.** Put another retailer's logo on the design. If it would still work unchanged, it isn't Tuinmaximaal yet: add a brand moment, such as a highlight, a project photo, a warm surface or specific proof.
 
@@ -443,11 +442,11 @@ Figma's `primary` is the brand green and `secondary` is the lime action colour. 
 | `secondary-strong` | #6D8005 | `tmx-primary-lightGreen` | The action colour's shadow: the primary button's 4px bottom border and hover fill. |
 | `secondary-subtle` | #F8FCE6 | `tmx-primary-lighterGreenSubtle` | The fill of a selected card and of the current page. |
 | `on-secondary` | #FFFFFF | white | Text and glyphs on `secondary`. |
-| `accent` | #FF8000 | `tmx-primary-orange` | An accent only: the price box, the heading and paragraph highlights, badges, the main menu's active item (Shell) and the pop-up close. In-page tabs mark the active tab with a beige pill, never orange (Components → Content patterns → Sticky product tabs). Orange never fills a button, never colours an action, and is never used as small text on white. |
+| `accent` | #FF8000 | `tmx-primary-orange` | An accent only: the price box, the heading and paragraph highlights, badges, the main menu's active item (Shell) and the pop-up close. In-page tabs mark the active tab with a beige pill, never orange (components/content-patterns.md → Sticky product tabs). Orange never fills a button, never colours an action, and is never used as small text on white. |
 | `on-accent` | #FFFFFF | white | Heavy text and the close icon on `accent` (Contrast). |
 | `surface` | #FFF5ED | `tmx-secondary-beige` | The intro section of every page (the theme's `bg-container-beige`), surface boxes, the split image. |
 | `surface-raised` | #F5E6D7 | `tmx-secondary-sand` | The stronger surface boxes and bands. White, `surface` and `surface-raised` are the only page surfaces (Elevation & Depth → Surfaces). |
-| `surface-strong` | #E0D2C5 | `tmx-secondary-bone` | Used only for the split image's quote mark (Components → Content patterns → Split image). It is never a surface. |
+| `surface-strong` | #E0D2C5 | `tmx-secondary-bone` | Used only for the split image's quote mark (components/content-patterns.md → Split image). It is never a surface. |
 | `on-surface` | #003017 | `tmx-primary-green` | Text on `surface` and `surface-raised`. |
 | `text` | #003017 | `tmx-primary-green` (`text-body`) | Body text: never black or grey. |
 | `text-muted` | #636363 | `tmx-neutral-grey` | Field labels, placeholders, the accordion answer, the pagination numbers. |
@@ -462,6 +461,13 @@ Figma's `primary` is the brand green and `secondary` is the lime action colour. 
   - the default (600) for icons and accents;
   - `-text` (700) for hint text under a field;
   - `on-…-subtle` (900) for message text.
+
+  | Status | `-subtle` | Default | `-text` | `on-…-subtle` |
+  |---|---|---|---|---|
+  | warning | `warning-subtle` #FFFBEB | `warning` #D97706 | `warning-text` #B45309 | `on-warning-subtle` #78350F |
+  | danger | `danger-subtle` #FEF2F2 | `danger` #DC2626 | `danger-text` #B91C1C | `on-danger-subtle` #7F1D1D |
+  | success | `success-subtle` #F0FDF4 | `success` #16A34A | `success-text` #15803D | `on-success-subtle` #14532D |
+  | info | `info-subtle` #F0F9FF | `info` #0284C7 | `info-text` #0369A1 | `on-info-subtle` #0C4A6E |
 - **Tailwind defaults.** The semantic layer has no token for these few uses:
   - `white`;
   - `gray-50` #F9FAFB: the blog tile's category pill, the modal footer and the notice message;
@@ -475,7 +481,7 @@ Colour proportions: warm and white surfaces carry about 60%, `primary` structure
 
 ### Contrast
 
-Meet WCAG 2.2 AA: 4.5:1 for body text, 3:1 for text of at least 24px, or at least 18.66px bold, and 3:1 for UI graphics. Safe pairs: green on white, beige or sand (above 12:1), and white on green. White text on a photo (the image tile) always sits on a dark scrim, so it reaches AA whatever the photo shows (Components → Content patterns → Image tile).
+Meet WCAG 2.2 AA: 4.5:1 for body text, 3:1 for text of at least 24px, or at least 18.66px bold, and 3:1 for UI graphics. Safe pairs: green on white, beige or sand (above 12:1), and white on green. White text on a photo (the image tile) always sits on a dark scrim, so it reaches AA whatever the photo shows (components/content-patterns.md → Image tile).
 
 The linter's contrast warnings come from the live theme and are known:
 
@@ -507,7 +513,7 @@ The black weight is used on h1 and h2 only. `.heading-small` steps h1 down to `t
 - **Small text:** `.paragraph-sm` 12px, `.paragraph-esm` 10px, `.paragraph-tiny` 10px bold uppercase, only inside badges and pills.
 - **No eyebrows.** Never put an eyebrow or kicker label (a small line, often uppercase or letter-spaced) above a heading, on any page type. The heading carries the point on its own; a highlight inside it adds the emphasis.
 - **Highlights:** `.heading-highlight` puts white text on an orange chip (`px-3 pt-2 pb-0.5`), rotated −2°. `.paragraph-highlight` is the same chip at weight 900 (`w-fit px-3 pt-1 pb-0.5`). Every highlight tilts, on every heading level; a flat highlight is wrong (Shapes).
-- **UI text:** buttons 16px semibold, field labels 14px medium-weight grey, inputs 16px regular with a 22px line-height, messages 14px, product-tile names 15px semibold (16px from `lg`), clamped to 3 lines.
+- **UI text:** buttons 16px bold (Buttons → Sizes), field labels 14px medium-weight grey, inputs 16px regular with a 22px line-height, messages 14px, product-tile names 15px semibold (16px from `lg`), clamped to 3 lines.
 - **Font sizes** are a fixed list, not a formula: <!-- design-sync:font-sizes -->`text-2.5` 10px, `text-3` 12px, `text-3.5` 14px, `text-3.75` 15px, `text-4` 16px, `text-4.5` 18px, `text-4.75` 19px (line-height 1), `text-5` 20px, `text-5.5` 22px, `text-6` 24px, `text-7` 28px<!-- /design-sync:font-sizes -->. There is nothing larger. Big hero statements get their weight from black type and the orange highlight, not from sizes beyond 28px.
 - **Line heights:** the size classes carry their own line-height (1.5; 1.25 for `text-6` and `text-7`; 1 for `text-4.75`). The custom `leading-5.5` (22px) and `leading-7.5` (30px) join Tailwind's defaults.
 - **Lists:** see Components → Lists; list items wrap their text in `.list-text`.
@@ -517,17 +523,17 @@ The black weight is used on h1 and h2 only. `.heading-small` steps h1 down to `t
 
 - **Container:** centred, `1rem` side padding, maximum 1314px from `xl`. All content and all images, lifestyle photos included, sit inside it. Only page chrome (header bars, breadcrumbs, USP bar), the beige intro and tinted tile bands (Elevation & Depth) may run full width, and only as colour bands whose content is contained. Images and boxes never bleed past the container.
 - **Breakpoints (min-width):** `500px`, `sm` 640, `md` 768, `lg` 1024, `xl` 1280, `2xl` 1536. Build mobile-first and check every prototype at 375px, `md` and `xl`. Adapt on small screens; never remove critical functionality such as the configurator CTA, the price or the add-to-cart button.
-- **Spacing:** a generated 4px scale, defined in the theme's `tailwind.config.js` (and its spacing generator). Token `N` equals N × 4px (`p-4` = 16px) and every step has a `.5` half-step that adds 2px (`gap-1.5` = 6px, `py-2.5` = 10px). It runs from 0 to 500px, plus `1/4`, `1/2`, `3/4`, `full` and `full-x2` percentages. The front matter lists only the rhythm steps below; every other step follows the rule.
+- **Spacing:** a generated 4px scale, defined in the theme's `tailwind.config.js` (and its spacing generator). Token `N` equals N × 4px (`p-4` = 16px) and every step has a `.5` half-step that adds 2px (`gap-1.5` = 6px, `py-2.5` = 10px). It runs from 0 to 500px, plus `1/4`, `1/2`, `3/4`, `full` and `full-x2` percentages.
 - **Rhythm:** use 4–6px (`gap-1`, `gap-1.5`) for tight pairs such as a label and its input, 8–24px (`gap-2` to `gap-6`) inside components and 32–48px (`gap-8` to `gap-12`) between sections. Use more space above a heading than below it. Prefer `gap` on flex and grid parents over margins on children. Vary section spacing; uniform padding everywhere reads as a template.
-- **Product media:** 16:9 (`aspect-video`), for product media only: the gallery, packshots and tile images. The blog tile's photo is the one editorial image at 16:9 (Components → Content patterns). Category tiles use 450 × 253, the product page 1536 × 864.
+- **Product media:** 16:9 (`aspect-video`), for product media only: the gallery, packshots and tile images. The blog tile's photo is the one editorial image at 16:9 (components/content-patterns.md → Blog tile). Category tiles use 450 × 253, the product page 1536 × 864.
 - **Editorial imagery:** lifestyle and project photos take any ratio the config has (`aspect-square`, or a spacing-scale height with `object-cover`), as a contained box with `rounded-2`.
 - **Page grid:** `.columns` is a single-column grid with `gap-x-8 gap-y-4` inside the container.
 - **Vertical flow.** Content stacks vertically, mobile-first: sections, product blocks and cards follow each other down the page, and no content sits in a carousel. The theme's own sliders, such as the related-products slider, stay.
-- **Nothing over a photo.** No card, box or panel floats over or overlaps a photo; text sits beside or below its image. The image tile's heading, chip and button on the scrim are the one exception (Components → Content patterns → Image tile).
+- **Nothing over a photo.** No card, box or panel floats over or overlaps a photo; text sits beside or below its image. The image tile's heading, chip and button on the scrim are the one exception (components/content-patterns.md → Image tile).
 - **Beige intro.** Every page type opens with a beige first section: a full-width band with contained content.
-  - **Homepage:** the image tiles (Components → Content patterns → Image tile).
+  - **Homepage:** the image tiles (components/content-patterns.md → Image tile).
   - **Content, brand and service pages:** the H1, the intro text and an optional CTA.
-  - **Category page and category landing:** the H1 and intro beside a modest photo, side by side from `lg` (`lg:grid-cols-2`), the photo at a spacing-scale height (`h-56 md:h-72 object-cover rounded-2`). Large image tiles here read as bulky and "in your face"; they belong to the homepage. The page's image-text items (Components → Content patterns → Image-text item) sit in this band, under the H1 and intro, as white cards; with them, the H1 and intro run full width and the items' photos take the place of the modest photo.
+  - **Category page and category landing:** the H1 and intro beside a modest photo, side by side from `lg` (`lg:grid-cols-2`), the photo at a spacing-scale height (`h-56 md:h-72 object-cover rounded-2`). Large image tiles here read as bulky and "in your face"; they belong to the homepage. The page's image-text items (components/content-patterns.md → Image-text item) sit in this band, under the H1 and intro, as white cards; with them, the H1 and intro run full width and the items' photos take the place of the modest photo.
   - **Product page:** the gallery and buy-box row, with the buy box white on beige.
 
   After the intro the background is free and white by default. On staging the category grid area and the product content section are white.
@@ -555,9 +561,9 @@ The reference is the homepage: a beige intro band holding the image tiles, a con
 
 **The box decision.** Every block on a page gets one of three treatments, as the house Figma components have them. Decide it per block:
 
-1. **A card that repeats** (a product tile, blog tile, review, image-text item or FAQ row) is a card: white, `rounded-2`. On white it has a 1px light-grey outline (`bg-white border border-border rounded-2`); an FAQ row is the accordion, with its own `rounded-1` (Content patterns → Accordion and FAQ). On a beige or sand band it has no border: the change of surface does the separating.
-2. **One block that needs emphasis** (a quote, a text + image split image on beige, a promo) is a surface box (`surface-box`): beige, `rounded-2`, no border. Sand is the stronger step (`surface-box-strong`); the one green block is the strongest.
-3. **Everything else has no box:** running text in one to four columns, text + image (the plain split image, Content patterns), video + text, a gallery, the SEO text. It sits inside the container, separated by whitespace, with its images `rounded-2`.
+1. **A card that repeats** (a product tile, blog tile, review, image-text item or FAQ row) is a card: white, `rounded-2`. On white it has a 1px light-grey outline (`bg-white border border-border rounded-2`); an FAQ row is the accordion, with its own `rounded-1` (components/content-patterns.md → Accordion and FAQ). On a beige or sand band it has no border: the change of surface does the separating.
+2. **One block that needs emphasis** (a quote, a text + image split image on beige, a promo) is a surface box: beige, `rounded-2`, no border (`bg-surface rounded-2`). Sand is the stronger step (`bg-surface-raised rounded-2`); the one green block is the strongest.
+3. **Everything else has no box:** running text in one to four columns, text + image (the plain split image, components/content-patterns.md → Split image), video + text, a gallery, the SEO text. It sits inside the container, separated by whitespace, with its images `rounded-2`.
 
 A card or surface box takes `p-4` to `p-6` (more on a split image), with `gap-3` to `gap-4` between cards. There is never one wrapper around everything, and a box or card holds its content directly, never another card of the same surface.
 
@@ -570,7 +576,7 @@ A card or surface box takes `p-4` to `p-6` (more on a split image), with `gap-3`
 **Category grid.** The intro is a beige band. The grid area is white, with one box per filter group: outlined, or borderless beige. A sand trust or USP block sits between product rows. Below the grid, the FAQ is a list of outlined rows and the SEO text sits unboxed, clamped with the theme's "Lees meer" fade (`bg-gradient-showMore` over the last lines, then a flush transparent "Lees meer" button, `btn btn-transparent --flush`). Product tiles on the white grid keep their white info area and outline; on a tinted band they lose the outline.
 
 - `shadow-1px` (inset 0 0 0 1px green) is a crisp selected or hover outline without layout shift. The product tile uses it together with the green hover border.
-- `shadow-arrow` (0 4px 12px rgb(0 0 0 / 0.16)) is for the carousel arrows only (Components → Content patterns → Carousel arrows). The other floating elements take Tailwind's shadows, as in Figma: the dropdown list `shadow-lg` (Components → Forms → Dropdown), dialogs `shadow-xl` (Components → Dialogs).
+- `shadow-arrow` (0 4px 12px rgb(0 0 0 / 0.16)) is for the carousel arrows only (components/content-patterns.md → Carousel arrows). The other floating elements take Tailwind's shadows, as in Figma: the dropdown list `shadow-lg` (components/forms.md → Dropdown), dialogs `shadow-xl` (components/dialogs.md).
 - There are no decorative drop shadows on cards, no heavy or dark shadows, no glassmorphism, and the theme is always light.
 
 ## Shapes
@@ -581,9 +587,18 @@ Corners are small and consistent: `rounded-1` (4px) for buttons, inputs, checkbo
 
 ## Components
 
-**Figma first.** The "Tuinmaximaal for Claude" Figma file is the most up-to-date design. Where a component there differs from the theme, build the Figma version through the skeleton's prototype classes, and record the gap under Known exceptions for the FED lead. The theme still supplies the tokens: a Figma value without a token takes the nearest one, noted with the component. A component that exists only in the theme follows the theme.
+**Figma first.** The "Tuinmaximaal for Claude" Figma file is the most up-to-date design. Where a component there differs from the theme, build the Figma version through the skeleton's prototype classes, and record the gap for the FED lead under Known exceptions: in the component file's `## Known exceptions`, or in DESIGN.md's for a core component. The theme still supplies the tokens: a Figma value without a token takes the nearest one, noted with the component. A component that exists only in the theme follows the theme.
 
-Components with a `-border` or `-ring` suffix describe the stroke of the component they belong to, because the format has no border property. Their `backgroundColor` is the stroke colour, `size` is the stroke width, and `height` is used for a bottom-only border.
+**Component files.** The core components (Buttons, Product tile, Price box, Heading and paragraph highlight, Lists and Shell) follow below. Every other component has its own file in [components/](components/), with its snippets and its known exceptions. Read a component's file before you use the component; this index names each file and when it applies:
+
+- **Forms** ([components/forms.md](components/forms.md)): any input, textarea, select or dropdown, a label, a hint or field feedback.
+- **Choices** ([components/choices.md](components/choices.md)): any checkbox, radio, option card, product card, swatch (sizes, dimensions, colours) or quantity selector.
+- **Action menu** ([components/action-menu.md](components/action-menu.md)): a menu of actions on one item, such as a cart line's "Wijzigen" and "Verwijderen".
+- **Reviews** ([components/reviews.md](components/reviews.md)): any star, score, review count or review card, and any page that could show proof from reviews.
+- **Messages** ([components/messages.md](components/messages.md)): any status message, notice, alert or inline note.
+- **Dialogs** ([components/dialogs.md](components/dialogs.md)): any modal, pop-up or overlay.
+- **Pagination** ([components/pagination.md](components/pagination.md)): a product grid or any paged list.
+- **Content patterns** ([components/content-patterns.md](components/content-patterns.md)): any text + image or video block, image tile, image-text item, blog tile, quote, accordion or FAQ, sticky product tabs, comparison table or slider arrows: every page with content blocks.
 
 ### Buttons
 
@@ -623,324 +638,13 @@ Figma `1286:12548` (the base) and `1286:12715` (the set). The theme's `.btn` is 
 
 **States:** `--hovered`, `--focused`, `--active` and `--disabled` force a state without interaction. The styleguide uses them, and they show states side by side in a prototype. Focus rings appear on keyboard focus (`:focus-visible`); a mouse click shows no ring.
 
-### Forms
-
-`form` and `fieldset` are `flex flex-col gap-4`. A `.field` is `flex flex-col gap-1.5`. A `fieldset` doesn't shrink below its content by default, so a row of option cards in one pushes the page wider at 375px; the prototype skeleton gives it `min-w-0`.
-
-- **Source:** Figma `1329:15249` and `1331:14308` (input fields), `1333:20089` and `1333:20196` (textareas), and `1343:22101`, `1343:42177`, `1343:42718` and `1343:44817` (the dropdown), file "Tuinmaximaal for Claude". The theme's `.field`, `.form-input`, `.form-select` and `.form-textarea` are the base. The skeleton adds Figma's look, the warning feedback, the hint, the icons, the input groups and the dropdown on top of them (Known exceptions → Forms).
-- **Structure:** a label, then `.control` (`relative flex flex-col gap-y-2`) holding the input, then an optional `p.hint`. `.field-group` stacks related fields with `gap-0.5`. `field-reserved` comes from the Hyvä parent theme (`base` doesn't style it); keep it on fields as the theme does.
-
-  ```html
-  <div class="field">
-      <label for="postcode">Postcode</label>
-      <div class="control"><input id="postcode" class="form-input" placeholder="1234 AB" aria-describedby="postcode-hint"></div>
-      <p class="hint" id="postcode-hint">…</p><!-- optional -->
-  </div>
-  ```
-- **Label:** 14px medium, `text-muted`, `gap-1.5` above the field. Required fields (`field-required` or `required`) get an asterisk in `danger`. Always put the label above the field. The theme's floating label (`field-floating`) isn't in Figma; don't use it in a prototype.
-- **Field:** full width, 44px high (16px text, `px-3.5 py-2.5`), `rounded-1`, white, with a 1px `border`. The placeholder is `text-muted` at 90%; an entered value is `text` at 90%.
-- **Hint:** `p.hint`, 14px `text-muted`, `gap-1.5` below the field, tied to it with `aria-describedby`. It says what the field needs ("Zonder spaties"), or, under feedback, what went wrong.
-- **States:**
-  - **Hover and active:** a `border-strong` border.
-  - **Focus:** a `border-strong` border and the 4px `ring` at 50%.
-  - **Disabled:** the whole field, label and hint included, at 50%.
-- **Feedback:** add `field-error`, `field-warning` or `field-success` to the `.field`. The field then takes:
-  - a border in `danger`, `warning` or `success`;
-  - a focus ring in that colour at 20%;
-  - the hint in its `-text` shade;
-  - Figma's 20px status icon, 14px from the right: a triangle for an error, an exclamation mark for a warning, a check for success.
-
-  The label stays `text-muted`. An error's message is the hint, in the words of the problem ("Vul een geldige postcode in"). A warning is for input that is accepted but unusual, such as a measurement outside the standard sizes. Success is for a check the customer is waiting for, such as a postcode lookup, not for every valid field. The theme's grey `.warning` line with an info icon predates Figma; use `field-warning` instead. `.messages` is the theme's error line and takes the same `-text` colour.
-- **Icons:**
-  - **Leading:** `--icon-leading` on `.control`, with a 24px inline SVG before the input, in `text-muted`. Use it for a search field or a field whose type an icon makes clear, not as decoration.
-  - **Help:** a `button.field-help` after the input: Figma's 20px question-mark circle in `info`, with an `aria-label` naming the explanation ("Uitleg over de doorloophoogte"). It opens the tooltip or the explanation. Feedback hides it, because the status icon takes its place.
-- **Input groups** (`.control > .input-group`):
-  - **Leading dropdown:** a unit or country code before the value, in one box. The markup is `select.form-select`, `input.form-input`, then `span.field-icon` (`aria-hidden`, which shows the status icon under feedback) and an optional help button.
-  - **Trailing dropdown:** the same box with the select last. Use it for a measurement with a unit ("mm", "cm").
-  - **Prefix** (`.input-group.--prefix`): `span.input-prefix` holds fixed text before the value (`https://`, `€`), in its own box. Only the input takes the states and the feedback.
-  - Every select in a group has its own `aria-label`. The group's box takes the hover, focus and feedback of a single field, and its select shows Figma's grey chevron.
-- **Textarea:** the field's box at 160px (`h-40`), with the same states and feedback but no icon: Figma shows textarea feedback in the border and the hint only.
-- **Select:** a native `select.form-select` is Figma's dropdown button: the field's box at `rounded-1.5` (6px), the value in `text`, and a grey 20px chevron 14px from the right (`pr-10.5`). It takes the field's states and feedback, but no status icon: Figma keeps the chevron. Use it for every plain choice (a quantity, a country, a sort order): it opens the phone's own picker and needs no script.
-- **Dropdown** (`.dropdown`): the same button with a custom list, for options that need what a native select can't show: a leading image (a colour or product photo), a leading icon, or trailing text (a RAL code, a price, a stock line). The skeleton's script makes it work (`data-dropdown`).
-
-  ```html
-  <div class="field">
-      <label for="kleur">Kleur</label>
-      <div class="control">
-          <div class="dropdown" data-dropdown>
-              <button type="button" id="kleur" class="dropdown-button" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="kleur-list">
-                  <img src="…" alt=""><span>Antraciet</span><span class="dropdown-trailing">RAL 7016</span>
-              </button>
-              <ul class="dropdown-list" id="kleur-list" role="listbox" aria-labelledby="kleur" hidden>
-                  <li class="dropdown-option" role="option" aria-selected="true"><img src="…" alt=""><span>Antraciet</span><span class="dropdown-trailing">RAL 7016</span></li>
-                  <li class="dropdown-option" role="option" aria-selected="false" aria-disabled="true">…</li>
-              </ul>
-          </div>
-      </div>
-  </div>
-  ```
-  - **Button:** 44px, `rounded-1.5`, white, a 1px `border`, 16px `text`, with the grey chevron last. A leading 24px image (`rounded-0.5`) or a 24px outline icon in `text-muted` comes first, the value next, and trailing text in `text-muted` before the chevron, all `gap-2` apart. The button repeats the picked option's content; the script copies it on a pick.
-  - **States:** hover a `border-strong` border; keyboard focus that border and the 4px `ring` at 50%; open the `border-strong` border and the chevron turned up, without a ring. Feedback (`field-error`, `field-warning`, `field-success`) colours the border and the hint as on a field, with no status icon. A `disabled` button dims the whole field.
-  - **List:** `gap-1` (4px) under the button, full width, white, `rounded-2`, `p-2`, `shadow-lg`, no border, at most 416px high (ten options), then it scrolls.
-  - **Options:** 14px `text` on a 20px line, `px-3.5 py-2.5` (40px, 44px with an image or icon), `rounded-1`, with the button's image, icon and trailing text at the same sizes. Hover and the selected option fill `neutral-50`; the selected option's name is semibold, without a check mark. A disabled option (`aria-disabled="true"`) is at 50% and can't be picked. The option the arrow keys reach adds a 2px `ring` inside it (a house addition: Figma's fill alone is too faint to follow).
-  - **Keyboard:** a click, Enter, Space or an arrow key opens the list; the arrows, Home and End move; Enter or Space picks; Esc, Tab or a click outside closes. A pick fires a bubbling `dropdown-change` event with the option's `data-value` (or its text), for a prototype that updates a price or an image.
-  - Keep every option to one line of name plus one short trailing value. A choice with a description per option is an option card (below), not a dropdown.
-- **`aria-invalid:`** is a theme variant for `[aria-invalid="true"]`, used for the error border and ring on a flagged field. Set `aria-invalid="true"` on an input with `field-error` as well.
-- **Checkboxes, radios, option cards and product cards:** Components → Choices.
-
-### Choices
-
-Figma `1412:30587` (the base), `1420:30806` (checkbox), `1420:31898` (radio button), `1420:32473` (check circle), `1426:30850` (radio button in a container) and `6969:1655` (product card), file "Tuinmaximaal for Claude". The theme's `.field.choice` is the base for a row; the skeleton adds Figma's sizes, the check circle, the hint and the cards (Known exceptions → Forms).
-
-**Which control:**
-- **Checkbox:** an independent yes or no, or several picks from a list: filters, add-ons, the terms.
-- **Radio button:** exactly one of a few options, all visible. Beyond five options, use a select (Components → Forms).
-- **Check circle** (`input[type="checkbox"].--circle`): a checkbox drawn round, for a pick on a tile or an image, where a square reads as a form field. Don't mix it with square checkboxes in one group.
-
-**The control:** 20px (M), white, a 1px `border`: `rounded-1` for the checkbox, `rounded-full` for the radio and the check circle. Checked, it fills `secondary` with Figma's white glyph (a check, or the radio's dot) and no border.
-- **Hover** (on the row or card): a `border-strong` border. A checked control doesn't change.
-- **Keyboard focus:** a `border-strong` border and the 4px `ring` at 50%, checked or not; a mouse click shows no ring.
-- **Disabled:** the control at 50%; a checked one turns white with a `border` border and a `border` glyph. The label stays at full strength, as in Figma.
-
-**A row** (`.field.choice`): the control, then the label, top-aligned, `gap-2.5`. The label is 14px medium `text`. A hint or a help button needs the text wrapper:
-
-```html
-<div class="field choice"><input type="checkbox" id="nieuwsbrief"><label for="nieuwsbrief">Nieuwsbrief ontvangen</label></div>
-
-<div class="field choice">
-    <input type="checkbox" id="montage" aria-describedby="montage-hint">
-    <div class="choice-text">
-        <div class="choice-label"><label for="montage">Montageservice</label><button type="button" class="choice-help" aria-label="Uitleg over de montageservice"><svg>…</svg></button></div>
-        <p class="hint" id="montage-hint">Wij plaatsen het hek binnen 2 weken</p>
-    </div>
-</div>
-```
-- **Hint:** `p.hint`, 14px `text-muted` on a 20px line, tied with `aria-describedby`.
-- **Help:** `button.choice-help` after the label: Figma's 20px outline info icon in `text`, with an `aria-label` naming the explanation. Use it only when there is a real explanation behind it.
-- **Sizes:** M is the default and has no class.
-  - `--s`: a 16px control, `gap-2`, for dense lists such as a long filter list. The control is centred on the label's 20px line (Figma top-aligns it, 2px high).
-  - `--l`: a 24px control and a 16px label on a 24px line, for a single key choice, such as the terms at checkout.
-  - One group takes one size.
-- A group of rows sits in a `fieldset` whose `legend` names the group.
-
-**Option card** (`label.option-card`, the radio button in a container): a radio with its content in a white box, `rounded-1.5` (6px), `p-4`, a 1px `border`. Use it for a choice whose options need a hint, a price or delivery line, or a logo: payment and shipping methods, a package, a configurator step.
-
-```html
-<label class="option-card">
-    <img class="option-card-media" src="…" alt=""><!-- optional, 16:9 -->
-    <span class="option-card-row">
-        <input type="radio" name="betaling" value="ideal">
-        <span class="option-card-content">
-            <span class="option-card-head">
-                <span class="option-card-text"><span class="option-card-label">iDEAL</span><span class="option-card-hint">Direct betalen via je bank</span></span>
-                <img class="option-card-image" src="…" alt="iDEAL"><!-- optional logo, 24px high -->
-            </span>
-            <span class="option-card-trailing">Gratis</span><!-- optional -->
-        </span>
-    </span>
-</label>
-```
-- **Content:** the label 14px medium `text`, the hint 14px `text-muted`, the trailing text 16px `text`, `gap-3` below them. The logo sits top right. The media is a 16:9 image above the row, `rounded-2`.
-- **States:** hover a `border-strong` border; keyboard focus that border and the radio's ring; selected Figma's 2px `secondary` border (a 1px outline inside the 1px border, so nothing shifts), `secondary-subtle` fill and a semibold label; disabled the whole card at 50%, its logo at 30%.
-- The card is a `label`, so it holds no other control: put an explanation in the hint.
-- **Tiles:** a card without a visible control (an image choice, such as a fence style) keeps its input `sr-only`; the card then takes the 4px focus ring itself. A size, a dimension or a colour is a swatch (below), not a tile. It is `relative`, so the `sr-only` input stays inside it.
-- Stack cards `gap-3`, or put two or three in a row from `md`, all the same height. Never write `has-[…]:` variants yourself: the skeleton's `.option-card` has them.
-
-**Product card** (`div.product-option`): a checkbox for an add-on product, with its photo: a mounting set, a care product, an extra post. Vertical by default, in a grid of two to four; `--horizontal` puts a 160×90px photo beside the text, for a list or a narrow column.
-
-```html
-<div class="product-option">
-    <img class="product-option-media" src="…" alt="">
-    <div class="product-option-content">
-        <div class="product-option-text">
-            <div class="product-option-head">
-                <input type="checkbox" id="montageset" aria-describedby="montageset-hint">
-                <label class="product-option-label" for="montageset">Montageset</label>
-                <button type="button" class="choice-help" aria-label="Uitleg over de montageset"><svg>…</svg></button><!-- optional -->
-            </div>
-            <span class="product-option-hint" id="montageset-hint">RVS schroeven, 40 stuks</span>
-        </div>
-        <div class="product-option-bottom"><span>€ 24,95</span><!-- optional quantity selector --></div>
-    </div>
-</div>
-```
-- **Vertical:** white, `rounded-2`, a 1px `border`, a 16:9 photo on top (`rounded-1`), then `p-4`: the checkbox and the 14px semibold label, the hint in `text-muted` `gap-2` below, and the bottom row `gap-3` below that, with the trailing text (a price) in `text-muted` and an optional quantity selector.
-- **Horizontal** (`--horizontal`): `p-4`, the photo left, `gap-3`; the label and the hint top right (`gap-1`), and the bottom row holds the trailing text and the checkbox, right-aligned:
-
-  ```html
-  <div class="product-option --horizontal">
-      <img class="product-option-media" src="…" alt="">
-      <div class="product-option-content">
-          <div class="product-option-text"><label class="product-option-label" for="paal">Extra paal</label><span class="product-option-hint" id="paal-hint">…</span></div>
-          <div class="product-option-bottom"><span>€ 12,95</span><input type="checkbox" id="paal" aria-describedby="paal-hint"></div>
-      </div>
-  </div>
-  ```
-- **The whole card toggles:** the label stretches over it, and the quantity selector and the help button sit above that. The states are the option card's, with `rounded-2`.
-- **Quantity:** the product card's bottom row can hold the quantity selector (below). Stepping doesn't check the card; a React prototype can couple them.
-
-**Swatch** (`label.swatch`, Figma `1385:32208` and `1385:32405`): a size, a dimension, a variant or a colour, picked from a row. It is the right control for every short option label ("180 × 90 cm", "XL", "Antraciet") where a radio list would be long and a select would hide the options. Each swatch is a label around an `sr-only` radio (a checkbox for a multi-pick filter), in a `fieldset` with a `legend`; the row is `.swatch-group` (`flex flex-wrap gap-2`).
-
-```html
-<fieldset class="flex flex-col gap-2">
-    <legend class="text-3.5 font-medium text-text-muted">Hoogte</legend>
-    <div class="swatch-group">
-        <label class="swatch"><input type="radio" name="hoogte" value="90" class="sr-only" checked>90 cm</label>
-        <label class="swatch"><input type="radio" name="hoogte" value="180" class="sr-only" disabled>180 cm</label>
-    </div>
-</fieldset>
-```
-- **Box:** white, a 2px `border`, `rounded-1.5` (6px) or `--round` (`rounded-full`), medium `text` centred on one line. One group takes one style and one size.
-- **Sizes:** L (44px) is the default and has no class.
-
-  | Size | Class | Height | Label |
-  |---|---|---|---|
-  | XS | `--xs` | 32px | 14px |
-  | S | `--s` | 36px | 14px |
-  | M | `--m` | 40px | 14px |
-  | L | none | 44px | 16px |
-  | XL | `--xl` | 48px | 16px |
-  | 2XL | `--2xl` | 60px | 18px |
-  | 3XL | `--3xl` | 80px | 20px |
-
-  L on a product page and in a configurator; S or M in a filter or a product tile; 2XL and 3XL only for a step with a handful of large choices.
-- **States:** hover a `secondary` border; keyboard focus that border and the 4px `ring` at 50%; selected the `secondary` border and a `secondary-subtle` fill. Disabled (sold out, or not available with the other picks): a `neutral-100` fill, a `neutral-300` border, `neutral-400` text at 75%, struck through by Figma's 2px diagonal line. Keep a disabled swatch visible, so the customer sees the option exists.
-- **Colour:** a colour swatch leads with `span.swatch-colour`, a 20px chip in the product colour (the RAL swatches' Tailwind defaults, Known exceptions → RAL swatches), before the colour's name. Figma only draws text swatches yet; the chip is a house addition. Always keep the name: the chip alone doesn't name the colour.
-
-**Quantity** (Figma `816:24939`, three styles):
-- **Plus and minus** (`.quantity`), the default on a product page, in the cart and in a product card: 176px (`w-44`; `--full` fills its column), 44px high, white, a 1px `border`, `rounded-1`: a minus button, the number (14px semibold `text`) and a plus button, 44px each, with 1px dividers. The skeleton's script steps a number input between its `min` (0 by default) and `max`, and fires `change`. In a `.field` it takes the field's label above it.
-
-  ```html
-  <div class="quantity"><button type="button" aria-label="Minder"><svg>…</svg></button><input type="number" min="1" max="10" value="1" aria-label="Aantal"><button type="button" aria-label="Meer"><svg>…</svg></button></div>
-  ```
-- **Dropdown** (`select.form-select.quantity-select`, 80px): a small fixed range (1 to 10) in a dense row, such as a cart line on a phone.
-- **Input with an update button** (`.quantity-update`): an 80px number field and a 44px primary check button (`btn btn-primary --l --icon-only`, `aria-label="Aantal bijwerken"`), `gap-1`, for a large number typed at once, such as square metres of decking, when each change is confirmed.
-- One page uses one style. The theme's unlayered `.field` and `.form-select` are full-width, so a width utility on them has no effect: use `quantity-select` and `--full`.
-
-### Action menu
-
-Figma `1286:17433`, file "Tuinmaximaal for Claude". A short menu of actions on one item, opened from a small tertiary icon button: a cart line's "Wijzigen", "Naar verlanglijst", "Verwijderen". The skeleton's script makes it work (`data-menu`).
-
-```html
-<div class="action-menu-wrap" data-menu>
-    <button type="button" class="btn btn-tertiary --s --icon-only" aria-label="Acties voor Schuttingpaal Gumax®" aria-haspopup="menu" aria-expanded="false" aria-controls="acties-1"><svg>…</svg></button>
-    <div class="action-menu" id="acties-1" role="menu" hidden>
-        <p class="action-menu-title">Schuttingpaal Gumax®</p><!-- optional -->
-        <button type="button" role="menuitem"><svg>…</svg>Wijzigen</button>
-        <hr>
-        <button type="button" role="menuitem" class="--danger"><svg>…</svg>Verwijderen</button>
-    </div>
-</div>
-```
-- **Menu:** 240px (`w-60`), white, `rounded-2`, `p-1`, `shadow-lg`, `gap-1` under its button; `--end` aligns it to the button's right edge (use it at the right of a row). The optional title is 14px semibold `text-muted`.
-- **Items:** 32px (`px-2 py-1.5`), `rounded-1`, a 20px solid icon and a 14px medium label in `text`, `gap-1.5`; hover and keyboard focus fill `neutral-50`, and focus adds a 2px `ring` inside. A destructive item (`--danger`) is `danger` and comes last, after an `hr` divider in `border`.
-- **Keyboard:** a click opens it; Enter, Space or ArrowDown opens it on the first item; the arrows (wrapping), Home and End move; Esc returns to the button; Tab or a click outside closes it.
-- Keep it to five items or fewer, each a verb. A single action is a button, not a menu; a choice of values is a select or a dropdown (Components → Forms).
-
-### Reviews
-
-Figma `1382:28568` (the star icon), `1382:28586` (star), `1384:28794` (stars), `1385:28923` (reviews summary) and `1395:29980` (mini reviews summary), file "Tuinmaximaal for Claude".
-
-**Reviews aren't enabled on the live site.** Show stars, scores or review counts only when the brief asks for reviews or says they are enabled, and never invent a rating: a prototype that shows one promises content the shop doesn't have. Without reviews, proof comes from the USP list, specs, the guarantee and delivery terms.
-
-- **Stars** (`span.stars`): five 20px stars, overlapping by 2px (92 × 20), filled from the left by `--rating` (0 to 5, any fraction), with `role="img"` and an `aria-label` ("4,5 van 5 sterren"):
-  - default: `amber-400` on `gray-200` stars, the style customers recognise;
-  - `--mono`: `text` stars on `text` outlines, for a quiet place such as a product tile on beige;
-  - `--accent`: `accent` stars on `accent` outlines. Keep it away from the price box and promo labels, which own the orange.
-
-  ```html
-  <span class="stars" style="--rating: 4.5" role="img" aria-label="4,5 van 5 sterren"></span>
-  ```
-- **Reviews summary** (`.reviews-summary`, `gap-3`): up to three parts, each optional: the title ("Reviews", 14px medium) with its count, the stars, then the score (14px semibold) and the total ("(12 reviews)", `text-muted`).
-
-  ```html
-  <div class="reviews-summary">
-      <span><span class="reviews-title">Reviews</span><span class="reviews-count">12</span></span>
-      <span class="stars" style="--rating: 4.5" role="img" aria-label="4,5 van 5 sterren"></span>
-      <span><span class="reviews-score">4.5</span><span class="reviews-total">(12 reviews)</span></span>
-  </div>
-  ```
-  The count is a 12px pill in `primary`; Figma draws it white on orange, which is 2.52:1 at 12px (a house deviation, Known exceptions → Reviews). Link the summary to the reviews when the page has them.
-- **Mini summary** (`.reviews-summary.--mini`): one full star (`span.stars`, `aria-hidden`), the score and the total in brackets ("(12)"), `gap-0.5`, for a product tile or a search result.
-
-### Messages
-
-Figma `6814:5244` (file "Tuinmaximaal for Claude"). The theme's `.message` with the skeleton's Figma overrides: `flex items-start gap-3 p-4 rounded-1`, 14px text at 90%, no margin (the layout's gap spaces a stack), and a leading 20px icon in the status colour. Bold words inside take `font-semibold`; links are underlined. The types are notice (neutral, no icon), info, success, warning and error:
-
-```html
-<div class="message warning"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M11.0826 2.62334L18.2776 15.085C18.3874 15.275 18.4451 15.4906 18.4451 15.71C18.4451 15.9294 18.3874 16.145 18.2777 16.335C18.1679 16.525 18.0102 16.6828 17.8201 16.7925C17.6301 16.9022 17.4146 16.96 17.1951 16.96H2.80514C2.58573 16.96 2.37017 16.9022 2.18016 16.7925C1.99014 16.6828 1.83234 16.525 1.72264 16.335C1.61293 16.145 1.55517 15.9294 1.55518 15.71C1.55518 15.4906 1.61293 15.275 1.72264 15.085L8.91764 2.62334C9.39848 1.79001 10.601 1.79001 11.0826 2.62334ZM10.0001 4.08168L3.52681 15.2933H16.4735L10.0001 4.08168ZM10.0001 12.5C10.2212 12.5 10.4331 12.5878 10.5894 12.7441C10.7457 12.9004 10.8335 13.1123 10.8335 13.3333C10.8335 13.5544 10.7457 13.7663 10.5894 13.9226C10.4331 14.0789 10.2212 14.1667 10.0001 14.1667C9.77913 14.1667 9.56717 14.0789 9.41089 13.9226C9.25461 13.7663 9.16681 13.5544 9.16681 13.3333C9.16681 13.1123 9.25461 12.9004 9.41089 12.7441C9.56717 12.5878 9.77913 12.5 10.0001 12.5ZM10.0001 6.66668C10.2212 6.66668 10.4331 6.75447 10.5894 6.91075C10.7457 7.06703 10.8335 7.27899 10.8335 7.50001V10.8333C10.8335 11.0544 10.7457 11.2663 10.5894 11.4226C10.4331 11.5789 10.2212 11.6667 10.0001 11.6667C9.77913 11.6667 9.56717 11.5789 9.41089 11.4226C9.25461 11.2663 9.16681 11.0544 9.16681 10.8333V7.50001C9.16681 7.27899 9.25461 7.06703 9.41089 6.91075C9.56717 6.75447 9.77913 6.66668 10.0001 6.66668Z"/></svg><span>De berekende doorloophoogte is <strong class="font-semibold">1701 mm</strong>. …</span></div>
-<div class="message error"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.66667C14.6025 1.66667 18.3333 5.3975 18.3333 10C18.3333 14.6025 14.6025 18.3333 10 18.3333C5.3975 18.3333 1.66667 14.6025 1.66667 10C1.66667 5.3975 5.3975 1.66667 10 1.66667ZM10 3.33333C8.23189 3.33333 6.5362 4.03571 5.28595 5.28595C4.03571 6.5362 3.33333 8.23189 3.33333 10C3.33333 11.7681 4.03571 13.4638 5.28595 14.714C6.5362 15.9643 8.23189 16.6667 10 16.6667C11.7681 16.6667 13.4638 15.9643 14.714 14.714C15.9643 13.4638 16.6667 11.7681 16.6667 10C16.6667 8.23189 15.9643 6.5362 14.714 5.28595C13.4638 4.03571 11.7681 3.33333 10 3.33333ZM10 12.5C10.221 12.5 10.433 12.5878 10.5893 12.7441C10.7455 12.9004 10.8333 13.1123 10.8333 13.3333C10.8333 13.5543 10.7455 13.7663 10.5893 13.9226C10.433 14.0789 10.221 14.1667 10 14.1667C9.77899 14.1667 9.56702 14.0789 9.41074 13.9226C9.25446 13.7663 9.16667 13.5543 9.16667 13.3333C9.16667 13.1123 9.25446 12.9004 9.41074 12.7441C9.56702 12.5878 9.77899 12.5 10 12.5ZM10 5C10.221 5 10.433 5.0878 10.5893 5.24408C10.7455 5.40036 10.8333 5.61232 10.8333 5.83333V10.8333C10.8333 11.0543 10.7455 11.2663 10.5893 11.4226C10.433 11.5789 10.221 11.6667 10 11.6667C9.77899 11.6667 9.56702 11.5789 9.41074 11.4226C9.25446 11.2663 9.16667 11.0543 9.16667 10.8333V5.83333C9.16667 5.61232 9.25446 5.40036 9.41074 5.24408C9.56702 5.0878 9.77899 5 10 5Z"/></svg><span>…</span></div>
-<div class="message success"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.66667C14.6025 1.66667 18.3333 5.3975 18.3333 10C18.3333 14.6025 14.6025 18.3333 10 18.3333C5.3975 18.3333 1.66667 14.6025 1.66667 10C1.66667 5.3975 5.3975 1.66667 10 1.66667ZM10 3.33333C8.23189 3.33333 6.5362 4.03571 5.28595 5.28595C4.03571 6.5362 3.33333 8.23189 3.33333 10C3.33333 11.7681 4.03571 13.4638 5.28595 14.714C6.5362 15.9643 8.23189 16.6667 10 16.6667C11.7681 16.6667 13.4638 15.9643 14.714 14.714C15.9643 13.4638 16.6667 11.7681 16.6667 10C16.6667 8.23189 15.9643 6.5362 14.714 5.28595C13.4638 4.03571 11.7681 3.33333 10 3.33333ZM12.9458 6.98417C13.0955 6.83312 13.2971 6.74497 13.5096 6.73776C13.7221 6.73055 13.9293 6.80483 14.0888 6.94539C14.2483 7.08595 14.3481 7.28215 14.3677 7.49385C14.3873 7.70555 14.3252 7.91673 14.1942 8.08417L14.125 8.1625L9.47 12.8183C9.31112 12.9772 9.09943 13.0722 8.87514 13.0852C8.65085 13.0983 8.42957 13.0285 8.25333 12.8892L8.17333 12.8183L5.875 10.52C5.72395 10.3704 5.63581 10.1687 5.6286 9.95621C5.62139 9.74373 5.69566 9.53653 5.83622 9.37702C5.97678 9.2175 6.17299 9.11775 6.38469 9.09816C6.59639 9.07858 6.80757 9.14065 6.975 9.27167L7.05333 9.34167L8.82167 11.1092L12.9467 6.98417H12.9458Z"/></svg><span>…</span></div>
-<div class="message info"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.66667C14.6025 1.66667 18.3333 5.3975 18.3333 10C18.3333 14.6025 14.6025 18.3333 10 18.3333C5.3975 18.3333 1.66667 14.6025 1.66667 10C1.66667 5.3975 5.3975 1.66667 10 1.66667ZM10 3.33333C8.23189 3.33333 6.5362 4.03571 5.28595 5.28595C4.03571 6.5362 3.33333 8.23189 3.33333 10C3.33333 11.7681 4.03571 13.4638 5.28595 14.714C6.5362 15.9643 8.23189 16.6667 10 16.6667C11.7681 16.6667 13.4638 15.9643 14.714 14.714C15.9643 13.4638 16.6667 11.7681 16.6667 10C16.6667 8.23189 15.9643 6.5362 14.714 5.28595C13.4638 4.03571 11.7681 3.33333 10 3.33333ZM9.99167 8.33333C10.4567 8.33333 10.8333 8.71 10.8333 9.175V13.445C10.9922 13.5367 11.1163 13.6783 11.1865 13.8478C11.2567 14.0173 11.269 14.2052 11.2216 14.3824C11.1741 14.5595 11.0695 14.7161 10.9239 14.8278C10.7784 14.9395 10.6001 15 10.4167 15H10.0083C9.8978 15 9.78836 14.9782 9.68624 14.9359C9.58413 14.8936 9.49134 14.8316 9.41318 14.7535C9.33503 14.6753 9.27303 14.5825 9.23073 14.4804C9.18844 14.3783 9.16667 14.2689 9.16667 14.1583V10C8.94565 10 8.73369 9.9122 8.57741 9.75592C8.42113 9.59964 8.33333 9.38768 8.33333 9.16667C8.33333 8.94565 8.42113 8.73369 8.57741 8.57741C8.73369 8.42113 8.94565 8.33333 9.16667 8.33333H9.99167ZM10 5.83333C10.221 5.83333 10.433 5.92113 10.5893 6.07741C10.7455 6.23369 10.8333 6.44565 10.8333 6.66667C10.8333 6.88768 10.7455 7.09964 10.5893 7.25592C10.433 7.4122 10.221 7.5 10 7.5C9.77899 7.5 9.56702 7.4122 9.41074 7.25592C9.25446 7.09964 9.16667 6.88768 9.16667 6.66667C9.16667 6.44565 9.25446 6.23369 9.41074 6.07741C9.56702 5.92113 9.77899 5.83333 10 5.83333Z"/></svg><span>…</span></div>
-<div class="message notice"><span>…</span></div>
-```
-
-- **Fill** (the default): a tinted `-subtle` background with `on-…-subtle` text and no border. The notice fill is the lightest grey (`gray-50`, as Figma has it); Figma has no neutral status, so the notice text keeps the theme's `neutral-900`.
-- **Outline** (`--outline`, as in `message info --outline`): no fill, a 1px light-grey border and neutral text (`neutral-700`); the icon keeps its status colour. Use it for a calm inline note inside a busy step, such as a configurator hint beside the fields it explains. A message that needs attention, and any message outside a form, is a fill.
-- **No side stripe** on either (Do's and Don'ts).
-- **Role:** a message that appears after an action (a form error, a stock warning) takes `role="alert"`, or `role="status"` when it isn't urgent; a message present on load takes neither.
-- **Icons:** Figma's own (Mingcute `alert_line` for warning, `warning_line` for error, `check_circle_line`, `information_line`), drawn in `currentColor`.
-
-### Dialogs
-
-Figma `1495:12618` (modal) and `1495:13634` (pop-up), file "Tuinmaximaal for Claude". Both are a native `dialog` opened with `showModal()`, so the browser traps focus, closes on Esc and returns focus to the opener. The title takes `tabindex="-1" autofocus`, so focus lands on it (screen readers announce it) and not on the first button, which the theme paints in its hover fill, or on the field, which would open a phone keyboard. In a prototype, a button with `data-dialog-open="id"` opens one (the skeleton's script); a button inside a `form method="dialog"` closes it. Both are white, `rounded-2` (8px, not Figma's 12px), with `shadow-xl` over a 60% black backdrop, and hold green text (Figma's slate text is from a UI kit; the brand text is green).
-
-**Modal: a decision that blocks the next step.** Removing a configured item from the cart, or continuing with a size outside the standard ("De berekende doorloophoogte is 1701 mm. Dit valt buiten de standaardmaten."). Information that doesn't need an answer is a message in the page (Messages), never a modal. A modal opens only from the customer's own action.
-
-```html
-<dialog class="modal" id="size-check" aria-labelledby="size-check-title">
-    <form method="dialog">
-        <div class="modal-body">
-            <svg class="modal-icon" viewBox="0 0 68 68" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M28.0736 10.536C30.6732 5.91437 37.3273 5.91437 39.927 10.536L58.9 44.2658C61.4498 48.7987 58.1741 54.3996 52.9733 54.3996H15.0273C9.82644 54.3996 6.55078 48.7987 9.10054 44.2658L28.0736 10.536ZM37.4 44.2C37.4 46.0778 35.8778 47.6 34 47.6C32.1222 47.6 30.6 46.0778 30.6 44.2C30.6 42.3222 32.1222 40.8 34 40.8C35.8778 40.8 37.4 42.3222 37.4 44.2ZM34 17C32.1222 17 30.6 18.5222 30.6 20.4V30.6C30.6 32.4778 32.1222 34 34 34C35.8778 34 37.4 32.4778 37.4 30.6V20.4C37.4 18.5222 35.8778 17 34 17Z"/></svg>
-            <div class="modal-text">
-                <h2 class="modal-title" id="size-check-title" tabindex="-1" autofocus>…</h2>
-                <p>…</p>
-            </div>
-        </div>
-        <div class="modal-actions">
-            <button class="btn btn-secondary" value="cancel">…</button>
-            <button class="btn btn-primary" value="confirm">…</button>
-        </div>
-    </form>
-</dialog>
-```
-
-- **Body:** `p-8`. Below `lg` the icon sits centred above the centred text (`gap-4`); from `lg` it sits left of left-aligned text (`gap-6`). The title is 20px semibold (`text-5 font-semibold leading-7`), the text 16px, `gap-2` apart. The 68px exclamation (`size-17`) is `yellow-400`, the nearest token to Figma's yellow; use it for a warning, and leave it out of a neutral question.
-- **Actions:** a lightest-grey footer (`gray-50`, `px-6 py-4`, `gap-3`) with the secondary (the way back, "Annuleren") before the primary (the decision). Below `sm` they stack full width, the primary at the bottom; from `sm` they share the row; from `lg` they sit right at their own width.
-- **Width:** the browser's side margin below `sm`, `max-w-xl` from `sm`, `max-w-3xl` from `lg` (Figma's 592px and 800px on the nearest widths).
-
-**Pop-up: a campaign or newsletter signup, only when the brief asks for one.** It never opens in a product page, configurator, cart or checkout, and never on load: at most once per visit, after the customer has scrolled or stayed a while. In a prototype, a button opens it. It closes with the close button, Esc or a click on the backdrop, and holds one field and one primary.
-
-```html
-<dialog class="popup" id="newsletter" aria-labelledby="newsletter-title">
-    <div class="popup-media"><img src="…" alt=""></div>
-    <div class="popup-content">
-        <div class="popup-text">
-            <h2 class="popup-title" id="newsletter-title" tabindex="-1" autofocus>…</h2>
-            <p>…</p>
-        </div>
-        <form class="popup-form" action="…">
-            <label class="sr-only" for="newsletter-email">E-mailadres</label>
-            <input class="form-input" id="newsletter-email" type="email" autocomplete="email" placeholder="…">
-            <button class="btn btn-primary">…</button>
-        </form>
-    </div>
-    <form method="dialog"><button class="popup-close" aria-label="Sluiten"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 13.4144L17.6568 19.0713C18.0473 19.4618 18.6805 19.4618 19.071 19.0713C19.4615 18.6807 19.4615 18.0476 19.071 17.657L13.4142 12.0002L19.071 6.34335C19.4615 5.95283 19.4615 5.31966 19.071 4.92914C18.6805 4.53861 18.0473 4.53861 17.6568 4.92914L12 10.586L6.34309 4.92912C5.95257 4.5386 5.3194 4.5386 4.92888 4.92912C4.53836 5.31965 4.53836 5.95281 4.92888 6.34334L10.5857 12.0002L4.92888 17.6571C4.53836 18.0476 4.53836 18.6807 4.92888 19.0713C5.3194 19.4618 5.95257 19.4618 6.34309 19.0713L12 13.4144Z"/></svg></button></form>
-</dialog>
-```
-
-- **Below `lg`:** the photo on top (`h-64`), with square top corners: the pop-up is rounded only at the bottom (`rounded-t-none`), so the photo has no radius. Then `pt-8 px-6 pb-6` with centred text, `gap-8` to the form, the field and a full-width primary `gap-4` apart. **From `lg`:** all four corners rounded, the photo on the left (`w-75`, 300px) and left-aligned text, with the primary at its own width on the right. Width: `max-w-xl`, and `max-w-4xl` from `lg` (Figma's 592px and 880px).
-- **Title:** `text-7 font-semibold leading-9` (28px; Figma's 30px has no size in the config).
-- **Close:** the one orange control, top right: `accent` with `rounded-bl-2` and `p-2` around a 24px white close icon (Figma's Mingcute `close_line`). White on orange is 2.5:1, under the 3:1 a control's icon needs; it is a deliberate brand choice (Known exceptions → Pop-up close), so keep the `aria-label` and the Esc and backdrop exits.
-- **Photo:** the company's own lifestyle or project photo (Imagery), with an empty `alt` when it only decorates.
-
 ### Product tile
 
 The product tile is a 1px light-grey border with `rounded-2` and `overflow-hidden`. On hover it gets a green border plus `shadow-1px`, with colour and shadow transitions. It has a 16:9 image and a **white info area** (`py-3 px-4`) holding the name (15/16px semibold, clamped to 3 lines), up to three dash-prefixed USPs in 14px, and the price. The price sits in the **orange price box**: white weight-900 text on #FF8000, `py-1 px-2`, rotated −2°. The old price is struck through, 16px medium, with no box and no rotation, before the price. In related-product sliders the tile gets a full-width primary button. On white the tile has its 1px light-grey outline; on a beige or sand band it has none (Elevation & Depth → The box decision).
 
 ### Price box
 
-The price box scales with its component; pick the size by component, not from the global `price` token. Every chip is `bg-price` with white text, tilted −2°, and the old price is never in a chip.
+The price box scales with its component; pick the size by component. Every chip is `bg-price` with white text, tilted −2°, and the old price is never in a chip.
 
 | Component | Chip | Source |
 |---|---|---|
@@ -949,104 +653,6 @@ The price box scales with its component; pick the size by component, not from th
 | Product page buy box | the largest on the page: the final price `text-5`, `text-6` from `md`; the old price 16px semibold green, 20px from `md`, struck through | `product-prices.css` (`.buy-box-wrapper`) |
 
 Figma draws the image-tile amount at 28px with `py-2.5`; the theme's promo label, which the tile reuses, sets 24px and `py-1.5`, and the theme wins. Use the table's classes on a `span` chip where the theme markup doesn't apply (the image tile, a promo label).
-
-### Pagination
-
-Figma `1495:7515` (file "Tuinmaximaal for Claude"), below a product grid or any paged list. The theme's pager doesn't match it yet (Known exceptions → Pagination); prototypes use the skeleton's `pagination` classes:
-
-```html
-<div class="pagination">
-    <p class="pagination-amount">Producten 1 tot 12 van 188 in totaal</p>
-    <nav class="pagination-pages" aria-label="Paginering">
-        <ol>
-            <li><span class="pagination-item --arrow" aria-disabled="true" aria-label="Vorige"><svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></span></li>
-            <li><a class="pagination-item" href="…" aria-current="page"><span class="sr-only">U lees momenteel pagina </span>1</a></li>
-            <li><a class="pagination-item" href="…"><span class="sr-only">Pagina </span>2</a></li>
-            <li class="hidden sm:block"><a class="pagination-item" href="…"><span class="sr-only">Pagina </span>3</a></li>
-            <li><a class="pagination-item" href="…" aria-label="Verder springen">…</a></li>
-            <li><a class="pagination-item" href="…"><span class="sr-only">Pagina </span>16</a></li>
-            <li><a class="pagination-item --arrow" href="…" aria-label="Volgende"><svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
-        </ol>
-    </nav>
-    <div class="pagination-limiter"><label for="limiter">Toon</label><select id="limiter" class="form-select w-auto">…</select></div>
-</div>
-```
-
-- **Items:** 46px square at least (`h-11.5 min-w-11.5`), `rounded-1`, a 1px light-grey border, 16px bold grey numbers, `gap-2` apart. Hover gives a grey border and green text, like a form field. The current page (`aria-current="page"`) takes the selected-card look: #F8FCE6 with a 2px #809700 border and green text. The arrows are green 24px icons; on the first or last page the arrow is a `span` with `aria-disabled="true"` at 50% opacity.
-- **Slots:** five page slots from `sm`, four below it (`hidden sm:block` on one), so the row fits 375px: the first page, the current page's neighbours, "…" as the theme's jump link, and the last page. Below `sm` the items take `px-3`, from `sm` Figma's `px-5`.
-- **Layout:** from `lg` one row: the amount left, the pages centred, the limiter right (both sides `flex-1`, so the pages stay centred however long the amount runs). Below `lg` the pages come first, centred, with the amount and the limiter in a row under them. The amount and the "Toon" label are 14px green; the limiter is Figma's dropdown: the theme's `.form-select` at 80px (`w-20`), `rounded-1.5` (6px), with `pl-3.5` and room for the chevron (`pr-9`).
-- **Labels** are the store's own: "Producten %1 tot %2 van %3 in totaal" (Magento_Theme, nl_NL), "Vorige", "Volgende", an `sr-only` "Pagina" before each number, and on the current page the store's "You're currently reading page" ("U lees momenteel pagina", as staging spells it).
-
-### Content patterns
-
-The house Figma file (Tuinmaximaal website → Content (Desktop), node `1358:29886`) settles these patterns. Its values are mapped onto the theme's scale; where Figma goes past the 28px cap, the nearest step is used.
-
-- **Split image (text + image or video).** Figma `2255:2866` (on beige) and `6843:32950` (without a background), file "Tuinmaximaal for Claude"; in the theme, the PageBuilder "image with text" block (`content-types/page-builder-block-image-with-text.css`). The one text + image component, for a two-line promo as much as a long read: Figma designs it per breakpoint. It replaces the older content block (`1358:30318`, `1358:30329`). Build it with the skeleton's `split-image` classes, never by hand:
-
-  ```html
-  <div class="split-image"><!-- add --media-right for the image on the right; add --plain for no background -->
-      <div class="split-image-media"><img src="…" alt="…" loading="lazy"></div>
-      <div class="split-image-text">
-          <h2>…</h2>
-          <p class="split-image-intro">…</p><!-- optional -->
-          <p>…</p>
-          <blockquote class="split-image-quote"><svg width="34" height="31" viewBox="0 0 34.0887 30.816" fill="currentColor" aria-hidden="true"><path d="M13.6407 30.816V16.032H7.30473C7.30473 13.664 7.75273 11.68 8.64873 10.08C9.54473 8.416 11.2087 7.168 13.6407 6.336V0C11.6567 0.256001 9.80073 0.864 8.07273 1.824C6.40873 2.72 4.96873 3.872 3.75273 5.28C2.53673 6.688 1.57673 8.32 0.872728 10.176C0.232728 12.032 -0.0552727 14.016 0.00872724 16.128V30.816H13.6407ZM34.0887 30.816V16.032H27.7527C27.7527 13.664 28.2007 11.68 29.0967 10.08C29.9927 8.416 31.6567 7.168 34.0887 6.336V0C32.1047 0.256001 30.2487 0.864 28.5207 1.824C26.8567 2.72 25.4167 3.872 24.2007 5.28C22.9847 6.688 22.0247 8.32 21.3207 10.176C20.6807 12.032 20.3927 14.016 20.4567 16.128V30.816H34.0887Z"/></svg><p>…</p></blockquote><!-- optional -->
-          <div class="split-image-actions"><a class="btn btn-primary" href="…">…</a><a class="btn btn-secondary" href="…">…</a></div><!-- optional -->
-      </div>
-  </div>
-  ```
-
-  - **On beige** (the default): one beige box, `rounded-2` and `overflow-hidden`. Below `lg` the photo sits on top (`h-64`, `h-90` from `sm`, Figma's 360px) with the text under it at `p-6`. From `lg` it is two equal halves: the photo covers its half flush to the box edges (at least `min-h-80`) and the text sets the height at `p-12`. It is the "one block that needs emphasis" with an image (Elevation & Depth → The box decision); several in a row, such as one per product line, alternate the image side.
-  - **Plain** (`--plain`): no box. The photo is `rounded-2` on its own, stacked above the text below `md` (`gap-6`), and from `md` beside it (`gap-6`, `gap-12` from `lg`), stretched to the text's height (at least `min-h-64`), with the text centred against it. This is the box decision's unboxed "text + image", on white or on a beige or sand band.
-  - **Text:** `gap-4` (16px), top-aligned in the beige box. The heading is a plain `h2` (24px black) with Figma's 32px line-height. The optional intro is `text-4.5 font-medium` (18px), the paragraphs body text. The optional quote is 24px regular (`text-6`) with `py-4`, behind Figma's quote mark in bone (`surface-strong` #E0D2C5, decorative, `aria-hidden`). Buttons, when the block has them, sit in `split-image-actions`: 8px more above them (`mt-2`), a primary beside a secondary, `gap-2` apart. The paragraphs and the quote are at 90%, as Figma sets them. In a keep-the-copy redesign the intro and quote appear only when the copy has them.
-  - **The image covers its half:** it is absolutely positioned (`absolute inset-0 size-full object-cover`), so it never sets the height and, on beige, never leaves a strip above or below it. A video gets `split-image-play` over it: a 20% black wash with a centred white play icon of `size-25` (100px), as a `button` with an accessible name. The block sits in the container as a direct child of its section, never inside another box, without margins or widths of its own; the section's gap spaces it. Never a padded box with a separately rounded image inside it, and never an image in the grid flow with `h-full`, which lets the photo's own ratio set the height.
-
-  **A product split image stays light.** It holds the product name, the price (the promo-label chip, Price box), the first sentence of the copy, the USP list and the two buttons, nothing else. It has no "Lees meer": opening it grows the text, and the flush photo stretches with it. It has no icon rows and no colour lines such as "Handgrepen in 3 kleuren". The rest of the copy goes to a section of its own. "+ Lees meer" (a flush transparent button that opens the rest, Buttons) is fine for secondary text in cards, in one section per page.
-- **Image tile.** Figma `1530:37197` and the homepage's category entries. A contained lifestyle photo with `rounded-2` and `overflow-hidden`, with a soft dark scrim (`image-tile-scrim`) behind the text (`bg-gradient-to-br from-gray-900/60 via-transparent to-transparent` over the top left, and the same `to-tr` over the bottom left). It holds a white heading top left in `text-7 font-black` (the promo banner's title; Figma draws 30px), a price chip under it at the image-tile size (Price box), and a default-size primary button bottom left ("Stel nu samen", "Bekijk producten"). A tile without a price ("Losse onderdelen", "Zelf monteren of via partner?") keeps the heading and the button. Two or six tiles in the intro are the big moment of the homepage; a category or landing intro uses the H1 and intro beside a modest photo instead (Layout → Beige intro). The scrim is required: white text never sits on a bare photo.
-- **Image-text item.** PageBuilder's `pagebuilder-image-text-item`. Figma `6838:38528` (on white or transparent) and `6842:32723` (on colour), file "Tuinmaximaal for Claude": a white link card with a bold title and a short description on the left and a photo flush on the right. The surface decides the border, as for every repeated card (Elevation & Depth → The box decision). Build it with the skeleton's `image-text-item` classes:
-
-  ```html
-  <div class="grid gap-4 lg:grid-cols-3">
-      <a class="image-text-item --on-surface" href="…"><!-- drop --on-surface on white: it adds the light-grey outline -->
-          <span class="image-text-item-text">
-              <span class="image-text-item-title">…</span>
-              <span>…</span>
-          </span>
-          <img class="image-text-item-media" src="…" alt="" loading="lazy">
-      </a>
-  </div>
-  ```
-
-  - **On beige** (`--on-surface`), its usual place: in a category page's beige intro, under the H1 and intro (Layout → Beige intro). White, no border. Never a beige card on beige.
-  - **On white:** white with the 1px light-grey outline.
-  - **In a wrapper:** Figma `1358:29197`. On a white page, a column of items (beside an FAQ or running text, or in a sidebar) goes in one beige wrapper (`flex flex-col gap-5 rounded-2 bg-surface px-6 pt-5 pb-8`), with a heading in `text-6 font-bold` (24px) and the items stacked `gap-2` apart as `--on-surface`. The heading comes from the page's copy; without one, the wrapper takes `p-6` (`p-4` below `sm`) and holds the items only. The wrapper's column is `min-w-0`. On a beige or sand band there is no wrapper: the items stand on the band.
-  - **Sizes:** at least 108px high (`min-h-27`); the photo is 140px wide (`w-35`), rounded on its outer corners by the card, with an empty `alt`, since the title names the link. The text is centred, `gap-1` (4px) apart: `p-4` with a 14px title below `sm`, `p-5` with a 16px title from `sm`, and the description at 14px and 90% throughout. Three in a row from `lg`, `gap-4` apart.
-  - **Link colour:** the title is `link` and turns `link-hover` when the card is hovered, as Figma draws it (Colors).
-  - **Copy:** the title is the link text. The description is the page's own second line: a staging card's link label ("Meer over zonwering") works as one. There is no separate arrow link.
-- **Blog tile.** A repeated card: a photo at 16:9 (`aspect-video`), rounded at the top, then `p-4` with a category pill (`pill`: `bg-gray-50 rounded-full text-3.5 px-3 py-1`), a `text-4 font-semibold` title, a `text-3.5` excerpt clamped to 3 lines (`line-clamp-3`) and a flush transparent "Lees verder" button with a trailing arrow (`btn btn-transparent --flush --icon-trailing`). Outlined on white, borderless on a tinted band.
-- **Review cards.** Only when reviews are enabled (Components → Reviews). Outlined white cards on white, with the reviews summary above them.
-- **Quote.** A beige surface box with the quote in `text-4.5 font-semibold`, beside a column of running text. Inside a split image the quote takes its own style (`split-image-quote`).
-- **Accordion and FAQ.** Figma `2255:4455` (file "Tuinmaximaal for Claude"). A native `details` element with the skeleton's `accordion` classes, so it opens without a script and the browser handles the keyboard:
-
-  ```html
-  <div class="flex flex-col gap-2">
-      <details class="accordion"><!-- add --on-surface on a beige or sand band, --plain inside a box -->
-          <summary class="accordion-title"><span>…</span><svg class="accordion-toggle --closed" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 10h12M10 4v12"/></svg><svg class="accordion-toggle --open" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 10h12"/></svg></summary>
-          <div class="accordion-body"><p>…</p></div>
-      </details>
-  </div>
-  ```
-
-  - **Row:** white, a 1px light-grey border and `rounded-1` (4px, as Figma draws it, not the cards' `rounded-2`), `gap-2` (8px) between rows. The question is 16px bold green in `px-4 py-3`, so the whole 48px row is the hit area, and it turns #809700 on hover. A plus sits on the right when closed and a minus when open (20px, `accordion-toggle`), 6px from the text.
-  - **Answer:** 14px grey (`text-3.5 text-text-muted`, 5.9:1 on white), 12px under the question and 12px above the bottom edge. It may hold paragraphs, a list or links (`text-link underline hover:text-link-hover`).
-  - **Leading icon (optional):** a 20px outline icon before the question, `aria-hidden`, for an accordion whose rows are topics (delivery, warranty), not for an FAQ.
-  - **On a beige or sand band** (`--on-surface`): white rows without the border, as for every card on a band.
-  - **Plain** (`--plain`): no border and no padding, for an accordion inside a box that already separates it, such as a filter group or a card. The rows stay `gap-2` apart and 24px high, the minimum target size.
-  - **FAQ:** the outlined accordion on white, one `details` per question, under the section's `h2`. The questions and answers are the page's own. Several may be open at once, and none is open at first.
-- **Sticky product tabs.** A category landing with a few product lines puts a tab bar under the intro that links to each product's block and follows the scroll: `sticky top-0 z-40 bg-white`, with a light-grey bottom border where it meets the white page (`border-b border-border`). Each tab holds a 16:9 thumbnail (`w-16 aspect-video object-cover rounded-1`, hidden below `sm`), the product name (`text-3.5 md:text-4 font-semibold`) and the "Vanaf €" price (`text-3 md:text-3.5`), at least `min-h-11` high; on small screens the row scrolls sideways (`overflow-x-auto snap-x`). The active tab gets the beige pill (`bg-surface rounded-2`, with `aria-current`); there is no orange bar and no text-only tab. A script marks the tab of the block in view and reads positions on scroll, never at start-up (build.md → Build traps). The blocks take `scroll-mt-28`, so the bar doesn't cover their top. See the approved example ([assets/examples/category-landing.html](assets/examples/category-landing.html)).
-- **Comparison table ("Alle …").** Below the product blocks, one table compares the products on the needs the copy names: a column per product (a 16:9 thumbnail and the short name, linking to its block, and from `lg` the product-tile price chip), then a row per need with a tick (the check-circle in `secondary`) or a grey dash, each with `sr-only` "ja" or "nee". From `md` it adds a row of colour swatches, and from `lg` a row with a full-width primary button per product. It fits 375px without sideways scrolling: `w-full table-fixed`, short names that may wrap (`break-words hyphens-auto`), the need icons only from `sm`, the colour row only from `md` (`hidden md:table-row`), and the button row and price chips only from `lg`, because at `md` a four-product column is too narrow for "Stel nu samen" on one line. No slider and no cards; in a keep-the-copy redesign every label comes from the page (Overview → Redesigns). See the approved example ([assets/examples/category-landing.html](assets/examples/category-landing.html)).
-- **Carousel arrows.** The theme's slider buttons, for the theme's own sliders only (Layout → Vertical flow): `size-12` white squares at 90% opacity (`bg-white/90`), `rounded-1`, `shadow-arrow`, a green arrow icon, placed over the images. Figma adds a light-grey border; the theme has none, and the theme wins.
-- **Buttons.** Default size everywhere (48px high), a primary beside a secondary where a block offers two actions, `gap-2` apart (Buttons).
 
 ### Heading and paragraph highlight
 
@@ -1083,7 +689,7 @@ Motion confirms a state change (hover, focus, open/close, selection); it never p
 - Give every veranda or structure view a visible configurator CTA, and every other product a direct add-to-cart button.
 - Keep the primary button #809700 with its 4px #6D8005 bottom border. Keep the secondary, tertiary and transparent buttons visibly quieter.
 - Use orange only for the price box, heading and paragraph highlights, badges and the main menu's active item, always with the −2° tilt where the theme uses it.
-- Lead with proof at decision points: USP check lists, specs, guarantee and delivery terms, and reviews only when they are enabled (Components → Reviews).
+- Lead with proof at decision points: USP check lists, specs, guarantee and delivery terms, and reviews only when they are enabled (components/reviews.md).
 - Keep surfaces light and warm, with green for structure and text. Separate content with whitespace first, then a change of surface, and a border only where Elevation & Depth gives one.
 - Open every page with a beige intro, keep all content and images inside the container, and make the box decision per block: repeated cards as cards, one emphasised block as a beige box, everything else unboxed on whitespace (Elevation & Depth → The box decision).
 - Size the price box by its component (Components → Price box).
@@ -1093,7 +699,7 @@ Motion confirms a state change (hover, focus, open/close, selection); it never p
 **Don't**
 
 - Don't add a quote-request CTA or form; "offerte" is only a checkout payment method.
-- Don't use orange buttons, orange links or orange small text; the pop-up's close button is the one orange control (Components → Dialogs). Blog links in the theme are orange; don't copy them.
+- Don't use orange buttons, orange links or orange small text; the pop-up's close button is the one orange control (components/dialogs.md). Blog links in the theme are orange; don't copy them.
 - Don't put coloured side stripes (`border-l-4` and similar) on cards, alerts or messages.
 - Don't use gradient text, decorative gradients, glassmorphism, neon accents or a dark theme.
 - Don't nest a box in a box of the same surface, don't nest more than one level deep, and don't build endless identical card grids.
@@ -1118,30 +724,6 @@ Motion confirms a state change (hover, focus, open/close, selection); it never p
   - it has no colour for `link` and `link-hover`, and its `text-link` is green with a lime hover.
 
   So a prototype's `bg-surface` has to become `bg-tmx-secondary-beige` or `bg-container-beige` in a template until the theme adopts the layer. The Theme column in Colors is that mapping. A theme that adopts the layer as CSS variables gets the same one-edit re-skin as the prototypes.
-- **Forms (open, for the FED lead):** Figma's input fields and textareas (Components → Forms) differ from the theme's `forms.css`, and prototypes follow Figma through the skeleton's unlayered overrides:
-  - the theme's select has a green chevron 16px from the edge, `rounded-1` and a status icon beside the chevron, where Figma's dropdown button has a grey chevron 14px from the edge, `rounded-1.5` and no status icon;
-  - the theme has no custom dropdown for options with an image, an icon or trailing text (Figma `1343:22101`);
-  - the theme's focus ring is #636363 at 50%, where Figma uses `ring`;
-  - the theme has no warning feedback, no hint class, no leading icon, no help button and no input groups;
-  - its error icon is a circle, not Figma's triangle, and its status icons sit 16px from the edge instead of 14px;
-  - it dims only the input when disabled, and has no textarea height;
-  - its checkbox and radio (`.field.choice`) have one 20px size, a 16px regular label, a 12px gap and a full-strength disabled checked control, where Figma has three sizes, a 14px medium label, `gap-2.5` and the control at 50%; it has no check circle, no hint on a choice, and no option card, product card or quantity selector (Components → Choices).
-
-  Figma is inconsistent in two places, and prototypes pick one value:
-  - its textarea draws its error border in `danger-text`, and its input in `danger`: prototypes use `danger` for both;
-  - its dropdown label is `text`, and its input label `text-muted`: prototypes keep `text-muted` for every label, so a form has one label colour.
-
-  Figma's choices differ from each other in a few places, and prototypes follow the majority:
-  - the large radio's label is 18px on a 28px line with a 16px hint, where the large checkbox and check circle use 16px on 24px with a 14px hint: prototypes use the latter for all three;
-  - one large disabled checked checkbox has a semibold label: prototypes keep medium;
-  - the info icon is a UI-kit navy without a token: prototypes use `text`;
-  - the product card's focus state equals its hover: prototypes add the control's focus ring, as the radio container does;
-  - a disabled choice row dims only its control, where a disabled field dims label and hint too: prototypes follow Figma in both;
-  - the product card's quantity shows a 16px medium number, where the Quantity component (`816:24939`) uses 14px semibold: prototypes use the component's;
-  - the Quantity component's input style draws a slate UI-kit border and text: prototypes use the field's (`.form-input`).
-
-  The theme has no swatch, action menu, quantity selector or star rating matching Figma's (Components → Choices, Action menu, Reviews).
-- **Reviews (a house deviation from Figma):** reviews aren't enabled on the live site, so prototypes show them only when a brief asks (Components → Reviews). Figma's review count is 12px white on `accent` (2.52:1); prototypes set it in `primary` with `on-primary`, in line with "never put small text on orange" (Colors).
 - **Buttons (open, for the FED lead):** Figma `1286:12715` redraws the theme's buttons, and prototypes follow Figma through the skeleton (Components → Buttons). The theme differs in these ways:
   - it has three sizes (`btn-size-sm`, the default, `btn-size-lg` with 24px text) instead of Figma's five, and no icon-leading, icon-trailing or icon-only layouts;
   - its labels are semibold at every size;
@@ -1150,10 +732,8 @@ Motion confirms a state change (hover, focus, open/close, selection); it never p
 
   The secondary and tertiary borders sit outside the padding, so those buttons are 2px wider than Figma draws them; the heights match.
 - **Focus rings (a house deviation from Figma):** Figma's focus rings are soft: `secondary` or `primary` at 20%, and `ring` at 50%. Each is well under the 3:1 a focus indicator needs against the page (WCAG 1.4.11). The secondary's fill and the tertiary's `border-strong` border (5.9:1) still show focus, so those two keep Figma's rings. The primary and the transparent button change nothing else on focus, so their rings are solid: the primary gets `ring-2 ring-secondary-strong ring-offset-2` and the transparent `ring-2 ring-link` (Components → Buttons). Figma is to follow.
-- **Pop-up close:** the white close icon on orange is 2.52:1, below WCAG's 3:1 for a control's icon. The brand keeps it on purpose (Components → Dialogs); the button's `aria-label`, Esc and the backdrop click keep the pop-up closable for everyone.
-- **Messages (open, for the FED lead):** the theme's `.message` is `p-3 gap-2 mb-2` with a #F5F5F5 notice. Figma `6814:5244` sets `p-4 gap-3`, no margin, text at 90%, a lightest-grey notice and an outline variant (Components → Messages); prototypes follow Figma through the skeleton's unlayered overrides until the theme is updated.
-- **Pagination (open, for the FED lead):** the theme's `Magento_Theme/templates/html/pager.phtml` still draws 40px items, an underlined bold current page and solid #809700 arrow squares with white chevrons. Figma `1495:7515` replaces it (Components → Pagination), and the theme is to be refactored to match; until then prototypes follow Figma through the skeleton's `pagination` classes, with the theme's structure (`nav > ol > li`, `aria-current="page"`, the sr-only "Pagina" labels and the jump links) under new class names, so the refactor restyles the template without changing its behaviour.
-- **RAL swatches (open, for the FED lead):** the theme has no tokens for the product colours (RAL 7016, 9016, 9005, 1019, 9007). Prototypes approximate them with the nearest Tailwind defaults: `zinc-700` for anthracite (7016), `white` (9016), `neutral-950` (9005), `stone-400` (1019) and `neutral-500` (9007), each swatch with a light-grey border and the RAL name in its title. The lead decides between swatch tokens and a documented product-colour exception.
+
+The other components' known exceptions sit in their files in [components/](components/), each under `## Known exceptions`.
 
 ### Deliberately omitted
 
@@ -1161,6 +741,6 @@ Sources checked: the StyleGuide module (buttons, colors, form, messages, typogra
 
 - **Niche colours and details:** theme colours and details with a single niche use aren't part of the house style; build with the palette above.
 - **Font sizes `text-6.5` and `text-7.5` to `text-15`**, and the **`aspect-11/5`** ratio: the cheatsheet lists them, but `tailwind.config.js` doesn't define them, so the classes don't compile. The config wins.
-- **PageBuilder and content-type styles** (`components/valantic/pagebuilder/`, `theme/components/content-types/`) and **module skins** (Amasty, Mirasvit, Fancybox, Swiper, the bamboo decking calculator): out of scope for prototypes. The one exception is the image-with-text block, which the skeleton mirrors as `split-image` (Components → Content patterns → Split image).
+- **PageBuilder and content-type styles** (`components/valantic/pagebuilder/`, `theme/components/content-types/`) and **module skins** (Amasty, Mirasvit, Fancybox, Swiper, the bamboo decking calculator): out of scope for prototypes. The one exception is the image-with-text block, which the skeleton mirrors as `split-image` (components/content-patterns.md → Split image).
 - **Image utilities** (`bg-right-arrow`, `bg-close`, `bg-search` and the `content-chevron` family): they point at theme image files that prototypes can't load. Use inline SVG icons in `currentColor` instead.
 - **Adding values:** the dev rules allow a new token only after agreement with the DEV/FED lead, recorded in the cheatsheet. A prototype never adds one; if a value is missing, flag it in the hand-off.

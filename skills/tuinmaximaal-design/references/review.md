@@ -4,16 +4,16 @@ You review a prototype that another agent built with the build job, and you know
 
 ## 1. Read
 
-1. [../DESIGN.md](../DESIGN.md), all of it: the design system the file must follow.
-2. [build.md](build.md) → 3. Draft structurally different variants and 6. Check before delivering: the rules and checks for a prototype.
+1. [../DESIGN.md](../DESIGN.md), from the "# Tuinmaximaal design system" heading to the end (skip the generated front matter above it), and every file in [../components/](../components/): the design system the file must follow. Read all the component files, not only those the plan lists: a variant may use one the author missed.
+2. [build.md](build.md) → 4. Draft structurally different variants and 7. Check before delivering: the rules and checks for a prototype.
 3. [audit.md](audit.md) → 2. Design system, 3. Craft floor and 4. Refine checklist.
-4. The prototype. Its first line is the plan: question, goal, audience, primary action, N and, for a redesign, the source page. Skip the inlined Tailwind config and the block between the `design-sync` markers: they are generated, not the author's work. To check a class, search [../assets/tailwind.config.js](../assets/tailwind.config.js) for it rather than reading the whole config.
+4. The prototype. Its first line is the plan: question, goal, audience, primary action, N, the components it uses and, for a redesign, the source page. Skip the inlined Tailwind config and the block between the `design-sync` markers: they are generated, not the author's work. To check a class, search [../assets/tailwind.config.js](../assets/tailwind.config.js) for it rather than reading the whole config.
 
 When a browser tool is available, open the file (through a local server if `file://` blocks the CDN) and look at each variant (`?variant=A`, `?variant=B`…) at 375px and `xl`. Otherwise judge the markup and mark what only a render can show as "unverified".
 
 ## 2. Check
 
-Go through every check in build.md → 6. Check before delivering, for every variant, and apply the audit's design-system items and craft floor to what you see. Check against the plan too: does every variant answer its question and lead to its primary action? When the plan names a source page with "keep the copy", compare the text and images with that page (open it when a browser tool is available, otherwise mark it "unverified"): new labels, captions, stats or drawings are findings. When the plan names an approved example as its base, compare with it ([examples.md](examples.md)): a variant that drops one of its patterns without the question asking for it, or brings back one of its don'ts, is a finding. Compare the variants pairwise: two that share layout, hierarchy, primary affordance and composition are one finding.
+Go through every check in build.md → 7. Check before delivering, for every variant, and apply the audit's design-system items and craft floor to what you see. Check against the plan too: does every variant answer its question and lead to its primary action? When the plan names a source page with "keep the copy", compare the text and images with that page (open it when a browser tool is available, otherwise mark it "unverified"): new labels, captions, stats or drawings are findings. When the plan names an approved example as its base, compare with it ([examples.md](examples.md)): a variant that drops one of its patterns without the question asking for it, or brings back one of its don'ts, is a finding. Compare the variants pairwise: two that share layout, hierarchy, primary affordance and composition are one finding.
 
 ## 3. Report
 

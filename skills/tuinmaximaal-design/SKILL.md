@@ -5,7 +5,7 @@ description: Tuinmaximaal UI and UX in the house design system. Use for any Tuin
 
 # Tuinmaximaal design
 
-[DESIGN.md](DESIGN.md) is the design system: tokens generated from the live theme, plus the brand rules. Read all of it before any design work; both jobs below depend on it.
+[DESIGN.md](DESIGN.md) is the design system: tokens generated from the live theme, plus the brand rules. Before any design work, read it from the "# Tuinmaximaal design system" heading to the end; skip the generated front matter above that heading (find the heading's line and read from there). Its Components section holds the core components and indexes the rest, one file each in [components/](components/): each job below says which of those files to read.
 
 The brand essentials, which every output honours:
 

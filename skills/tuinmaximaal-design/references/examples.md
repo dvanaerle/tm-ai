@@ -13,9 +13,9 @@ Each example is a parts file plus the file the assemble script makes from it. Re
 Round 4, variant A ("Naast elkaar") of the /schuifwand redesign, with the page's own copy and images. From the top:
 
 1. **Beige intro:** the H1 and intro beside a modest photo (DESIGN.md → Layout → Beige intro).
-2. **Sticky product tabs:** thumbnail, name and "Vanaf €" price per product, the beige pill on the active tab (DESIGN.md → Components → Content patterns → Sticky product tabs).
-3. **One light split image per product**, the image alternating left and right (`--media-right`): name, price chip, first sentence, USP list, "Stel nu samen" beside "Meer informatie" (Content patterns → Split image).
-4. **Comparison table "Alle Gumax<sup>®</sup> schuifwanden"** on white: need rows with ticks at every width, colours from `md`, prices and buttons from `lg` (Content patterns → Comparison table).
+2. **Sticky product tabs:** thumbnail, name and "Vanaf €" price per product, the beige pill on the active tab (components/content-patterns.md → Sticky product tabs).
+3. **One light split image per product**, the image alternating left and right (`--media-right`): name, price chip, first sentence, USP list, "Stel nu samen" beside "Meer informatie" (components/content-patterns.md → Split image).
+4. **Comparison table "Alle Gumax<sup>®</sup> schuifwanden"** on white: need rows with ticks at every width, colours from `md`, prices and buttons from `lg` (components/content-patterns.md → Comparison table).
 5. **Benefits on a beige band:** the copy's own headings and first sentences, the rest behind "+ Lees meer", in this one section only.
 6. **Side walls on a sand band:** white cards without a border.
 
@@ -32,7 +32,7 @@ Cleaning the approved round-4 file changed:
 - **"Kies uw stijl" card:** it shows the three colours as a small swatch row under its sentence. Before, a sand panel of large swatches stood in for a photo, which the source doesn't have.
 - **Small fixes:** the tab hover is a lighter-green label instead of a grey fill, and "+ Lees meer" has a 44px hit area.
 
-To use it for another category landing, copy the parts file, write your own plan line and registry, and replace the copy, images, prices and needs with the source page's own. Drop the sections the page has no content for; never keep the /schuifwand copy as filler. The variants then vary only the design question, as in a later round (build.md → 3. Later rounds).
+To use it for another category landing, copy the parts file, write your own plan line and registry, and replace the copy, images, prices and needs with the source page's own. Drop the sections the page has no content for; never keep the /schuifwand copy as filler. The variants then vary only the design question, as in a later round (build.md → 4. Later rounds).
 
 | 375px | `xl` |
 |---|---|

@@ -11,25 +11,31 @@ Pin down five things, from the request where possible, and a sixth for a redesig
 - **Audience:** who arrives, from where, at which decision moment (see DESIGN.md → Overview).
 - **Primary action:** the configurator for verandas and structures, the cart for every other product. Never a quote request.
 - **N:** the number of variants. The default is 3 and the maximum is 5; beyond 5 they stop being different and turn into noise. If the user asks for more, build 5 and say why.
-- **Source (redesigns only):** the page being redesigned and whether its copy is kept, e.g. `Source: /schuifwand, keep the copy.` The reviewer checks the copy against it. In a later round, add the agreed base and the one open question (step 3 → Later rounds).
+- **Source (redesigns only):** the page being redesigned and whether its copy is kept, e.g. `Source: /schuifwand, keep the copy.` The reviewer checks the copy against it. In a later round, add the agreed base and the one open question (step 4 → Later rounds).
 
 Ask only for what is missing and can't be assumed. Otherwise assume, and write the whole shape as one line at the top of the file, replacing `PLAN_LINE` in the skeleton:
 
 > `<!-- PLAN: Question: where does the configurator CTA work best? Goal: start configuring. Audience: returning visitors comparing sizes. Primary action: configurator. N: 3. -->`
 
-**Start from the closest approved example.** When [examples.md](examples.md) has one for the page type (a category landing, for now), start from it instead of from scratch. Copy its parts file as the start of yours; it holds only the author's markup, so reading it is cheap. Keep its structure and patterns, and replace its copy, images, prices and needs with the source page's own. The example is the agreed base, so the variants vary only the question, as in a later round (step 3 → Later rounds). Add it to the plan line, e.g. `Base: examples/category-landing.`, and check the do/don't pairs in examples.md before drafting.
+**Start from the closest approved example.** When [examples.md](examples.md) has one for the page type (a category landing, for now), start from it instead of from scratch. Copy its parts file as the start of yours; it holds only the author's markup, so reading it is cheap. Keep its structure and patterns, and replace its copy, images, prices and needs with the source page's own. The example is the agreed base, so the variants vary only the question, as in a later round (step 4 → Later rounds). Add it to the plan line, e.g. `Base: examples/category-landing.`, and check the do/don't pairs in examples.md before drafting.
 
-## 2. Pick the format
+## 2. Read the components
+
+DESIGN.md → Components holds the core components (buttons, product tile, price box, highlights, lists, shell) and indexes the rest, one file each in `components/`, with the trigger for each. List the indexed components the variants will use, across all variants, and add them to the plan line by name, e.g. `Components: content patterns, forms.` (or `Components: none.`). Then read each listed file in full before drafting; read none that the plan doesn't list. A page with content blocks (a text + image block, a tile, an accordion or FAQ, tabs, a table) uses Content patterns; one with any input uses Forms, and a checkbox, radio, swatch or quantity adds Choices.
+
+The step is done when every component in the plan has had its file read. If a variant turns out to need another indexed component while drafting, add it to the plan line and read its file before you use it.
+
+## 3. Pick the format
 
 - **HTML** by default: one self-contained file that opens anywhere.
 - **React** when the UI has real state worth judging: configurator steps, filters, a size picker that updates the price. Write it inside the same HTML skeleton, with React and ReactDOM loaded from a CDN (`https://unpkg.com/react@18/umd/react.production.min.js`, `https://unpkg.com/react-dom@18/umd/react-dom.production.min.js`) and JSX through `@babel/standalone` in a `<script type="text/babel">`. Don't use a bare React artifact: it can't load the theme's Tailwind config, so the semantic colour classes wouldn't exist. State lives in memory; nothing is saved and no real request or mutation is made.
 
-## 3. Draft structurally different variants
+## 4. Draft structurally different variants
 
 Every variant answers the same question with a different structure. Vary at least one of these axes per variant, and preferably more than one:
 
 - **Layout:** stacked single column, a two-column split, a sidebar, a sticky summary bar, a stepped flow. Never a content carousel: content stacks vertically (DESIGN.md → Layout → Vertical flow).
-- **Hierarchy:** what the eye meets first: the price, the proof (specs, guarantee, and reviews only where they are enabled: DESIGN.md → Components → Reviews), the product image, or the choice to make.
+- **Hierarchy:** what the eye meets first: the price, the proof (specs, guarantee, and reviews only where they are enabled: components/reviews.md), the product image, or the choice to make.
 - **Primary affordance:** where and how the one primary action appears: inline after the proof, sticky on scroll, at the top next to the price, as the first step of a guided flow.
 - **Composition and expression:** how the view carries the brand, with the options in DESIGN.md → Expression: image-led (a large, contained lifestyle or project photo carries the view), editorial and asymmetric (uneven splits, text beside a large photo), calm (one big moment with generous space) or dense (proof packed tight).
 
@@ -46,13 +52,13 @@ Every variant, bold or not, follows these rules:
 - **Surfaces:** white, beige and sand only, on the ladder (on white: beige, then sand; on beige: white; on sand: white or green), and at most one green emphasis block with white text. Change surface every one or two sections (a band, a box or a beige split image), so no variant runs a long bare-white stretch (DESIGN.md → Elevation & Depth → Surfaces).
 - **The box decision:** decide for every block, in this order (DESIGN.md → Elevation & Depth → The box decision):
   1. Is it a card that repeats (product tile, blog tile, review, link card, FAQ row)? A white `rounded-2` card: with `border border-border` on white, without a border on a beige or sand band.
-  2. Is it the one block that needs emphasis (a quote, a text + image block, a promo)? A beige surface box with `rounded-2` and no border; sand for a stronger step. With an image or video, use the skeleton's split image (`.split-image` > `.split-image-media` + `.split-image-text`, DESIGN.md → Components → Content patterns → Split image), short or long copy alike: the text sets the height and the image covers its half up to the box edges. Without a box, the same component takes `--plain`. Never hand-build it, never a padded box with a separately rounded image inside, and never an image in the grid flow that sets the height itself. A product split image stays light: the name, the price, the first sentence, the USP list and two buttons; no "Lees meer", no icon rows, no colour lines (DESIGN.md → Content patterns → Split image).
+  2. Is it the one block that needs emphasis (a quote, a text + image block, a promo)? A beige surface box with `rounded-2` and no border; sand for a stronger step. With an image or video, use the skeleton's split image (`.split-image` > `.split-image-media` + `.split-image-text`, components/content-patterns.md → Split image), short or long copy alike: the text sets the height and the image covers its half up to the box edges. Without a box, the same component takes `--plain`. Never hand-build it, never a padded box with a separately rounded image inside, and never an image in the grid flow that sets the height itself. A product split image stays light: the name, the price, the first sentence, the USP list and two buttons; no "Lees meer", no icon rows, no colour lines (components/content-patterns.md → Split image).
   3. Anything else (running text, text + image, video + text, a gallery, the SEO text): no box. Contain it and separate it with whitespace; round its images with `rounded-2`.
 
-  Filter groups keep a box each, outlined or borderless beige, one style for all. Never one wrapper around everything. Coloured boxes have no border. Nest one level at most, and only when the inner box changes surface. On a category grid, follow DESIGN.md → Elevation & Depth → Category grid. Use the Figma patterns in DESIGN.md → Components → Content patterns (split image, image tile, image-text item, blog tile, reviews, quote, accordion and FAQ, carousel arrows) and DESIGN.md → Components → Forms, Pagination and Dialogs instead of inventing a new treatment.
+  Filter groups keep a box each, outlined or borderless beige, one style for all. Never one wrapper around everything. Coloured boxes have no border. Nest one level at most, and only when the inner box changes surface. On a category grid, follow DESIGN.md → Elevation & Depth → Category grid. Use the Figma patterns in components/content-patterns.md (split image, image tile, image-text item, blog tile, reviews, quote, accordion and FAQ, carousel arrows), components/forms.md, components/pagination.md and components/dialogs.md instead of inventing a new treatment.
 - **Price box:** size it by its component from DESIGN.md → Components → Price box: the theme's 16px chip on a product tile, the promo-label chip ("vanaf" plus the amount) on an image tile or promo, the largest price in the buy box. Never one size for every price on the page.
-- **Choices:** checkboxes, radios, swatches and selectable cards follow DESIGN.md → Components → Choices (sizes, dimensions and colours are swatches; the quantity is the plus-and-minus selector; an item's actions are the action menu): `.field.choice` rows, `label.option-card` for a choice with a hint, price or logo (its input `sr-only` only on a swatch or size tile), and `.product-option` for an add-on product with a photo. The skeleton styles their selected and focus states. Never write `has-[:checked]:` or any other `has-[…]:` variant: it is an arbitrary variant.
-- **Text on photos:** white text on a photo (the image tile) always sits on the scrim from DESIGN.md → Components → Content patterns → Image tile. No card, box or panel floats over or overlaps a photo.
+- **Choices:** checkboxes, radios, swatches and selectable cards follow components/choices.md (sizes, dimensions and colours are swatches; the quantity is the plus-and-minus selector; an item's actions are the action menu): `.field.choice` rows, `label.option-card` for a choice with a hint, price or logo (its input `sr-only` only on a swatch or size tile), and `.product-option` for an add-on product with a photo. The skeleton styles their selected and focus states. Never write `has-[:checked]:` or any other `has-[…]:` variant: it is an arbitrary variant.
+- **Text on photos:** white text on a photo (the image tile) always sits on the scrim from components/content-patterns.md → Image tile. No card, box or panel floats over or overlaps a photo.
 - **Vertical flow:** content stacks vertically, mobile-first; no content carousel. Only the theme's own sliders, such as related products, may slide. "+ Lees meer" for secondary text in cards appears in one section per page at most.
 - **No eyebrows:** no eyebrow or kicker label above a heading, on any page type. Uppercase `paragraph-tiny` appears only inside badges and pills.
 - **Buttons:** Figma's styles and sizes (DESIGN.md → Buttons). XL, with no size class, is the default; `--s`, `--m`, `--l` and `--2xl` are for the cases it lists, and the theme's `btn-size-*` classes are never used. A link-like action is `btn-transparent` (`--flush` when it starts a text column), and `btn-tertiary` is the grey outline. Icons take `--icon-leading`, `--icon-trailing` or `--icon-only`. Buttons side by side share a size and are `gap-2` apart (`flex flex-wrap gap-2`). A full-width CTA is `btn btn-primary w-full`.
@@ -68,24 +74,24 @@ Give each variant a short name (e.g. "Sidebar layout") and one trade-off line th
 
 Every variant still meets the brand essentials in SKILL.md: one primary button per view, the configurator or cart path visible, orange only on price, highlights, badges and the main menu's active item, and one big moment for the page's register (DESIGN.md → Expression).
 
-## 4. Wire it together
+## 5. Wire it together
 
 The prototype is the skeleton in [../assets/prototype-skeleton.html](../assets/prototype-skeleton.html) with the Tailwind config, the logo and your parts filled in. You write only the parts: the plan line, the variant registry and the variant sections, plus an optional title, extra head tags, breadcrumb and body scripts.
 
 **The parts:**
 
-1. **Plan:** the shape line from step 1.
+1. **Plan:** the shape line from step 1, with the components from step 2.
 2. **Registry:** one entry per variant in `prototype-variants`: `key` (A, B, C…), `name` and `tradeoff`. The switcher reads it.
 3. **Sections:** each variant in the `<main>` as `<section data-variant="KEY">`. Don't put display classes on the section itself; wrap the variant's layout in a child element. In React, render the sections from the root; the switcher also hides sections that are rendered later.
 4. **Markup:** the skeleton's component styles stay as they are: the block between the `design-sync` markers is the theme's own component CSS, regenerated by the sync, so it uses the theme's selectors. Write the theme's markup to match: `.btn btn-primary`; `.field` > `label` + `.control` > `.form-input`; `.field choice` > `input` + `label` for checkboxes and radios; `.message info` > `svg` + `span`; `.price-container` > `.price` for the orange price, `.old-price` > `.price` for the struck-through one; `label.option-card` > `input.sr-only` + content for a selectable card; `.split-image` > `.split-image-media` > `img` + `.split-image-text` > heading, `p`, `.split-image-actions` for the split image; `ul.list-usps` > `li` > `.list-text`; `.product-tile` > `.product-tile-info` > `.product-tile-name`. Extra styles go in a separate `<style type="text/tailwindcss">` block in the head, and every class in an `@apply` must exist in the config: one unknown class stops the Tailwind CDN from building the whole style block.
-5. **Frame:** keep the page frame as it is: one green `h-15` bar with the `h-11` logo inside, at every breakpoint, and nothing else: no breadcrumb, menu or USP bar. It doesn't invite reviewers to compare a hand-built shell with production, so they judge the variants. The variant sits below it on white and opens with its own beige intro section (step 3); don't colour `<body>`. Only when the question is about the header, menu or footer, use the full shell in [../assets/page-shell.html](../assets/page-shell.html) instead: its header part replaces the frame, its footer goes after `</main>`, and you give it a breadcrumb.
+5. **Frame:** keep the page frame as it is: one green `h-15` bar with the `h-11` logo inside, at every breakpoint, and nothing else: no breadcrumb, menu or USP bar. It doesn't invite reviewers to compare a hand-built shell with production, so they judge the variants. The variant sits below it on white and opens with its own beige intro section (step 4); don't colour `<body>`. Only when the question is about the header, menu or footer, use the full shell in [../assets/page-shell.html](../assets/page-shell.html) instead: its header part replaces the frame, its footer goes after `</main>`, and you give it a breadcrumb.
 6. **Switcher:** keep it as is. It shows ← / "B (Sidebar layout)" plus the trade-off / →, cycles with the arrow keys except while an input, select, textarea or contenteditable is focused, and keeps the variant in `?variant=` so a link is shareable and survives a reload. It is prototype chrome: black and pill-shaped, so it reads as separate from the design.
 
-**Assembly by script, where you can run `node` (Claude Code):** don't read the skeleton, the config or the logo; the script fills them in, so a truncated config or an altered logo can't happen. Write the parts to `<name>.parts.html` in the folder step 7 picks, each slot opened by a `<!-- slot: NAME -->` line:
+**Assembly by script, where you can run `node` (Claude Code):** don't read the skeleton, the config or the logo; the script fills them in, so a truncated config or an altered logo can't happen. Write the parts to `<name>.parts.html` in the folder step 8 picks, each slot opened by a `<!-- slot: NAME -->` line:
 
 ```html
 <!-- slot: plan -->
-Question: where does the configurator CTA work best? Goal: start configuring. Audience: returning visitors comparing sizes. Primary action: configurator. N: 3.
+Question: where does the configurator CTA work best? Goal: start configuring. Audience: returning visitors comparing sizes. Primary action: configurator. N: 3. Components: content patterns.
 <!-- slot: title -->
 Veranda PDP
 <!-- slot: variants -->
@@ -117,11 +123,11 @@ The script writes the self-contained file, or exits non-zero without writing and
 
 Colour only with the semantic tokens and the Tailwind defaults DESIGN.md → Colors names (`bg-surface`, `text-text-muted`, `border-border`, never `tmx-*`), next to the theme's component classes, on the scales in DESIGN.md. No arbitrary values (`p-[13px]`, `text-[#123456]`), no inline styles, no new colours. If a value you need doesn't exist, use the nearest token and list the gap in the hand-over. Use inline SVG icons in `currentColor`.
 
-## 5. Copy and assets
+## 6. Copy and assets
 
 Follow the delegation rules in SKILL.md. A redesign that keeps the copy (DESIGN.md → Overview → Redesigns) uses the page's own copy and images only: reorder, split and trim them, but write no new labels, captions, chart titles, stats or headings, and draw no illustrations, diagrams or charts. When a structure needs a label the copy doesn't have, leave the structure out or ask the user for it; a placeholder doesn't make it fine. Write the brand as `Gumax<sup>®</sup>` in markup, also when delegated copy says `Gumax®`; only attribute text (`alt`, `aria-label`) keeps the plain sign. Every text without an approved source is a visible placeholder, e.g. `[PLACEHOLDER: USP about delivery]`. Real prices, dimensions and specs come from the request; otherwise they are placeholders too. Test the longest German or French string the layout will meet: put it in at least one variant.
 
-## 6. Check before delivering
+## 7. Check before delivering
 
 Your own read of a draft you just wrote misses what a fresh reader sees, so a reviewer checks it:
 
@@ -148,7 +154,7 @@ The checks:
 - **Scrim:** every piece of white text on a photo sits on the scrim.
 - **Buttons and brand:** buttons side by side are `gap-2` apart and share a size, no theme `btn-size-*` class is used, and there is no bare `Gumax®` in page text (it is `Gumax<sup>®</sup>`; only attribute text keeps the plain sign).
 - **Restraint:** no eyebrow or kicker label above any heading, no 2XL button the brief didn't ask for, and every highlight, price box and promo label tilted −2°.
-- **Images:** list every image in the file with one line each: product media or editorial, its ratio, and its crop. Product media (the gallery, packshots, product and category tile images, a product photo in any card) are 16:9 (`aspect-video`) at every breakpoint and never stretched off it by `size-full object-cover` in a card of another shape. Lifestyle and project photos are editorial: never `aspect-video` or `md:aspect-video` (the blog tile's photo is the one exception, 16:9 as DESIGN.md → Components → Content patterns gives it), but the ratio the composition asks for, inside the container with `rounded-2`. Fix any line that breaks this before delivering.
+- **Images:** list every image in the file with one line each: product media or editorial, its ratio, and its crop. Product media (the gallery, packshots, product and category tile images, a product photo in any card) are 16:9 (`aspect-video`) at every breakpoint and never stretched off it by `size-full object-cover` in a card of another shape. Lifestyle and project photos are editorial: never `aspect-video` or `md:aspect-video` (the blog tile's photo is the one exception, 16:9 as components/content-patterns.md → Blog tile gives it), but the ratio the composition asks for, inside the container with `rounded-2`. Fix any line that breaks this before delivering.
 - **Logo-swap test:** with another retailer's logo, no variant would still work unchanged. Where one would, add a brand moment: a highlight, a project photo, a warm surface, specific proof.
 - Every class comes from the theme config; there are no arbitrary values.
 - The primary action is the #809700 button; orange appears only on price, highlight, badge or the main menu's active item. In-page tabs mark the active tab with the beige pill, not an orange bar.
@@ -163,7 +169,7 @@ The checks:
   - **An override in the wrong layer.** Some theme rules in the skeleton sit outside any `@layer` (`.message`, `.form-select`), and an unlayered rule beats every layer, so an override of one inside `@layer components` silently loses. Write such an override in a plain `<style type="text/tailwindcss">` rule, outside any layer, and check the computed value.
   - **Lazy images in screenshots.** Automated full-page screenshots don't scroll, so `loading="lazy"` images below the fold stay blank. The skeleton switches lazy images to eager loading; images a script adds later are switched too. Check that every image in a screenshot has loaded before judging it.
 
-## 7. Deliver and hand over
+## 8. Deliver and hand over
 
 - **claude.ai or Desktop:** deliver the file as an HTML artifact.
 - **Claude Code:** write it (and its parts file) to `tmp/prototypes/<name>.html` in the workspace and give the path. Before writing, run `git check-ignore -q tmp/prototypes/<name>.html`. Exit code 0 means the path is ignored; 128 means the folder isn't a Git repository, which is fine too. Exit code 1 means Git would pick the file up: write it to `tuinmaximaal-prototypes/` in the system temp folder instead, don't edit the repository's `.gitignore`, and say so in the hand-over. Open the file through a local server if `file://` blocks the CDN.
