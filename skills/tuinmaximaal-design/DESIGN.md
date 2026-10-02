@@ -426,6 +426,7 @@ A redesign of an existing page keeps its content; the design reorganises it.
 
 - **Keep the copy.** A "keep the copy" redesign reorders, splits and trims the page's own copy and uses the page's own images. It writes no new labels, captions, chart titles, stats or headings. When a structure needs a label the copy doesn't have (a filter, a tab set, a comparison row), leave the structure out or ask for the label.
 - **No invented visuals.** No custom illustrations, drawn diagrams, bar charts or big "365"-style numbers. Data is shown only when it already sits on the page, and then as icons and ticks (a check-circle list, a ticked comparison row), never as a drawn chart.
+- **Data visual, copy complete.** Where the page holds data (which product has which feature, a set size, a spec), show it visually first: a ticked comparison table, the same rows again in a feature's drawer, an icon per feature. The copy still stays on the page in full, for SEO: shorten what shows at first sight and put the rest in a read-more or a drawer (components/content-patterns.md → Read more, components/dialogs.md → Drawer), both of which keep the text in the HTML. Never drop copy to make a block lighter.
 
 ## Colors
 
@@ -442,7 +443,7 @@ Figma's `primary` is the brand green and `secondary` is the lime action colour. 
 | `secondary-strong` | #6D8005 | `tmx-primary-lightGreen` | The action colour's shadow: the primary button's 4px bottom border and hover fill. |
 | `secondary-subtle` | #F8FCE6 | `tmx-primary-lighterGreenSubtle` | The fill of a selected card and of the current page. |
 | `on-secondary` | #FFFFFF | white | Text and glyphs on `secondary`. |
-| `accent` | #FF8000 | `tmx-primary-orange` | An accent only: the price box, the heading and paragraph highlights, badges, the main menu's active item (Shell) and the pop-up close. In-page tabs mark the active tab with a beige pill, never orange (components/content-patterns.md → Sticky product tabs). Orange never fills a button, never colours an action, and is never used as small text on white. |
+| `accent` | #FF8000 | `tmx-primary-orange` | An accent only: the price box, the heading and paragraph highlights, badges, the mobile menu's active item (Shell) and the pop-up close. In-page tabs mark the active tab with a beige pill, never orange (components/content-patterns.md → Sticky product tabs). Orange never fills a button, never colours an action, and is never used as small text on white. |
 | `on-accent` | #FFFFFF | white | Heavy text and the close icon on `accent` (Contrast). |
 | `surface` | #FFF5ED | `tmx-secondary-beige` | The intro section of every page (the theme's `bg-container-beige`), surface boxes, the split image. |
 | `surface-raised` | #F5E6D7 | `tmx-secondary-sand` | The stronger surface boxes and bands. White, `surface` and `surface-raised` are the only page surfaces (Elevation & Depth → Surfaces). |
@@ -521,19 +522,19 @@ The black weight is used on h1 and h2 only. `.heading-small` steps h1 down to `t
 
 ## Layout
 
-- **Container:** centred, `1rem` side padding, maximum 1314px from `xl`. All content and all images, lifestyle photos included, sit inside it. Only page chrome (header bars, breadcrumbs, USP bar), the beige intro and tinted tile bands (Elevation & Depth) may run full width, and only as colour bands whose content is contained. Images and boxes never bleed past the container.
+- **Container:** centred, `1rem` side padding, maximum 1314px from `xl`. All content and all images, lifestyle photos included, sit inside it. Only page chrome (header bars, breadcrumbs, USP bar), the beige intro and tinted tile bands (Elevation & Depth) may run full width, and only as colour bands whose content is contained. Images and boxes never bleed past the container. The one exception is the feature slider's row of cards: it starts at the container's edge and runs out to the right edge of the screen, so the visitor sees there is more to swipe (components/content-patterns.md → Feature slider).
 - **Breakpoints (min-width):** `500px`, `sm` 640, `md` 768, `lg` 1024, `xl` 1280, `2xl` 1536. Build mobile-first and check every prototype at 375px, `md` and `xl`. Adapt on small screens; never remove critical functionality such as the configurator CTA, the price or the add-to-cart button.
 - **Spacing:** a generated 4px scale, defined in the theme's `tailwind.config.js` (and its spacing generator). Token `N` equals N × 4px (`p-4` = 16px) and every step has a `.5` half-step that adds 2px (`gap-1.5` = 6px, `py-2.5` = 10px). It runs from 0 to 500px, plus `1/4`, `1/2`, `3/4`, `full` and `full-x2` percentages.
 - **Rhythm:** use 4–6px (`gap-1`, `gap-1.5`) for tight pairs such as a label and its input, 8–24px (`gap-2` to `gap-6`) inside components and 32–48px (`gap-8` to `gap-12`) between sections. Use more space above a heading than below it. Prefer `gap` on flex and grid parents over margins on children. Vary section spacing; uniform padding everywhere reads as a template.
-- **Product media:** 16:9 (`aspect-video`), for product media only: the gallery, packshots and tile images. The blog tile's photo is the one editorial image at 16:9 (components/content-patterns.md → Blog tile). Category tiles use 450 × 253, the product page 1536 × 864.
-- **Editorial imagery:** lifestyle and project photos take any ratio the config has (`aspect-square`, or a spacing-scale height with `object-cover`), as a contained box with `rounded-2`.
+- **16:9 by default:** every image in a card, a tile, a drawer, a table header and the beige intro is 16:9 (`aspect-video`): the gallery, packshots, product and category tiles, feature and blog cards, the intro photo. A photo covers the frame (`object-cover`); a packshot on a transparent background (a cut-out PNG) is shown whole (`object-contain p-4`). Category tiles use 450 × 253, the product page 1536 × 864.
+- **The large photo:** the one large lifestyle or project photo that carries a brand-forward page's big moment (Overview → Expression) takes a spacing-scale height instead (`h-80 md:h-110 xl:h-125 object-cover`), as a contained box with `rounded-2`. The split image's photo covers its half (components/content-patterns.md → Split image).
 - **Page grid:** `.columns` is a single-column grid with `gap-x-8 gap-y-4` inside the container.
-- **Vertical flow.** Content stacks vertically, mobile-first: sections, product blocks and cards follow each other down the page, and no content sits in a carousel. The theme's own sliders, such as the related-products slider, stay.
+- **Vertical flow.** Content stacks vertically, mobile-first: sections, product blocks and cards follow each other down the page. A product's own content (its split image, card, price, USPs and buttons) always stacks. Two things slide sideways: the theme's own sliders, such as the related-products slider, and the feature-card slider below the products (components/content-patterns.md → Feature slider).
 - **Nothing over a photo.** No card, box or panel floats over or overlaps a photo; text sits beside or below its image. The image tile's heading, chip and button on the scrim are the one exception (components/content-patterns.md → Image tile).
 - **Beige intro.** Every page type opens with a beige first section: a full-width band with contained content.
   - **Homepage:** the image tiles (components/content-patterns.md → Image tile).
   - **Content, brand and service pages:** the H1, the intro text and an optional CTA.
-  - **Category page and category landing:** the H1 and intro beside a modest photo, side by side from `lg` (`lg:grid-cols-2`), the photo at a spacing-scale height (`h-56 md:h-72 object-cover rounded-2`). Large image tiles here read as bulky and "in your face"; they belong to the homepage. The page's image-text items (components/content-patterns.md → Image-text item) sit in this band, under the H1 and intro, as white cards; with them, the H1 and intro run full width and the items' photos take the place of the modest photo.
+  - **Category page and category landing:** the H1 and intro beside a modest photo, side by side from `lg` (`lg:grid-cols-2`), the photo at 16:9 (`aspect-video object-cover rounded-2`). Large image tiles here read as bulky and "in your face"; they belong to the homepage. The page's image-text items (components/content-patterns.md → Image-text item) sit in this band, under the H1 and intro, as white cards; with them, the H1 and intro run full width and the items' photos take the place of the modest photo.
   - **Product page:** the gallery and buy-box row, with the buy box white on beige.
 
   After the intro the background is free and white by default. On staging the category grid area and the product content section are white.
@@ -550,19 +551,19 @@ A white container on a white page stands on its whitespace alone, without a bord
 
 **Surfaces.** White, beige and sand are the only surfaces. Use them generously to separate content:
 
-- **On white:** beige first, then sand for a stronger step.
+- **On white:** beige boxes (a split image, a quote, a promo) and beige or sand bands. Sand is only ever a band: a full-width wrapper over the viewport, with its content in the container.
 - **On beige:** white.
 - **On sand:** white or green.
 - **Green:** at most one emphasis block per page, with white text.
 
-**Change surface every one or two sections.** A beige or sand band, a surface box or a beige split image breaks the white at least every second section, so a page has no long bare-white stretch. "Whitespace first" is the rule inside a section, not a reason to run the whole page on white.
+**Change surface every one or two sections.** A beige or sand band, a beige box or a beige split image breaks the white at least every second section, so a page has no long bare-white stretch. "Whitespace first" is the rule inside a section, not a reason to run the whole page on white.
 
 The reference is the homepage: a beige intro band holding the image tiles, a contained beige banner box on white, and a full-width sand band holding a contained group with one green column.
 
 **The box decision.** Every block on a page gets one of three treatments, as the house Figma components have them. Decide it per block:
 
 1. **A card that repeats** (a product tile, blog tile, review, image-text item or FAQ row) is a card: white, `rounded-2`. On white it has a 1px light-grey outline (`bg-white border border-border rounded-2`); an FAQ row is the accordion, with its own `rounded-1` (components/content-patterns.md → Accordion and FAQ). On a beige or sand band it has no border: the change of surface does the separating.
-2. **One block that needs emphasis** (a quote, a text + image split image on beige, a promo) is a surface box: beige, `rounded-2`, no border (`bg-surface rounded-2`). Sand is the stronger step (`bg-surface-raised rounded-2`); the one green block is the strongest.
+2. **One block that needs emphasis** (a quote, a text + image split image on beige, a promo) is a surface box: beige, `rounded-2`, no border (`bg-surface rounded-2`). For a stronger step, put the section on a full-width sand band; the one green block, on that sand band, is the strongest.
 3. **Everything else has no box:** running text in one to four columns, text + image (the plain split image, components/content-patterns.md → Split image), video + text, a gallery, the SEO text. It sits inside the container, separated by whitespace, with its images `rounded-2`.
 
 A card or surface box takes `p-4` to `p-6` (more on a split image), with `gap-3` to `gap-4` between cards. There is never one wrapper around everything, and a box or card holds its content directly, never another card of the same surface.
@@ -573,7 +574,7 @@ A card or surface box takes `p-4` to `p-6` (more on a split image), with `gap-3`
 
 **Tinted tile bands.** A section of repeated cards may sit on a full-width beige or sand band, with its content in the container, to set it apart from the white around it (Figma "Tile's on colored background"). The cards on it are white without a border. A band is a colour only: its images and cards stay contained.
 
-**Category grid.** The intro is a beige band. The grid area is white, with one box per filter group: outlined, or borderless beige. A sand trust or USP block sits between product rows. Below the grid, the FAQ is a list of outlined rows and the SEO text sits unboxed, clamped with the theme's "Lees meer" fade (`bg-gradient-showMore` over the last lines, then a flush transparent "Lees meer" button, `btn btn-transparent --flush`). Product tiles on the white grid keep their white info area and outline; on a tinted band they lose the outline.
+**Category grid.** The intro is a beige band. The grid area is white, with one box per filter group: outlined, or borderless beige. A sand trust or USP block sits between product rows: the theme's one sand box, inside the grid. Below the grid, the FAQ is a list of outlined rows and the SEO text sits unboxed, clamped with the theme's "Lees meer" fade (`bg-gradient-showMore` over the last lines, then a flush transparent "Lees meer" button, `btn btn-transparent --flush`). Product tiles on the white grid keep their white info area and outline; on a tinted band they lose the outline.
 
 - `shadow-1px` (inset 0 0 0 1px green) is a crisp selected or hover outline without layout shift. The product tile uses it together with the green hover border.
 - `shadow-arrow` (0 4px 12px rgb(0 0 0 / 0.16)) is for the carousel arrows only (components/content-patterns.md → Carousel arrows). The other floating elements take Tailwind's shadows, as in Figma: the dropdown list `shadow-lg` (components/forms.md → Dropdown), dialogs `shadow-xl` (components/dialogs.md).
@@ -596,7 +597,7 @@ Corners are small and consistent: `rounded-1` (4px) for buttons, inputs, checkbo
 - **Action menu** ([components/action-menu.md](components/action-menu.md)): a menu of actions on one item, such as a cart line's "Wijzigen" and "Verwijderen".
 - **Reviews** ([components/reviews.md](components/reviews.md)): any star, score, review count or review card, and any page that could show proof from reviews.
 - **Messages** ([components/messages.md](components/messages.md)): any status message, notice, alert or inline note.
-- **Dialogs** ([components/dialogs.md](components/dialogs.md)): any modal, pop-up or overlay.
+- **Dialogs** ([components/dialogs.md](components/dialogs.md)): any modal, pop-up, drawer or overlay, and every "Ontdek meer" that opens a card's details.
 - **Pagination** ([components/pagination.md](components/pagination.md)): a product grid or any paged list.
 - **Content patterns** ([components/content-patterns.md](components/content-patterns.md)): any text + image or video block, image tile, image-text item, blog tile, quote, accordion or FAQ, sticky product tabs, comparison table or slider arrows: every page with content blocks.
 
@@ -610,6 +611,7 @@ Figma `1286:12548` (the base) and `1286:12715` (the set). The theme's `.btn` is 
 - **Secondary** (`.btn-secondary`): transparent, with `primary` text and a 1px `primary` border. Hover, focus and active fill `primary` with `on-primary` text; focus adds a 4px `primary` ring at 20%. Use it for the second action beside a primary.
 - **Tertiary** (`.btn-tertiary`): transparent, with `text-muted` text and a 1px `border`. Hover and active turn the fill white, which shows on `surface` and `surface-raised`; focus adds a `border-strong` border and the 4px `ring` at 50%. Use it for a neutral third action or a tool, such as "Filters wissen" or "Vergelijken". It is the theme's `.btn-tertiary` redrawn (Known exceptions → Buttons).
 - **Transparent** (`.btn-transparent`): no fill and no border, with `link` text that turns `link-hover`. Focus draws a 2px `link` ring (5.9:1 on white); active draws Figma's 3px `ring` at 50%. Use it for a quiet action that reads as a link but needs a button's size, such as "Lees meer" or "Toon alle reviews". `--flush` removes its side padding, so its label lines up with the text column it starts: a "Lees meer" toggle under a paragraph is `btn btn-transparent --flush --icon-leading`. The flush variant is a house addition.
+- **Fill** (`.btn-fill`): a `primary` fill with `on-primary` text that turns `primary-dark` on hover, for a round icon-only button that opens a card's details (Apple's filled plus): `btn btn-fill --m --icon-only --round`, 40px with a 44px hit area (the skeleton widens it by 2px each side). Beside a label ("Ontdek meer") the plus is a 32px `btn-fill` circle inside the labelled button. Focus adds a 2px `primary` ring 2px outside. It is a house addition, never a view's main action: that stays the primary.
 
 **Sizes:** set a height, so a bordered button is exactly as tall as the primary. XL is the default and has no class.
 
@@ -665,7 +667,7 @@ See Typography. The orange chip with white text, rotated −2°, is used for at 
 ### Shell
 
 - **Header:** green with white text, a search field and an orange cart-count badge.
-- **Menu:** sand on desktop, beige on mobile. The active item is marked in orange.
+- **Menu:** on desktop a sand bar (`bg-menu`) whose items sit transparent on it, `rounded-1 px-3 py-1`, with a 5% green fill on hover and on the active item (`bg-primary/5`, the theme's `bg-tmx-primary-green/5`); the text stays green. On mobile the panel is beige (`bg-surface`), each item an outlined row, the active one orange with white text. Checked on staging /verlichting.
 - **USP bar:** beige on desktop, sand on mobile, with lighter-green check marks.
 - **Breadcrumbs:** on beige, below the USP bar.
 - **Footer:** green with white text.
@@ -688,7 +690,7 @@ Motion confirms a state change (hover, focus, open/close, selection); it never p
 - Colour with the semantic tokens and the Tailwind defaults in Colors (`bg-surface`, `text-text-muted`, `border-border`), next to the theme's component classes (`btn-primary`, `form-input`, `message`). Use only values from the theme's scales (Layout → Spacing, Shapes, the font-size list in Typography).
 - Give every veranda or structure view a visible configurator CTA, and every other product a direct add-to-cart button.
 - Keep the primary button #809700 with its 4px #6D8005 bottom border. Keep the secondary, tertiary and transparent buttons visibly quieter.
-- Use orange only for the price box, heading and paragraph highlights, badges and the main menu's active item, always with the −2° tilt where the theme uses it.
+- Use orange only for the price box, heading and paragraph highlights, badges and the mobile menu's active item, always with the −2° tilt where the theme uses it.
 - Lead with proof at decision points: USP check lists, specs, guarantee and delivery terms, and reviews only when they are enabled (components/reviews.md).
 - Keep surfaces light and warm, with green for structure and text. Separate content with whitespace first, then a change of surface, and a border only where Elevation & Depth gives one.
 - Open every page with a beige intro, keep all content and images inside the container, and make the box decision per block: repeated cards as cards, one emphasised block as a beige box, everything else unboxed on whitespace (Elevation & Depth → The box decision).
@@ -705,7 +707,7 @@ Motion confirms a state change (hover, focus, open/close, selection); it never p
 - Don't nest a box in a box of the same surface, don't nest more than one level deep, and don't build endless identical card grids.
 - Don't wrap the whole page in one box, and don't box running text on a white page just to separate it. Don't border a white container on a white page unless it is a repeated card or an outlined filter box, don't border a card on a tinted band, and don't border a coloured box anywhere.
 - Don't put a padded beige split image around a separately rounded image; the image fills its half up to the box edges. Don't put "Lees meer", icon rows or colour lines in a product split image.
-- Don't write new copy or draw new visuals in a "keep the copy" redesign (Overview → Redesigns), don't put content in a carousel, and don't float a card over a photo (Layout).
+- Don't write new copy or draw new visuals in a "keep the copy" redesign (Overview → Redesigns), keep a product's content stacked (only the theme's sliders and the feature slider slide), and keep every card beside or below its photo, never over it (Layout).
 - Don't open a category or landing page with large image tiles, and don't run more than two sections on bare white in a row.
 - Don't put white text on a photo without a scrim. (The scrim is the one functional gradient; decorative gradients stay out.)
 - Don't let images or content bleed past the container, and don't use any surface other than white, beige, sand and one green block.

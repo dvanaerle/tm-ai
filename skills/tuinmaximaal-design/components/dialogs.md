@@ -53,6 +53,27 @@ Figma `1495:12618` (modal) and `1495:13634` (pop-up), file "Tuinmaximaal for Cla
 - **Close:** the one orange control, top right: `accent` with `rounded-bl-2` and `p-2` around a 24px white close icon (Figma's Mingcute `close_line`). White on orange is 2.5:1, under the 3:1 a control's icon needs; it is a deliberate brand choice (Known exceptions, below), so keep the `aria-label` and the Esc and backdrop exits.
 - **Photo:** the company's own lifestyle or project photo (Imagery), with an empty `alt` when it only decorates.
 
+**Drawer: the details behind a card's "Ontdek meer".** Zonneplan's pattern: a panel that slides in from the right over a 60% black backdrop, for the full copy of a feature card or a slider card (components/content-patterns.md → Feature card, Feature slider). It opens only from the visitor's click, closes with its close button, Esc or a click on the backdrop, and its text stays in the HTML, so the page keeps its copy for SEO.
+
+```html
+<button type="button" class="… flex items-center gap-3 font-bold" data-dialog-open="drawer-id" aria-haspopup="dialog"><span>Ontdek meer</span><span class="btn-fill … size-10 rounded-full">…plus…</span></button>
+<dialog class="drawer" id="drawer-id" aria-labelledby="drawer-id-title">
+    <div class="drawer-header">
+        <h2 class="drawer-title" id="drawer-id-title" tabindex="-1" autofocus>…</h2>
+        <form method="dialog"><button class="drawer-close" aria-label="Sluiten"><svg …the pop-up's close icon…/></button></form>
+    </div>
+    <div class="drawer-body">
+        <img class="aspect-video object-cover" src="…" alt="…"><!-- a packshot: object-contain p-4 bg-surface -->
+        <div class="flex flex-col gap-4"><p>…the full copy…</p></div>
+        <table>…the feature's rows from the comparison table…</table><!-- optional -->
+        <div class="flex flex-wrap gap-2"><a class="btn btn-primary" href="…">…</a></div><!-- optional: the page's own CTA for this feature -->
+    </div>
+</dialog>
+```
+
+- **Panel:** white, full height, `max-w-lg` (512px) from the right edge, `rounded-l-2` from `sm` and full width below it, scrolling inside itself. The header is sticky: the title (`text-6 font-black`, Zonneplan's large heading), `pl-6 pt-6` (`pl-8 pt-8` from `sm`), with room on the right for the close button. The close is the pop-up's orange one (`drawer-close`: `accent` with `rounded-bl-2` and `p-2` around the 24px white close icon, in the top right corner), so every dialog that a visitor closes by hand shows the same close. It glides in from the right and back out over 300ms on a soft deceleration curve (`cubic-bezier(0.32, 0.72, 0, 1)`), the backdrop fading with it, and its content follows 75ms later with a short slide and a fade, so the panel leads and the text flows in after it. Native `dialog` open and close both animate (`@starting-style` and `allow-discrete` in the skeleton); a browser without them opens it at once. Under reduced motion the panel only fades.
+- **Body:** `gap-6`: a 16:9 image, the full copy, and, where the page holds the data, the feature's rows from the comparison table with the same ticks, so the drawer shows which product has the feature. A primary appears only when the page's copy has one for this feature, as one primary per drawer.
+
 ## Known exceptions
 
 - **Pop-up close:** the white close icon on orange is 2.52:1, below WCAG's 3:1 for a control's icon. The brand keeps it on purpose (above); the button's `aria-label`, Esc and the backdrop click keep the pop-up closable for everyone.

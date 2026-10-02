@@ -12,11 +12,11 @@ Each example is a parts file plus the file the assemble script makes from it. Re
 
 Round 4, variant A ("Naast elkaar") of the /schuifwand redesign, with the page's own copy and images. From the top:
 
-1. **Beige intro:** the H1 and intro beside a modest photo (DESIGN.md → Layout → Beige intro).
+1. **Beige intro:** the H1 and intro beside a modest 16:9 photo (DESIGN.md → Layout → Beige intro).
 2. **Sticky product tabs:** thumbnail, name and "Vanaf €" price per product, the beige pill on the active tab (components/content-patterns.md → Sticky product tabs).
 3. **One light split image per product**, the image alternating left and right (`--media-right`): name, price chip, first sentence, USP list, "Stel nu samen" beside "Meer informatie" (components/content-patterns.md → Split image).
-4. **Comparison table "Alle Gumax<sup>®</sup> schuifwanden"** on white: need rows with ticks at every width, colours from `md`, prices and buttons from `lg` (components/content-patterns.md → Comparison table).
-5. **Benefits on a beige band:** the copy's own headings and first sentences, the rest behind "+ Lees meer", in this one section only.
+4. **Comparison table "Alle Gumax<sup>®</sup> schuifwanden"** on white: need rows with centred ticks at every width, colours from `md`, prices and buttons from `lg`; with four products it scrolls sideways below `md`, behind a sticky label column (components/content-patterns.md → Comparison table).
+5. **Benefits on a beige band:** the copy's own headings and first sentences, the rest in a read-more ("Lees meer", then "Lees minder"), in this one section only (components/content-patterns.md → Read more).
 6. **Side walls on a sand band:** white cards without a border.
 
 The surface changes every one or two sections: beige, white, beige blocks, white, beige, sand.
@@ -32,6 +32,8 @@ Cleaning the approved round-4 file changed:
 - **"Kies uw stijl" card:** it shows the three colours as a small swatch row under its sentence. Before, a sand panel of large swatches stood in for a photo, which the source doesn't have.
 - **Small fixes:** the tab hover is a lighter-green label instead of a grey fill, and "+ Lees meer" has a 44px hit area.
 
+The /verlichting feedback (round 1) changed it again: the intro photo is 16:9, the table's ticks, headers and prices are centred and the table scrolls behind a sticky label column instead of wrapping its four names, and the benefits' `details` became the read-more, so the toggle sits under the opened text. The screenshots below predate that.
+
 To use it for another category landing, copy the parts file, write your own plan line and registry, and replace the copy, images, prices and needs with the source page's own. Drop the sections the page has no content for; never keep the /schuifwand copy as filler. The variants then vary only the design question, as in a later round (build.md → 4. Later rounds).
 
 | 375px | `xl` |
@@ -46,7 +48,7 @@ To use it for another category landing, copy the parts file, write your own plan
 |---|---|
 | ![Round 1: four large image tiles in the intro](examples/intro-dont.jpg) | ![The calm intro](examples/intro-do.jpg) |
 
-**Active tab.** Don't mark the active tab with an orange bar (round 1): orange active states belong to the main menu. Do: the beige pill.
+**Active tab.** Don't mark the active tab with an orange bar (round 1): orange active states belong to the mobile menu. Do: the beige pill.
 
 | Don't | Do |
 |---|---|
@@ -63,3 +65,19 @@ To use it for another category landing, copy the parts file, write your own plan
 | Don't | Do |
 |---|---|
 | ![Round 3: a product block stretched by an open Lees meer](examples/lees-meer-dont.jpg) | ![The light product block](examples/light-block-do.jpg) |
+
+## Do and don't, from the /verlichting feedback
+
+**Details.** Don't open a card's extra text under a "Lees meer" summary that stays above it and never changes: the visitor reads past the button, and the opened text has no way back. Do: the read-more, its toggle under the text and "Lees minder" while open, or for longer copy a drawer behind "Ontdek meer" (Zonneplan), with the photo, the full copy and the feature's comparison rows. Either way the copy stays in the HTML for SEO.
+
+**Surfaces.** Don't give a split image a sand box. Do: beige split images, and sand only as a full-width band around a section.
+
+**Images.** Don't set the intro photo or a card photo at a free height. Do: 16:9; only the big moment's large photo takes a spacing-scale height.
+
+**Controls.** Don't mix close buttons, or outline a card's plus. Do: the orange corner close on every dialog a visitor closes, and a filled round plus (`btn-fill`), as Apple fills it.
+
+**Sliders.** Don't clip a slider at the container with a native scrollbar under it, or give its arrows a shadow. Do: Swiper (the theme ships it), the row running to the screen edge, no pagination dots, round lime arrows that turn to an outline at the end, slides of one colour, and a 40px filled plus. A drawer glides in and out; it never pops.
+
+**Grids.** Don't let cards in a row end at different heights. Do: equal heights per row, beige icon tiles everywhere, and product cards beige in an auto-fill grid of at least 384px (448px wide).
+
+**Data.** Don't leave data in running text when the page holds it. Do: show it as ticks and icons (the comparison table, its rows again in a drawer, an icon per feature card), and keep the full text on the page.
